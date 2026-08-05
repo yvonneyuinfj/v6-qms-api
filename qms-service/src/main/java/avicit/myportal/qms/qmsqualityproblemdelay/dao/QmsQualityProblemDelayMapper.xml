@@ -1,0 +1,1223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.myportal.qms.qmsqualityproblemdelay.dao.QmsQualityProblemDelayDAO">
+<resultMap id="QmsQualityProblemDelayDTOMap" type="avicit.myportal.qms.qmsqualityproblemdelay.dto.QmsQualityProblemDelayDTO">
+	<result property="id" column="ID" jdbcType="VARCHAR" />
+	<result property="delayCode" column="DELAY_CODE" jdbcType="VARCHAR" />
+	<result property="problemId" column="PROBLEM_ID" jdbcType="VARCHAR" />
+	<result property="problemCode" column="PROBLEM_CODE" jdbcType="VARCHAR" />
+	<result property="problemTitle" column="PROBLEM_TITLE" jdbcType="VARCHAR" />
+	<result property="delayTitle" column="DELAY_TITLE" jdbcType="VARCHAR" />
+	<result property="delayTimes" column="DELAY_TIMES" jdbcType="DECIMAL" />
+	<result property="originalCloseTime" column="ORIGINAL_CLOSE_TIME" jdbcType="TIMESTAMP" />
+	<result property="newCloseTime" column="NEW_CLOSE_TIME" jdbcType="TIMESTAMP" />
+	<result property="delayReason" column="DELAY_REASON" jdbcType="VARCHAR" />
+	<result property="problemSummary" column="PROBLEM_SUMMARY" jdbcType="VARCHAR" />
+	<result property="currentProgress" column="CURRENT_PROGRESS" jdbcType="VARCHAR" />
+	<result property="emergencyMeasure" column="EMERGENCY_MEASURE" jdbcType="VARCHAR" />
+	<result property="delayReasonDetail" column="DELAY_REASON_DETAIL" jdbcType="VARCHAR" />
+	<result property="ppmPlanCode" column="PPM_PLAN_CODE" jdbcType="VARCHAR" />
+	<result property="model" column="MODEL" jdbcType="VARCHAR" />
+	<result property="applicantStaffId" column="APPLICANT_STAFF_ID" jdbcType="VARCHAR" />
+	<result property="applicantStaffCode" column="APPLICANT_STAFF_CODE" jdbcType="VARCHAR" />
+	<result property="applicantStaffName" column="APPLICANT_STAFF_NAME" jdbcType="VARCHAR" />
+	<result property="applicantDeptId" column="APPLICANT_DEPT_ID" jdbcType="VARCHAR" />
+	<result property="applicantDeptCode" column="APPLICANT_DEPT_CODE" jdbcType="VARCHAR" />
+	<result property="applicantDeptName" column="APPLICANT_DEPT_NAME" jdbcType="VARCHAR" />
+	<result property="applyTime" column="APPLY_TIME" jdbcType="TIMESTAMP" />
+	<result property="status" column="STATUS" jdbcType="VARCHAR" />
+	<result property="processInstanceId" column="PROCESS_INSTANCE_ID" jdbcType="VARCHAR" />
+	<result property="processStatus" column="PROCESS_STATUS" jdbcType="VARCHAR" />
+	<result property="forYear" column="FOR_YEAR" jdbcType="VARCHAR" />
+	<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+	<result property="createdDept" column="CREATED_DEPT" jdbcType="VARCHAR" />
+	<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+	<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+	<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+	<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+	<result property="version" column="VERSION" jdbcType="DECIMAL" />
+	<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+	<result property="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR" />
+	<result property="ynDeleted" column="YN_DELETED" jdbcType="VARCHAR" />
+	<result property="remark" column="REMARK" jdbcType="VARCHAR" />
+	<result property="orderBy" column="ORDER_BY" jdbcType="DECIMAL" />
+	<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+	<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+	<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+	<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+	<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+	<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+	<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+	<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+	<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+	<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+	<result property="dbid_" column="dbid_" jdbcType="VARCHAR" />
+	<result property="activityalias_" column="activityalias_" jdbcType="VARCHAR" />
+	<result property="businessstate_" column="businessstate_" jdbcType="VARCHAR" />
+	<result property="assigneenames_" column="assigneenames_" jdbcType="VARCHAR" />
+
+</resultMap>
+<sql id="commonColums">
+	<trim suffixOverrides=",">
+		t1.ID,
+		t1.DELAY_CODE,
+		t1.PROBLEM_ID,
+		t1.PROBLEM_CODE,
+		t1.PROBLEM_TITLE,
+		t1.DELAY_TITLE,
+		t1.DELAY_TIMES,
+		t1.ORIGINAL_CLOSE_TIME,
+		t1.NEW_CLOSE_TIME,
+		t1.DELAY_REASON,
+		t1.PROBLEM_SUMMARY,
+		t1.CURRENT_PROGRESS,
+		t1.EMERGENCY_MEASURE,
+		t1.DELAY_REASON_DETAIL,
+		t1.PPM_PLAN_CODE,
+		t1.MODEL,
+		t1.APPLICANT_STAFF_ID,
+		t1.APPLICANT_STAFF_CODE,
+		t1.APPLICANT_STAFF_NAME,
+		t1.APPLICANT_DEPT_ID,
+		t1.APPLICANT_DEPT_CODE,
+		t1.APPLICANT_DEPT_NAME,
+		t1.APPLY_TIME,
+		t1.STATUS,
+		t1.PROCESS_INSTANCE_ID,
+		t1.PROCESS_STATUS,
+		t1.FOR_YEAR,
+		t1.CREATED_BY,
+		t1.CREATED_DEPT,
+		t1.CREATION_DATE,
+		t1.LAST_UPDATED_BY,
+		t1.LAST_UPDATE_DATE,
+		t1.LAST_UPDATE_IP,
+		t1.VERSION,
+		t1.ORG_IDENTITY,
+		t1.SECRET_LEVEL,
+		t1.YN_DELETED,
+		t1.REMARK,
+		t1.ORDER_BY,
+		t1.ATTRIBUTE_01,
+		t1.ATTRIBUTE_02,
+		t1.ATTRIBUTE_03,
+		t1.ATTRIBUTE_04,
+		t1.ATTRIBUTE_05,
+		t1.ATTRIBUTE_06,
+		t1.ATTRIBUTE_07,
+		t1.ATTRIBUTE_08,
+		t1.ATTRIBUTE_09,
+		t1.ATTRIBUTE_10,
+	</trim>
+</sql>
+<!-- 默认查询条件 -->
+<sql id="defaultWhereAnd">
+	<if test="orgIdentity != null and orgIdentity != ''">
+		and t1.org_identity = #{orgIdentity}
+	</if>
+	<if test="wordSecret != null and wordSecret.size()>0">
+		and t1.secret_level in
+		<foreach collection="wordSecret" item="item" index="key" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</if>
+</sql>
+<sql id="commonWhereAnd">
+	<if test="bean.id != null and bean.id != ''">
+		and t1.ID = #{bean.id}
+	</if>
+	<if test="bean.delayCode != null and bean.delayCode != ''">
+		and t1.DELAY_CODE like concat(concat('%',#{bean.delayCode}),'%')
+	</if>
+	<if test="bean.problemId != null and bean.problemId != ''">
+		and t1.PROBLEM_ID like concat(concat('%',#{bean.problemId}),'%')
+	</if>
+	<if test="bean.problemCode != null and bean.problemCode != ''">
+		and t1.PROBLEM_CODE like concat(concat('%',#{bean.problemCode}),'%')
+	</if>
+	<if test="bean.problemTitle != null and bean.problemTitle != ''">
+		and t1.PROBLEM_TITLE like concat(concat('%',#{bean.problemTitle}),'%')
+	</if>
+	<if test="bean.delayTitle != null and bean.delayTitle != ''">
+		and t1.DELAY_TITLE like concat(concat('%',#{bean.delayTitle}),'%')
+	</if>
+	<if test="bean.delayTimes != null">
+		and t1.DELAY_TIMES = #{bean.delayTimes}
+	</if>
+	<if test="bean.originalCloseTimeBegin != null">
+		and t1.ORIGINAL_CLOSE_TIME &gt;= #{bean.originalCloseTimeBegin}
+	</if>
+	<if test="bean.originalCloseTimeEnd != null">
+		and t1.ORIGINAL_CLOSE_TIME &lt;= #{bean.originalCloseTimeEnd}
+	</if>
+	<if test="bean.newCloseTimeBegin != null">
+		and t1.NEW_CLOSE_TIME &gt;= #{bean.newCloseTimeBegin}
+	</if>
+	<if test="bean.newCloseTimeEnd != null">
+		and t1.NEW_CLOSE_TIME &lt;= #{bean.newCloseTimeEnd}
+	</if>
+	<if test="bean.delayReason != null and bean.delayReason != ''">
+		and t1.DELAY_REASON like concat(concat('%',#{bean.delayReason}),'%')
+	</if>
+	<if test="bean.problemSummary != null and bean.problemSummary != ''">
+		and t1.PROBLEM_SUMMARY like concat(concat('%',#{bean.problemSummary}),'%')
+	</if>
+	<if test="bean.currentProgress != null and bean.currentProgress != ''">
+		and t1.CURRENT_PROGRESS like concat(concat('%',#{bean.currentProgress}),'%')
+	</if>
+	<if test="bean.emergencyMeasure != null and bean.emergencyMeasure != ''">
+		and t1.EMERGENCY_MEASURE like concat(concat('%',#{bean.emergencyMeasure}),'%')
+	</if>
+	<if test="bean.delayReasonDetail != null and bean.delayReasonDetail != ''">
+		and t1.DELAY_REASON_DETAIL like concat(concat('%',#{bean.delayReasonDetail}),'%')
+	</if>
+	<if test="bean.ppmPlanCode != null and bean.ppmPlanCode != ''">
+		and t1.PPM_PLAN_CODE like concat(concat('%',#{bean.ppmPlanCode}),'%')
+	</if>
+	<if test="bean.model != null and bean.model != ''">
+		and t1.MODEL like concat(concat('%',#{bean.model}),'%')
+	</if>
+	<if test="bean.applicantStaffId != null and bean.applicantStaffId != ''">
+		and t1.APPLICANT_STAFF_ID like concat(concat('%',#{bean.applicantStaffId}),'%')
+	</if>
+	<if test="bean.applicantStaffCode != null and bean.applicantStaffCode != ''">
+		and t1.APPLICANT_STAFF_CODE like concat(concat('%',#{bean.applicantStaffCode}),'%')
+	</if>
+	<if test="bean.applicantStaffName != null and bean.applicantStaffName != ''">
+		and t1.APPLICANT_STAFF_NAME like concat(concat('%',#{bean.applicantStaffName}),'%')
+	</if>
+	<if test="bean.applicantDeptId != null and bean.applicantDeptId != ''">
+		and t1.APPLICANT_DEPT_ID like concat(concat('%',#{bean.applicantDeptId}),'%')
+	</if>
+	<if test="bean.applicantDeptCode != null and bean.applicantDeptCode != ''">
+		and t1.APPLICANT_DEPT_CODE like concat(concat('%',#{bean.applicantDeptCode}),'%')
+	</if>
+	<if test="bean.applicantDeptName != null and bean.applicantDeptName != ''">
+		and t1.APPLICANT_DEPT_NAME like concat(concat('%',#{bean.applicantDeptName}),'%')
+	</if>
+	<if test="bean.applyTimeBegin != null">
+		and t1.APPLY_TIME &gt;= #{bean.applyTimeBegin}
+	</if>
+	<if test="bean.applyTimeEnd != null">
+		and t1.APPLY_TIME &lt;= #{bean.applyTimeEnd}
+	</if>
+	<if test="bean.status != null and bean.status != ''">
+		and t1.STATUS like concat(concat('%',#{bean.status}),'%')
+	</if>
+	<if test="bean.processInstanceId != null and bean.processInstanceId != ''">
+		and t1.PROCESS_INSTANCE_ID like concat(concat('%',#{bean.processInstanceId}),'%')
+	</if>
+	<if test="bean.processStatus != null and bean.processStatus != ''">
+		and t1.PROCESS_STATUS like concat(concat('%',#{bean.processStatus}),'%')
+	</if>
+	<if test="bean.forYear != null and bean.forYear != ''">
+		and t1.FOR_YEAR like concat(concat('%',#{bean.forYear}),'%')
+	</if>
+	<if test="bean.createdBy != null and bean.createdBy != ''">
+		and t1.CREATED_BY = #{bean.createdBy}
+	</if>
+	<if test="bean.createdDept != null and bean.createdDept != ''">
+		and t1.CREATED_DEPT = #{bean.createdDept}
+	</if>
+	<if test="bean.creationDateBegin != null">
+		and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+	</if>
+	<if test="bean.creationDateEnd != null">
+		and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+	</if>
+	<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+		and t1.LAST_UPDATED_BY = #{bean.lastUpdatedBy}
+	</if>
+	<if test="bean.lastUpdateDateBegin != null">
+		and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+	</if>
+	<if test="bean.lastUpdateDateEnd != null">
+		and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+	</if>
+	<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+		and t1.LAST_UPDATE_IP = #{bean.lastUpdateIp}
+	</if>
+	<if test="bean.version != null">
+		and t1.VERSION = #{bean.version}
+	</if>
+	<if test="bean.secretLevel != null and bean.secretLevel != ''">
+		and t1.SECRET_LEVEL = #{bean.secretLevel}
+	</if>
+	<if test="bean.ynDeleted != null and bean.ynDeleted != ''">
+		and t1.YN_DELETED like concat(concat('%',#{bean.ynDeleted}),'%')
+	</if>
+	<if test="bean.remark != null and bean.remark != ''">
+		and t1.REMARK like concat(concat('%',#{bean.remark}),'%')
+	</if>
+	<if test="bean.orderBy != null">
+		and t1.ORDER_BY = #{bean.orderBy}
+	</if>
+	<if test="bean.attribute01 != null and bean.attribute01 != ''">
+		and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+	</if>
+	<if test="bean.attribute02 != null and bean.attribute02 != ''">
+		and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+	</if>
+	<if test="bean.attribute03 != null and bean.attribute03 != ''">
+		and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+	</if>
+	<if test="bean.attribute04 != null and bean.attribute04 != ''">
+		and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+	</if>
+	<if test="bean.attribute05 != null and bean.attribute05 != ''">
+		and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+	</if>
+	<if test="bean.attribute06 != null and bean.attribute06 != ''">
+		and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+	</if>
+	<if test="bean.attribute07 != null and bean.attribute07 != ''">
+		and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+	</if>
+	<if test="bean.attribute08 != null and bean.attribute08 != ''">
+		and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+	</if>
+	<if test="bean.attribute09 != null and bean.attribute09 != ''">
+		and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')
+	</if>
+	<if test="bean.attribute10 != null and bean.attribute10 != ''">
+		and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')
+	</if>
+</sql>
+<sql id="commonWhereOr">
+	<trim prefix="(" suffix=")" prefixOverrides="or">
+		<if test="bean.id != null and bean.id != ''">
+			or t1.ID = #{bean.id}
+		</if>
+		<if test="bean.delayCode != null and bean.delayCode != ''">
+			or t1.DELAY_CODE like concat(concat('%',#{bean.delayCode}),'%')
+		</if>
+		<if test="bean.problemId != null and bean.problemId != ''">
+			or t1.PROBLEM_ID like concat(concat('%',#{bean.problemId}),'%')
+		</if>
+		<if test="bean.problemCode != null and bean.problemCode != ''">
+			or t1.PROBLEM_CODE like concat(concat('%',#{bean.problemCode}),'%')
+		</if>
+		<if test="bean.problemTitle != null and bean.problemTitle != ''">
+			or t1.PROBLEM_TITLE like concat(concat('%',#{bean.problemTitle}),'%')
+		</if>
+		<if test="bean.delayTitle != null and bean.delayTitle != ''">
+			or t1.DELAY_TITLE like concat(concat('%',#{bean.delayTitle}),'%')
+		</if>
+		<if test="bean.delayTimes != null">
+			or t1.DELAY_TIMES = #{bean.delayTimes}
+		</if>
+		<if test="bean.originalCloseTimeBegin != null">
+			or t1.ORIGINAL_CLOSE_TIME &gt;= #{bean.originalCloseTimeBegin}
+		</if>
+		<if test="bean.originalCloseTimeEnd != null">
+			or t1.ORIGINAL_CLOSE_TIME &lt;= #{bean.originalCloseTimeEnd}
+		</if>
+		<if test="bean.newCloseTimeBegin != null">
+			or t1.NEW_CLOSE_TIME &gt;= #{bean.newCloseTimeBegin}
+		</if>
+		<if test="bean.newCloseTimeEnd != null">
+			or t1.NEW_CLOSE_TIME &lt;= #{bean.newCloseTimeEnd}
+		</if>
+		<if test="bean.delayReason != null and bean.delayReason != ''">
+			or t1.DELAY_REASON like concat(concat('%',#{bean.delayReason}),'%')
+		</if>
+		<if test="bean.problemSummary != null and bean.problemSummary != ''">
+			or t1.PROBLEM_SUMMARY like concat(concat('%',#{bean.problemSummary}),'%')
+		</if>
+		<if test="bean.currentProgress != null and bean.currentProgress != ''">
+			or t1.CURRENT_PROGRESS like concat(concat('%',#{bean.currentProgress}),'%')
+		</if>
+		<if test="bean.emergencyMeasure != null and bean.emergencyMeasure != ''">
+			or t1.EMERGENCY_MEASURE like concat(concat('%',#{bean.emergencyMeasure}),'%')
+		</if>
+		<if test="bean.delayReasonDetail != null and bean.delayReasonDetail != ''">
+			or t1.DELAY_REASON_DETAIL like concat(concat('%',#{bean.delayReasonDetail}),'%')
+		</if>
+		<if test="bean.ppmPlanCode != null and bean.ppmPlanCode != ''">
+			or t1.PPM_PLAN_CODE like concat(concat('%',#{bean.ppmPlanCode}),'%')
+		</if>
+		<if test="bean.model != null and bean.model != ''">
+			or t1.MODEL like concat(concat('%',#{bean.model}),'%')
+		</if>
+		<if test="bean.applicantStaffId != null and bean.applicantStaffId != ''">
+			or t1.APPLICANT_STAFF_ID like concat(concat('%',#{bean.applicantStaffId}),'%')
+		</if>
+		<if test="bean.applicantStaffCode != null and bean.applicantStaffCode != ''">
+			or t1.APPLICANT_STAFF_CODE like concat(concat('%',#{bean.applicantStaffCode}),'%')
+		</if>
+		<if test="bean.applicantStaffName != null and bean.applicantStaffName != ''">
+			or t1.APPLICANT_STAFF_NAME like concat(concat('%',#{bean.applicantStaffName}),'%')
+		</if>
+		<if test="bean.applicantDeptId != null and bean.applicantDeptId != ''">
+			or t1.APPLICANT_DEPT_ID like concat(concat('%',#{bean.applicantDeptId}),'%')
+		</if>
+		<if test="bean.applicantDeptCode != null and bean.applicantDeptCode != ''">
+			or t1.APPLICANT_DEPT_CODE like concat(concat('%',#{bean.applicantDeptCode}),'%')
+		</if>
+		<if test="bean.applicantDeptName != null and bean.applicantDeptName != ''">
+			or t1.APPLICANT_DEPT_NAME like concat(concat('%',#{bean.applicantDeptName}),'%')
+		</if>
+		<if test="bean.applyTimeBegin != null">
+			or t1.APPLY_TIME &gt;= #{bean.applyTimeBegin}
+		</if>
+		<if test="bean.applyTimeEnd != null">
+			or t1.APPLY_TIME &lt;= #{bean.applyTimeEnd}
+		</if>
+		<if test="bean.status != null and bean.status != ''">
+			or t1.STATUS like concat(concat('%',#{bean.status}),'%')
+		</if>
+		<if test="bean.processInstanceId != null and bean.processInstanceId != ''">
+			or t1.PROCESS_INSTANCE_ID like concat(concat('%',#{bean.processInstanceId}),'%')
+		</if>
+		<if test="bean.processStatus != null and bean.processStatus != ''">
+			or t1.PROCESS_STATUS like concat(concat('%',#{bean.processStatus}),'%')
+		</if>
+		<if test="bean.forYear != null and bean.forYear != ''">
+			or t1.FOR_YEAR like concat(concat('%',#{bean.forYear}),'%')
+		</if>
+		<if test="bean.createdBy != null and bean.createdBy != ''">
+			or t1.CREATED_BY = #{bean.createdBy}
+		</if>
+		<if test="bean.createdDept != null and bean.createdDept != ''">
+			or t1.CREATED_DEPT = #{bean.createdDept}
+		</if>
+		<if test="bean.creationDateBegin != null">
+			or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+		</if>
+		<if test="bean.creationDateEnd != null">
+			or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+		</if>
+		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+			or t1.LAST_UPDATED_BY = #{bean.lastUpdatedBy}
+		</if>
+		<if test="bean.lastUpdateDateBegin != null">
+			or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+		</if>
+		<if test="bean.lastUpdateDateEnd != null">
+			or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+		</if>
+		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+			or t1.LAST_UPDATE_IP = #{bean.lastUpdateIp}
+		</if>
+		<if test="bean.version != null">
+			or t1.VERSION = #{bean.version}
+		</if>
+		<if test="bean.ynDeleted != null and bean.ynDeleted != ''">
+			or t1.YN_DELETED like concat(concat('%',#{bean.ynDeleted}),'%')
+		</if>
+		<if test="bean.remark != null and bean.remark != ''">
+			or t1.REMARK like concat(concat('%',#{bean.remark}),'%')
+		</if>
+		<if test="bean.orderBy != null">
+			or t1.ORDER_BY = #{bean.orderBy}
+		</if>
+		<if test="bean.attribute01 != null and bean.attribute01 != ''">
+			or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+		</if>
+		<if test="bean.attribute02 != null and bean.attribute02 != ''">
+			or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+		</if>
+		<if test="bean.attribute03 != null and bean.attribute03 != ''">
+			or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+		</if>
+		<if test="bean.attribute04 != null and bean.attribute04 != ''">
+			or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+		</if>
+		<if test="bean.attribute05 != null and bean.attribute05 != ''">
+			or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+		</if>
+		<if test="bean.attribute06 != null and bean.attribute06 != ''">
+			or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+		</if>
+		<if test="bean.attribute07 != null and bean.attribute07 != ''">
+			or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+		</if>
+		<if test="bean.attribute08 != null and bean.attribute08 != ''">
+			or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+		</if>
+		<if test="bean.attribute09 != null and bean.attribute09 != ''">
+			or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')
+		</if>
+		<if test="bean.attribute10 != null and bean.attribute10 != ''">
+			or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')
+		</if>
+	</trim>
+</sql>
+<sql id="commonBpmWhereAnd">
+    <if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
+        and exists (select 1 from sys_bpm_hist_task os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId})
+    </if>
+    <if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
+        and v.businessstate_ = #{bean.bpmState}
+        <if test="bean.bpmType != 'all' and bean.bpmState == 'start'">
+            and	exists (select 1 from bpm_client_hist_procinst_v os where os.userid_ = #{bean.currUserId, jdbcType = VARCHAR} and os.dbid_ = v.dbid_)
+        </if>
+    </if>
+</sql>
+<sql id="commonBpmColums">
+	v.dbid_,
+    v.activityalias_,
+    v.businessstate_,
+	v.assigneenames_,
+</sql>
+<sql id="commonOrderBy">
+	<choose>
+		<when test="orderBy != null and orderBy != ''">
+			order by ${orderBy}
+		</when>
+		<otherwise>
+			order by t1.creation_date desc
+		</otherwise>
+	</choose>
+</sql>
+
+<!-- 分页查询 QMS_QUALITY_PROBLEM_DELAY -->
+<select id="searchQmsQualityProblemDelayByPage" parameterType="java.util.Map" resultMap="QmsQualityProblemDelayDTOMap">
+	select
+	<include refid="commonBpmColums"/>
+	<include refid="commonColums"/>
+	from QMS_QUALITY_PROBLEM_DELAY t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
+	<where>
+		<if test="bean != null">
+			<choose>
+				<when test="keyWords != null and keyWords != '' ">
+					<include refid="commonWhereOr"/>
+					<include refid="commonBpmWhereAnd"/>
+				</when>
+				<otherwise>
+					<include refid="commonWhereAnd"/>
+					<include refid="commonBpmWhereAnd"/>
+				</otherwise>
+			</choose>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+	<include refid="commonOrderBy"></include>
+</select>
+<!-- 查询列表 QMS_QUALITY_PROBLEM_DELAY -->
+<select id="searchQmsQualityProblemDelay" parameterType="java.util.Map" resultMap="QmsQualityProblemDelayDTOMap">
+	select
+	<include refid="commonBpmColums"/>
+	<include refid="commonColums"/>
+    from QMS_QUALITY_PROBLEM_DELAY 	t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
+	<where>
+		<if test="bean != null">
+			<include refid="commonWhereAnd"/>
+			<include refid="commonBpmWhereAnd"/>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+</select>
+<!-- 按条件导出查询列表 QMS_QUALITY_PROBLEM_DELAY -->
+<select id="searchQmsQualityProblemDelayForExportExcel" parameterType="java.util.Map" resultMap="QmsQualityProblemDelayDTOMap">
+	select
+		<include refid="commonBpmColums"/>
+		<include refid="commonColums"/>
+		from QMS_QUALITY_PROBLEM_DELAY 	t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
+
+	<where>
+		<if test="bean != null">
+			<choose>
+				<when test="keyWords != null and keyWords != ''">
+					<include refid="commonWhereOr"/>
+					<include refid="commonBpmWhereAnd"/>
+				</when>
+				<otherwise>
+					<include refid="commonWhereAnd"/>
+					<include refid="commonBpmWhereAnd"/>
+				</otherwise>
+			</choose>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+	<include refid="commonOrderBy"/>
+</select>
+<!-- 主键查询对象 QMS_QUALITY_PROBLEM_DELAY -->
+<select id="findQmsQualityProblemDelayById" parameterType="java.util.Map" resultMap="QmsQualityProblemDelayDTOMap">
+	select
+	<include refid="commonColums"/>
+	from QMS_QUALITY_PROBLEM_DELAY t1
+	where t1.id = #{id}
+</select>
+<!-- 新增对象 QMS_QUALITY_PROBLEM_DELAY -->
+<insert id="insertQmsQualityProblemDelay" parameterType="avicit.myportal.qms.qmsqualityproblemdelay.dto.QmsQualityProblemDelayDTO">
+	insert into QMS_QUALITY_PROBLEM_DELAY
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			ID,
+		</if>
+		<if test="delayCode != null">
+			DELAY_CODE,
+		</if>
+		<if test="problemId != null">
+			PROBLEM_ID,
+		</if>
+		<if test="problemCode != null">
+			PROBLEM_CODE,
+		</if>
+		<if test="problemTitle != null">
+			PROBLEM_TITLE,
+		</if>
+		<if test="delayTitle != null">
+			DELAY_TITLE,
+		</if>
+		<if test="delayTimes != null">
+			DELAY_TIMES,
+		</if>
+		<if test="originalCloseTime != null">
+			ORIGINAL_CLOSE_TIME,
+		</if>
+		<if test="newCloseTime != null">
+			NEW_CLOSE_TIME,
+		</if>
+		<if test="delayReason != null">
+			DELAY_REASON,
+		</if>
+		<if test="problemSummary != null">
+			PROBLEM_SUMMARY,
+		</if>
+		<if test="currentProgress != null">
+			CURRENT_PROGRESS,
+		</if>
+		<if test="emergencyMeasure != null">
+			EMERGENCY_MEASURE,
+		</if>
+		<if test="delayReasonDetail != null">
+			DELAY_REASON_DETAIL,
+		</if>
+		<if test="ppmPlanCode != null">
+			PPM_PLAN_CODE,
+		</if>
+		<if test="model != null">
+			MODEL,
+		</if>
+		<if test="applicantStaffId != null">
+			APPLICANT_STAFF_ID,
+		</if>
+		<if test="applicantStaffCode != null">
+			APPLICANT_STAFF_CODE,
+		</if>
+		<if test="applicantStaffName != null">
+			APPLICANT_STAFF_NAME,
+		</if>
+		<if test="applicantDeptId != null">
+			APPLICANT_DEPT_ID,
+		</if>
+		<if test="applicantDeptCode != null">
+			APPLICANT_DEPT_CODE,
+		</if>
+		<if test="applicantDeptName != null">
+			APPLICANT_DEPT_NAME,
+		</if>
+		<if test="applyTime != null">
+			APPLY_TIME,
+		</if>
+		<if test="status != null">
+			STATUS,
+		</if>
+		<if test="processInstanceId != null">
+			PROCESS_INSTANCE_ID,
+		</if>
+		<if test="processStatus != null">
+			PROCESS_STATUS,
+		</if>
+		<if test="forYear != null">
+			FOR_YEAR,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP,
+		</if>
+		<if test="version != null">
+			VERSION,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY,
+		</if>
+		<if test="secretLevel != null">
+			SECRET_LEVEL,
+		</if>
+		<if test="ynDeleted != null">
+			YN_DELETED,
+		</if>
+		<if test="remark != null">
+			REMARK,
+		</if>
+		<if test="orderBy != null">
+			ORDER_BY,
+		</if>
+		<if test="attribute01 != null">
+			ATTRIBUTE_01,
+		</if>
+		<if test="attribute02 != null">
+			ATTRIBUTE_02,
+		</if>
+		<if test="attribute03 != null">
+			ATTRIBUTE_03,
+		</if>
+		<if test="attribute04 != null">
+			ATTRIBUTE_04,
+		</if>
+		<if test="attribute05 != null">
+			ATTRIBUTE_05,
+		</if>
+		<if test="attribute06 != null">
+			ATTRIBUTE_06,
+		</if>
+		<if test="attribute07 != null">
+			ATTRIBUTE_07,
+		</if>
+		<if test="attribute08 != null">
+			ATTRIBUTE_08,
+		</if>
+		<if test="attribute09 != null">
+			ATTRIBUTE_09,
+		</if>
+		<if test="attribute10 != null">
+			ATTRIBUTE_10,
+		</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			#{id,jdbcType = VARCHAR},
+		</if>
+		<if test="delayCode != null">
+			#{delayCode,jdbcType = VARCHAR},
+		</if>
+		<if test="problemId != null">
+			#{problemId,jdbcType = VARCHAR},
+		</if>
+		<if test="problemCode != null">
+			#{problemCode,jdbcType = VARCHAR},
+		</if>
+		<if test="problemTitle != null">
+			#{problemTitle,jdbcType = VARCHAR},
+		</if>
+		<if test="delayTitle != null">
+			#{delayTitle,jdbcType = VARCHAR},
+		</if>
+		<if test="delayTimes != null">
+			#{delayTimes,jdbcType = DECIMAL},
+		</if>
+		<if test="originalCloseTime != null">
+			#{originalCloseTime,jdbcType = TIMESTAMP},
+		</if>
+		<if test="newCloseTime != null">
+			#{newCloseTime,jdbcType = TIMESTAMP},
+		</if>
+		<if test="delayReason != null">
+			#{delayReason,jdbcType = VARCHAR},
+		</if>
+		<if test="problemSummary != null">
+			#{problemSummary,jdbcType = VARCHAR},
+		</if>
+		<if test="currentProgress != null">
+			#{currentProgress,jdbcType = VARCHAR},
+		</if>
+		<if test="emergencyMeasure != null">
+			#{emergencyMeasure,jdbcType = VARCHAR},
+		</if>
+		<if test="delayReasonDetail != null">
+			#{delayReasonDetail,jdbcType = VARCHAR},
+		</if>
+		<if test="ppmPlanCode != null">
+			#{ppmPlanCode,jdbcType = VARCHAR},
+		</if>
+		<if test="model != null">
+			#{model,jdbcType = VARCHAR},
+		</if>
+		<if test="applicantStaffId != null">
+			#{applicantStaffId,jdbcType = VARCHAR},
+		</if>
+		<if test="applicantStaffCode != null">
+			#{applicantStaffCode,jdbcType = VARCHAR},
+		</if>
+		<if test="applicantStaffName != null">
+			#{applicantStaffName,jdbcType = VARCHAR},
+		</if>
+		<if test="applicantDeptId != null">
+			#{applicantDeptId,jdbcType = VARCHAR},
+		</if>
+		<if test="applicantDeptCode != null">
+			#{applicantDeptCode,jdbcType = VARCHAR},
+		</if>
+		<if test="applicantDeptName != null">
+			#{applicantDeptName,jdbcType = VARCHAR},
+		</if>
+		<if test="applyTime != null">
+			#{applyTime,jdbcType = TIMESTAMP},
+		</if>
+		<if test="status != null">
+			#{status,jdbcType = VARCHAR},
+		</if>
+		<if test="processInstanceId != null">
+			#{processInstanceId,jdbcType = VARCHAR},
+		</if>
+		<if test="processStatus != null">
+			#{processStatus,jdbcType = VARCHAR},
+		</if>
+		<if test="forYear != null">
+			#{forYear,jdbcType = VARCHAR},
+		</if>
+		<if test="createdBy != null">
+			#{createdBy,jdbcType = VARCHAR},
+		</if>
+		<if test="createdDept != null">
+			#{createdDept,jdbcType = VARCHAR},
+		</if>
+		<if test="creationDate != null">
+			#{creationDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="lastUpdatedBy != null">
+			#{lastUpdatedBy,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateDate != null">
+			#{lastUpdateDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="lastUpdateIp != null">
+			#{lastUpdateIp,jdbcType = VARCHAR},
+		</if>
+		<if test="version != null">
+			#{version,jdbcType = DECIMAL},
+		</if>
+		<if test="orgIdentity != null">
+			#{orgIdentity,jdbcType = VARCHAR},
+		</if>
+		<if test="secretLevel != null">
+			#{secretLevel,jdbcType = VARCHAR},
+		</if>
+		<if test="ynDeleted != null">
+			#{ynDeleted,jdbcType = VARCHAR},
+		</if>
+		<if test="remark != null">
+			#{remark,jdbcType = VARCHAR},
+		</if>
+		<if test="orderBy != null">
+			#{orderBy,jdbcType = DECIMAL},
+		</if>
+		<if test="attribute01 != null">
+			#{attribute01,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute02 != null">
+			#{attribute02,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute03 != null">
+			#{attribute03,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute04 != null">
+			#{attribute04,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute05 != null">
+			#{attribute05,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute06 != null">
+			#{attribute06,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute07 != null">
+			#{attribute07,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute08 != null">
+			#{attribute08,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute09 != null">
+			#{attribute09,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute10 != null">
+			#{attribute10,jdbcType = VARCHAR},
+		</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 QMS_QUALITY_PROBLEM_DELAY -->
+<insert id="insertQmsQualityProblemDelayList" parameterType="java.util.List" >
+	insert into QMS_QUALITY_PROBLEM_DELAY(
+		ID ,
+		DELAY_CODE ,
+		PROBLEM_ID ,
+		PROBLEM_CODE ,
+		PROBLEM_TITLE ,
+		DELAY_TITLE ,
+		DELAY_TIMES ,
+		ORIGINAL_CLOSE_TIME ,
+		NEW_CLOSE_TIME ,
+		DELAY_REASON ,
+		PROBLEM_SUMMARY ,
+		CURRENT_PROGRESS ,
+		EMERGENCY_MEASURE ,
+		DELAY_REASON_DETAIL ,
+		PPM_PLAN_CODE ,
+		MODEL ,
+		APPLICANT_STAFF_ID ,
+		APPLICANT_STAFF_CODE ,
+		APPLICANT_STAFF_NAME ,
+		APPLICANT_DEPT_ID ,
+		APPLICANT_DEPT_CODE ,
+		APPLICANT_DEPT_NAME ,
+		APPLY_TIME ,
+		STATUS ,
+		PROCESS_INSTANCE_ID ,
+		PROCESS_STATUS ,
+		FOR_YEAR ,
+		CREATED_BY ,
+		CREATED_DEPT ,
+		CREATION_DATE ,
+		LAST_UPDATED_BY ,
+		LAST_UPDATE_DATE ,
+		LAST_UPDATE_IP ,
+		VERSION ,
+		ORG_IDENTITY ,
+		SECRET_LEVEL ,
+		YN_DELETED ,
+		REMARK ,
+		ORDER_BY ,
+		ATTRIBUTE_01 ,
+		ATTRIBUTE_02 ,
+		ATTRIBUTE_03 ,
+		ATTRIBUTE_04 ,
+		ATTRIBUTE_05 ,
+		ATTRIBUTE_06 ,
+		ATTRIBUTE_07 ,
+		ATTRIBUTE_08 ,
+		ATTRIBUTE_09 ,
+		ATTRIBUTE_10 
+	)
+	<foreach collection="dtoList" item="item" index="index"  separator="union all" >
+		select
+			#{item.id,jdbcType = VARCHAR} ,
+			#{item.delayCode,jdbcType = VARCHAR} ,
+			#{item.problemId,jdbcType = VARCHAR} ,
+			#{item.problemCode,jdbcType = VARCHAR} ,
+			#{item.problemTitle,jdbcType = VARCHAR} ,
+			#{item.delayTitle,jdbcType = VARCHAR} ,
+			#{item.delayTimes,jdbcType = DECIMAL} ,
+			#{item.originalCloseTime,jdbcType = TIMESTAMP} ,
+			#{item.newCloseTime,jdbcType = TIMESTAMP} ,
+			#{item.delayReason,jdbcType = VARCHAR} ,
+			#{item.problemSummary,jdbcType = VARCHAR} ,
+			#{item.currentProgress,jdbcType = VARCHAR} ,
+			#{item.emergencyMeasure,jdbcType = VARCHAR} ,
+			#{item.delayReasonDetail,jdbcType = VARCHAR} ,
+			#{item.ppmPlanCode,jdbcType = VARCHAR} ,
+			#{item.model,jdbcType = VARCHAR} ,
+			#{item.applicantStaffId,jdbcType = VARCHAR} ,
+			#{item.applicantStaffCode,jdbcType = VARCHAR} ,
+			#{item.applicantStaffName,jdbcType = VARCHAR} ,
+			#{item.applicantDeptId,jdbcType = VARCHAR} ,
+			#{item.applicantDeptCode,jdbcType = VARCHAR} ,
+			#{item.applicantDeptName,jdbcType = VARCHAR} ,
+			#{item.applyTime,jdbcType = TIMESTAMP} ,
+			#{item.status,jdbcType = VARCHAR} ,
+			#{item.processInstanceId,jdbcType = VARCHAR} ,
+			#{item.processStatus,jdbcType = VARCHAR} ,
+			#{item.forYear,jdbcType = VARCHAR} ,
+			#{item.createdBy,jdbcType = VARCHAR} ,
+			#{item.createdDept,jdbcType = VARCHAR} ,
+			#{item.creationDate,jdbcType = TIMESTAMP} ,
+			#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+			#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+			#{item.lastUpdateIp,jdbcType = VARCHAR} ,
+			#{item.version,jdbcType = DECIMAL} ,
+			#{item.orgIdentity,jdbcType = VARCHAR} ,
+			#{item.secretLevel,jdbcType = VARCHAR} ,
+			#{item.ynDeleted,jdbcType = VARCHAR} ,
+			#{item.remark,jdbcType = VARCHAR} ,
+			#{item.orderBy,jdbcType = DECIMAL} ,
+			#{item.attribute01,jdbcType = VARCHAR} ,
+			#{item.attribute02,jdbcType = VARCHAR} ,
+			#{item.attribute03,jdbcType = VARCHAR} ,
+			#{item.attribute04,jdbcType = VARCHAR} ,
+			#{item.attribute05,jdbcType = VARCHAR} ,
+			#{item.attribute06,jdbcType = VARCHAR} ,
+			#{item.attribute07,jdbcType = VARCHAR} ,
+			#{item.attribute08,jdbcType = VARCHAR} ,
+			#{item.attribute09,jdbcType = VARCHAR} ,
+			#{item.attribute10,jdbcType = VARCHAR} 
+		from dual
+	</foreach>
+</insert>
+<!-- 更新对象 QMS_QUALITY_PROBLEM_DELAY -->
+<update id="updateQmsQualityProblemDelaySensitive" parameterType="avicit.myportal.qms.qmsqualityproblemdelay.dto.QmsQualityProblemDelayDTO">
+	update QMS_QUALITY_PROBLEM_DELAY
+	<set>
+		<if test="id != null">
+			ID = #{id,jdbcType = VARCHAR} ,
+		</if>
+		<if test="delayCode != null">
+			DELAY_CODE = #{delayCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="problemId != null">
+			PROBLEM_ID = #{problemId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="problemCode != null">
+			PROBLEM_CODE = #{problemCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="problemTitle != null">
+			PROBLEM_TITLE = #{problemTitle,jdbcType = VARCHAR} ,
+		</if>
+		<if test="delayTitle != null">
+			DELAY_TITLE = #{delayTitle,jdbcType = VARCHAR} ,
+		</if>
+		<if test="delayTimes != null">
+			DELAY_TIMES = #{delayTimes,jdbcType = DECIMAL} ,
+		</if>
+		<if test="originalCloseTime != null">
+			ORIGINAL_CLOSE_TIME = #{originalCloseTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="newCloseTime != null">
+			NEW_CLOSE_TIME = #{newCloseTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="delayReason != null">
+			DELAY_REASON = #{delayReason,jdbcType = VARCHAR} ,
+		</if>
+		<if test="problemSummary != null">
+			PROBLEM_SUMMARY = #{problemSummary,jdbcType = VARCHAR} ,
+		</if>
+		<if test="currentProgress != null">
+			CURRENT_PROGRESS = #{currentProgress,jdbcType = VARCHAR} ,
+		</if>
+		<if test="emergencyMeasure != null">
+			EMERGENCY_MEASURE = #{emergencyMeasure,jdbcType = VARCHAR} ,
+		</if>
+		<if test="delayReasonDetail != null">
+			DELAY_REASON_DETAIL = #{delayReasonDetail,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ppmPlanCode != null">
+			PPM_PLAN_CODE = #{ppmPlanCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="model != null">
+			MODEL = #{model,jdbcType = VARCHAR} ,
+		</if>
+		<if test="applicantStaffId != null">
+			APPLICANT_STAFF_ID = #{applicantStaffId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="applicantStaffCode != null">
+			APPLICANT_STAFF_CODE = #{applicantStaffCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="applicantStaffName != null">
+			APPLICANT_STAFF_NAME = #{applicantStaffName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="applicantDeptId != null">
+			APPLICANT_DEPT_ID = #{applicantDeptId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="applicantDeptCode != null">
+			APPLICANT_DEPT_CODE = #{applicantDeptCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="applicantDeptName != null">
+			APPLICANT_DEPT_NAME = #{applicantDeptName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="applyTime != null">
+			APPLY_TIME = #{applyTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="status != null">
+			STATUS = #{status,jdbcType = VARCHAR} ,
+		</if>
+		<if test="processInstanceId != null">
+			PROCESS_INSTANCE_ID = #{processInstanceId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="processStatus != null">
+			PROCESS_STATUS = #{processStatus,jdbcType = VARCHAR} ,
+		</if>
+		<if test="forYear != null">
+			FOR_YEAR = #{forYear,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT = #{createdDept,jdbcType = VARCHAR} ,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		</if>
+		<if test="version != null">
+			VERSION = version+1 ,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+		</if>
+		<if test="secretLevel != null">
+			SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynDeleted != null">
+			YN_DELETED = #{ynDeleted,jdbcType = VARCHAR} ,
+		</if>
+		<if test="remark != null">
+			REMARK = #{remark,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orderBy != null">
+			ORDER_BY = #{orderBy,jdbcType = DECIMAL} ,
+		</if>
+		<if test="attribute01 != null">
+			ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute02 != null">
+			ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute03 != null">
+			ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute04 != null">
+			ATTRIBUTE_04 = #{attribute04,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute05 != null">
+			ATTRIBUTE_05 = #{attribute05,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute06 != null">
+			ATTRIBUTE_06 = #{attribute06,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute07 != null">
+			ATTRIBUTE_07 = #{attribute07,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute08 != null">
+			ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute09 != null">
+			ATTRIBUTE_09 = #{attribute09,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute10 != null">
+			ATTRIBUTE_10 = #{attribute10,jdbcType = VARCHAR} 
+		</if>
+	</set>
+	where id = #{id} 
+	and version = #{version}
+</update>
+<!-- 更新对象 QMS_QUALITY_PROBLEM_DELAY -->
+<update id="updateQmsQualityProblemDelayAll" parameterType="avicit.myportal.qms.qmsqualityproblemdelay.dto.QmsQualityProblemDelayDTO">
+	update QMS_QUALITY_PROBLEM_DELAY
+	<trim prefix="set" suffixOverrides=",">
+		ID = #{id,jdbcType = VARCHAR} ,
+		DELAY_CODE = #{delayCode,jdbcType = VARCHAR} ,
+		PROBLEM_ID = #{problemId,jdbcType = VARCHAR} ,
+		PROBLEM_CODE = #{problemCode,jdbcType = VARCHAR} ,
+		PROBLEM_TITLE = #{problemTitle,jdbcType = VARCHAR} ,
+		DELAY_TITLE = #{delayTitle,jdbcType = VARCHAR} ,
+		DELAY_TIMES = #{delayTimes,jdbcType = DECIMAL} ,
+		ORIGINAL_CLOSE_TIME = #{originalCloseTime,jdbcType = TIMESTAMP} ,
+		NEW_CLOSE_TIME = #{newCloseTime,jdbcType = TIMESTAMP} ,
+		DELAY_REASON = #{delayReason,jdbcType = VARCHAR} ,
+		PROBLEM_SUMMARY = #{problemSummary,jdbcType = VARCHAR} ,
+		CURRENT_PROGRESS = #{currentProgress,jdbcType = VARCHAR} ,
+		EMERGENCY_MEASURE = #{emergencyMeasure,jdbcType = VARCHAR} ,
+		DELAY_REASON_DETAIL = #{delayReasonDetail,jdbcType = VARCHAR} ,
+		PPM_PLAN_CODE = #{ppmPlanCode,jdbcType = VARCHAR} ,
+		MODEL = #{model,jdbcType = VARCHAR} ,
+		APPLICANT_STAFF_ID = #{applicantStaffId,jdbcType = VARCHAR} ,
+		APPLICANT_STAFF_CODE = #{applicantStaffCode,jdbcType = VARCHAR} ,
+		APPLICANT_STAFF_NAME = #{applicantStaffName,jdbcType = VARCHAR} ,
+		APPLICANT_DEPT_ID = #{applicantDeptId,jdbcType = VARCHAR} ,
+		APPLICANT_DEPT_CODE = #{applicantDeptCode,jdbcType = VARCHAR} ,
+		APPLICANT_DEPT_NAME = #{applicantDeptName,jdbcType = VARCHAR} ,
+		APPLY_TIME = #{applyTime,jdbcType = TIMESTAMP} ,
+		STATUS = #{status,jdbcType = VARCHAR} ,
+		PROCESS_INSTANCE_ID = #{processInstanceId,jdbcType = VARCHAR} ,
+		PROCESS_STATUS = #{processStatus,jdbcType = VARCHAR} ,
+		FOR_YEAR = #{forYear,jdbcType = VARCHAR} ,
+		LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		VERSION = version+1 ,
+		SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+		YN_DELETED = #{ynDeleted,jdbcType = VARCHAR} ,
+		REMARK = #{remark,jdbcType = VARCHAR} ,
+		ORDER_BY = #{orderBy,jdbcType = DECIMAL} ,
+		ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
+		ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
+		ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
+		ATTRIBUTE_04 = #{attribute04,jdbcType = VARCHAR} ,
+		ATTRIBUTE_05 = #{attribute05,jdbcType = VARCHAR} ,
+		ATTRIBUTE_06 = #{attribute06,jdbcType = VARCHAR} ,
+		ATTRIBUTE_07 = #{attribute07,jdbcType = VARCHAR} ,
+		ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
+		ATTRIBUTE_09 = #{attribute09,jdbcType = VARCHAR} ,
+		ATTRIBUTE_10 = #{attribute10,jdbcType = VARCHAR} 
+	</trim>
+	where id = #{id}
+	and version = #{version}
+</update>
+<!-- 批量更新对象   QMS_QUALITY_PROBLEM_DELAY -->
+<update id="updateQmsQualityProblemDelayList" parameterType="java.util.List">
+	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">begin</if>
+	<foreach collection="dtoList" item="item" index="index"  separator="" close="">
+		update QMS_QUALITY_PROBLEM_DELAY
+		set
+			ID = #{item.id,jdbcType = VARCHAR} ,
+			DELAY_CODE = #{item.delayCode,jdbcType = VARCHAR} ,
+			PROBLEM_ID = #{item.problemId,jdbcType = VARCHAR} ,
+			PROBLEM_CODE = #{item.problemCode,jdbcType = VARCHAR} ,
+			PROBLEM_TITLE = #{item.problemTitle,jdbcType = VARCHAR} ,
+			DELAY_TITLE = #{item.delayTitle,jdbcType = VARCHAR} ,
+			DELAY_TIMES = #{item.delayTimes,jdbcType = DECIMAL} ,
+			ORIGINAL_CLOSE_TIME = #{item.originalCloseTime,jdbcType = TIMESTAMP} ,
+			NEW_CLOSE_TIME = #{item.newCloseTime,jdbcType = TIMESTAMP} ,
+			DELAY_REASON = #{item.delayReason,jdbcType = VARCHAR} ,
+			PROBLEM_SUMMARY = #{item.problemSummary,jdbcType = VARCHAR} ,
+			CURRENT_PROGRESS = #{item.currentProgress,jdbcType = VARCHAR} ,
+			EMERGENCY_MEASURE = #{item.emergencyMeasure,jdbcType = VARCHAR} ,
+			DELAY_REASON_DETAIL = #{item.delayReasonDetail,jdbcType = VARCHAR} ,
+			PPM_PLAN_CODE = #{item.ppmPlanCode,jdbcType = VARCHAR} ,
+			MODEL = #{item.model,jdbcType = VARCHAR} ,
+			APPLICANT_STAFF_ID = #{item.applicantStaffId,jdbcType = VARCHAR} ,
+			APPLICANT_STAFF_CODE = #{item.applicantStaffCode,jdbcType = VARCHAR} ,
+			APPLICANT_STAFF_NAME = #{item.applicantStaffName,jdbcType = VARCHAR} ,
+			APPLICANT_DEPT_ID = #{item.applicantDeptId,jdbcType = VARCHAR} ,
+			APPLICANT_DEPT_CODE = #{item.applicantDeptCode,jdbcType = VARCHAR} ,
+			APPLICANT_DEPT_NAME = #{item.applicantDeptName,jdbcType = VARCHAR} ,
+			APPLY_TIME = #{item.applyTime,jdbcType = TIMESTAMP} ,
+			STATUS = #{item.status,jdbcType = VARCHAR} ,
+			PROCESS_INSTANCE_ID = #{item.processInstanceId,jdbcType = VARCHAR} ,
+			PROCESS_STATUS = #{item.processStatus,jdbcType = VARCHAR} ,
+			FOR_YEAR = #{item.forYear,jdbcType = VARCHAR} ,
+			CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+			CREATED_DEPT = #{item.createdDept,jdbcType = VARCHAR} ,
+			CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+			LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+			LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+			LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+			VERSION = version+1  ,
+			ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} ,
+			SECRET_LEVEL = #{item.secretLevel,jdbcType = VARCHAR} ,
+			YN_DELETED = #{item.ynDeleted,jdbcType = VARCHAR} ,
+			REMARK = #{item.remark,jdbcType = VARCHAR} ,
+			ORDER_BY = #{item.orderBy,jdbcType = DECIMAL} ,
+			ATTRIBUTE_01 = #{item.attribute01,jdbcType = VARCHAR} ,
+			ATTRIBUTE_02 = #{item.attribute02,jdbcType = VARCHAR} ,
+			ATTRIBUTE_03 = #{item.attribute03,jdbcType = VARCHAR} ,
+			ATTRIBUTE_04 = #{item.attribute04,jdbcType = VARCHAR} ,
+			ATTRIBUTE_05 = #{item.attribute05,jdbcType = VARCHAR} ,
+			ATTRIBUTE_06 = #{item.attribute06,jdbcType = VARCHAR} ,
+			ATTRIBUTE_07 = #{item.attribute07,jdbcType = VARCHAR} ,
+			ATTRIBUTE_08 = #{item.attribute08,jdbcType = VARCHAR} ,
+			ATTRIBUTE_09 = #{item.attribute09,jdbcType = VARCHAR} ,
+			ATTRIBUTE_10 = #{item.attribute10,jdbcType = VARCHAR} 
+		where id = #{item.id}
+		and version = #{item.version};
+	</foreach>
+	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">end;</if>
+</update>
+<!-- 主键删除 QMS_QUALITY_PROBLEM_DELAY -->
+<delete id="deleteQmsQualityProblemDelayById" parameterType="java.lang.String">
+	delete from QMS_QUALITY_PROBLEM_DELAY  where id = #{id}
+</delete>
+</mapper>

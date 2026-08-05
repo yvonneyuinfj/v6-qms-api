@@ -1,0 +1,2222 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.myportal.qms.qmsncproduct.dao.QmsNcProductDAO">
+<resultMap id="QmsNcProductDTOMap" type="avicit.myportal.qms.qmsncproduct.dto.QmsNcProductDTO">
+	<result property="id" column="ID" jdbcType="VARCHAR" />
+	<result property="reviewCode" column="REVIEW_CODE" jdbcType="VARCHAR" />
+	<result property="reviewSecretLevel" column="REVIEW_SECRET_LEVEL" jdbcType="VARCHAR" />
+	<result property="reportTime" column="REPORT_TIME" jdbcType="TIMESTAMP" />
+	<result property="model" column="MODEL" jdbcType="VARCHAR" />
+	<result property="partName" column="PART_NAME" jdbcType="VARCHAR" />
+	<result property="partDrawingNo" column="PART_DRAWING_NO" jdbcType="VARCHAR" />
+	<result property="assemblyName" column="ASSEMBLY_NAME" jdbcType="VARCHAR" />
+	<result property="assemblyDrawingNo" column="ASSEMBLY_DRAWING_NO" jdbcType="VARCHAR" />
+	<result property="routingCardNo" column="ROUTING_CARD_NO" jdbcType="VARCHAR" />
+	<result property="batchNo" column="BATCH_NO" jdbcType="VARCHAR" />
+	<result property="componentSerialNo" column="COMPONENT_SERIAL_NO" jdbcType="VARCHAR" />
+	<result property="processNo" column="PROCESS_NO" jdbcType="VARCHAR" />
+	<result property="heatBatchNo" column="HEAT_BATCH_NO" jdbcType="VARCHAR" />
+	<result property="ncCategory" column="NC_CATEGORY" jdbcType="VARCHAR" />
+	<result property="quantity" column="QUANTITY" jdbcType="DECIMAL" />
+	<result property="totalPageCount" column="TOTAL_PAGE_COUNT" jdbcType="DECIMAL" />
+	<result property="issuePageCount" column="ISSUE_PAGE_COUNT" jdbcType="DECIMAL" />
+	<result property="techSpecReq" column="TECH_SPEC_REQ" jdbcType="VARCHAR" />
+	<result property="ncDescreption" column="NC_DESCREPTION" jdbcType="VARCHAR" />
+	<result property="inspectorId" column="INSPECTOR_ID" jdbcType="VARCHAR" />
+	<result property="inspectorCode" column="INSPECTOR_CODE" jdbcType="VARCHAR" />
+	<result property="inspectorName" column="INSPECTOR_NAME" jdbcType="VARCHAR" />
+	<result property="inspectionDeptLeaderId" column="INSPECTION_DEPT_LEADER_ID" jdbcType="VARCHAR" />
+	<result property="inspectionDeptLeaderCode" column="INSPECTION_DEPT_LEADER_CODE" jdbcType="VARCHAR" />
+	<result property="inspectionDeptLeaderName" column="INSPECTION_DEPT_LEADER_NAME" jdbcType="VARCHAR" />
+	<result property="causeCategory" column="CAUSE_CATEGORY" jdbcType="VARCHAR" />
+	<result property="causeAnalysis" column="CAUSE_ANALYSIS" jdbcType="VARCHAR" />
+	<result property="correctiveMeasure" column="CORRECTIVE_MEASURE" jdbcType="VARCHAR" />
+	<result property="responsibleDeptId" column="RESPONSIBLE_DEPT_ID" jdbcType="VARCHAR" />
+	<result property="responsibleDeptCode" column="RESPONSIBLE_DEPT_CODE" jdbcType="VARCHAR" />
+	<result property="responsibleDeptName" column="RESPONSIBLE_DEPT_NAME" jdbcType="VARCHAR" />
+	<result property="responsibleDeptLeaderId" column="RESPONSIBLE_DEPT_LEADER_ID" jdbcType="VARCHAR" />
+	<result property="responsibleDeptLeaderCode" column="RESPONSIBLE_DEPT_LEADER_CODE" jdbcType="VARCHAR" />
+	<result property="responsibleDeptLeaderName" column="RESPONSIBLE_DEPT_LEADER_NAME" jdbcType="VARCHAR" />
+	<result property="responsibleSupervisorId" column="RESPONSIBLE_SUPERVISOR_ID" jdbcType="VARCHAR" />
+	<result property="responsibleSupervisorCode" column="RESPONSIBLE_SUPERVISOR_CODE" jdbcType="VARCHAR" />
+	<result property="responsibleSupervisorName" column="RESPONSIBLE_SUPERVISOR_NAME" jdbcType="VARCHAR" />
+	<result property="responsibleUserId" column="RESPONSIBLE_USER_ID" jdbcType="VARCHAR" />
+	<result property="responsibleUserCode" column="RESPONSIBLE_USER_CODE" jdbcType="VARCHAR" />
+	<result property="responsibleUserName" column="RESPONSIBLE_USER_NAME" jdbcType="VARCHAR" />
+	<result property="impactAnalysis" column="IMPACT_ANALYSIS" jdbcType="VARCHAR" />
+	<result property="groupReviewOpinion" column="GROUP_REVIEW_OPINION" jdbcType="VARCHAR" />
+	<result property="groupDesposition" column="GROUP_DESPOSITION" jdbcType="VARCHAR" />
+	<result property="groupDespositionDesc" column="GROUP_DESPOSITION_DESC" jdbcType="VARCHAR" />
+	<result property="reviewDeptId" column="REVIEW_DEPT_ID" jdbcType="VARCHAR" />
+	<result property="reviewDeptCode" column="REVIEW_DEPT_CODE" jdbcType="VARCHAR" />
+	<result property="reviewDeptName" column="REVIEW_DEPT_NAME" jdbcType="VARCHAR" />
+	<result property="reviewUserId" column="REVIEW_USER_ID" jdbcType="VARCHAR" />
+	<result property="reviewUserCode" column="REVIEW_USER_CODE" jdbcType="VARCHAR" />
+	<result property="reviewUserName" column="REVIEW_USER_NAME" jdbcType="VARCHAR" />
+	<result property="reviewTime" column="REVIEW_TIME" jdbcType="TIMESTAMP" />
+	<result property="ynNeedCommitee" column="YN_NEED_COMMITEE" jdbcType="VARCHAR" />
+	<result property="commiteeOpinion" column="COMMITEE_OPINION" jdbcType="VARCHAR" />
+	<result property="commiteeMemberId" column="COMMITEE_MEMBER_ID" jdbcType="VARCHAR" />
+	<result property="commiteeMemberCode" column="COMMITEE_MEMBER_CODE" jdbcType="VARCHAR" />
+	<result property="commiteeMemberName" column="COMMITEE_MEMBER_NAME" jdbcType="VARCHAR" />
+	<result property="commiteeApprovalTime" column="COMMITEE_APPROVAL_TIME" jdbcType="TIMESTAMP" />
+	<result property="qualityDeptOpinion" column="QUALITY_DEPT_OPINION" jdbcType="VARCHAR" />
+	<result property="modelQualitySupervisorId" column="MODEL_QUALITY_SUPERVISOR_ID" jdbcType="VARCHAR" />
+	<result property="modelQualitySupervisorCode" column="MODEL_QUALITY_SUPERVISOR_CODE" jdbcType="VARCHAR" />
+	<result property="modelQualitySupervisorName" column="MODEL_QUALITY_SUPERVISOR_NAME" jdbcType="VARCHAR" />
+	<result property="qualityConfirmTime" column="QUALITY_CONFIRM_TIME" jdbcType="TIMESTAMP" />
+	<result property="ynMilRep" column="YN_MIL_REP" jdbcType="VARCHAR" />
+	<result property="milRepId" column="MIL_REP_ID" jdbcType="VARCHAR" />
+	<result property="milRepCode" column="MIL_REP_CODE" jdbcType="VARCHAR" />
+	<result property="milRepName" column="MIL_REP_NAME" jdbcType="VARCHAR" />
+	<result property="milRepOpinion" column="MIL_REP_OPINION" jdbcType="VARCHAR" />
+	<result property="milRepApprovalTime" column="MIL_REP_APPROVAL_TIME" jdbcType="TIMESTAMP" />
+	<result property="finalDisposition" column="FINAL_DISPOSITION" jdbcType="VARCHAR" />
+	<result property="finalDispositionDesc" column="FINAL_DISPOSITION_DESC" jdbcType="VARCHAR" />
+	<result property="status" column="STATUS" jdbcType="VARCHAR" />
+	<result property="processInstanceId" column="PROCESS_INSTANCE_ID" jdbcType="VARCHAR" />
+	<result property="processStatus" column="PROCESS_STATUS" jdbcType="VARCHAR" />
+	<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+	<result property="createdDept" column="CREATED_DEPT" jdbcType="VARCHAR" />
+	<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+	<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+	<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+	<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+	<result property="version" column="VERSION" jdbcType="DECIMAL" />
+	<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+	<result property="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR" />
+	<result property="ynDeleted" column="YN_DELETED" jdbcType="VARCHAR" />
+	<result property="remark" column="REMARK" jdbcType="VARCHAR" />
+	<result property="orderBy" column="ORDER_BY" jdbcType="DECIMAL" />
+	<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+	<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+	<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+	<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+	<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+	<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+	<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+	<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+	<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+	<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+	<result property="dbid_" column="dbid_" jdbcType="VARCHAR" />
+	<result property="activityalias_" column="activityalias_" jdbcType="VARCHAR" />
+	<result property="businessstate_" column="businessstate_" jdbcType="VARCHAR" />
+	<result property="assigneenames_" column="assigneenames_" jdbcType="VARCHAR" />
+
+</resultMap>
+<sql id="commonColums">
+	<trim suffixOverrides=",">
+		t1.ID,
+		t1.REVIEW_CODE,
+		t1.REVIEW_SECRET_LEVEL,
+		t1.REPORT_TIME,
+		t1.MODEL,
+		t1.PART_NAME,
+		t1.PART_DRAWING_NO,
+		t1.ASSEMBLY_NAME,
+		t1.ASSEMBLY_DRAWING_NO,
+		t1.ROUTING_CARD_NO,
+		t1.BATCH_NO,
+		t1.COMPONENT_SERIAL_NO,
+		t1.PROCESS_NO,
+		t1.HEAT_BATCH_NO,
+		t1.NC_CATEGORY,
+		t1.QUANTITY,
+		t1.TOTAL_PAGE_COUNT,
+		t1.ISSUE_PAGE_COUNT,
+		t1.TECH_SPEC_REQ,
+		t1.NC_DESCREPTION,
+		t1.INSPECTOR_ID,
+		t1.INSPECTOR_CODE,
+		t1.INSPECTOR_NAME,
+		t1.INSPECTION_DEPT_LEADER_ID,
+		t1.INSPECTION_DEPT_LEADER_CODE,
+		t1.INSPECTION_DEPT_LEADER_NAME,
+		t1.CAUSE_CATEGORY,
+		t1.CAUSE_ANALYSIS,
+		t1.CORRECTIVE_MEASURE,
+		t1.RESPONSIBLE_DEPT_ID,
+		t1.RESPONSIBLE_DEPT_CODE,
+		t1.RESPONSIBLE_DEPT_NAME,
+		t1.RESPONSIBLE_DEPT_LEADER_ID,
+		t1.RESPONSIBLE_DEPT_LEADER_CODE,
+		t1.RESPONSIBLE_DEPT_LEADER_NAME,
+		t1.RESPONSIBLE_SUPERVISOR_ID,
+		t1.RESPONSIBLE_SUPERVISOR_CODE,
+		t1.RESPONSIBLE_SUPERVISOR_NAME,
+		t1.RESPONSIBLE_USER_ID,
+		t1.RESPONSIBLE_USER_CODE,
+		t1.RESPONSIBLE_USER_NAME,
+		t1.IMPACT_ANALYSIS,
+		t1.GROUP_REVIEW_OPINION,
+		t1.GROUP_DESPOSITION,
+		t1.GROUP_DESPOSITION_DESC,
+		t1.REVIEW_DEPT_ID,
+		t1.REVIEW_DEPT_CODE,
+		t1.REVIEW_DEPT_NAME,
+		t1.REVIEW_USER_ID,
+		t1.REVIEW_USER_CODE,
+		t1.REVIEW_USER_NAME,
+		t1.REVIEW_TIME,
+		t1.YN_NEED_COMMITEE,
+		t1.COMMITEE_OPINION,
+		t1.COMMITEE_MEMBER_ID,
+		t1.COMMITEE_MEMBER_CODE,
+		t1.COMMITEE_MEMBER_NAME,
+		t1.COMMITEE_APPROVAL_TIME,
+		t1.QUALITY_DEPT_OPINION,
+		t1.MODEL_QUALITY_SUPERVISOR_ID,
+		t1.MODEL_QUALITY_SUPERVISOR_CODE,
+		t1.MODEL_QUALITY_SUPERVISOR_NAME,
+		t1.QUALITY_CONFIRM_TIME,
+		t1.YN_MIL_REP,
+		t1.MIL_REP_ID,
+		t1.MIL_REP_CODE,
+		t1.MIL_REP_NAME,
+		t1.MIL_REP_OPINION,
+		t1.MIL_REP_APPROVAL_TIME,
+		t1.FINAL_DISPOSITION,
+		t1.FINAL_DISPOSITION_DESC,
+		t1.STATUS,
+		t1.PROCESS_INSTANCE_ID,
+		t1.PROCESS_STATUS,
+		t1.CREATED_BY,
+		t1.CREATED_DEPT,
+		t1.CREATION_DATE,
+		t1.LAST_UPDATED_BY,
+		t1.LAST_UPDATE_DATE,
+		t1.LAST_UPDATE_IP,
+		t1.VERSION,
+		t1.ORG_IDENTITY,
+		t1.SECRET_LEVEL,
+		t1.YN_DELETED,
+		t1.REMARK,
+		t1.ORDER_BY,
+		t1.ATTRIBUTE_01,
+		t1.ATTRIBUTE_02,
+		t1.ATTRIBUTE_03,
+		t1.ATTRIBUTE_04,
+		t1.ATTRIBUTE_05,
+		t1.ATTRIBUTE_06,
+		t1.ATTRIBUTE_07,
+		t1.ATTRIBUTE_08,
+		t1.ATTRIBUTE_09,
+		t1.ATTRIBUTE_10,
+	</trim>
+</sql>
+<!-- 默认查询条件 -->
+<sql id="defaultWhereAnd">
+	<if test="orgIdentity != null and orgIdentity != ''">
+		and t1.org_identity = #{orgIdentity}
+	</if>
+	<if test="wordSecret != null and wordSecret.size()>0">
+		and t1.secret_level in
+		<foreach collection="wordSecret" item="item" index="key" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</if>
+</sql>
+<sql id="commonWhereAnd">
+	<if test="bean.id != null and bean.id != ''">
+		and t1.ID = #{bean.id}
+	</if>
+	<if test="bean.reviewCode != null and bean.reviewCode != ''">
+		and t1.REVIEW_CODE like concat(concat('%',#{bean.reviewCode}),'%')
+	</if>
+	<if test="bean.reviewSecretLevel != null and bean.reviewSecretLevel != ''">
+		and t1.REVIEW_SECRET_LEVEL like concat(concat('%',#{bean.reviewSecretLevel}),'%')
+	</if>
+	<if test="bean.reportTimeBegin != null">
+		and t1.REPORT_TIME &gt;= #{bean.reportTimeBegin}
+	</if>
+	<if test="bean.reportTimeEnd != null">
+		and t1.REPORT_TIME &lt;= #{bean.reportTimeEnd}
+	</if>
+	<if test="bean.model != null and bean.model != ''">
+		and t1.MODEL like concat(concat('%',#{bean.model}),'%')
+	</if>
+	<if test="bean.partName != null and bean.partName != ''">
+		and t1.PART_NAME like concat(concat('%',#{bean.partName}),'%')
+	</if>
+	<if test="bean.partDrawingNo != null and bean.partDrawingNo != ''">
+		and t1.PART_DRAWING_NO like concat(concat('%',#{bean.partDrawingNo}),'%')
+	</if>
+	<if test="bean.assemblyName != null and bean.assemblyName != ''">
+		and t1.ASSEMBLY_NAME like concat(concat('%',#{bean.assemblyName}),'%')
+	</if>
+	<if test="bean.assemblyDrawingNo != null and bean.assemblyDrawingNo != ''">
+		and t1.ASSEMBLY_DRAWING_NO like concat(concat('%',#{bean.assemblyDrawingNo}),'%')
+	</if>
+	<if test="bean.routingCardNo != null and bean.routingCardNo != ''">
+		and t1.ROUTING_CARD_NO like concat(concat('%',#{bean.routingCardNo}),'%')
+	</if>
+	<if test="bean.batchNo != null and bean.batchNo != ''">
+		and t1.BATCH_NO like concat(concat('%',#{bean.batchNo}),'%')
+	</if>
+	<if test="bean.componentSerialNo != null and bean.componentSerialNo != ''">
+		and t1.COMPONENT_SERIAL_NO like concat(concat('%',#{bean.componentSerialNo}),'%')
+	</if>
+	<if test="bean.processNo != null and bean.processNo != ''">
+		and t1.PROCESS_NO like concat(concat('%',#{bean.processNo}),'%')
+	</if>
+	<if test="bean.heatBatchNo != null and bean.heatBatchNo != ''">
+		and t1.HEAT_BATCH_NO like concat(concat('%',#{bean.heatBatchNo}),'%')
+	</if>
+	<if test="bean.ncCategory != null and bean.ncCategory != ''">
+		and t1.NC_CATEGORY like concat(concat('%',#{bean.ncCategory}),'%')
+	</if>
+	<if test="bean.quantity != null">
+		and t1.QUANTITY = #{bean.quantity}
+	</if>
+	<if test="bean.totalPageCount != null">
+		and t1.TOTAL_PAGE_COUNT = #{bean.totalPageCount}
+	</if>
+	<if test="bean.issuePageCount != null">
+		and t1.ISSUE_PAGE_COUNT = #{bean.issuePageCount}
+	</if>
+	<if test="bean.techSpecReq != null and bean.techSpecReq != ''">
+		and t1.TECH_SPEC_REQ like concat(concat('%',#{bean.techSpecReq}),'%')
+	</if>
+	<if test="bean.ncDescreption != null and bean.ncDescreption != ''">
+		and t1.NC_DESCREPTION like concat(concat('%',#{bean.ncDescreption}),'%')
+	</if>
+	<if test="bean.inspectorId != null and bean.inspectorId != ''">
+		and t1.INSPECTOR_ID = #{bean.inspectorId}
+	</if>
+	<if test="bean.inspectorCode != null and bean.inspectorCode != ''">
+		and t1.INSPECTOR_CODE like concat(concat('%',#{bean.inspectorCode}),'%')
+	</if>
+	<if test="bean.inspectorName != null and bean.inspectorName != ''">
+		and t1.INSPECTOR_NAME like concat(concat('%',#{bean.inspectorName}),'%')
+	</if>
+	<if test="bean.inspectionDeptLeaderId != null and bean.inspectionDeptLeaderId != ''">
+		and t1.INSPECTION_DEPT_LEADER_ID = #{bean.inspectionDeptLeaderId}
+	</if>
+	<if test="bean.inspectionDeptLeaderCode != null and bean.inspectionDeptLeaderCode != ''">
+		and t1.INSPECTION_DEPT_LEADER_CODE like concat(concat('%',#{bean.inspectionDeptLeaderCode}),'%')
+	</if>
+	<if test="bean.inspectionDeptLeaderName != null and bean.inspectionDeptLeaderName != ''">
+		and t1.INSPECTION_DEPT_LEADER_NAME like concat(concat('%',#{bean.inspectionDeptLeaderName}),'%')
+	</if>
+	<if test="bean.causeCategory != null and bean.causeCategory != ''">
+		and t1.CAUSE_CATEGORY like concat(concat('%',#{bean.causeCategory}),'%')
+	</if>
+	<if test="bean.causeAnalysis != null and bean.causeAnalysis != ''">
+		and t1.CAUSE_ANALYSIS like concat(concat('%',#{bean.causeAnalysis}),'%')
+	</if>
+	<if test="bean.correctiveMeasure != null and bean.correctiveMeasure != ''">
+		and t1.CORRECTIVE_MEASURE like concat(concat('%',#{bean.correctiveMeasure}),'%')
+	</if>
+	<if test="bean.responsibleDeptId != null and bean.responsibleDeptId != ''">
+		and t1.RESPONSIBLE_DEPT_ID = #{bean.responsibleDeptId}
+	</if>
+	<if test="bean.responsibleDeptCode != null and bean.responsibleDeptCode != ''">
+		and t1.RESPONSIBLE_DEPT_CODE like concat(concat('%',#{bean.responsibleDeptCode}),'%')
+	</if>
+	<if test="bean.responsibleDeptName != null and bean.responsibleDeptName != ''">
+		and t1.RESPONSIBLE_DEPT_NAME like concat(concat('%',#{bean.responsibleDeptName}),'%')
+	</if>
+	<if test="bean.responsibleDeptLeaderId != null and bean.responsibleDeptLeaderId != ''">
+		and t1.RESPONSIBLE_DEPT_LEADER_ID = #{bean.responsibleDeptLeaderId}
+	</if>
+	<if test="bean.responsibleDeptLeaderCode != null and bean.responsibleDeptLeaderCode != ''">
+		and t1.RESPONSIBLE_DEPT_LEADER_CODE like concat(concat('%',#{bean.responsibleDeptLeaderCode}),'%')
+	</if>
+	<if test="bean.responsibleDeptLeaderName != null and bean.responsibleDeptLeaderName != ''">
+		and t1.RESPONSIBLE_DEPT_LEADER_NAME like concat(concat('%',#{bean.responsibleDeptLeaderName}),'%')
+	</if>
+	<if test="bean.responsibleSupervisorId != null and bean.responsibleSupervisorId != ''">
+		and t1.RESPONSIBLE_SUPERVISOR_ID = #{bean.responsibleSupervisorId}
+	</if>
+	<if test="bean.responsibleSupervisorCode != null and bean.responsibleSupervisorCode != ''">
+		and t1.RESPONSIBLE_SUPERVISOR_CODE like concat(concat('%',#{bean.responsibleSupervisorCode}),'%')
+	</if>
+	<if test="bean.responsibleSupervisorName != null and bean.responsibleSupervisorName != ''">
+		and t1.RESPONSIBLE_SUPERVISOR_NAME like concat(concat('%',#{bean.responsibleSupervisorName}),'%')
+	</if>
+	<if test="bean.responsibleUserId != null and bean.responsibleUserId != ''">
+		and t1.RESPONSIBLE_USER_ID = #{bean.responsibleUserId}
+	</if>
+	<if test="bean.responsibleUserCode != null and bean.responsibleUserCode != ''">
+		and t1.RESPONSIBLE_USER_CODE like concat(concat('%',#{bean.responsibleUserCode}),'%')
+	</if>
+	<if test="bean.responsibleUserName != null and bean.responsibleUserName != ''">
+		and t1.RESPONSIBLE_USER_NAME like concat(concat('%',#{bean.responsibleUserName}),'%')
+	</if>
+	<if test="bean.impactAnalysis != null and bean.impactAnalysis != ''">
+		and t1.IMPACT_ANALYSIS like concat(concat('%',#{bean.impactAnalysis}),'%')
+	</if>
+	<if test="bean.groupReviewOpinion != null and bean.groupReviewOpinion != ''">
+		and t1.GROUP_REVIEW_OPINION like concat(concat('%',#{bean.groupReviewOpinion}),'%')
+	</if>
+	<if test="bean.groupDesposition != null and bean.groupDesposition != ''">
+		and t1.GROUP_DESPOSITION like concat(concat('%',#{bean.groupDesposition}),'%')
+	</if>
+	<if test="bean.groupDespositionDesc != null and bean.groupDespositionDesc != ''">
+		and t1.GROUP_DESPOSITION_DESC like concat(concat('%',#{bean.groupDespositionDesc}),'%')
+	</if>
+	<if test="bean.reviewDeptId != null and bean.reviewDeptId != ''">
+		and t1.REVIEW_DEPT_ID = #{bean.reviewDeptId}
+	</if>
+	<if test="bean.reviewDeptCode != null and bean.reviewDeptCode != ''">
+		and t1.REVIEW_DEPT_CODE like concat(concat('%',#{bean.reviewDeptCode}),'%')
+	</if>
+	<if test="bean.reviewDeptName != null and bean.reviewDeptName != ''">
+		and t1.REVIEW_DEPT_NAME like concat(concat('%',#{bean.reviewDeptName}),'%')
+	</if>
+	<if test="bean.reviewUserId != null and bean.reviewUserId != ''">
+		and t1.REVIEW_USER_ID = #{bean.reviewUserId}
+	</if>
+	<if test="bean.reviewUserCode != null and bean.reviewUserCode != ''">
+		and t1.REVIEW_USER_CODE like concat(concat('%',#{bean.reviewUserCode}),'%')
+	</if>
+	<if test="bean.reviewUserName != null and bean.reviewUserName != ''">
+		and t1.REVIEW_USER_NAME like concat(concat('%',#{bean.reviewUserName}),'%')
+	</if>
+	<if test="bean.reviewTimeBegin != null">
+		and t1.REVIEW_TIME &gt;= #{bean.reviewTimeBegin}
+	</if>
+	<if test="bean.reviewTimeEnd != null">
+		and t1.REVIEW_TIME &lt;= #{bean.reviewTimeEnd}
+	</if>
+	<if test="bean.ynNeedCommitee != null and bean.ynNeedCommitee != ''">
+		and t1.YN_NEED_COMMITEE like concat(concat('%',#{bean.ynNeedCommitee}),'%')
+	</if>
+	<if test="bean.commiteeOpinion != null and bean.commiteeOpinion != ''">
+		and t1.COMMITEE_OPINION like concat(concat('%',#{bean.commiteeOpinion}),'%')
+	</if>
+	<if test="bean.commiteeMemberId != null and bean.commiteeMemberId != ''">
+		and t1.COMMITEE_MEMBER_ID = #{bean.commiteeMemberId}
+	</if>
+	<if test="bean.commiteeMemberCode != null and bean.commiteeMemberCode != ''">
+		and t1.COMMITEE_MEMBER_CODE like concat(concat('%',#{bean.commiteeMemberCode}),'%')
+	</if>
+	<if test="bean.commiteeMemberName != null and bean.commiteeMemberName != ''">
+		and t1.COMMITEE_MEMBER_NAME like concat(concat('%',#{bean.commiteeMemberName}),'%')
+	</if>
+	<if test="bean.commiteeApprovalTimeBegin != null">
+		and t1.COMMITEE_APPROVAL_TIME &gt;= #{bean.commiteeApprovalTimeBegin}
+	</if>
+	<if test="bean.commiteeApprovalTimeEnd != null">
+		and t1.COMMITEE_APPROVAL_TIME &lt;= #{bean.commiteeApprovalTimeEnd}
+	</if>
+	<if test="bean.qualityDeptOpinion != null and bean.qualityDeptOpinion != ''">
+		and t1.QUALITY_DEPT_OPINION like concat(concat('%',#{bean.qualityDeptOpinion}),'%')
+	</if>
+	<if test="bean.modelQualitySupervisorId != null and bean.modelQualitySupervisorId != ''">
+		and t1.MODEL_QUALITY_SUPERVISOR_ID = #{bean.modelQualitySupervisorId}
+	</if>
+	<if test="bean.modelQualitySupervisorCode != null and bean.modelQualitySupervisorCode != ''">
+		and t1.MODEL_QUALITY_SUPERVISOR_CODE like concat(concat('%',#{bean.modelQualitySupervisorCode}),'%')
+	</if>
+	<if test="bean.modelQualitySupervisorName != null and bean.modelQualitySupervisorName != ''">
+		and t1.MODEL_QUALITY_SUPERVISOR_NAME like concat(concat('%',#{bean.modelQualitySupervisorName}),'%')
+	</if>
+	<if test="bean.qualityConfirmTimeBegin != null">
+		and t1.QUALITY_CONFIRM_TIME &gt;= #{bean.qualityConfirmTimeBegin}
+	</if>
+	<if test="bean.qualityConfirmTimeEnd != null">
+		and t1.QUALITY_CONFIRM_TIME &lt;= #{bean.qualityConfirmTimeEnd}
+	</if>
+	<if test="bean.ynMilRep != null and bean.ynMilRep != ''">
+		and t1.YN_MIL_REP like concat(concat('%',#{bean.ynMilRep}),'%')
+	</if>
+	<if test="bean.milRepId != null and bean.milRepId != ''">
+		and t1.MIL_REP_ID = #{bean.milRepId}
+	</if>
+	<if test="bean.milRepCode != null and bean.milRepCode != ''">
+		and t1.MIL_REP_CODE like concat(concat('%',#{bean.milRepCode}),'%')
+	</if>
+	<if test="bean.milRepName != null and bean.milRepName != ''">
+		and t1.MIL_REP_NAME like concat(concat('%',#{bean.milRepName}),'%')
+	</if>
+	<if test="bean.milRepOpinion != null and bean.milRepOpinion != ''">
+		and t1.MIL_REP_OPINION like concat(concat('%',#{bean.milRepOpinion}),'%')
+	</if>
+	<if test="bean.milRepApprovalTimeBegin != null">
+		and t1.MIL_REP_APPROVAL_TIME &gt;= #{bean.milRepApprovalTimeBegin}
+	</if>
+	<if test="bean.milRepApprovalTimeEnd != null">
+		and t1.MIL_REP_APPROVAL_TIME &lt;= #{bean.milRepApprovalTimeEnd}
+	</if>
+	<if test="bean.finalDisposition != null and bean.finalDisposition != ''">
+		and t1.FINAL_DISPOSITION like concat(concat('%',#{bean.finalDisposition}),'%')
+	</if>
+	<if test="bean.finalDispositionDesc != null and bean.finalDispositionDesc != ''">
+		and t1.FINAL_DISPOSITION_DESC like concat(concat('%',#{bean.finalDispositionDesc}),'%')
+	</if>
+	<if test="bean.status != null and bean.status != ''">
+		and t1.STATUS like concat(concat('%',#{bean.status}),'%')
+	</if>
+	<if test="bean.processInstanceId != null and bean.processInstanceId != ''">
+		and t1.PROCESS_INSTANCE_ID like concat(concat('%',#{bean.processInstanceId}),'%')
+	</if>
+	<if test="bean.processStatus != null and bean.processStatus != ''">
+		and t1.PROCESS_STATUS like concat(concat('%',#{bean.processStatus}),'%')
+	</if>
+	<if test="bean.createdBy != null and bean.createdBy != ''">
+		and t1.CREATED_BY = #{bean.createdBy}
+	</if>
+	<if test="bean.createdDept != null and bean.createdDept != ''">
+		and t1.CREATED_DEPT = #{bean.createdDept}
+	</if>
+	<if test="bean.creationDateBegin != null">
+		and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+	</if>
+	<if test="bean.creationDateEnd != null">
+		and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+	</if>
+	<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+		and t1.LAST_UPDATED_BY = #{bean.lastUpdatedBy}
+	</if>
+	<if test="bean.lastUpdateDateBegin != null">
+		and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+	</if>
+	<if test="bean.lastUpdateDateEnd != null">
+		and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+	</if>
+	<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+		and t1.LAST_UPDATE_IP = #{bean.lastUpdateIp}
+	</if>
+	<if test="bean.version != null">
+		and t1.VERSION = #{bean.version}
+	</if>
+	<if test="bean.secretLevel != null and bean.secretLevel != ''">
+		and t1.SECRET_LEVEL = #{bean.secretLevel}
+	</if>
+	<if test="bean.ynDeleted != null and bean.ynDeleted != ''">
+		and t1.YN_DELETED like concat(concat('%',#{bean.ynDeleted}),'%')
+	</if>
+	<if test="bean.remark != null and bean.remark != ''">
+		and t1.REMARK like concat(concat('%',#{bean.remark}),'%')
+	</if>
+	<if test="bean.orderBy != null">
+		and t1.ORDER_BY = #{bean.orderBy}
+	</if>
+	<if test="bean.attribute01 != null and bean.attribute01 != ''">
+		and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+	</if>
+	<if test="bean.attribute02 != null and bean.attribute02 != ''">
+		and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+	</if>
+	<if test="bean.attribute03 != null and bean.attribute03 != ''">
+		and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+	</if>
+	<if test="bean.attribute04 != null and bean.attribute04 != ''">
+		and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+	</if>
+	<if test="bean.attribute05 != null and bean.attribute05 != ''">
+		and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+	</if>
+	<if test="bean.attribute06 != null and bean.attribute06 != ''">
+		and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+	</if>
+	<if test="bean.attribute07 != null and bean.attribute07 != ''">
+		and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+	</if>
+	<if test="bean.attribute08 != null and bean.attribute08 != ''">
+		and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+	</if>
+	<if test="bean.attribute09 != null and bean.attribute09 != ''">
+		and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')
+	</if>
+	<if test="bean.attribute10 != null and bean.attribute10 != ''">
+		and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')
+	</if>
+</sql>
+<sql id="commonWhereOr">
+	<trim prefix="(" suffix=")" prefixOverrides="or">
+		<if test="bean.id != null and bean.id != ''">
+			or t1.ID = #{bean.id}
+		</if>
+		<if test="bean.reviewCode != null and bean.reviewCode != ''">
+			or t1.REVIEW_CODE like concat(concat('%',#{bean.reviewCode}),'%')
+		</if>
+		<if test="bean.reviewSecretLevel != null and bean.reviewSecretLevel != ''">
+			or t1.REVIEW_SECRET_LEVEL like concat(concat('%',#{bean.reviewSecretLevel}),'%')
+		</if>
+		<if test="bean.reportTimeBegin != null">
+			or t1.REPORT_TIME &gt;= #{bean.reportTimeBegin}
+		</if>
+		<if test="bean.reportTimeEnd != null">
+			or t1.REPORT_TIME &lt;= #{bean.reportTimeEnd}
+		</if>
+		<if test="bean.model != null and bean.model != ''">
+			or t1.MODEL like concat(concat('%',#{bean.model}),'%')
+		</if>
+		<if test="bean.partName != null and bean.partName != ''">
+			or t1.PART_NAME like concat(concat('%',#{bean.partName}),'%')
+		</if>
+		<if test="bean.partDrawingNo != null and bean.partDrawingNo != ''">
+			or t1.PART_DRAWING_NO like concat(concat('%',#{bean.partDrawingNo}),'%')
+		</if>
+		<if test="bean.assemblyName != null and bean.assemblyName != ''">
+			or t1.ASSEMBLY_NAME like concat(concat('%',#{bean.assemblyName}),'%')
+		</if>
+		<if test="bean.assemblyDrawingNo != null and bean.assemblyDrawingNo != ''">
+			or t1.ASSEMBLY_DRAWING_NO like concat(concat('%',#{bean.assemblyDrawingNo}),'%')
+		</if>
+		<if test="bean.routingCardNo != null and bean.routingCardNo != ''">
+			or t1.ROUTING_CARD_NO like concat(concat('%',#{bean.routingCardNo}),'%')
+		</if>
+		<if test="bean.batchNo != null and bean.batchNo != ''">
+			or t1.BATCH_NO like concat(concat('%',#{bean.batchNo}),'%')
+		</if>
+		<if test="bean.componentSerialNo != null and bean.componentSerialNo != ''">
+			or t1.COMPONENT_SERIAL_NO like concat(concat('%',#{bean.componentSerialNo}),'%')
+		</if>
+		<if test="bean.processNo != null and bean.processNo != ''">
+			or t1.PROCESS_NO like concat(concat('%',#{bean.processNo}),'%')
+		</if>
+		<if test="bean.heatBatchNo != null and bean.heatBatchNo != ''">
+			or t1.HEAT_BATCH_NO like concat(concat('%',#{bean.heatBatchNo}),'%')
+		</if>
+		<if test="bean.ncCategory != null and bean.ncCategory != ''">
+			or t1.NC_CATEGORY like concat(concat('%',#{bean.ncCategory}),'%')
+		</if>
+		<if test="bean.quantity != null">
+			or t1.QUANTITY = #{bean.quantity}
+		</if>
+		<if test="bean.totalPageCount != null">
+			or t1.TOTAL_PAGE_COUNT = #{bean.totalPageCount}
+		</if>
+		<if test="bean.issuePageCount != null">
+			or t1.ISSUE_PAGE_COUNT = #{bean.issuePageCount}
+		</if>
+		<if test="bean.techSpecReq != null and bean.techSpecReq != ''">
+			or t1.TECH_SPEC_REQ like concat(concat('%',#{bean.techSpecReq}),'%')
+		</if>
+		<if test="bean.ncDescreption != null and bean.ncDescreption != ''">
+			or t1.NC_DESCREPTION like concat(concat('%',#{bean.ncDescreption}),'%')
+		</if>
+		<if test="bean.inspectorId != null and bean.inspectorId != ''">
+			or t1.INSPECTOR_ID = #{bean.inspectorId}
+		</if>
+		<if test="bean.inspectorCode != null and bean.inspectorCode != ''">
+			or t1.INSPECTOR_CODE like concat(concat('%',#{bean.inspectorCode}),'%')
+		</if>
+		<if test="bean.inspectorName != null and bean.inspectorName != ''">
+			or t1.INSPECTOR_NAME like concat(concat('%',#{bean.inspectorName}),'%')
+		</if>
+		<if test="bean.inspectionDeptLeaderId != null and bean.inspectionDeptLeaderId != ''">
+			or t1.INSPECTION_DEPT_LEADER_ID = #{bean.inspectionDeptLeaderId}
+		</if>
+		<if test="bean.inspectionDeptLeaderCode != null and bean.inspectionDeptLeaderCode != ''">
+			or t1.INSPECTION_DEPT_LEADER_CODE like concat(concat('%',#{bean.inspectionDeptLeaderCode}),'%')
+		</if>
+		<if test="bean.inspectionDeptLeaderName != null and bean.inspectionDeptLeaderName != ''">
+			or t1.INSPECTION_DEPT_LEADER_NAME like concat(concat('%',#{bean.inspectionDeptLeaderName}),'%')
+		</if>
+		<if test="bean.causeCategory != null and bean.causeCategory != ''">
+			or t1.CAUSE_CATEGORY like concat(concat('%',#{bean.causeCategory}),'%')
+		</if>
+		<if test="bean.causeAnalysis != null and bean.causeAnalysis != ''">
+			or t1.CAUSE_ANALYSIS like concat(concat('%',#{bean.causeAnalysis}),'%')
+		</if>
+		<if test="bean.correctiveMeasure != null and bean.correctiveMeasure != ''">
+			or t1.CORRECTIVE_MEASURE like concat(concat('%',#{bean.correctiveMeasure}),'%')
+		</if>
+		<if test="bean.responsibleDeptId != null and bean.responsibleDeptId != ''">
+			or t1.RESPONSIBLE_DEPT_ID = #{bean.responsibleDeptId}
+		</if>
+		<if test="bean.responsibleDeptCode != null and bean.responsibleDeptCode != ''">
+			or t1.RESPONSIBLE_DEPT_CODE like concat(concat('%',#{bean.responsibleDeptCode}),'%')
+		</if>
+		<if test="bean.responsibleDeptName != null and bean.responsibleDeptName != ''">
+			or t1.RESPONSIBLE_DEPT_NAME like concat(concat('%',#{bean.responsibleDeptName}),'%')
+		</if>
+		<if test="bean.responsibleDeptLeaderId != null and bean.responsibleDeptLeaderId != ''">
+			or t1.RESPONSIBLE_DEPT_LEADER_ID = #{bean.responsibleDeptLeaderId}
+		</if>
+		<if test="bean.responsibleDeptLeaderCode != null and bean.responsibleDeptLeaderCode != ''">
+			or t1.RESPONSIBLE_DEPT_LEADER_CODE like concat(concat('%',#{bean.responsibleDeptLeaderCode}),'%')
+		</if>
+		<if test="bean.responsibleDeptLeaderName != null and bean.responsibleDeptLeaderName != ''">
+			or t1.RESPONSIBLE_DEPT_LEADER_NAME like concat(concat('%',#{bean.responsibleDeptLeaderName}),'%')
+		</if>
+		<if test="bean.responsibleSupervisorId != null and bean.responsibleSupervisorId != ''">
+			or t1.RESPONSIBLE_SUPERVISOR_ID = #{bean.responsibleSupervisorId}
+		</if>
+		<if test="bean.responsibleSupervisorCode != null and bean.responsibleSupervisorCode != ''">
+			or t1.RESPONSIBLE_SUPERVISOR_CODE like concat(concat('%',#{bean.responsibleSupervisorCode}),'%')
+		</if>
+		<if test="bean.responsibleSupervisorName != null and bean.responsibleSupervisorName != ''">
+			or t1.RESPONSIBLE_SUPERVISOR_NAME like concat(concat('%',#{bean.responsibleSupervisorName}),'%')
+		</if>
+		<if test="bean.responsibleUserId != null and bean.responsibleUserId != ''">
+			or t1.RESPONSIBLE_USER_ID = #{bean.responsibleUserId}
+		</if>
+		<if test="bean.responsibleUserCode != null and bean.responsibleUserCode != ''">
+			or t1.RESPONSIBLE_USER_CODE like concat(concat('%',#{bean.responsibleUserCode}),'%')
+		</if>
+		<if test="bean.responsibleUserName != null and bean.responsibleUserName != ''">
+			or t1.RESPONSIBLE_USER_NAME like concat(concat('%',#{bean.responsibleUserName}),'%')
+		</if>
+		<if test="bean.impactAnalysis != null and bean.impactAnalysis != ''">
+			or t1.IMPACT_ANALYSIS like concat(concat('%',#{bean.impactAnalysis}),'%')
+		</if>
+		<if test="bean.groupReviewOpinion != null and bean.groupReviewOpinion != ''">
+			or t1.GROUP_REVIEW_OPINION like concat(concat('%',#{bean.groupReviewOpinion}),'%')
+		</if>
+		<if test="bean.groupDesposition != null and bean.groupDesposition != ''">
+			or t1.GROUP_DESPOSITION like concat(concat('%',#{bean.groupDesposition}),'%')
+		</if>
+		<if test="bean.groupDespositionDesc != null and bean.groupDespositionDesc != ''">
+			or t1.GROUP_DESPOSITION_DESC like concat(concat('%',#{bean.groupDespositionDesc}),'%')
+		</if>
+		<if test="bean.reviewDeptId != null and bean.reviewDeptId != ''">
+			or t1.REVIEW_DEPT_ID = #{bean.reviewDeptId}
+		</if>
+		<if test="bean.reviewDeptCode != null and bean.reviewDeptCode != ''">
+			or t1.REVIEW_DEPT_CODE like concat(concat('%',#{bean.reviewDeptCode}),'%')
+		</if>
+		<if test="bean.reviewDeptName != null and bean.reviewDeptName != ''">
+			or t1.REVIEW_DEPT_NAME like concat(concat('%',#{bean.reviewDeptName}),'%')
+		</if>
+		<if test="bean.reviewUserId != null and bean.reviewUserId != ''">
+			or t1.REVIEW_USER_ID = #{bean.reviewUserId}
+		</if>
+		<if test="bean.reviewUserCode != null and bean.reviewUserCode != ''">
+			or t1.REVIEW_USER_CODE like concat(concat('%',#{bean.reviewUserCode}),'%')
+		</if>
+		<if test="bean.reviewUserName != null and bean.reviewUserName != ''">
+			or t1.REVIEW_USER_NAME like concat(concat('%',#{bean.reviewUserName}),'%')
+		</if>
+		<if test="bean.reviewTimeBegin != null">
+			or t1.REVIEW_TIME &gt;= #{bean.reviewTimeBegin}
+		</if>
+		<if test="bean.reviewTimeEnd != null">
+			or t1.REVIEW_TIME &lt;= #{bean.reviewTimeEnd}
+		</if>
+		<if test="bean.ynNeedCommitee != null and bean.ynNeedCommitee != ''">
+			or t1.YN_NEED_COMMITEE like concat(concat('%',#{bean.ynNeedCommitee}),'%')
+		</if>
+		<if test="bean.commiteeOpinion != null and bean.commiteeOpinion != ''">
+			or t1.COMMITEE_OPINION like concat(concat('%',#{bean.commiteeOpinion}),'%')
+		</if>
+		<if test="bean.commiteeMemberId != null and bean.commiteeMemberId != ''">
+			or t1.COMMITEE_MEMBER_ID = #{bean.commiteeMemberId}
+		</if>
+		<if test="bean.commiteeMemberCode != null and bean.commiteeMemberCode != ''">
+			or t1.COMMITEE_MEMBER_CODE like concat(concat('%',#{bean.commiteeMemberCode}),'%')
+		</if>
+		<if test="bean.commiteeMemberName != null and bean.commiteeMemberName != ''">
+			or t1.COMMITEE_MEMBER_NAME like concat(concat('%',#{bean.commiteeMemberName}),'%')
+		</if>
+		<if test="bean.commiteeApprovalTimeBegin != null">
+			or t1.COMMITEE_APPROVAL_TIME &gt;= #{bean.commiteeApprovalTimeBegin}
+		</if>
+		<if test="bean.commiteeApprovalTimeEnd != null">
+			or t1.COMMITEE_APPROVAL_TIME &lt;= #{bean.commiteeApprovalTimeEnd}
+		</if>
+		<if test="bean.qualityDeptOpinion != null and bean.qualityDeptOpinion != ''">
+			or t1.QUALITY_DEPT_OPINION like concat(concat('%',#{bean.qualityDeptOpinion}),'%')
+		</if>
+		<if test="bean.modelQualitySupervisorId != null and bean.modelQualitySupervisorId != ''">
+			or t1.MODEL_QUALITY_SUPERVISOR_ID = #{bean.modelQualitySupervisorId}
+		</if>
+		<if test="bean.modelQualitySupervisorCode != null and bean.modelQualitySupervisorCode != ''">
+			or t1.MODEL_QUALITY_SUPERVISOR_CODE like concat(concat('%',#{bean.modelQualitySupervisorCode}),'%')
+		</if>
+		<if test="bean.modelQualitySupervisorName != null and bean.modelQualitySupervisorName != ''">
+			or t1.MODEL_QUALITY_SUPERVISOR_NAME like concat(concat('%',#{bean.modelQualitySupervisorName}),'%')
+		</if>
+		<if test="bean.qualityConfirmTimeBegin != null">
+			or t1.QUALITY_CONFIRM_TIME &gt;= #{bean.qualityConfirmTimeBegin}
+		</if>
+		<if test="bean.qualityConfirmTimeEnd != null">
+			or t1.QUALITY_CONFIRM_TIME &lt;= #{bean.qualityConfirmTimeEnd}
+		</if>
+		<if test="bean.ynMilRep != null and bean.ynMilRep != ''">
+			or t1.YN_MIL_REP like concat(concat('%',#{bean.ynMilRep}),'%')
+		</if>
+		<if test="bean.milRepId != null and bean.milRepId != ''">
+			or t1.MIL_REP_ID = #{bean.milRepId}
+		</if>
+		<if test="bean.milRepCode != null and bean.milRepCode != ''">
+			or t1.MIL_REP_CODE like concat(concat('%',#{bean.milRepCode}),'%')
+		</if>
+		<if test="bean.milRepName != null and bean.milRepName != ''">
+			or t1.MIL_REP_NAME like concat(concat('%',#{bean.milRepName}),'%')
+		</if>
+		<if test="bean.milRepOpinion != null and bean.milRepOpinion != ''">
+			or t1.MIL_REP_OPINION like concat(concat('%',#{bean.milRepOpinion}),'%')
+		</if>
+		<if test="bean.milRepApprovalTimeBegin != null">
+			or t1.MIL_REP_APPROVAL_TIME &gt;= #{bean.milRepApprovalTimeBegin}
+		</if>
+		<if test="bean.milRepApprovalTimeEnd != null">
+			or t1.MIL_REP_APPROVAL_TIME &lt;= #{bean.milRepApprovalTimeEnd}
+		</if>
+		<if test="bean.finalDisposition != null and bean.finalDisposition != ''">
+			or t1.FINAL_DISPOSITION like concat(concat('%',#{bean.finalDisposition}),'%')
+		</if>
+		<if test="bean.finalDispositionDesc != null and bean.finalDispositionDesc != ''">
+			or t1.FINAL_DISPOSITION_DESC like concat(concat('%',#{bean.finalDispositionDesc}),'%')
+		</if>
+		<if test="bean.status != null and bean.status != ''">
+			or t1.STATUS like concat(concat('%',#{bean.status}),'%')
+		</if>
+		<if test="bean.processInstanceId != null and bean.processInstanceId != ''">
+			or t1.PROCESS_INSTANCE_ID like concat(concat('%',#{bean.processInstanceId}),'%')
+		</if>
+		<if test="bean.processStatus != null and bean.processStatus != ''">
+			or t1.PROCESS_STATUS like concat(concat('%',#{bean.processStatus}),'%')
+		</if>
+		<if test="bean.createdBy != null and bean.createdBy != ''">
+			or t1.CREATED_BY = #{bean.createdBy}
+		</if>
+		<if test="bean.createdDept != null and bean.createdDept != ''">
+			or t1.CREATED_DEPT = #{bean.createdDept}
+		</if>
+		<if test="bean.creationDateBegin != null">
+			or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+		</if>
+		<if test="bean.creationDateEnd != null">
+			or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+		</if>
+		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+			or t1.LAST_UPDATED_BY = #{bean.lastUpdatedBy}
+		</if>
+		<if test="bean.lastUpdateDateBegin != null">
+			or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+		</if>
+		<if test="bean.lastUpdateDateEnd != null">
+			or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+		</if>
+		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+			or t1.LAST_UPDATE_IP = #{bean.lastUpdateIp}
+		</if>
+		<if test="bean.version != null">
+			or t1.VERSION = #{bean.version}
+		</if>
+		<if test="bean.ynDeleted != null and bean.ynDeleted != ''">
+			or t1.YN_DELETED like concat(concat('%',#{bean.ynDeleted}),'%')
+		</if>
+		<if test="bean.remark != null and bean.remark != ''">
+			or t1.REMARK like concat(concat('%',#{bean.remark}),'%')
+		</if>
+		<if test="bean.orderBy != null">
+			or t1.ORDER_BY = #{bean.orderBy}
+		</if>
+		<if test="bean.attribute01 != null and bean.attribute01 != ''">
+			or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+		</if>
+		<if test="bean.attribute02 != null and bean.attribute02 != ''">
+			or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+		</if>
+		<if test="bean.attribute03 != null and bean.attribute03 != ''">
+			or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+		</if>
+		<if test="bean.attribute04 != null and bean.attribute04 != ''">
+			or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+		</if>
+		<if test="bean.attribute05 != null and bean.attribute05 != ''">
+			or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+		</if>
+		<if test="bean.attribute06 != null and bean.attribute06 != ''">
+			or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+		</if>
+		<if test="bean.attribute07 != null and bean.attribute07 != ''">
+			or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+		</if>
+		<if test="bean.attribute08 != null and bean.attribute08 != ''">
+			or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+		</if>
+		<if test="bean.attribute09 != null and bean.attribute09 != ''">
+			or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')
+		</if>
+		<if test="bean.attribute10 != null and bean.attribute10 != ''">
+			or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')
+		</if>
+	</trim>
+</sql>
+<sql id="commonBpmWhereAnd">
+    <if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
+        and exists (select 1 from sys_bpm_hist_task os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId})
+    </if>
+    <if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
+        and v.businessstate_ = #{bean.bpmState}
+        <if test="bean.bpmType != 'all' and bean.bpmState == 'start'">
+            and	exists (select 1 from bpm_client_hist_procinst_v os where os.userid_ = #{bean.currUserId, jdbcType = VARCHAR} and os.dbid_ = v.dbid_)
+        </if>
+    </if>
+</sql>
+<sql id="commonBpmColums">
+	v.dbid_,
+    v.activityalias_,
+    v.businessstate_,
+	v.assigneenames_,
+</sql>
+<sql id="commonOrderBy">
+	<choose>
+		<when test="orderBy != null and orderBy != ''">
+			order by ${orderBy}
+		</when>
+		<otherwise>
+			order by t1.creation_date desc
+		</otherwise>
+	</choose>
+</sql>
+
+<!-- 分页查询 QMS_NC_PRODUCT -->
+<select id="searchQmsNcProductByPage" parameterType="java.util.Map" resultMap="QmsNcProductDTOMap">
+	select
+	<include refid="commonBpmColums"/>
+	<include refid="commonColums"/>
+	from QMS_NC_PRODUCT t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
+	<where>
+		<if test="bean != null">
+			<choose>
+				<when test="keyWords != null and keyWords != '' ">
+					<include refid="commonWhereOr"/>
+					<include refid="commonBpmWhereAnd"/>
+				</when>
+				<otherwise>
+					<include refid="commonWhereAnd"/>
+					<include refid="commonBpmWhereAnd"/>
+				</otherwise>
+			</choose>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+	<include refid="commonOrderBy"></include>
+</select>
+<!-- 查询列表 QMS_NC_PRODUCT -->
+<select id="searchQmsNcProduct" parameterType="java.util.Map" resultMap="QmsNcProductDTOMap">
+	select
+	<include refid="commonBpmColums"/>
+	<include refid="commonColums"/>
+    from QMS_NC_PRODUCT 	t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
+	<where>
+		<if test="bean != null">
+			<include refid="commonWhereAnd"/>
+			<include refid="commonBpmWhereAnd"/>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+</select>
+<!-- 按条件导出查询列表 QMS_NC_PRODUCT -->
+<select id="searchQmsNcProductForExportExcel" parameterType="java.util.Map" resultMap="QmsNcProductDTOMap">
+	select
+		<include refid="commonBpmColums"/>
+		<include refid="commonColums"/>
+		from QMS_NC_PRODUCT 	t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
+
+	<where>
+		<if test="bean != null">
+			<choose>
+				<when test="keyWords != null and keyWords != ''">
+					<include refid="commonWhereOr"/>
+					<include refid="commonBpmWhereAnd"/>
+				</when>
+				<otherwise>
+					<include refid="commonWhereAnd"/>
+					<include refid="commonBpmWhereAnd"/>
+				</otherwise>
+			</choose>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+	<include refid="commonOrderBy"/>
+</select>
+<!-- 主键查询对象 QMS_NC_PRODUCT -->
+<select id="findQmsNcProductById" parameterType="java.util.Map" resultMap="QmsNcProductDTOMap">
+	select
+	<include refid="commonColums"/>
+	from QMS_NC_PRODUCT t1
+	where t1.id = #{id}
+</select>
+<!-- 新增对象 QMS_NC_PRODUCT -->
+<insert id="insertQmsNcProduct" parameterType="avicit.myportal.qms.qmsncproduct.dto.QmsNcProductDTO">
+	insert into QMS_NC_PRODUCT
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			ID,
+		</if>
+		<if test="reviewCode != null">
+			REVIEW_CODE,
+		</if>
+		<if test="reviewSecretLevel != null">
+			REVIEW_SECRET_LEVEL,
+		</if>
+		<if test="reportTime != null">
+			REPORT_TIME,
+		</if>
+		<if test="model != null">
+			MODEL,
+		</if>
+		<if test="partName != null">
+			PART_NAME,
+		</if>
+		<if test="partDrawingNo != null">
+			PART_DRAWING_NO,
+		</if>
+		<if test="assemblyName != null">
+			ASSEMBLY_NAME,
+		</if>
+		<if test="assemblyDrawingNo != null">
+			ASSEMBLY_DRAWING_NO,
+		</if>
+		<if test="routingCardNo != null">
+			ROUTING_CARD_NO,
+		</if>
+		<if test="batchNo != null">
+			BATCH_NO,
+		</if>
+		<if test="componentSerialNo != null">
+			COMPONENT_SERIAL_NO,
+		</if>
+		<if test="processNo != null">
+			PROCESS_NO,
+		</if>
+		<if test="heatBatchNo != null">
+			HEAT_BATCH_NO,
+		</if>
+		<if test="ncCategory != null">
+			NC_CATEGORY,
+		</if>
+		<if test="quantity != null">
+			QUANTITY,
+		</if>
+		<if test="totalPageCount != null">
+			TOTAL_PAGE_COUNT,
+		</if>
+		<if test="issuePageCount != null">
+			ISSUE_PAGE_COUNT,
+		</if>
+		<if test="techSpecReq != null">
+			TECH_SPEC_REQ,
+		</if>
+		<if test="ncDescreption != null">
+			NC_DESCREPTION,
+		</if>
+		<if test="inspectorId != null">
+			INSPECTOR_ID,
+		</if>
+		<if test="inspectorCode != null">
+			INSPECTOR_CODE,
+		</if>
+		<if test="inspectorName != null">
+			INSPECTOR_NAME,
+		</if>
+		<if test="inspectionDeptLeaderId != null">
+			INSPECTION_DEPT_LEADER_ID,
+		</if>
+		<if test="inspectionDeptLeaderCode != null">
+			INSPECTION_DEPT_LEADER_CODE,
+		</if>
+		<if test="inspectionDeptLeaderName != null">
+			INSPECTION_DEPT_LEADER_NAME,
+		</if>
+		<if test="causeCategory != null">
+			CAUSE_CATEGORY,
+		</if>
+		<if test="causeAnalysis != null">
+			CAUSE_ANALYSIS,
+		</if>
+		<if test="correctiveMeasure != null">
+			CORRECTIVE_MEASURE,
+		</if>
+		<if test="responsibleDeptId != null">
+			RESPONSIBLE_DEPT_ID,
+		</if>
+		<if test="responsibleDeptCode != null">
+			RESPONSIBLE_DEPT_CODE,
+		</if>
+		<if test="responsibleDeptName != null">
+			RESPONSIBLE_DEPT_NAME,
+		</if>
+		<if test="responsibleDeptLeaderId != null">
+			RESPONSIBLE_DEPT_LEADER_ID,
+		</if>
+		<if test="responsibleDeptLeaderCode != null">
+			RESPONSIBLE_DEPT_LEADER_CODE,
+		</if>
+		<if test="responsibleDeptLeaderName != null">
+			RESPONSIBLE_DEPT_LEADER_NAME,
+		</if>
+		<if test="responsibleSupervisorId != null">
+			RESPONSIBLE_SUPERVISOR_ID,
+		</if>
+		<if test="responsibleSupervisorCode != null">
+			RESPONSIBLE_SUPERVISOR_CODE,
+		</if>
+		<if test="responsibleSupervisorName != null">
+			RESPONSIBLE_SUPERVISOR_NAME,
+		</if>
+		<if test="responsibleUserId != null">
+			RESPONSIBLE_USER_ID,
+		</if>
+		<if test="responsibleUserCode != null">
+			RESPONSIBLE_USER_CODE,
+		</if>
+		<if test="responsibleUserName != null">
+			RESPONSIBLE_USER_NAME,
+		</if>
+		<if test="impactAnalysis != null">
+			IMPACT_ANALYSIS,
+		</if>
+		<if test="groupReviewOpinion != null">
+			GROUP_REVIEW_OPINION,
+		</if>
+		<if test="groupDesposition != null">
+			GROUP_DESPOSITION,
+		</if>
+		<if test="groupDespositionDesc != null">
+			GROUP_DESPOSITION_DESC,
+		</if>
+		<if test="reviewDeptId != null">
+			REVIEW_DEPT_ID,
+		</if>
+		<if test="reviewDeptCode != null">
+			REVIEW_DEPT_CODE,
+		</if>
+		<if test="reviewDeptName != null">
+			REVIEW_DEPT_NAME,
+		</if>
+		<if test="reviewUserId != null">
+			REVIEW_USER_ID,
+		</if>
+		<if test="reviewUserCode != null">
+			REVIEW_USER_CODE,
+		</if>
+		<if test="reviewUserName != null">
+			REVIEW_USER_NAME,
+		</if>
+		<if test="reviewTime != null">
+			REVIEW_TIME,
+		</if>
+		<if test="ynNeedCommitee != null">
+			YN_NEED_COMMITEE,
+		</if>
+		<if test="commiteeOpinion != null">
+			COMMITEE_OPINION,
+		</if>
+		<if test="commiteeMemberId != null">
+			COMMITEE_MEMBER_ID,
+		</if>
+		<if test="commiteeMemberCode != null">
+			COMMITEE_MEMBER_CODE,
+		</if>
+		<if test="commiteeMemberName != null">
+			COMMITEE_MEMBER_NAME,
+		</if>
+		<if test="commiteeApprovalTime != null">
+			COMMITEE_APPROVAL_TIME,
+		</if>
+		<if test="qualityDeptOpinion != null">
+			QUALITY_DEPT_OPINION,
+		</if>
+		<if test="modelQualitySupervisorId != null">
+			MODEL_QUALITY_SUPERVISOR_ID,
+		</if>
+		<if test="modelQualitySupervisorCode != null">
+			MODEL_QUALITY_SUPERVISOR_CODE,
+		</if>
+		<if test="modelQualitySupervisorName != null">
+			MODEL_QUALITY_SUPERVISOR_NAME,
+		</if>
+		<if test="qualityConfirmTime != null">
+			QUALITY_CONFIRM_TIME,
+		</if>
+		<if test="ynMilRep != null">
+			YN_MIL_REP,
+		</if>
+		<if test="milRepId != null">
+			MIL_REP_ID,
+		</if>
+		<if test="milRepCode != null">
+			MIL_REP_CODE,
+		</if>
+		<if test="milRepName != null">
+			MIL_REP_NAME,
+		</if>
+		<if test="milRepOpinion != null">
+			MIL_REP_OPINION,
+		</if>
+		<if test="milRepApprovalTime != null">
+			MIL_REP_APPROVAL_TIME,
+		</if>
+		<if test="finalDisposition != null">
+			FINAL_DISPOSITION,
+		</if>
+		<if test="finalDispositionDesc != null">
+			FINAL_DISPOSITION_DESC,
+		</if>
+		<if test="status != null">
+			STATUS,
+		</if>
+		<if test="processInstanceId != null">
+			PROCESS_INSTANCE_ID,
+		</if>
+		<if test="processStatus != null">
+			PROCESS_STATUS,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP,
+		</if>
+		<if test="version != null">
+			VERSION,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY,
+		</if>
+		<if test="secretLevel != null">
+			SECRET_LEVEL,
+		</if>
+		<if test="ynDeleted != null">
+			YN_DELETED,
+		</if>
+		<if test="remark != null">
+			REMARK,
+		</if>
+		<if test="orderBy != null">
+			ORDER_BY,
+		</if>
+		<if test="attribute01 != null">
+			ATTRIBUTE_01,
+		</if>
+		<if test="attribute02 != null">
+			ATTRIBUTE_02,
+		</if>
+		<if test="attribute03 != null">
+			ATTRIBUTE_03,
+		</if>
+		<if test="attribute04 != null">
+			ATTRIBUTE_04,
+		</if>
+		<if test="attribute05 != null">
+			ATTRIBUTE_05,
+		</if>
+		<if test="attribute06 != null">
+			ATTRIBUTE_06,
+		</if>
+		<if test="attribute07 != null">
+			ATTRIBUTE_07,
+		</if>
+		<if test="attribute08 != null">
+			ATTRIBUTE_08,
+		</if>
+		<if test="attribute09 != null">
+			ATTRIBUTE_09,
+		</if>
+		<if test="attribute10 != null">
+			ATTRIBUTE_10,
+		</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			#{id,jdbcType = VARCHAR},
+		</if>
+		<if test="reviewCode != null">
+			#{reviewCode,jdbcType = VARCHAR},
+		</if>
+		<if test="reviewSecretLevel != null">
+			#{reviewSecretLevel,jdbcType = VARCHAR},
+		</if>
+		<if test="reportTime != null">
+			#{reportTime,jdbcType = TIMESTAMP},
+		</if>
+		<if test="model != null">
+			#{model,jdbcType = VARCHAR},
+		</if>
+		<if test="partName != null">
+			#{partName,jdbcType = VARCHAR},
+		</if>
+		<if test="partDrawingNo != null">
+			#{partDrawingNo,jdbcType = VARCHAR},
+		</if>
+		<if test="assemblyName != null">
+			#{assemblyName,jdbcType = VARCHAR},
+		</if>
+		<if test="assemblyDrawingNo != null">
+			#{assemblyDrawingNo,jdbcType = VARCHAR},
+		</if>
+		<if test="routingCardNo != null">
+			#{routingCardNo,jdbcType = VARCHAR},
+		</if>
+		<if test="batchNo != null">
+			#{batchNo,jdbcType = VARCHAR},
+		</if>
+		<if test="componentSerialNo != null">
+			#{componentSerialNo,jdbcType = VARCHAR},
+		</if>
+		<if test="processNo != null">
+			#{processNo,jdbcType = VARCHAR},
+		</if>
+		<if test="heatBatchNo != null">
+			#{heatBatchNo,jdbcType = VARCHAR},
+		</if>
+		<if test="ncCategory != null">
+			#{ncCategory,jdbcType = VARCHAR},
+		</if>
+		<if test="quantity != null">
+			#{quantity,jdbcType = DECIMAL},
+		</if>
+		<if test="totalPageCount != null">
+			#{totalPageCount,jdbcType = DECIMAL},
+		</if>
+		<if test="issuePageCount != null">
+			#{issuePageCount,jdbcType = DECIMAL},
+		</if>
+		<if test="techSpecReq != null">
+			#{techSpecReq,jdbcType = VARCHAR},
+		</if>
+		<if test="ncDescreption != null">
+			#{ncDescreption,jdbcType = VARCHAR},
+		</if>
+		<if test="inspectorId != null">
+			#{inspectorId,jdbcType = VARCHAR},
+		</if>
+		<if test="inspectorCode != null">
+			#{inspectorCode,jdbcType = VARCHAR},
+		</if>
+		<if test="inspectorName != null">
+			#{inspectorName,jdbcType = VARCHAR},
+		</if>
+		<if test="inspectionDeptLeaderId != null">
+			#{inspectionDeptLeaderId,jdbcType = VARCHAR},
+		</if>
+		<if test="inspectionDeptLeaderCode != null">
+			#{inspectionDeptLeaderCode,jdbcType = VARCHAR},
+		</if>
+		<if test="inspectionDeptLeaderName != null">
+			#{inspectionDeptLeaderName,jdbcType = VARCHAR},
+		</if>
+		<if test="causeCategory != null">
+			#{causeCategory,jdbcType = VARCHAR},
+		</if>
+		<if test="causeAnalysis != null">
+			#{causeAnalysis,jdbcType = VARCHAR},
+		</if>
+		<if test="correctiveMeasure != null">
+			#{correctiveMeasure,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleDeptId != null">
+			#{responsibleDeptId,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleDeptCode != null">
+			#{responsibleDeptCode,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleDeptName != null">
+			#{responsibleDeptName,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleDeptLeaderId != null">
+			#{responsibleDeptLeaderId,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleDeptLeaderCode != null">
+			#{responsibleDeptLeaderCode,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleDeptLeaderName != null">
+			#{responsibleDeptLeaderName,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleSupervisorId != null">
+			#{responsibleSupervisorId,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleSupervisorCode != null">
+			#{responsibleSupervisorCode,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleSupervisorName != null">
+			#{responsibleSupervisorName,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleUserId != null">
+			#{responsibleUserId,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleUserCode != null">
+			#{responsibleUserCode,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleUserName != null">
+			#{responsibleUserName,jdbcType = VARCHAR},
+		</if>
+		<if test="impactAnalysis != null">
+			#{impactAnalysis,jdbcType = VARCHAR},
+		</if>
+		<if test="groupReviewOpinion != null">
+			#{groupReviewOpinion,jdbcType = VARCHAR},
+		</if>
+		<if test="groupDesposition != null">
+			#{groupDesposition,jdbcType = VARCHAR},
+		</if>
+		<if test="groupDespositionDesc != null">
+			#{groupDespositionDesc,jdbcType = VARCHAR},
+		</if>
+		<if test="reviewDeptId != null">
+			#{reviewDeptId,jdbcType = VARCHAR},
+		</if>
+		<if test="reviewDeptCode != null">
+			#{reviewDeptCode,jdbcType = VARCHAR},
+		</if>
+		<if test="reviewDeptName != null">
+			#{reviewDeptName,jdbcType = VARCHAR},
+		</if>
+		<if test="reviewUserId != null">
+			#{reviewUserId,jdbcType = VARCHAR},
+		</if>
+		<if test="reviewUserCode != null">
+			#{reviewUserCode,jdbcType = VARCHAR},
+		</if>
+		<if test="reviewUserName != null">
+			#{reviewUserName,jdbcType = VARCHAR},
+		</if>
+		<if test="reviewTime != null">
+			#{reviewTime,jdbcType = TIMESTAMP},
+		</if>
+		<if test="ynNeedCommitee != null">
+			#{ynNeedCommitee,jdbcType = VARCHAR},
+		</if>
+		<if test="commiteeOpinion != null">
+			#{commiteeOpinion,jdbcType = VARCHAR},
+		</if>
+		<if test="commiteeMemberId != null">
+			#{commiteeMemberId,jdbcType = VARCHAR},
+		</if>
+		<if test="commiteeMemberCode != null">
+			#{commiteeMemberCode,jdbcType = VARCHAR},
+		</if>
+		<if test="commiteeMemberName != null">
+			#{commiteeMemberName,jdbcType = VARCHAR},
+		</if>
+		<if test="commiteeApprovalTime != null">
+			#{commiteeApprovalTime,jdbcType = TIMESTAMP},
+		</if>
+		<if test="qualityDeptOpinion != null">
+			#{qualityDeptOpinion,jdbcType = VARCHAR},
+		</if>
+		<if test="modelQualitySupervisorId != null">
+			#{modelQualitySupervisorId,jdbcType = VARCHAR},
+		</if>
+		<if test="modelQualitySupervisorCode != null">
+			#{modelQualitySupervisorCode,jdbcType = VARCHAR},
+		</if>
+		<if test="modelQualitySupervisorName != null">
+			#{modelQualitySupervisorName,jdbcType = VARCHAR},
+		</if>
+		<if test="qualityConfirmTime != null">
+			#{qualityConfirmTime,jdbcType = TIMESTAMP},
+		</if>
+		<if test="ynMilRep != null">
+			#{ynMilRep,jdbcType = VARCHAR},
+		</if>
+		<if test="milRepId != null">
+			#{milRepId,jdbcType = VARCHAR},
+		</if>
+		<if test="milRepCode != null">
+			#{milRepCode,jdbcType = VARCHAR},
+		</if>
+		<if test="milRepName != null">
+			#{milRepName,jdbcType = VARCHAR},
+		</if>
+		<if test="milRepOpinion != null">
+			#{milRepOpinion,jdbcType = VARCHAR},
+		</if>
+		<if test="milRepApprovalTime != null">
+			#{milRepApprovalTime,jdbcType = TIMESTAMP},
+		</if>
+		<if test="finalDisposition != null">
+			#{finalDisposition,jdbcType = VARCHAR},
+		</if>
+		<if test="finalDispositionDesc != null">
+			#{finalDispositionDesc,jdbcType = VARCHAR},
+		</if>
+		<if test="status != null">
+			#{status,jdbcType = VARCHAR},
+		</if>
+		<if test="processInstanceId != null">
+			#{processInstanceId,jdbcType = VARCHAR},
+		</if>
+		<if test="processStatus != null">
+			#{processStatus,jdbcType = VARCHAR},
+		</if>
+		<if test="createdBy != null">
+			#{createdBy,jdbcType = VARCHAR},
+		</if>
+		<if test="createdDept != null">
+			#{createdDept,jdbcType = VARCHAR},
+		</if>
+		<if test="creationDate != null">
+			#{creationDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="lastUpdatedBy != null">
+			#{lastUpdatedBy,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateDate != null">
+			#{lastUpdateDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="lastUpdateIp != null">
+			#{lastUpdateIp,jdbcType = VARCHAR},
+		</if>
+		<if test="version != null">
+			#{version,jdbcType = DECIMAL},
+		</if>
+		<if test="orgIdentity != null">
+			#{orgIdentity,jdbcType = VARCHAR},
+		</if>
+		<if test="secretLevel != null">
+			#{secretLevel,jdbcType = VARCHAR},
+		</if>
+		<if test="ynDeleted != null">
+			#{ynDeleted,jdbcType = VARCHAR},
+		</if>
+		<if test="remark != null">
+			#{remark,jdbcType = VARCHAR},
+		</if>
+		<if test="orderBy != null">
+			#{orderBy,jdbcType = DECIMAL},
+		</if>
+		<if test="attribute01 != null">
+			#{attribute01,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute02 != null">
+			#{attribute02,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute03 != null">
+			#{attribute03,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute04 != null">
+			#{attribute04,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute05 != null">
+			#{attribute05,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute06 != null">
+			#{attribute06,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute07 != null">
+			#{attribute07,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute08 != null">
+			#{attribute08,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute09 != null">
+			#{attribute09,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute10 != null">
+			#{attribute10,jdbcType = VARCHAR},
+		</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 QMS_NC_PRODUCT -->
+<insert id="insertQmsNcProductList" parameterType="java.util.List" >
+	insert into QMS_NC_PRODUCT(
+		ID ,
+		REVIEW_CODE ,
+		REVIEW_SECRET_LEVEL ,
+		REPORT_TIME ,
+		MODEL ,
+		PART_NAME ,
+		PART_DRAWING_NO ,
+		ASSEMBLY_NAME ,
+		ASSEMBLY_DRAWING_NO ,
+		ROUTING_CARD_NO ,
+		BATCH_NO ,
+		COMPONENT_SERIAL_NO ,
+		PROCESS_NO ,
+		HEAT_BATCH_NO ,
+		NC_CATEGORY ,
+		QUANTITY ,
+		TOTAL_PAGE_COUNT ,
+		ISSUE_PAGE_COUNT ,
+		TECH_SPEC_REQ ,
+		NC_DESCREPTION ,
+		INSPECTOR_ID ,
+		INSPECTOR_CODE ,
+		INSPECTOR_NAME ,
+		INSPECTION_DEPT_LEADER_ID ,
+		INSPECTION_DEPT_LEADER_CODE ,
+		INSPECTION_DEPT_LEADER_NAME ,
+		CAUSE_CATEGORY ,
+		CAUSE_ANALYSIS ,
+		CORRECTIVE_MEASURE ,
+		RESPONSIBLE_DEPT_ID ,
+		RESPONSIBLE_DEPT_CODE ,
+		RESPONSIBLE_DEPT_NAME ,
+		RESPONSIBLE_DEPT_LEADER_ID ,
+		RESPONSIBLE_DEPT_LEADER_CODE ,
+		RESPONSIBLE_DEPT_LEADER_NAME ,
+		RESPONSIBLE_SUPERVISOR_ID ,
+		RESPONSIBLE_SUPERVISOR_CODE ,
+		RESPONSIBLE_SUPERVISOR_NAME ,
+		RESPONSIBLE_USER_ID ,
+		RESPONSIBLE_USER_CODE ,
+		RESPONSIBLE_USER_NAME ,
+		IMPACT_ANALYSIS ,
+		GROUP_REVIEW_OPINION ,
+		GROUP_DESPOSITION ,
+		GROUP_DESPOSITION_DESC ,
+		REVIEW_DEPT_ID ,
+		REVIEW_DEPT_CODE ,
+		REVIEW_DEPT_NAME ,
+		REVIEW_USER_ID ,
+		REVIEW_USER_CODE ,
+		REVIEW_USER_NAME ,
+		REVIEW_TIME ,
+		YN_NEED_COMMITEE ,
+		COMMITEE_OPINION ,
+		COMMITEE_MEMBER_ID ,
+		COMMITEE_MEMBER_CODE ,
+		COMMITEE_MEMBER_NAME ,
+		COMMITEE_APPROVAL_TIME ,
+		QUALITY_DEPT_OPINION ,
+		MODEL_QUALITY_SUPERVISOR_ID ,
+		MODEL_QUALITY_SUPERVISOR_CODE ,
+		MODEL_QUALITY_SUPERVISOR_NAME ,
+		QUALITY_CONFIRM_TIME ,
+		YN_MIL_REP ,
+		MIL_REP_ID ,
+		MIL_REP_CODE ,
+		MIL_REP_NAME ,
+		MIL_REP_OPINION ,
+		MIL_REP_APPROVAL_TIME ,
+		FINAL_DISPOSITION ,
+		FINAL_DISPOSITION_DESC ,
+		STATUS ,
+		PROCESS_INSTANCE_ID ,
+		PROCESS_STATUS ,
+		CREATED_BY ,
+		CREATED_DEPT ,
+		CREATION_DATE ,
+		LAST_UPDATED_BY ,
+		LAST_UPDATE_DATE ,
+		LAST_UPDATE_IP ,
+		VERSION ,
+		ORG_IDENTITY ,
+		SECRET_LEVEL ,
+		YN_DELETED ,
+		REMARK ,
+		ORDER_BY ,
+		ATTRIBUTE_01 ,
+		ATTRIBUTE_02 ,
+		ATTRIBUTE_03 ,
+		ATTRIBUTE_04 ,
+		ATTRIBUTE_05 ,
+		ATTRIBUTE_06 ,
+		ATTRIBUTE_07 ,
+		ATTRIBUTE_08 ,
+		ATTRIBUTE_09 ,
+		ATTRIBUTE_10 
+	)
+	<foreach collection="dtoList" item="item" index="index"  separator="union all" >
+		select
+			#{item.id,jdbcType = VARCHAR} ,
+			#{item.reviewCode,jdbcType = VARCHAR} ,
+			#{item.reviewSecretLevel,jdbcType = VARCHAR} ,
+			#{item.reportTime,jdbcType = TIMESTAMP} ,
+			#{item.model,jdbcType = VARCHAR} ,
+			#{item.partName,jdbcType = VARCHAR} ,
+			#{item.partDrawingNo,jdbcType = VARCHAR} ,
+			#{item.assemblyName,jdbcType = VARCHAR} ,
+			#{item.assemblyDrawingNo,jdbcType = VARCHAR} ,
+			#{item.routingCardNo,jdbcType = VARCHAR} ,
+			#{item.batchNo,jdbcType = VARCHAR} ,
+			#{item.componentSerialNo,jdbcType = VARCHAR} ,
+			#{item.processNo,jdbcType = VARCHAR} ,
+			#{item.heatBatchNo,jdbcType = VARCHAR} ,
+			#{item.ncCategory,jdbcType = VARCHAR} ,
+			#{item.quantity,jdbcType = DECIMAL} ,
+			#{item.totalPageCount,jdbcType = DECIMAL} ,
+			#{item.issuePageCount,jdbcType = DECIMAL} ,
+			#{item.techSpecReq,jdbcType = VARCHAR} ,
+			#{item.ncDescreption,jdbcType = VARCHAR} ,
+			#{item.inspectorId,jdbcType = VARCHAR} ,
+			#{item.inspectorCode,jdbcType = VARCHAR} ,
+			#{item.inspectorName,jdbcType = VARCHAR} ,
+			#{item.inspectionDeptLeaderId,jdbcType = VARCHAR} ,
+			#{item.inspectionDeptLeaderCode,jdbcType = VARCHAR} ,
+			#{item.inspectionDeptLeaderName,jdbcType = VARCHAR} ,
+			#{item.causeCategory,jdbcType = VARCHAR} ,
+			#{item.causeAnalysis,jdbcType = VARCHAR} ,
+			#{item.correctiveMeasure,jdbcType = VARCHAR} ,
+			#{item.responsibleDeptId,jdbcType = VARCHAR} ,
+			#{item.responsibleDeptCode,jdbcType = VARCHAR} ,
+			#{item.responsibleDeptName,jdbcType = VARCHAR} ,
+			#{item.responsibleDeptLeaderId,jdbcType = VARCHAR} ,
+			#{item.responsibleDeptLeaderCode,jdbcType = VARCHAR} ,
+			#{item.responsibleDeptLeaderName,jdbcType = VARCHAR} ,
+			#{item.responsibleSupervisorId,jdbcType = VARCHAR} ,
+			#{item.responsibleSupervisorCode,jdbcType = VARCHAR} ,
+			#{item.responsibleSupervisorName,jdbcType = VARCHAR} ,
+			#{item.responsibleUserId,jdbcType = VARCHAR} ,
+			#{item.responsibleUserCode,jdbcType = VARCHAR} ,
+			#{item.responsibleUserName,jdbcType = VARCHAR} ,
+			#{item.impactAnalysis,jdbcType = VARCHAR} ,
+			#{item.groupReviewOpinion,jdbcType = VARCHAR} ,
+			#{item.groupDesposition,jdbcType = VARCHAR} ,
+			#{item.groupDespositionDesc,jdbcType = VARCHAR} ,
+			#{item.reviewDeptId,jdbcType = VARCHAR} ,
+			#{item.reviewDeptCode,jdbcType = VARCHAR} ,
+			#{item.reviewDeptName,jdbcType = VARCHAR} ,
+			#{item.reviewUserId,jdbcType = VARCHAR} ,
+			#{item.reviewUserCode,jdbcType = VARCHAR} ,
+			#{item.reviewUserName,jdbcType = VARCHAR} ,
+			#{item.reviewTime,jdbcType = TIMESTAMP} ,
+			#{item.ynNeedCommitee,jdbcType = VARCHAR} ,
+			#{item.commiteeOpinion,jdbcType = VARCHAR} ,
+			#{item.commiteeMemberId,jdbcType = VARCHAR} ,
+			#{item.commiteeMemberCode,jdbcType = VARCHAR} ,
+			#{item.commiteeMemberName,jdbcType = VARCHAR} ,
+			#{item.commiteeApprovalTime,jdbcType = TIMESTAMP} ,
+			#{item.qualityDeptOpinion,jdbcType = VARCHAR} ,
+			#{item.modelQualitySupervisorId,jdbcType = VARCHAR} ,
+			#{item.modelQualitySupervisorCode,jdbcType = VARCHAR} ,
+			#{item.modelQualitySupervisorName,jdbcType = VARCHAR} ,
+			#{item.qualityConfirmTime,jdbcType = TIMESTAMP} ,
+			#{item.ynMilRep,jdbcType = VARCHAR} ,
+			#{item.milRepId,jdbcType = VARCHAR} ,
+			#{item.milRepCode,jdbcType = VARCHAR} ,
+			#{item.milRepName,jdbcType = VARCHAR} ,
+			#{item.milRepOpinion,jdbcType = VARCHAR} ,
+			#{item.milRepApprovalTime,jdbcType = TIMESTAMP} ,
+			#{item.finalDisposition,jdbcType = VARCHAR} ,
+			#{item.finalDispositionDesc,jdbcType = VARCHAR} ,
+			#{item.status,jdbcType = VARCHAR} ,
+			#{item.processInstanceId,jdbcType = VARCHAR} ,
+			#{item.processStatus,jdbcType = VARCHAR} ,
+			#{item.createdBy,jdbcType = VARCHAR} ,
+			#{item.createdDept,jdbcType = VARCHAR} ,
+			#{item.creationDate,jdbcType = TIMESTAMP} ,
+			#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+			#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+			#{item.lastUpdateIp,jdbcType = VARCHAR} ,
+			#{item.version,jdbcType = DECIMAL} ,
+			#{item.orgIdentity,jdbcType = VARCHAR} ,
+			#{item.secretLevel,jdbcType = VARCHAR} ,
+			#{item.ynDeleted,jdbcType = VARCHAR} ,
+			#{item.remark,jdbcType = VARCHAR} ,
+			#{item.orderBy,jdbcType = DECIMAL} ,
+			#{item.attribute01,jdbcType = VARCHAR} ,
+			#{item.attribute02,jdbcType = VARCHAR} ,
+			#{item.attribute03,jdbcType = VARCHAR} ,
+			#{item.attribute04,jdbcType = VARCHAR} ,
+			#{item.attribute05,jdbcType = VARCHAR} ,
+			#{item.attribute06,jdbcType = VARCHAR} ,
+			#{item.attribute07,jdbcType = VARCHAR} ,
+			#{item.attribute08,jdbcType = VARCHAR} ,
+			#{item.attribute09,jdbcType = VARCHAR} ,
+			#{item.attribute10,jdbcType = VARCHAR} 
+		from dual
+	</foreach>
+</insert>
+<!-- 更新对象 QMS_NC_PRODUCT -->
+<update id="updateQmsNcProductSensitive" parameterType="avicit.myportal.qms.qmsncproduct.dto.QmsNcProductDTO">
+	update QMS_NC_PRODUCT
+	<set>
+		<if test="id != null">
+			ID = #{id,jdbcType = VARCHAR} ,
+		</if>
+		<if test="reviewCode != null">
+			REVIEW_CODE = #{reviewCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="reviewSecretLevel != null">
+			REVIEW_SECRET_LEVEL = #{reviewSecretLevel,jdbcType = VARCHAR} ,
+		</if>
+		<if test="reportTime != null">
+			REPORT_TIME = #{reportTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="model != null">
+			MODEL = #{model,jdbcType = VARCHAR} ,
+		</if>
+		<if test="partName != null">
+			PART_NAME = #{partName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="partDrawingNo != null">
+			PART_DRAWING_NO = #{partDrawingNo,jdbcType = VARCHAR} ,
+		</if>
+		<if test="assemblyName != null">
+			ASSEMBLY_NAME = #{assemblyName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="assemblyDrawingNo != null">
+			ASSEMBLY_DRAWING_NO = #{assemblyDrawingNo,jdbcType = VARCHAR} ,
+		</if>
+		<if test="routingCardNo != null">
+			ROUTING_CARD_NO = #{routingCardNo,jdbcType = VARCHAR} ,
+		</if>
+		<if test="batchNo != null">
+			BATCH_NO = #{batchNo,jdbcType = VARCHAR} ,
+		</if>
+		<if test="componentSerialNo != null">
+			COMPONENT_SERIAL_NO = #{componentSerialNo,jdbcType = VARCHAR} ,
+		</if>
+		<if test="processNo != null">
+			PROCESS_NO = #{processNo,jdbcType = VARCHAR} ,
+		</if>
+		<if test="heatBatchNo != null">
+			HEAT_BATCH_NO = #{heatBatchNo,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ncCategory != null">
+			NC_CATEGORY = #{ncCategory,jdbcType = VARCHAR} ,
+		</if>
+		<if test="quantity != null">
+			QUANTITY = #{quantity,jdbcType = DECIMAL} ,
+		</if>
+		<if test="totalPageCount != null">
+			TOTAL_PAGE_COUNT = #{totalPageCount,jdbcType = DECIMAL} ,
+		</if>
+		<if test="issuePageCount != null">
+			ISSUE_PAGE_COUNT = #{issuePageCount,jdbcType = DECIMAL} ,
+		</if>
+		<if test="techSpecReq != null">
+			TECH_SPEC_REQ = #{techSpecReq,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ncDescreption != null">
+			NC_DESCREPTION = #{ncDescreption,jdbcType = VARCHAR} ,
+		</if>
+		<if test="inspectorId != null">
+			INSPECTOR_ID = #{inspectorId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="inspectorCode != null">
+			INSPECTOR_CODE = #{inspectorCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="inspectorName != null">
+			INSPECTOR_NAME = #{inspectorName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="inspectionDeptLeaderId != null">
+			INSPECTION_DEPT_LEADER_ID = #{inspectionDeptLeaderId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="inspectionDeptLeaderCode != null">
+			INSPECTION_DEPT_LEADER_CODE = #{inspectionDeptLeaderCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="inspectionDeptLeaderName != null">
+			INSPECTION_DEPT_LEADER_NAME = #{inspectionDeptLeaderName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="causeCategory != null">
+			CAUSE_CATEGORY = #{causeCategory,jdbcType = VARCHAR} ,
+		</if>
+		<if test="causeAnalysis != null">
+			CAUSE_ANALYSIS = #{causeAnalysis,jdbcType = VARCHAR} ,
+		</if>
+		<if test="correctiveMeasure != null">
+			CORRECTIVE_MEASURE = #{correctiveMeasure,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleDeptId != null">
+			RESPONSIBLE_DEPT_ID = #{responsibleDeptId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleDeptCode != null">
+			RESPONSIBLE_DEPT_CODE = #{responsibleDeptCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleDeptName != null">
+			RESPONSIBLE_DEPT_NAME = #{responsibleDeptName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleDeptLeaderId != null">
+			RESPONSIBLE_DEPT_LEADER_ID = #{responsibleDeptLeaderId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleDeptLeaderCode != null">
+			RESPONSIBLE_DEPT_LEADER_CODE = #{responsibleDeptLeaderCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleDeptLeaderName != null">
+			RESPONSIBLE_DEPT_LEADER_NAME = #{responsibleDeptLeaderName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleSupervisorId != null">
+			RESPONSIBLE_SUPERVISOR_ID = #{responsibleSupervisorId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleSupervisorCode != null">
+			RESPONSIBLE_SUPERVISOR_CODE = #{responsibleSupervisorCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleSupervisorName != null">
+			RESPONSIBLE_SUPERVISOR_NAME = #{responsibleSupervisorName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleUserId != null">
+			RESPONSIBLE_USER_ID = #{responsibleUserId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleUserCode != null">
+			RESPONSIBLE_USER_CODE = #{responsibleUserCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleUserName != null">
+			RESPONSIBLE_USER_NAME = #{responsibleUserName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="impactAnalysis != null">
+			IMPACT_ANALYSIS = #{impactAnalysis,jdbcType = VARCHAR} ,
+		</if>
+		<if test="groupReviewOpinion != null">
+			GROUP_REVIEW_OPINION = #{groupReviewOpinion,jdbcType = VARCHAR} ,
+		</if>
+		<if test="groupDesposition != null">
+			GROUP_DESPOSITION = #{groupDesposition,jdbcType = VARCHAR} ,
+		</if>
+		<if test="groupDespositionDesc != null">
+			GROUP_DESPOSITION_DESC = #{groupDespositionDesc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="reviewDeptId != null">
+			REVIEW_DEPT_ID = #{reviewDeptId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="reviewDeptCode != null">
+			REVIEW_DEPT_CODE = #{reviewDeptCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="reviewDeptName != null">
+			REVIEW_DEPT_NAME = #{reviewDeptName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="reviewUserId != null">
+			REVIEW_USER_ID = #{reviewUserId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="reviewUserCode != null">
+			REVIEW_USER_CODE = #{reviewUserCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="reviewUserName != null">
+			REVIEW_USER_NAME = #{reviewUserName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="reviewTime != null">
+			REVIEW_TIME = #{reviewTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="ynNeedCommitee != null">
+			YN_NEED_COMMITEE = #{ynNeedCommitee,jdbcType = VARCHAR} ,
+		</if>
+		<if test="commiteeOpinion != null">
+			COMMITEE_OPINION = #{commiteeOpinion,jdbcType = VARCHAR} ,
+		</if>
+		<if test="commiteeMemberId != null">
+			COMMITEE_MEMBER_ID = #{commiteeMemberId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="commiteeMemberCode != null">
+			COMMITEE_MEMBER_CODE = #{commiteeMemberCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="commiteeMemberName != null">
+			COMMITEE_MEMBER_NAME = #{commiteeMemberName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="commiteeApprovalTime != null">
+			COMMITEE_APPROVAL_TIME = #{commiteeApprovalTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="qualityDeptOpinion != null">
+			QUALITY_DEPT_OPINION = #{qualityDeptOpinion,jdbcType = VARCHAR} ,
+		</if>
+		<if test="modelQualitySupervisorId != null">
+			MODEL_QUALITY_SUPERVISOR_ID = #{modelQualitySupervisorId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="modelQualitySupervisorCode != null">
+			MODEL_QUALITY_SUPERVISOR_CODE = #{modelQualitySupervisorCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="modelQualitySupervisorName != null">
+			MODEL_QUALITY_SUPERVISOR_NAME = #{modelQualitySupervisorName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="qualityConfirmTime != null">
+			QUALITY_CONFIRM_TIME = #{qualityConfirmTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="ynMilRep != null">
+			YN_MIL_REP = #{ynMilRep,jdbcType = VARCHAR} ,
+		</if>
+		<if test="milRepId != null">
+			MIL_REP_ID = #{milRepId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="milRepCode != null">
+			MIL_REP_CODE = #{milRepCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="milRepName != null">
+			MIL_REP_NAME = #{milRepName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="milRepOpinion != null">
+			MIL_REP_OPINION = #{milRepOpinion,jdbcType = VARCHAR} ,
+		</if>
+		<if test="milRepApprovalTime != null">
+			MIL_REP_APPROVAL_TIME = #{milRepApprovalTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="finalDisposition != null">
+			FINAL_DISPOSITION = #{finalDisposition,jdbcType = VARCHAR} ,
+		</if>
+		<if test="finalDispositionDesc != null">
+			FINAL_DISPOSITION_DESC = #{finalDispositionDesc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="status != null">
+			STATUS = #{status,jdbcType = VARCHAR} ,
+		</if>
+		<if test="processInstanceId != null">
+			PROCESS_INSTANCE_ID = #{processInstanceId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="processStatus != null">
+			PROCESS_STATUS = #{processStatus,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT = #{createdDept,jdbcType = VARCHAR} ,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		</if>
+		<if test="version != null">
+			VERSION = version+1 ,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+		</if>
+		<if test="secretLevel != null">
+			SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynDeleted != null">
+			YN_DELETED = #{ynDeleted,jdbcType = VARCHAR} ,
+		</if>
+		<if test="remark != null">
+			REMARK = #{remark,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orderBy != null">
+			ORDER_BY = #{orderBy,jdbcType = DECIMAL} ,
+		</if>
+		<if test="attribute01 != null">
+			ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute02 != null">
+			ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute03 != null">
+			ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute04 != null">
+			ATTRIBUTE_04 = #{attribute04,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute05 != null">
+			ATTRIBUTE_05 = #{attribute05,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute06 != null">
+			ATTRIBUTE_06 = #{attribute06,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute07 != null">
+			ATTRIBUTE_07 = #{attribute07,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute08 != null">
+			ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute09 != null">
+			ATTRIBUTE_09 = #{attribute09,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute10 != null">
+			ATTRIBUTE_10 = #{attribute10,jdbcType = VARCHAR} 
+		</if>
+	</set>
+	where id = #{id} 
+	and version = #{version}
+</update>
+<!-- 更新对象 QMS_NC_PRODUCT -->
+<update id="updateQmsNcProductAll" parameterType="avicit.myportal.qms.qmsncproduct.dto.QmsNcProductDTO">
+	update QMS_NC_PRODUCT
+	<trim prefix="set" suffixOverrides=",">
+		ID = #{id,jdbcType = VARCHAR} ,
+		REVIEW_CODE = #{reviewCode,jdbcType = VARCHAR} ,
+		REVIEW_SECRET_LEVEL = #{reviewSecretLevel,jdbcType = VARCHAR} ,
+		REPORT_TIME = #{reportTime,jdbcType = TIMESTAMP} ,
+		MODEL = #{model,jdbcType = VARCHAR} ,
+		PART_NAME = #{partName,jdbcType = VARCHAR} ,
+		PART_DRAWING_NO = #{partDrawingNo,jdbcType = VARCHAR} ,
+		ASSEMBLY_NAME = #{assemblyName,jdbcType = VARCHAR} ,
+		ASSEMBLY_DRAWING_NO = #{assemblyDrawingNo,jdbcType = VARCHAR} ,
+		ROUTING_CARD_NO = #{routingCardNo,jdbcType = VARCHAR} ,
+		BATCH_NO = #{batchNo,jdbcType = VARCHAR} ,
+		COMPONENT_SERIAL_NO = #{componentSerialNo,jdbcType = VARCHAR} ,
+		PROCESS_NO = #{processNo,jdbcType = VARCHAR} ,
+		HEAT_BATCH_NO = #{heatBatchNo,jdbcType = VARCHAR} ,
+		NC_CATEGORY = #{ncCategory,jdbcType = VARCHAR} ,
+		QUANTITY = #{quantity,jdbcType = DECIMAL} ,
+		TOTAL_PAGE_COUNT = #{totalPageCount,jdbcType = DECIMAL} ,
+		ISSUE_PAGE_COUNT = #{issuePageCount,jdbcType = DECIMAL} ,
+		TECH_SPEC_REQ = #{techSpecReq,jdbcType = VARCHAR} ,
+		NC_DESCREPTION = #{ncDescreption,jdbcType = VARCHAR} ,
+		INSPECTOR_ID = #{inspectorId,jdbcType = VARCHAR} ,
+		INSPECTOR_CODE = #{inspectorCode,jdbcType = VARCHAR} ,
+		INSPECTOR_NAME = #{inspectorName,jdbcType = VARCHAR} ,
+		INSPECTION_DEPT_LEADER_ID = #{inspectionDeptLeaderId,jdbcType = VARCHAR} ,
+		INSPECTION_DEPT_LEADER_CODE = #{inspectionDeptLeaderCode,jdbcType = VARCHAR} ,
+		INSPECTION_DEPT_LEADER_NAME = #{inspectionDeptLeaderName,jdbcType = VARCHAR} ,
+		CAUSE_CATEGORY = #{causeCategory,jdbcType = VARCHAR} ,
+		CAUSE_ANALYSIS = #{causeAnalysis,jdbcType = VARCHAR} ,
+		CORRECTIVE_MEASURE = #{correctiveMeasure,jdbcType = VARCHAR} ,
+		RESPONSIBLE_DEPT_ID = #{responsibleDeptId,jdbcType = VARCHAR} ,
+		RESPONSIBLE_DEPT_CODE = #{responsibleDeptCode,jdbcType = VARCHAR} ,
+		RESPONSIBLE_DEPT_NAME = #{responsibleDeptName,jdbcType = VARCHAR} ,
+		RESPONSIBLE_DEPT_LEADER_ID = #{responsibleDeptLeaderId,jdbcType = VARCHAR} ,
+		RESPONSIBLE_DEPT_LEADER_CODE = #{responsibleDeptLeaderCode,jdbcType = VARCHAR} ,
+		RESPONSIBLE_DEPT_LEADER_NAME = #{responsibleDeptLeaderName,jdbcType = VARCHAR} ,
+		RESPONSIBLE_SUPERVISOR_ID = #{responsibleSupervisorId,jdbcType = VARCHAR} ,
+		RESPONSIBLE_SUPERVISOR_CODE = #{responsibleSupervisorCode,jdbcType = VARCHAR} ,
+		RESPONSIBLE_SUPERVISOR_NAME = #{responsibleSupervisorName,jdbcType = VARCHAR} ,
+		RESPONSIBLE_USER_ID = #{responsibleUserId,jdbcType = VARCHAR} ,
+		RESPONSIBLE_USER_CODE = #{responsibleUserCode,jdbcType = VARCHAR} ,
+		RESPONSIBLE_USER_NAME = #{responsibleUserName,jdbcType = VARCHAR} ,
+		IMPACT_ANALYSIS = #{impactAnalysis,jdbcType = VARCHAR} ,
+		GROUP_REVIEW_OPINION = #{groupReviewOpinion,jdbcType = VARCHAR} ,
+		GROUP_DESPOSITION = #{groupDesposition,jdbcType = VARCHAR} ,
+		GROUP_DESPOSITION_DESC = #{groupDespositionDesc,jdbcType = VARCHAR} ,
+		REVIEW_DEPT_ID = #{reviewDeptId,jdbcType = VARCHAR} ,
+		REVIEW_DEPT_CODE = #{reviewDeptCode,jdbcType = VARCHAR} ,
+		REVIEW_DEPT_NAME = #{reviewDeptName,jdbcType = VARCHAR} ,
+		REVIEW_USER_ID = #{reviewUserId,jdbcType = VARCHAR} ,
+		REVIEW_USER_CODE = #{reviewUserCode,jdbcType = VARCHAR} ,
+		REVIEW_USER_NAME = #{reviewUserName,jdbcType = VARCHAR} ,
+		REVIEW_TIME = #{reviewTime,jdbcType = TIMESTAMP} ,
+		YN_NEED_COMMITEE = #{ynNeedCommitee,jdbcType = VARCHAR} ,
+		COMMITEE_OPINION = #{commiteeOpinion,jdbcType = VARCHAR} ,
+		COMMITEE_MEMBER_ID = #{commiteeMemberId,jdbcType = VARCHAR} ,
+		COMMITEE_MEMBER_CODE = #{commiteeMemberCode,jdbcType = VARCHAR} ,
+		COMMITEE_MEMBER_NAME = #{commiteeMemberName,jdbcType = VARCHAR} ,
+		COMMITEE_APPROVAL_TIME = #{commiteeApprovalTime,jdbcType = TIMESTAMP} ,
+		QUALITY_DEPT_OPINION = #{qualityDeptOpinion,jdbcType = VARCHAR} ,
+		MODEL_QUALITY_SUPERVISOR_ID = #{modelQualitySupervisorId,jdbcType = VARCHAR} ,
+		MODEL_QUALITY_SUPERVISOR_CODE = #{modelQualitySupervisorCode,jdbcType = VARCHAR} ,
+		MODEL_QUALITY_SUPERVISOR_NAME = #{modelQualitySupervisorName,jdbcType = VARCHAR} ,
+		QUALITY_CONFIRM_TIME = #{qualityConfirmTime,jdbcType = TIMESTAMP} ,
+		YN_MIL_REP = #{ynMilRep,jdbcType = VARCHAR} ,
+		MIL_REP_ID = #{milRepId,jdbcType = VARCHAR} ,
+		MIL_REP_CODE = #{milRepCode,jdbcType = VARCHAR} ,
+		MIL_REP_NAME = #{milRepName,jdbcType = VARCHAR} ,
+		MIL_REP_OPINION = #{milRepOpinion,jdbcType = VARCHAR} ,
+		MIL_REP_APPROVAL_TIME = #{milRepApprovalTime,jdbcType = TIMESTAMP} ,
+		FINAL_DISPOSITION = #{finalDisposition,jdbcType = VARCHAR} ,
+		FINAL_DISPOSITION_DESC = #{finalDispositionDesc,jdbcType = VARCHAR} ,
+		STATUS = #{status,jdbcType = VARCHAR} ,
+		PROCESS_INSTANCE_ID = #{processInstanceId,jdbcType = VARCHAR} ,
+		PROCESS_STATUS = #{processStatus,jdbcType = VARCHAR} ,
+		LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		VERSION = version+1 ,
+		SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+		YN_DELETED = #{ynDeleted,jdbcType = VARCHAR} ,
+		REMARK = #{remark,jdbcType = VARCHAR} ,
+		ORDER_BY = #{orderBy,jdbcType = DECIMAL} ,
+		ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
+		ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
+		ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
+		ATTRIBUTE_04 = #{attribute04,jdbcType = VARCHAR} ,
+		ATTRIBUTE_05 = #{attribute05,jdbcType = VARCHAR} ,
+		ATTRIBUTE_06 = #{attribute06,jdbcType = VARCHAR} ,
+		ATTRIBUTE_07 = #{attribute07,jdbcType = VARCHAR} ,
+		ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
+		ATTRIBUTE_09 = #{attribute09,jdbcType = VARCHAR} ,
+		ATTRIBUTE_10 = #{attribute10,jdbcType = VARCHAR} 
+	</trim>
+	where id = #{id}
+	and version = #{version}
+</update>
+<!-- 批量更新对象   QMS_NC_PRODUCT -->
+<update id="updateQmsNcProductList" parameterType="java.util.List">
+	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">begin</if>
+	<foreach collection="dtoList" item="item" index="index"  separator="" close="">
+		update QMS_NC_PRODUCT
+		set
+			ID = #{item.id,jdbcType = VARCHAR} ,
+			REVIEW_CODE = #{item.reviewCode,jdbcType = VARCHAR} ,
+			REVIEW_SECRET_LEVEL = #{item.reviewSecretLevel,jdbcType = VARCHAR} ,
+			REPORT_TIME = #{item.reportTime,jdbcType = TIMESTAMP} ,
+			MODEL = #{item.model,jdbcType = VARCHAR} ,
+			PART_NAME = #{item.partName,jdbcType = VARCHAR} ,
+			PART_DRAWING_NO = #{item.partDrawingNo,jdbcType = VARCHAR} ,
+			ASSEMBLY_NAME = #{item.assemblyName,jdbcType = VARCHAR} ,
+			ASSEMBLY_DRAWING_NO = #{item.assemblyDrawingNo,jdbcType = VARCHAR} ,
+			ROUTING_CARD_NO = #{item.routingCardNo,jdbcType = VARCHAR} ,
+			BATCH_NO = #{item.batchNo,jdbcType = VARCHAR} ,
+			COMPONENT_SERIAL_NO = #{item.componentSerialNo,jdbcType = VARCHAR} ,
+			PROCESS_NO = #{item.processNo,jdbcType = VARCHAR} ,
+			HEAT_BATCH_NO = #{item.heatBatchNo,jdbcType = VARCHAR} ,
+			NC_CATEGORY = #{item.ncCategory,jdbcType = VARCHAR} ,
+			QUANTITY = #{item.quantity,jdbcType = DECIMAL} ,
+			TOTAL_PAGE_COUNT = #{item.totalPageCount,jdbcType = DECIMAL} ,
+			ISSUE_PAGE_COUNT = #{item.issuePageCount,jdbcType = DECIMAL} ,
+			TECH_SPEC_REQ = #{item.techSpecReq,jdbcType = VARCHAR} ,
+			NC_DESCREPTION = #{item.ncDescreption,jdbcType = VARCHAR} ,
+			INSPECTOR_ID = #{item.inspectorId,jdbcType = VARCHAR} ,
+			INSPECTOR_CODE = #{item.inspectorCode,jdbcType = VARCHAR} ,
+			INSPECTOR_NAME = #{item.inspectorName,jdbcType = VARCHAR} ,
+			INSPECTION_DEPT_LEADER_ID = #{item.inspectionDeptLeaderId,jdbcType = VARCHAR} ,
+			INSPECTION_DEPT_LEADER_CODE = #{item.inspectionDeptLeaderCode,jdbcType = VARCHAR} ,
+			INSPECTION_DEPT_LEADER_NAME = #{item.inspectionDeptLeaderName,jdbcType = VARCHAR} ,
+			CAUSE_CATEGORY = #{item.causeCategory,jdbcType = VARCHAR} ,
+			CAUSE_ANALYSIS = #{item.causeAnalysis,jdbcType = VARCHAR} ,
+			CORRECTIVE_MEASURE = #{item.correctiveMeasure,jdbcType = VARCHAR} ,
+			RESPONSIBLE_DEPT_ID = #{item.responsibleDeptId,jdbcType = VARCHAR} ,
+			RESPONSIBLE_DEPT_CODE = #{item.responsibleDeptCode,jdbcType = VARCHAR} ,
+			RESPONSIBLE_DEPT_NAME = #{item.responsibleDeptName,jdbcType = VARCHAR} ,
+			RESPONSIBLE_DEPT_LEADER_ID = #{item.responsibleDeptLeaderId,jdbcType = VARCHAR} ,
+			RESPONSIBLE_DEPT_LEADER_CODE = #{item.responsibleDeptLeaderCode,jdbcType = VARCHAR} ,
+			RESPONSIBLE_DEPT_LEADER_NAME = #{item.responsibleDeptLeaderName,jdbcType = VARCHAR} ,
+			RESPONSIBLE_SUPERVISOR_ID = #{item.responsibleSupervisorId,jdbcType = VARCHAR} ,
+			RESPONSIBLE_SUPERVISOR_CODE = #{item.responsibleSupervisorCode,jdbcType = VARCHAR} ,
+			RESPONSIBLE_SUPERVISOR_NAME = #{item.responsibleSupervisorName,jdbcType = VARCHAR} ,
+			RESPONSIBLE_USER_ID = #{item.responsibleUserId,jdbcType = VARCHAR} ,
+			RESPONSIBLE_USER_CODE = #{item.responsibleUserCode,jdbcType = VARCHAR} ,
+			RESPONSIBLE_USER_NAME = #{item.responsibleUserName,jdbcType = VARCHAR} ,
+			IMPACT_ANALYSIS = #{item.impactAnalysis,jdbcType = VARCHAR} ,
+			GROUP_REVIEW_OPINION = #{item.groupReviewOpinion,jdbcType = VARCHAR} ,
+			GROUP_DESPOSITION = #{item.groupDesposition,jdbcType = VARCHAR} ,
+			GROUP_DESPOSITION_DESC = #{item.groupDespositionDesc,jdbcType = VARCHAR} ,
+			REVIEW_DEPT_ID = #{item.reviewDeptId,jdbcType = VARCHAR} ,
+			REVIEW_DEPT_CODE = #{item.reviewDeptCode,jdbcType = VARCHAR} ,
+			REVIEW_DEPT_NAME = #{item.reviewDeptName,jdbcType = VARCHAR} ,
+			REVIEW_USER_ID = #{item.reviewUserId,jdbcType = VARCHAR} ,
+			REVIEW_USER_CODE = #{item.reviewUserCode,jdbcType = VARCHAR} ,
+			REVIEW_USER_NAME = #{item.reviewUserName,jdbcType = VARCHAR} ,
+			REVIEW_TIME = #{item.reviewTime,jdbcType = TIMESTAMP} ,
+			YN_NEED_COMMITEE = #{item.ynNeedCommitee,jdbcType = VARCHAR} ,
+			COMMITEE_OPINION = #{item.commiteeOpinion,jdbcType = VARCHAR} ,
+			COMMITEE_MEMBER_ID = #{item.commiteeMemberId,jdbcType = VARCHAR} ,
+			COMMITEE_MEMBER_CODE = #{item.commiteeMemberCode,jdbcType = VARCHAR} ,
+			COMMITEE_MEMBER_NAME = #{item.commiteeMemberName,jdbcType = VARCHAR} ,
+			COMMITEE_APPROVAL_TIME = #{item.commiteeApprovalTime,jdbcType = TIMESTAMP} ,
+			QUALITY_DEPT_OPINION = #{item.qualityDeptOpinion,jdbcType = VARCHAR} ,
+			MODEL_QUALITY_SUPERVISOR_ID = #{item.modelQualitySupervisorId,jdbcType = VARCHAR} ,
+			MODEL_QUALITY_SUPERVISOR_CODE = #{item.modelQualitySupervisorCode,jdbcType = VARCHAR} ,
+			MODEL_QUALITY_SUPERVISOR_NAME = #{item.modelQualitySupervisorName,jdbcType = VARCHAR} ,
+			QUALITY_CONFIRM_TIME = #{item.qualityConfirmTime,jdbcType = TIMESTAMP} ,
+			YN_MIL_REP = #{item.ynMilRep,jdbcType = VARCHAR} ,
+			MIL_REP_ID = #{item.milRepId,jdbcType = VARCHAR} ,
+			MIL_REP_CODE = #{item.milRepCode,jdbcType = VARCHAR} ,
+			MIL_REP_NAME = #{item.milRepName,jdbcType = VARCHAR} ,
+			MIL_REP_OPINION = #{item.milRepOpinion,jdbcType = VARCHAR} ,
+			MIL_REP_APPROVAL_TIME = #{item.milRepApprovalTime,jdbcType = TIMESTAMP} ,
+			FINAL_DISPOSITION = #{item.finalDisposition,jdbcType = VARCHAR} ,
+			FINAL_DISPOSITION_DESC = #{item.finalDispositionDesc,jdbcType = VARCHAR} ,
+			STATUS = #{item.status,jdbcType = VARCHAR} ,
+			PROCESS_INSTANCE_ID = #{item.processInstanceId,jdbcType = VARCHAR} ,
+			PROCESS_STATUS = #{item.processStatus,jdbcType = VARCHAR} ,
+			CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+			CREATED_DEPT = #{item.createdDept,jdbcType = VARCHAR} ,
+			CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+			LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+			LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+			LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+			VERSION = version+1  ,
+			ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} ,
+			SECRET_LEVEL = #{item.secretLevel,jdbcType = VARCHAR} ,
+			YN_DELETED = #{item.ynDeleted,jdbcType = VARCHAR} ,
+			REMARK = #{item.remark,jdbcType = VARCHAR} ,
+			ORDER_BY = #{item.orderBy,jdbcType = DECIMAL} ,
+			ATTRIBUTE_01 = #{item.attribute01,jdbcType = VARCHAR} ,
+			ATTRIBUTE_02 = #{item.attribute02,jdbcType = VARCHAR} ,
+			ATTRIBUTE_03 = #{item.attribute03,jdbcType = VARCHAR} ,
+			ATTRIBUTE_04 = #{item.attribute04,jdbcType = VARCHAR} ,
+			ATTRIBUTE_05 = #{item.attribute05,jdbcType = VARCHAR} ,
+			ATTRIBUTE_06 = #{item.attribute06,jdbcType = VARCHAR} ,
+			ATTRIBUTE_07 = #{item.attribute07,jdbcType = VARCHAR} ,
+			ATTRIBUTE_08 = #{item.attribute08,jdbcType = VARCHAR} ,
+			ATTRIBUTE_09 = #{item.attribute09,jdbcType = VARCHAR} ,
+			ATTRIBUTE_10 = #{item.attribute10,jdbcType = VARCHAR} 
+		where id = #{item.id}
+		and version = #{item.version};
+	</foreach>
+	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">end;</if>
+</update>
+<!-- 主键删除 QMS_NC_PRODUCT -->
+<delete id="deleteQmsNcProductById" parameterType="java.lang.String">
+	delete from QMS_NC_PRODUCT  where id = #{id}
+</delete>
+</mapper>

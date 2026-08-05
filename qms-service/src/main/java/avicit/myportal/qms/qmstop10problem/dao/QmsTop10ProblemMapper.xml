@@ -1,0 +1,1235 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.myportal.qms.qmstop10problem.dao.QmsTop10ProblemDAO">
+<resultMap id="QmsTop10ProblemDTOMap" type="avicit.myportal.qms.qmstop10problem.dto.QmsTop10ProblemDTO">
+	<result property="id" column="ID" jdbcType="VARCHAR" />
+	<result property="forYear" column="FOR_YEAR" jdbcType="VARCHAR" />
+	<result property="topCode" column="TOP_CODE" jdbcType="VARCHAR" />
+	<result property="problemName" column="PROBLEM_NAME" jdbcType="VARCHAR" />
+	<result property="deputyChiefUserId" column="DEPUTY_CHIEF_USER_ID" jdbcType="VARCHAR" />
+	<result property="deputyChiefUserCode" column="DEPUTY_CHIEF_USER_CODE" jdbcType="VARCHAR" />
+	<result property="deputyChiefUserName" column="DEPUTY_CHIEF_USER_NAME" jdbcType="VARCHAR" />
+	<result property="responsibleDeptId" column="RESPONSIBLE_DEPT_ID" jdbcType="VARCHAR" />
+	<result property="responsibleDeptCode" column="RESPONSIBLE_DEPT_CODE" jdbcType="VARCHAR" />
+	<result property="responsibleDeptName" column="RESPONSIBLE_DEPT_NAME" jdbcType="VARCHAR" />
+	<result property="responsibleStaffId" column="RESPONSIBLE_STAFF_ID" jdbcType="VARCHAR" />
+	<result property="responsibleStaffCode" column="RESPONSIBLE_STAFF_CODE" jdbcType="VARCHAR" />
+	<result property="responsibleStaffName" column="RESPONSIBLE_STAFF_NAME" jdbcType="VARCHAR" />
+	<result property="planCloseTime" column="PLAN_CLOSE_TIME" jdbcType="TIMESTAMP" />
+	<result property="userType" column="USER_TYPE" jdbcType="VARCHAR" />
+	<result property="problemStage" column="PROBLEM_STAGE" jdbcType="VARCHAR" />
+	<result property="problemLevel" column="PROBLEM_LEVEL" jdbcType="VARCHAR" />
+	<result property="planCompletionRate" column="PLAN_COMPLETION_RATE" jdbcType="VARCHAR" />
+	<result property="weeklyFeedbackRate" column="WEEKLY_FEEDBACK_RATE" jdbcType="VARCHAR" />
+	<result property="status" column="STATUS" jdbcType="VARCHAR" />
+	<result property="closeTime" column="CLOSE_TIME" jdbcType="TIMESTAMP" />
+	<result property="qualityProblemCode" column="QUALITY_PROBLEM_CODE" jdbcType="VARCHAR" />
+	<result property="problemDesc" column="PROBLEM_DESC" jdbcType="VARCHAR" />
+	<result property="currentProgress" column="CURRENT_PROGRESS" jdbcType="VARCHAR" />
+	<result property="weeklyFeedbackStartTime" column="WEEKLY_FEEDBACK_START_TIME" jdbcType="TIMESTAMP" />
+	<result property="qualitySupervisorId" column="QUALITY_SUPERVISOR_ID" jdbcType="VARCHAR" />
+	<result property="qualitySupervisorCode" column="QUALITY_SUPERVISOR_CODE" jdbcType="VARCHAR" />
+	<result property="qualitySupervisorName" column="QUALITY_SUPERVISOR_NAME" jdbcType="VARCHAR" />
+	<result property="model" column="MODEL" jdbcType="VARCHAR" />
+	<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+	<result property="createdDept" column="CREATED_DEPT" jdbcType="VARCHAR" />
+	<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+	<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+	<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+	<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+	<result property="version" column="VERSION" jdbcType="DECIMAL" />
+	<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+	<result property="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR" />
+	<result property="ynDeleted" column="YN_DELETED" jdbcType="VARCHAR" />
+	<result property="remark" column="REMARK" jdbcType="VARCHAR" />
+	<result property="orderBy" column="ORDER_BY" jdbcType="DECIMAL" />
+	<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+	<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+	<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+	<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+	<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+	<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+	<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+	<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+	<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+	<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+</resultMap>
+<sql id="commonColums">
+	<trim suffixOverrides=",">
+		t1.ID,
+		t1.FOR_YEAR,
+		t1.TOP_CODE,
+		t1.PROBLEM_NAME,
+		t1.DEPUTY_CHIEF_USER_ID,
+		t1.DEPUTY_CHIEF_USER_CODE,
+		t1.DEPUTY_CHIEF_USER_NAME,
+		t1.RESPONSIBLE_DEPT_ID,
+		t1.RESPONSIBLE_DEPT_CODE,
+		t1.RESPONSIBLE_DEPT_NAME,
+		t1.RESPONSIBLE_STAFF_ID,
+		t1.RESPONSIBLE_STAFF_CODE,
+		t1.RESPONSIBLE_STAFF_NAME,
+		t1.PLAN_CLOSE_TIME,
+		t1.USER_TYPE,
+		t1.PROBLEM_STAGE,
+		t1.PROBLEM_LEVEL,
+		t1.PLAN_COMPLETION_RATE,
+		t1.WEEKLY_FEEDBACK_RATE,
+		t1.STATUS,
+		t1.CLOSE_TIME,
+		t1.QUALITY_PROBLEM_CODE,
+		t1.PROBLEM_DESC,
+		t1.CURRENT_PROGRESS,
+		t1.WEEKLY_FEEDBACK_START_TIME,
+		t1.QUALITY_SUPERVISOR_ID,
+		t1.QUALITY_SUPERVISOR_CODE,
+		t1.QUALITY_SUPERVISOR_NAME,
+		t1.MODEL,
+		t1.CREATED_BY,
+		t1.CREATED_DEPT,
+		t1.CREATION_DATE,
+		t1.LAST_UPDATED_BY,
+		t1.LAST_UPDATE_DATE,
+		t1.LAST_UPDATE_IP,
+		t1.VERSION,
+		t1.ORG_IDENTITY,
+		t1.SECRET_LEVEL,
+		t1.YN_DELETED,
+		t1.REMARK,
+		t1.ORDER_BY,
+		t1.ATTRIBUTE_01,
+		t1.ATTRIBUTE_02,
+		t1.ATTRIBUTE_03,
+		t1.ATTRIBUTE_04,
+		t1.ATTRIBUTE_05,
+		t1.ATTRIBUTE_06,
+		t1.ATTRIBUTE_07,
+		t1.ATTRIBUTE_08,
+		t1.ATTRIBUTE_09,
+		t1.ATTRIBUTE_10,
+	</trim>
+</sql>
+<!-- 默认查询条件 -->
+<sql id="defaultWhereAnd">
+	<if test="orgIdentity != null and orgIdentity != ''">
+		and t1.org_identity = #{orgIdentity}
+	</if>
+	<if test="wordSecret != null and wordSecret.size()>0">
+		and t1.secret_level in
+		<foreach collection="wordSecret" item="item" index="key" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</if>
+</sql>
+<sql id="commonWhereAnd">
+	<if test="bean.id != null and bean.id != ''">
+		and t1.ID = #{bean.id}
+	</if>
+	<if test="bean.forYear != null and bean.forYear != ''">
+		and t1.FOR_YEAR like concat(concat('%',#{bean.forYear}),'%')
+	</if>
+	<if test="bean.topCode != null and bean.topCode != ''">
+		and t1.TOP_CODE like concat(concat('%',#{bean.topCode}),'%')
+	</if>
+	<if test="bean.problemName != null and bean.problemName != ''">
+		and t1.PROBLEM_NAME like concat(concat('%',#{bean.problemName}),'%')
+	</if>
+	<if test="bean.deputyChiefUserId != null and bean.deputyChiefUserId != ''">
+		and t1.DEPUTY_CHIEF_USER_ID like concat(concat('%',#{bean.deputyChiefUserId}),'%')
+	</if>
+	<if test="bean.deputyChiefUserCode != null and bean.deputyChiefUserCode != ''">
+		and t1.DEPUTY_CHIEF_USER_CODE like concat(concat('%',#{bean.deputyChiefUserCode}),'%')
+	</if>
+	<if test="bean.deputyChiefUserName != null and bean.deputyChiefUserName != ''">
+		and t1.DEPUTY_CHIEF_USER_NAME like concat(concat('%',#{bean.deputyChiefUserName}),'%')
+	</if>
+	<if test="bean.responsibleDeptId != null and bean.responsibleDeptId != ''">
+		and t1.RESPONSIBLE_DEPT_ID like concat(concat('%',#{bean.responsibleDeptId}),'%')
+	</if>
+	<if test="bean.responsibleDeptCode != null and bean.responsibleDeptCode != ''">
+		and t1.RESPONSIBLE_DEPT_CODE like concat(concat('%',#{bean.responsibleDeptCode}),'%')
+	</if>
+	<if test="bean.responsibleDeptName != null and bean.responsibleDeptName != ''">
+		and t1.RESPONSIBLE_DEPT_NAME like concat(concat('%',#{bean.responsibleDeptName}),'%')
+	</if>
+	<if test="bean.responsibleStaffId != null and bean.responsibleStaffId != ''">
+		and t1.RESPONSIBLE_STAFF_ID like concat(concat('%',#{bean.responsibleStaffId}),'%')
+	</if>
+	<if test="bean.responsibleStaffCode != null and bean.responsibleStaffCode != ''">
+		and t1.RESPONSIBLE_STAFF_CODE like concat(concat('%',#{bean.responsibleStaffCode}),'%')
+	</if>
+	<if test="bean.responsibleStaffName != null and bean.responsibleStaffName != ''">
+		and t1.RESPONSIBLE_STAFF_NAME like concat(concat('%',#{bean.responsibleStaffName}),'%')
+	</if>
+	<if test="bean.planCloseTimeBegin != null">
+		and t1.PLAN_CLOSE_TIME &gt;= #{bean.planCloseTimeBegin}
+	</if>
+	<if test="bean.planCloseTimeEnd != null">
+		and t1.PLAN_CLOSE_TIME &lt;= #{bean.planCloseTimeEnd}
+	</if>
+	<if test="bean.userType != null and bean.userType != ''">
+		and t1.USER_TYPE like concat(concat('%',#{bean.userType}),'%')
+	</if>
+	<if test="bean.problemStage != null and bean.problemStage != ''">
+		and t1.PROBLEM_STAGE like concat(concat('%',#{bean.problemStage}),'%')
+	</if>
+	<if test="bean.problemLevel != null and bean.problemLevel != ''">
+		and t1.PROBLEM_LEVEL like concat(concat('%',#{bean.problemLevel}),'%')
+	</if>
+	<if test="bean.planCompletionRate != null and bean.planCompletionRate != ''">
+		and t1.PLAN_COMPLETION_RATE like concat(concat('%',#{bean.planCompletionRate}),'%')
+	</if>
+	<if test="bean.weeklyFeedbackRate != null and bean.weeklyFeedbackRate != ''">
+		and t1.WEEKLY_FEEDBACK_RATE like concat(concat('%',#{bean.weeklyFeedbackRate}),'%')
+	</if>
+	<if test="bean.status != null and bean.status != ''">
+		and t1.STATUS like concat(concat('%',#{bean.status}),'%')
+	</if>
+	<if test="bean.closeTimeBegin != null">
+		and t1.CLOSE_TIME &gt;= #{bean.closeTimeBegin}
+	</if>
+	<if test="bean.closeTimeEnd != null">
+		and t1.CLOSE_TIME &lt;= #{bean.closeTimeEnd}
+	</if>
+	<if test="bean.qualityProblemCode != null and bean.qualityProblemCode != ''">
+		and t1.QUALITY_PROBLEM_CODE like concat(concat('%',#{bean.qualityProblemCode}),'%')
+	</if>
+	<if test="bean.problemDesc != null and bean.problemDesc != ''">
+		and t1.PROBLEM_DESC like concat(concat('%',#{bean.problemDesc}),'%')
+	</if>
+	<if test="bean.currentProgress != null and bean.currentProgress != ''">
+		and t1.CURRENT_PROGRESS like concat(concat('%',#{bean.currentProgress}),'%')
+	</if>
+	<if test="bean.weeklyFeedbackStartTimeBegin != null">
+		and t1.WEEKLY_FEEDBACK_START_TIME &gt;= #{bean.weeklyFeedbackStartTimeBegin}
+	</if>
+	<if test="bean.weeklyFeedbackStartTimeEnd != null">
+		and t1.WEEKLY_FEEDBACK_START_TIME &lt;= #{bean.weeklyFeedbackStartTimeEnd}
+	</if>
+	<if test="bean.qualitySupervisorId != null and bean.qualitySupervisorId != ''">
+		and t1.QUALITY_SUPERVISOR_ID like concat(concat('%',#{bean.qualitySupervisorId}),'%')
+	</if>
+	<if test="bean.qualitySupervisorCode != null and bean.qualitySupervisorCode != ''">
+		and t1.QUALITY_SUPERVISOR_CODE like concat(concat('%',#{bean.qualitySupervisorCode}),'%')
+	</if>
+	<if test="bean.qualitySupervisorName != null and bean.qualitySupervisorName != ''">
+		and t1.QUALITY_SUPERVISOR_NAME like concat(concat('%',#{bean.qualitySupervisorName}),'%')
+	</if>
+	<if test="bean.model != null and bean.model != ''">
+		and t1.MODEL like concat(concat('%',#{bean.model}),'%')
+	</if>
+	<if test="bean.createdBy != null and bean.createdBy != ''">
+		and t1.CREATED_BY = #{bean.createdBy}
+	</if>
+	<if test="bean.createdDept != null and bean.createdDept != ''">
+		and t1.CREATED_DEPT = #{bean.createdDept}
+	</if>
+	<if test="bean.creationDateBegin != null">
+		and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+	</if>
+	<if test="bean.creationDateEnd != null">
+		and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+	</if>
+	<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+		and t1.LAST_UPDATED_BY = #{bean.lastUpdatedBy}
+	</if>
+	<if test="bean.lastUpdateDateBegin != null">
+		and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+	</if>
+	<if test="bean.lastUpdateDateEnd != null">
+		and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+	</if>
+	<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+		and t1.LAST_UPDATE_IP = #{bean.lastUpdateIp}
+	</if>
+	<if test="bean.version != null">
+		and t1.VERSION = #{bean.version}
+	</if>
+	<if test="bean.secretLevel != null and bean.secretLevel != ''">
+		and t1.SECRET_LEVEL = #{bean.secretLevel}
+	</if>
+	<if test="bean.ynDeleted != null and bean.ynDeleted != ''">
+		and t1.YN_DELETED like concat(concat('%',#{bean.ynDeleted}),'%')
+	</if>
+	<if test="bean.remark != null and bean.remark != ''">
+		and t1.REMARK like concat(concat('%',#{bean.remark}),'%')
+	</if>
+	<if test="bean.orderBy != null">
+		and t1.ORDER_BY = #{bean.orderBy}
+	</if>
+	<if test="bean.attribute01 != null and bean.attribute01 != ''">
+		and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+	</if>
+	<if test="bean.attribute02 != null and bean.attribute02 != ''">
+		and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+	</if>
+	<if test="bean.attribute03 != null and bean.attribute03 != ''">
+		and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+	</if>
+	<if test="bean.attribute04 != null and bean.attribute04 != ''">
+		and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+	</if>
+	<if test="bean.attribute05 != null and bean.attribute05 != ''">
+		and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+	</if>
+	<if test="bean.attribute06 != null and bean.attribute06 != ''">
+		and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+	</if>
+	<if test="bean.attribute07 != null and bean.attribute07 != ''">
+		and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+	</if>
+	<if test="bean.attribute08 != null and bean.attribute08 != ''">
+		and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+	</if>
+	<if test="bean.attribute09 != null and bean.attribute09 != ''">
+		and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')
+	</if>
+	<if test="bean.attribute10 != null and bean.attribute10 != ''">
+		and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')
+	</if>
+</sql>
+<sql id="commonWhereOr">
+	<trim prefix="(" suffix=")" prefixOverrides="or">
+		<if test="bean.id != null and bean.id != ''">
+			or t1.ID = #{bean.id}
+		</if>
+		<if test="bean.forYear != null and bean.forYear != ''">
+			or t1.FOR_YEAR like concat(concat('%',#{bean.forYear}),'%')
+		</if>
+		<if test="bean.topCode != null and bean.topCode != ''">
+			or t1.TOP_CODE like concat(concat('%',#{bean.topCode}),'%')
+		</if>
+		<if test="bean.problemName != null and bean.problemName != ''">
+			or t1.PROBLEM_NAME like concat(concat('%',#{bean.problemName}),'%')
+		</if>
+		<if test="bean.deputyChiefUserId != null and bean.deputyChiefUserId != ''">
+			or t1.DEPUTY_CHIEF_USER_ID like concat(concat('%',#{bean.deputyChiefUserId}),'%')
+		</if>
+		<if test="bean.deputyChiefUserCode != null and bean.deputyChiefUserCode != ''">
+			or t1.DEPUTY_CHIEF_USER_CODE like concat(concat('%',#{bean.deputyChiefUserCode}),'%')
+		</if>
+		<if test="bean.deputyChiefUserName != null and bean.deputyChiefUserName != ''">
+			or t1.DEPUTY_CHIEF_USER_NAME like concat(concat('%',#{bean.deputyChiefUserName}),'%')
+		</if>
+		<if test="bean.responsibleDeptId != null and bean.responsibleDeptId != ''">
+			or t1.RESPONSIBLE_DEPT_ID like concat(concat('%',#{bean.responsibleDeptId}),'%')
+		</if>
+		<if test="bean.responsibleDeptCode != null and bean.responsibleDeptCode != ''">
+			or t1.RESPONSIBLE_DEPT_CODE like concat(concat('%',#{bean.responsibleDeptCode}),'%')
+		</if>
+		<if test="bean.responsibleDeptName != null and bean.responsibleDeptName != ''">
+			or t1.RESPONSIBLE_DEPT_NAME like concat(concat('%',#{bean.responsibleDeptName}),'%')
+		</if>
+		<if test="bean.responsibleStaffId != null and bean.responsibleStaffId != ''">
+			or t1.RESPONSIBLE_STAFF_ID like concat(concat('%',#{bean.responsibleStaffId}),'%')
+		</if>
+		<if test="bean.responsibleStaffCode != null and bean.responsibleStaffCode != ''">
+			or t1.RESPONSIBLE_STAFF_CODE like concat(concat('%',#{bean.responsibleStaffCode}),'%')
+		</if>
+		<if test="bean.responsibleStaffName != null and bean.responsibleStaffName != ''">
+			or t1.RESPONSIBLE_STAFF_NAME like concat(concat('%',#{bean.responsibleStaffName}),'%')
+		</if>
+		<if test="bean.planCloseTimeBegin != null">
+			or t1.PLAN_CLOSE_TIME &gt;= #{bean.planCloseTimeBegin}
+		</if>
+		<if test="bean.planCloseTimeEnd != null">
+			or t1.PLAN_CLOSE_TIME &lt;= #{bean.planCloseTimeEnd}
+		</if>
+		<if test="bean.userType != null and bean.userType != ''">
+			or t1.USER_TYPE like concat(concat('%',#{bean.userType}),'%')
+		</if>
+		<if test="bean.problemStage != null and bean.problemStage != ''">
+			or t1.PROBLEM_STAGE like concat(concat('%',#{bean.problemStage}),'%')
+		</if>
+		<if test="bean.problemLevel != null and bean.problemLevel != ''">
+			or t1.PROBLEM_LEVEL like concat(concat('%',#{bean.problemLevel}),'%')
+		</if>
+		<if test="bean.planCompletionRate != null and bean.planCompletionRate != ''">
+			or t1.PLAN_COMPLETION_RATE like concat(concat('%',#{bean.planCompletionRate}),'%')
+		</if>
+		<if test="bean.weeklyFeedbackRate != null and bean.weeklyFeedbackRate != ''">
+			or t1.WEEKLY_FEEDBACK_RATE like concat(concat('%',#{bean.weeklyFeedbackRate}),'%')
+		</if>
+		<if test="bean.status != null and bean.status != ''">
+			or t1.STATUS like concat(concat('%',#{bean.status}),'%')
+		</if>
+		<if test="bean.closeTimeBegin != null">
+			or t1.CLOSE_TIME &gt;= #{bean.closeTimeBegin}
+		</if>
+		<if test="bean.closeTimeEnd != null">
+			or t1.CLOSE_TIME &lt;= #{bean.closeTimeEnd}
+		</if>
+		<if test="bean.qualityProblemCode != null and bean.qualityProblemCode != ''">
+			or t1.QUALITY_PROBLEM_CODE like concat(concat('%',#{bean.qualityProblemCode}),'%')
+		</if>
+		<if test="bean.problemDesc != null and bean.problemDesc != ''">
+			or t1.PROBLEM_DESC like concat(concat('%',#{bean.problemDesc}),'%')
+		</if>
+		<if test="bean.currentProgress != null and bean.currentProgress != ''">
+			or t1.CURRENT_PROGRESS like concat(concat('%',#{bean.currentProgress}),'%')
+		</if>
+		<if test="bean.weeklyFeedbackStartTimeBegin != null">
+			or t1.WEEKLY_FEEDBACK_START_TIME &gt;= #{bean.weeklyFeedbackStartTimeBegin}
+		</if>
+		<if test="bean.weeklyFeedbackStartTimeEnd != null">
+			or t1.WEEKLY_FEEDBACK_START_TIME &lt;= #{bean.weeklyFeedbackStartTimeEnd}
+		</if>
+		<if test="bean.qualitySupervisorId != null and bean.qualitySupervisorId != ''">
+			or t1.QUALITY_SUPERVISOR_ID like concat(concat('%',#{bean.qualitySupervisorId}),'%')
+		</if>
+		<if test="bean.qualitySupervisorCode != null and bean.qualitySupervisorCode != ''">
+			or t1.QUALITY_SUPERVISOR_CODE like concat(concat('%',#{bean.qualitySupervisorCode}),'%')
+		</if>
+		<if test="bean.qualitySupervisorName != null and bean.qualitySupervisorName != ''">
+			or t1.QUALITY_SUPERVISOR_NAME like concat(concat('%',#{bean.qualitySupervisorName}),'%')
+		</if>
+		<if test="bean.model != null and bean.model != ''">
+			or t1.MODEL like concat(concat('%',#{bean.model}),'%')
+		</if>
+		<if test="bean.createdBy != null and bean.createdBy != ''">
+			or t1.CREATED_BY = #{bean.createdBy}
+		</if>
+		<if test="bean.createdDept != null and bean.createdDept != ''">
+			or t1.CREATED_DEPT = #{bean.createdDept}
+		</if>
+		<if test="bean.creationDateBegin != null">
+			or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+		</if>
+		<if test="bean.creationDateEnd != null">
+			or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+		</if>
+		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+			or t1.LAST_UPDATED_BY = #{bean.lastUpdatedBy}
+		</if>
+		<if test="bean.lastUpdateDateBegin != null">
+			or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+		</if>
+		<if test="bean.lastUpdateDateEnd != null">
+			or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+		</if>
+		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+			or t1.LAST_UPDATE_IP = #{bean.lastUpdateIp}
+		</if>
+		<if test="bean.version != null">
+			or t1.VERSION = #{bean.version}
+		</if>
+		<if test="bean.ynDeleted != null and bean.ynDeleted != ''">
+			or t1.YN_DELETED like concat(concat('%',#{bean.ynDeleted}),'%')
+		</if>
+		<if test="bean.remark != null and bean.remark != ''">
+			or t1.REMARK like concat(concat('%',#{bean.remark}),'%')
+		</if>
+		<if test="bean.orderBy != null">
+			or t1.ORDER_BY = #{bean.orderBy}
+		</if>
+		<if test="bean.attribute01 != null and bean.attribute01 != ''">
+			or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+		</if>
+		<if test="bean.attribute02 != null and bean.attribute02 != ''">
+			or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+		</if>
+		<if test="bean.attribute03 != null and bean.attribute03 != ''">
+			or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+		</if>
+		<if test="bean.attribute04 != null and bean.attribute04 != ''">
+			or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+		</if>
+		<if test="bean.attribute05 != null and bean.attribute05 != ''">
+			or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+		</if>
+		<if test="bean.attribute06 != null and bean.attribute06 != ''">
+			or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+		</if>
+		<if test="bean.attribute07 != null and bean.attribute07 != ''">
+			or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+		</if>
+		<if test="bean.attribute08 != null and bean.attribute08 != ''">
+			or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+		</if>
+		<if test="bean.attribute09 != null and bean.attribute09 != ''">
+			or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')
+		</if>
+		<if test="bean.attribute10 != null and bean.attribute10 != ''">
+			or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')
+		</if>
+	</trim>
+</sql>
+<sql id="commonOrderBy">
+	<choose>
+		<when test="orderBy != null and orderBy != ''">
+			order by ${orderBy}
+		</when>
+		<otherwise>
+			order by t1.creation_date desc
+		</otherwise>
+	</choose>
+</sql>
+
+<!-- 分页查询 QMS_TOP10_PROBLEM -->
+<select id="searchQmsTop10ProblemByPage" parameterType="java.util.Map" resultMap="QmsTop10ProblemDTOMap">
+	select
+	<include refid="commonColums"/>
+	from QMS_TOP10_PROBLEM t1   
+	<where>
+		<if test="bean != null">
+			<choose>
+				<when test="keyWords != null and keyWords != '' ">
+					<include refid="commonWhereOr"/>
+				</when>
+				<otherwise>
+					<include refid="commonWhereAnd"/>
+				</otherwise>
+			</choose>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+	<include refid="commonOrderBy"></include>
+</select>
+<!-- 查询列表 QMS_TOP10_PROBLEM -->
+<select id="searchQmsTop10Problem" parameterType="java.util.Map" resultMap="QmsTop10ProblemDTOMap">
+	select
+	<include refid="commonColums"/>
+    from QMS_TOP10_PROBLEM 	t1
+	<where>
+		<if test="bean != null">
+			<include refid="commonWhereAnd"/>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+</select>
+<!-- 按条件导出查询列表 QMS_TOP10_PROBLEM -->
+<select id="searchQmsTop10ProblemForExportExcel" parameterType="java.util.Map" resultMap="QmsTop10ProblemDTOMap">
+	select
+		<include refid="commonColums"/>
+		from QMS_TOP10_PROBLEM t1
+
+	<where>
+		<if test="bean != null">
+			<choose>
+				<when test="keyWords != null and keyWords != ''">
+					<include refid="commonWhereOr"/>
+				</when>
+				<otherwise>
+					<include refid="commonWhereAnd"/>
+				</otherwise>
+			</choose>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+	<include refid="commonOrderBy"/>
+</select>
+<!-- 主键查询对象 QMS_TOP10_PROBLEM -->
+<select id="findQmsTop10ProblemById" parameterType="java.util.Map" resultMap="QmsTop10ProblemDTOMap">
+	select
+	<include refid="commonColums"/>
+	from QMS_TOP10_PROBLEM t1
+	where t1.id = #{id}
+</select>
+<!-- 新增对象 QMS_TOP10_PROBLEM -->
+<insert id="insertQmsTop10Problem" parameterType="avicit.myportal.qms.qmstop10problem.dto.QmsTop10ProblemDTO">
+	insert into QMS_TOP10_PROBLEM
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			ID,
+		</if>
+		<if test="forYear != null">
+			FOR_YEAR,
+		</if>
+		<if test="topCode != null">
+			TOP_CODE,
+		</if>
+		<if test="problemName != null">
+			PROBLEM_NAME,
+		</if>
+		<if test="deputyChiefUserId != null">
+			DEPUTY_CHIEF_USER_ID,
+		</if>
+		<if test="deputyChiefUserCode != null">
+			DEPUTY_CHIEF_USER_CODE,
+		</if>
+		<if test="deputyChiefUserName != null">
+			DEPUTY_CHIEF_USER_NAME,
+		</if>
+		<if test="responsibleDeptId != null">
+			RESPONSIBLE_DEPT_ID,
+		</if>
+		<if test="responsibleDeptCode != null">
+			RESPONSIBLE_DEPT_CODE,
+		</if>
+		<if test="responsibleDeptName != null">
+			RESPONSIBLE_DEPT_NAME,
+		</if>
+		<if test="responsibleStaffId != null">
+			RESPONSIBLE_STAFF_ID,
+		</if>
+		<if test="responsibleStaffCode != null">
+			RESPONSIBLE_STAFF_CODE,
+		</if>
+		<if test="responsibleStaffName != null">
+			RESPONSIBLE_STAFF_NAME,
+		</if>
+		<if test="planCloseTime != null">
+			PLAN_CLOSE_TIME,
+		</if>
+		<if test="userType != null">
+			USER_TYPE,
+		</if>
+		<if test="problemStage != null">
+			PROBLEM_STAGE,
+		</if>
+		<if test="problemLevel != null">
+			PROBLEM_LEVEL,
+		</if>
+		<if test="planCompletionRate != null">
+			PLAN_COMPLETION_RATE,
+		</if>
+		<if test="weeklyFeedbackRate != null">
+			WEEKLY_FEEDBACK_RATE,
+		</if>
+		<if test="status != null">
+			STATUS,
+		</if>
+		<if test="closeTime != null">
+			CLOSE_TIME,
+		</if>
+		<if test="qualityProblemCode != null">
+			QUALITY_PROBLEM_CODE,
+		</if>
+		<if test="problemDesc != null">
+			PROBLEM_DESC,
+		</if>
+		<if test="currentProgress != null">
+			CURRENT_PROGRESS,
+		</if>
+		<if test="weeklyFeedbackStartTime != null">
+			WEEKLY_FEEDBACK_START_TIME,
+		</if>
+		<if test="qualitySupervisorId != null">
+			QUALITY_SUPERVISOR_ID,
+		</if>
+		<if test="qualitySupervisorCode != null">
+			QUALITY_SUPERVISOR_CODE,
+		</if>
+		<if test="qualitySupervisorName != null">
+			QUALITY_SUPERVISOR_NAME,
+		</if>
+		<if test="model != null">
+			MODEL,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP,
+		</if>
+		<if test="version != null">
+			VERSION,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY,
+		</if>
+		<if test="secretLevel != null">
+			SECRET_LEVEL,
+		</if>
+		<if test="ynDeleted != null">
+			YN_DELETED,
+		</if>
+		<if test="remark != null">
+			REMARK,
+		</if>
+		<if test="orderBy != null">
+			ORDER_BY,
+		</if>
+		<if test="attribute01 != null">
+			ATTRIBUTE_01,
+		</if>
+		<if test="attribute02 != null">
+			ATTRIBUTE_02,
+		</if>
+		<if test="attribute03 != null">
+			ATTRIBUTE_03,
+		</if>
+		<if test="attribute04 != null">
+			ATTRIBUTE_04,
+		</if>
+		<if test="attribute05 != null">
+			ATTRIBUTE_05,
+		</if>
+		<if test="attribute06 != null">
+			ATTRIBUTE_06,
+		</if>
+		<if test="attribute07 != null">
+			ATTRIBUTE_07,
+		</if>
+		<if test="attribute08 != null">
+			ATTRIBUTE_08,
+		</if>
+		<if test="attribute09 != null">
+			ATTRIBUTE_09,
+		</if>
+		<if test="attribute10 != null">
+			ATTRIBUTE_10,
+		</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			#{id,jdbcType = VARCHAR},
+		</if>
+		<if test="forYear != null">
+			#{forYear,jdbcType = VARCHAR},
+		</if>
+		<if test="topCode != null">
+			#{topCode,jdbcType = VARCHAR},
+		</if>
+		<if test="problemName != null">
+			#{problemName,jdbcType = VARCHAR},
+		</if>
+		<if test="deputyChiefUserId != null">
+			#{deputyChiefUserId,jdbcType = VARCHAR},
+		</if>
+		<if test="deputyChiefUserCode != null">
+			#{deputyChiefUserCode,jdbcType = VARCHAR},
+		</if>
+		<if test="deputyChiefUserName != null">
+			#{deputyChiefUserName,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleDeptId != null">
+			#{responsibleDeptId,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleDeptCode != null">
+			#{responsibleDeptCode,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleDeptName != null">
+			#{responsibleDeptName,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleStaffId != null">
+			#{responsibleStaffId,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleStaffCode != null">
+			#{responsibleStaffCode,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleStaffName != null">
+			#{responsibleStaffName,jdbcType = VARCHAR},
+		</if>
+		<if test="planCloseTime != null">
+			#{planCloseTime,jdbcType = TIMESTAMP},
+		</if>
+		<if test="userType != null">
+			#{userType,jdbcType = VARCHAR},
+		</if>
+		<if test="problemStage != null">
+			#{problemStage,jdbcType = VARCHAR},
+		</if>
+		<if test="problemLevel != null">
+			#{problemLevel,jdbcType = VARCHAR},
+		</if>
+		<if test="planCompletionRate != null">
+			#{planCompletionRate,jdbcType = VARCHAR},
+		</if>
+		<if test="weeklyFeedbackRate != null">
+			#{weeklyFeedbackRate,jdbcType = VARCHAR},
+		</if>
+		<if test="status != null">
+			#{status,jdbcType = VARCHAR},
+		</if>
+		<if test="closeTime != null">
+			#{closeTime,jdbcType = TIMESTAMP},
+		</if>
+		<if test="qualityProblemCode != null">
+			#{qualityProblemCode,jdbcType = VARCHAR},
+		</if>
+		<if test="problemDesc != null">
+			#{problemDesc,jdbcType = VARCHAR},
+		</if>
+		<if test="currentProgress != null">
+			#{currentProgress,jdbcType = VARCHAR},
+		</if>
+		<if test="weeklyFeedbackStartTime != null">
+			#{weeklyFeedbackStartTime,jdbcType = TIMESTAMP},
+		</if>
+		<if test="qualitySupervisorId != null">
+			#{qualitySupervisorId,jdbcType = VARCHAR},
+		</if>
+		<if test="qualitySupervisorCode != null">
+			#{qualitySupervisorCode,jdbcType = VARCHAR},
+		</if>
+		<if test="qualitySupervisorName != null">
+			#{qualitySupervisorName,jdbcType = VARCHAR},
+		</if>
+		<if test="model != null">
+			#{model,jdbcType = VARCHAR},
+		</if>
+		<if test="createdBy != null">
+			#{createdBy,jdbcType = VARCHAR},
+		</if>
+		<if test="createdDept != null">
+			#{createdDept,jdbcType = VARCHAR},
+		</if>
+		<if test="creationDate != null">
+			#{creationDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="lastUpdatedBy != null">
+			#{lastUpdatedBy,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateDate != null">
+			#{lastUpdateDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="lastUpdateIp != null">
+			#{lastUpdateIp,jdbcType = VARCHAR},
+		</if>
+		<if test="version != null">
+			#{version,jdbcType = DECIMAL},
+		</if>
+		<if test="orgIdentity != null">
+			#{orgIdentity,jdbcType = VARCHAR},
+		</if>
+		<if test="secretLevel != null">
+			#{secretLevel,jdbcType = VARCHAR},
+		</if>
+		<if test="ynDeleted != null">
+			#{ynDeleted,jdbcType = VARCHAR},
+		</if>
+		<if test="remark != null">
+			#{remark,jdbcType = VARCHAR},
+		</if>
+		<if test="orderBy != null">
+			#{orderBy,jdbcType = DECIMAL},
+		</if>
+		<if test="attribute01 != null">
+			#{attribute01,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute02 != null">
+			#{attribute02,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute03 != null">
+			#{attribute03,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute04 != null">
+			#{attribute04,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute05 != null">
+			#{attribute05,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute06 != null">
+			#{attribute06,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute07 != null">
+			#{attribute07,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute08 != null">
+			#{attribute08,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute09 != null">
+			#{attribute09,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute10 != null">
+			#{attribute10,jdbcType = VARCHAR},
+		</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 QMS_TOP10_PROBLEM -->
+<insert id="insertQmsTop10ProblemList" parameterType="java.util.List" >
+	insert into QMS_TOP10_PROBLEM(
+		ID ,
+		FOR_YEAR ,
+		TOP_CODE ,
+		PROBLEM_NAME ,
+		DEPUTY_CHIEF_USER_ID ,
+		DEPUTY_CHIEF_USER_CODE ,
+		DEPUTY_CHIEF_USER_NAME ,
+		RESPONSIBLE_DEPT_ID ,
+		RESPONSIBLE_DEPT_CODE ,
+		RESPONSIBLE_DEPT_NAME ,
+		RESPONSIBLE_STAFF_ID ,
+		RESPONSIBLE_STAFF_CODE ,
+		RESPONSIBLE_STAFF_NAME ,
+		PLAN_CLOSE_TIME ,
+		USER_TYPE ,
+		PROBLEM_STAGE ,
+		PROBLEM_LEVEL ,
+		PLAN_COMPLETION_RATE ,
+		WEEKLY_FEEDBACK_RATE ,
+		STATUS ,
+		CLOSE_TIME ,
+		QUALITY_PROBLEM_CODE ,
+		PROBLEM_DESC ,
+		CURRENT_PROGRESS ,
+		WEEKLY_FEEDBACK_START_TIME ,
+		QUALITY_SUPERVISOR_ID ,
+		QUALITY_SUPERVISOR_CODE ,
+		QUALITY_SUPERVISOR_NAME ,
+		MODEL ,
+		CREATED_BY ,
+		CREATED_DEPT ,
+		CREATION_DATE ,
+		LAST_UPDATED_BY ,
+		LAST_UPDATE_DATE ,
+		LAST_UPDATE_IP ,
+		VERSION ,
+		ORG_IDENTITY ,
+		SECRET_LEVEL ,
+		YN_DELETED ,
+		REMARK ,
+		ORDER_BY ,
+		ATTRIBUTE_01 ,
+		ATTRIBUTE_02 ,
+		ATTRIBUTE_03 ,
+		ATTRIBUTE_04 ,
+		ATTRIBUTE_05 ,
+		ATTRIBUTE_06 ,
+		ATTRIBUTE_07 ,
+		ATTRIBUTE_08 ,
+		ATTRIBUTE_09 ,
+		ATTRIBUTE_10 
+	)
+	<foreach collection="dtoList" item="item" index="index"  separator="union all" >
+		select
+			#{item.id,jdbcType = VARCHAR} ,
+			#{item.forYear,jdbcType = VARCHAR} ,
+			#{item.topCode,jdbcType = VARCHAR} ,
+			#{item.problemName,jdbcType = VARCHAR} ,
+			#{item.deputyChiefUserId,jdbcType = VARCHAR} ,
+			#{item.deputyChiefUserCode,jdbcType = VARCHAR} ,
+			#{item.deputyChiefUserName,jdbcType = VARCHAR} ,
+			#{item.responsibleDeptId,jdbcType = VARCHAR} ,
+			#{item.responsibleDeptCode,jdbcType = VARCHAR} ,
+			#{item.responsibleDeptName,jdbcType = VARCHAR} ,
+			#{item.responsibleStaffId,jdbcType = VARCHAR} ,
+			#{item.responsibleStaffCode,jdbcType = VARCHAR} ,
+			#{item.responsibleStaffName,jdbcType = VARCHAR} ,
+			#{item.planCloseTime,jdbcType = TIMESTAMP} ,
+			#{item.userType,jdbcType = VARCHAR} ,
+			#{item.problemStage,jdbcType = VARCHAR} ,
+			#{item.problemLevel,jdbcType = VARCHAR} ,
+			#{item.planCompletionRate,jdbcType = VARCHAR} ,
+			#{item.weeklyFeedbackRate,jdbcType = VARCHAR} ,
+			#{item.status,jdbcType = VARCHAR} ,
+			#{item.closeTime,jdbcType = TIMESTAMP} ,
+			#{item.qualityProblemCode,jdbcType = VARCHAR} ,
+			#{item.problemDesc,jdbcType = VARCHAR} ,
+			#{item.currentProgress,jdbcType = VARCHAR} ,
+			#{item.weeklyFeedbackStartTime,jdbcType = TIMESTAMP} ,
+			#{item.qualitySupervisorId,jdbcType = VARCHAR} ,
+			#{item.qualitySupervisorCode,jdbcType = VARCHAR} ,
+			#{item.qualitySupervisorName,jdbcType = VARCHAR} ,
+			#{item.model,jdbcType = VARCHAR} ,
+			#{item.createdBy,jdbcType = VARCHAR} ,
+			#{item.createdDept,jdbcType = VARCHAR} ,
+			#{item.creationDate,jdbcType = TIMESTAMP} ,
+			#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+			#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+			#{item.lastUpdateIp,jdbcType = VARCHAR} ,
+			#{item.version,jdbcType = DECIMAL} ,
+			#{item.orgIdentity,jdbcType = VARCHAR} ,
+			#{item.secretLevel,jdbcType = VARCHAR} ,
+			#{item.ynDeleted,jdbcType = VARCHAR} ,
+			#{item.remark,jdbcType = VARCHAR} ,
+			#{item.orderBy,jdbcType = DECIMAL} ,
+			#{item.attribute01,jdbcType = VARCHAR} ,
+			#{item.attribute02,jdbcType = VARCHAR} ,
+			#{item.attribute03,jdbcType = VARCHAR} ,
+			#{item.attribute04,jdbcType = VARCHAR} ,
+			#{item.attribute05,jdbcType = VARCHAR} ,
+			#{item.attribute06,jdbcType = VARCHAR} ,
+			#{item.attribute07,jdbcType = VARCHAR} ,
+			#{item.attribute08,jdbcType = VARCHAR} ,
+			#{item.attribute09,jdbcType = VARCHAR} ,
+			#{item.attribute10,jdbcType = VARCHAR} 
+		from dual
+	</foreach>
+</insert>
+<!-- 更新对象 QMS_TOP10_PROBLEM -->
+<update id="updateQmsTop10ProblemSensitive" parameterType="avicit.myportal.qms.qmstop10problem.dto.QmsTop10ProblemDTO">
+	update QMS_TOP10_PROBLEM
+	<set>
+		<if test="id != null">
+			ID = #{id,jdbcType = VARCHAR} ,
+		</if>
+		<if test="forYear != null">
+			FOR_YEAR = #{forYear,jdbcType = VARCHAR} ,
+		</if>
+		<if test="topCode != null">
+			TOP_CODE = #{topCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="problemName != null">
+			PROBLEM_NAME = #{problemName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="deputyChiefUserId != null">
+			DEPUTY_CHIEF_USER_ID = #{deputyChiefUserId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="deputyChiefUserCode != null">
+			DEPUTY_CHIEF_USER_CODE = #{deputyChiefUserCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="deputyChiefUserName != null">
+			DEPUTY_CHIEF_USER_NAME = #{deputyChiefUserName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleDeptId != null">
+			RESPONSIBLE_DEPT_ID = #{responsibleDeptId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleDeptCode != null">
+			RESPONSIBLE_DEPT_CODE = #{responsibleDeptCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleDeptName != null">
+			RESPONSIBLE_DEPT_NAME = #{responsibleDeptName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleStaffId != null">
+			RESPONSIBLE_STAFF_ID = #{responsibleStaffId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleStaffCode != null">
+			RESPONSIBLE_STAFF_CODE = #{responsibleStaffCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleStaffName != null">
+			RESPONSIBLE_STAFF_NAME = #{responsibleStaffName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="planCloseTime != null">
+			PLAN_CLOSE_TIME = #{planCloseTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="userType != null">
+			USER_TYPE = #{userType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="problemStage != null">
+			PROBLEM_STAGE = #{problemStage,jdbcType = VARCHAR} ,
+		</if>
+		<if test="problemLevel != null">
+			PROBLEM_LEVEL = #{problemLevel,jdbcType = VARCHAR} ,
+		</if>
+		<if test="planCompletionRate != null">
+			PLAN_COMPLETION_RATE = #{planCompletionRate,jdbcType = VARCHAR} ,
+		</if>
+		<if test="weeklyFeedbackRate != null">
+			WEEKLY_FEEDBACK_RATE = #{weeklyFeedbackRate,jdbcType = VARCHAR} ,
+		</if>
+		<if test="status != null">
+			STATUS = #{status,jdbcType = VARCHAR} ,
+		</if>
+		<if test="closeTime != null">
+			CLOSE_TIME = #{closeTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="qualityProblemCode != null">
+			QUALITY_PROBLEM_CODE = #{qualityProblemCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="problemDesc != null">
+			PROBLEM_DESC = #{problemDesc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="currentProgress != null">
+			CURRENT_PROGRESS = #{currentProgress,jdbcType = VARCHAR} ,
+		</if>
+		<if test="weeklyFeedbackStartTime != null">
+			WEEKLY_FEEDBACK_START_TIME = #{weeklyFeedbackStartTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="qualitySupervisorId != null">
+			QUALITY_SUPERVISOR_ID = #{qualitySupervisorId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="qualitySupervisorCode != null">
+			QUALITY_SUPERVISOR_CODE = #{qualitySupervisorCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="qualitySupervisorName != null">
+			QUALITY_SUPERVISOR_NAME = #{qualitySupervisorName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="model != null">
+			MODEL = #{model,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT = #{createdDept,jdbcType = VARCHAR} ,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		</if>
+		<if test="version != null">
+			VERSION = version+1 ,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+		</if>
+		<if test="secretLevel != null">
+			SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynDeleted != null">
+			YN_DELETED = #{ynDeleted,jdbcType = VARCHAR} ,
+		</if>
+		<if test="remark != null">
+			REMARK = #{remark,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orderBy != null">
+			ORDER_BY = #{orderBy,jdbcType = DECIMAL} ,
+		</if>
+		<if test="attribute01 != null">
+			ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute02 != null">
+			ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute03 != null">
+			ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute04 != null">
+			ATTRIBUTE_04 = #{attribute04,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute05 != null">
+			ATTRIBUTE_05 = #{attribute05,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute06 != null">
+			ATTRIBUTE_06 = #{attribute06,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute07 != null">
+			ATTRIBUTE_07 = #{attribute07,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute08 != null">
+			ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute09 != null">
+			ATTRIBUTE_09 = #{attribute09,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute10 != null">
+			ATTRIBUTE_10 = #{attribute10,jdbcType = VARCHAR} 
+		</if>
+	</set>
+	where id = #{id} 
+	and version = #{version}
+</update>
+<!-- 更新对象 QMS_TOP10_PROBLEM -->
+<update id="updateQmsTop10ProblemAll" parameterType="avicit.myportal.qms.qmstop10problem.dto.QmsTop10ProblemDTO">
+	update QMS_TOP10_PROBLEM
+	<trim prefix="set" suffixOverrides=",">
+		ID = #{id,jdbcType = VARCHAR} ,
+		FOR_YEAR = #{forYear,jdbcType = VARCHAR} ,
+		TOP_CODE = #{topCode,jdbcType = VARCHAR} ,
+		PROBLEM_NAME = #{problemName,jdbcType = VARCHAR} ,
+		DEPUTY_CHIEF_USER_ID = #{deputyChiefUserId,jdbcType = VARCHAR} ,
+		DEPUTY_CHIEF_USER_CODE = #{deputyChiefUserCode,jdbcType = VARCHAR} ,
+		DEPUTY_CHIEF_USER_NAME = #{deputyChiefUserName,jdbcType = VARCHAR} ,
+		RESPONSIBLE_DEPT_ID = #{responsibleDeptId,jdbcType = VARCHAR} ,
+		RESPONSIBLE_DEPT_CODE = #{responsibleDeptCode,jdbcType = VARCHAR} ,
+		RESPONSIBLE_DEPT_NAME = #{responsibleDeptName,jdbcType = VARCHAR} ,
+		RESPONSIBLE_STAFF_ID = #{responsibleStaffId,jdbcType = VARCHAR} ,
+		RESPONSIBLE_STAFF_CODE = #{responsibleStaffCode,jdbcType = VARCHAR} ,
+		RESPONSIBLE_STAFF_NAME = #{responsibleStaffName,jdbcType = VARCHAR} ,
+		PLAN_CLOSE_TIME = #{planCloseTime,jdbcType = TIMESTAMP} ,
+		USER_TYPE = #{userType,jdbcType = VARCHAR} ,
+		PROBLEM_STAGE = #{problemStage,jdbcType = VARCHAR} ,
+		PROBLEM_LEVEL = #{problemLevel,jdbcType = VARCHAR} ,
+		PLAN_COMPLETION_RATE = #{planCompletionRate,jdbcType = VARCHAR} ,
+		WEEKLY_FEEDBACK_RATE = #{weeklyFeedbackRate,jdbcType = VARCHAR} ,
+		STATUS = #{status,jdbcType = VARCHAR} ,
+		CLOSE_TIME = #{closeTime,jdbcType = TIMESTAMP} ,
+		QUALITY_PROBLEM_CODE = #{qualityProblemCode,jdbcType = VARCHAR} ,
+		PROBLEM_DESC = #{problemDesc,jdbcType = VARCHAR} ,
+		CURRENT_PROGRESS = #{currentProgress,jdbcType = VARCHAR} ,
+		WEEKLY_FEEDBACK_START_TIME = #{weeklyFeedbackStartTime,jdbcType = TIMESTAMP} ,
+		QUALITY_SUPERVISOR_ID = #{qualitySupervisorId,jdbcType = VARCHAR} ,
+		QUALITY_SUPERVISOR_CODE = #{qualitySupervisorCode,jdbcType = VARCHAR} ,
+		QUALITY_SUPERVISOR_NAME = #{qualitySupervisorName,jdbcType = VARCHAR} ,
+		MODEL = #{model,jdbcType = VARCHAR} ,
+		LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		VERSION = version+1 ,
+		SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+		YN_DELETED = #{ynDeleted,jdbcType = VARCHAR} ,
+		REMARK = #{remark,jdbcType = VARCHAR} ,
+		ORDER_BY = #{orderBy,jdbcType = DECIMAL} ,
+		ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
+		ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
+		ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
+		ATTRIBUTE_04 = #{attribute04,jdbcType = VARCHAR} ,
+		ATTRIBUTE_05 = #{attribute05,jdbcType = VARCHAR} ,
+		ATTRIBUTE_06 = #{attribute06,jdbcType = VARCHAR} ,
+		ATTRIBUTE_07 = #{attribute07,jdbcType = VARCHAR} ,
+		ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
+		ATTRIBUTE_09 = #{attribute09,jdbcType = VARCHAR} ,
+		ATTRIBUTE_10 = #{attribute10,jdbcType = VARCHAR} 
+	</trim>
+	where id = #{id}
+	and version = #{version}
+</update>
+<!-- 批量更新对象   QMS_TOP10_PROBLEM -->
+<update id="updateQmsTop10ProblemList" parameterType="java.util.List">
+	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">begin</if>
+	<foreach collection="dtoList" item="item" index="index"  separator="" close="">
+		update QMS_TOP10_PROBLEM
+		set
+			ID = #{item.id,jdbcType = VARCHAR} ,
+			FOR_YEAR = #{item.forYear,jdbcType = VARCHAR} ,
+			TOP_CODE = #{item.topCode,jdbcType = VARCHAR} ,
+			PROBLEM_NAME = #{item.problemName,jdbcType = VARCHAR} ,
+			DEPUTY_CHIEF_USER_ID = #{item.deputyChiefUserId,jdbcType = VARCHAR} ,
+			DEPUTY_CHIEF_USER_CODE = #{item.deputyChiefUserCode,jdbcType = VARCHAR} ,
+			DEPUTY_CHIEF_USER_NAME = #{item.deputyChiefUserName,jdbcType = VARCHAR} ,
+			RESPONSIBLE_DEPT_ID = #{item.responsibleDeptId,jdbcType = VARCHAR} ,
+			RESPONSIBLE_DEPT_CODE = #{item.responsibleDeptCode,jdbcType = VARCHAR} ,
+			RESPONSIBLE_DEPT_NAME = #{item.responsibleDeptName,jdbcType = VARCHAR} ,
+			RESPONSIBLE_STAFF_ID = #{item.responsibleStaffId,jdbcType = VARCHAR} ,
+			RESPONSIBLE_STAFF_CODE = #{item.responsibleStaffCode,jdbcType = VARCHAR} ,
+			RESPONSIBLE_STAFF_NAME = #{item.responsibleStaffName,jdbcType = VARCHAR} ,
+			PLAN_CLOSE_TIME = #{item.planCloseTime,jdbcType = TIMESTAMP} ,
+			USER_TYPE = #{item.userType,jdbcType = VARCHAR} ,
+			PROBLEM_STAGE = #{item.problemStage,jdbcType = VARCHAR} ,
+			PROBLEM_LEVEL = #{item.problemLevel,jdbcType = VARCHAR} ,
+			PLAN_COMPLETION_RATE = #{item.planCompletionRate,jdbcType = VARCHAR} ,
+			WEEKLY_FEEDBACK_RATE = #{item.weeklyFeedbackRate,jdbcType = VARCHAR} ,
+			STATUS = #{item.status,jdbcType = VARCHAR} ,
+			CLOSE_TIME = #{item.closeTime,jdbcType = TIMESTAMP} ,
+			QUALITY_PROBLEM_CODE = #{item.qualityProblemCode,jdbcType = VARCHAR} ,
+			PROBLEM_DESC = #{item.problemDesc,jdbcType = VARCHAR} ,
+			CURRENT_PROGRESS = #{item.currentProgress,jdbcType = VARCHAR} ,
+			WEEKLY_FEEDBACK_START_TIME = #{item.weeklyFeedbackStartTime,jdbcType = TIMESTAMP} ,
+			QUALITY_SUPERVISOR_ID = #{item.qualitySupervisorId,jdbcType = VARCHAR} ,
+			QUALITY_SUPERVISOR_CODE = #{item.qualitySupervisorCode,jdbcType = VARCHAR} ,
+			QUALITY_SUPERVISOR_NAME = #{item.qualitySupervisorName,jdbcType = VARCHAR} ,
+			MODEL = #{item.model,jdbcType = VARCHAR} ,
+			CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+			CREATED_DEPT = #{item.createdDept,jdbcType = VARCHAR} ,
+			CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+			LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+			LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+			LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+			VERSION = version+1  ,
+			ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} ,
+			SECRET_LEVEL = #{item.secretLevel,jdbcType = VARCHAR} ,
+			YN_DELETED = #{item.ynDeleted,jdbcType = VARCHAR} ,
+			REMARK = #{item.remark,jdbcType = VARCHAR} ,
+			ORDER_BY = #{item.orderBy,jdbcType = DECIMAL} ,
+			ATTRIBUTE_01 = #{item.attribute01,jdbcType = VARCHAR} ,
+			ATTRIBUTE_02 = #{item.attribute02,jdbcType = VARCHAR} ,
+			ATTRIBUTE_03 = #{item.attribute03,jdbcType = VARCHAR} ,
+			ATTRIBUTE_04 = #{item.attribute04,jdbcType = VARCHAR} ,
+			ATTRIBUTE_05 = #{item.attribute05,jdbcType = VARCHAR} ,
+			ATTRIBUTE_06 = #{item.attribute06,jdbcType = VARCHAR} ,
+			ATTRIBUTE_07 = #{item.attribute07,jdbcType = VARCHAR} ,
+			ATTRIBUTE_08 = #{item.attribute08,jdbcType = VARCHAR} ,
+			ATTRIBUTE_09 = #{item.attribute09,jdbcType = VARCHAR} ,
+			ATTRIBUTE_10 = #{item.attribute10,jdbcType = VARCHAR} 
+		where id = #{item.id}
+		and version = #{item.version};
+	</foreach>
+	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">end;</if>
+</update>
+<!-- 主键删除 QMS_TOP10_PROBLEM -->
+<delete id="deleteQmsTop10ProblemById" parameterType="java.lang.String">
+	delete from QMS_TOP10_PROBLEM  where id = #{id}
+</delete>
+</mapper>

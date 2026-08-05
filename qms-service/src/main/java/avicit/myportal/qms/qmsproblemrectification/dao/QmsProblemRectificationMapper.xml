@@ -1,0 +1,1305 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.myportal.qms.qmsproblemrectification.dao.QmsProblemRectificationDAO">
+<resultMap id="QmsProblemRectificationDTOMap" type="avicit.myportal.qms.qmsproblemrectification.dto.QmsProblemRectificationDTO">
+	<result property="id" column="ID" jdbcType="VARCHAR" />
+	<result property="checkProblemId" column="CHECK_PROBLEM_ID" jdbcType="VARCHAR" />
+	<result property="rectificationCode" column="RECTIFICATION_CODE" jdbcType="VARCHAR" />
+	<result property="forYear" column="FOR_YEAR" jdbcType="VARCHAR" />
+	<result property="correctionType" column="CORRECTION_TYPE" jdbcType="VARCHAR" />
+	<result property="correctionContent" column="CORRECTION_CONTENT" jdbcType="VARCHAR" />
+	<result property="causeAnalysis" column="CAUSE_ANALYSIS" jdbcType="VARCHAR" />
+	<result property="correctiveActionType" column="CORRECTIVE_ACTION_TYPE" jdbcType="VARCHAR" />
+	<result property="correctiveAction" column="CORRECTIVE_ACTION" jdbcType="VARCHAR" />
+	<result property="horizontalCheck" column="HORIZONTAL_CHECK" jdbcType="VARCHAR" />
+	<result property="rectificationResult" column="RECTIFICATION_RESULT" jdbcType="VARCHAR" />
+	<result property="status" column="STATUS" jdbcType="VARCHAR" />
+	<result property="processInstanceId" column="PROCESS_INSTANCE_ID" jdbcType="VARCHAR" />
+	<result property="processStatus" column="PROCESS_STATUS" jdbcType="VARCHAR" />
+	<result property="completeTime" column="COMPLETE_TIME" jdbcType="TIMESTAMP" />
+	<result property="submitTime" column="SUBMIT_TIME" jdbcType="TIMESTAMP" />
+	<result property="sourceType" column="SOURCE_TYPE" jdbcType="VARCHAR" />
+	<result property="sourceId" column="SOURCE_ID" jdbcType="VARCHAR" />
+	<result property="sourceCode" column="SOURCE_CODE" jdbcType="VARCHAR" />
+	<result property="sourceName" column="SOURCE_NAME" jdbcType="VARCHAR" />
+	<result property="problemDesc" column="PROBLEM_DESC" jdbcType="VARCHAR" />
+	<result property="problemCategory" column="PROBLEM_CATEGORY" jdbcType="VARCHAR" />
+	<result property="rectificationRequirement" column="RECTIFICATION_REQUIREMENT" jdbcType="VARCHAR" />
+	<result property="foundTime" column="FOUND_TIME" jdbcType="TIMESTAMP" />
+	<result property="rectificationDeptId" column="RECTIFICATION_DEPT_ID" jdbcType="VARCHAR" />
+	<result property="rectificationDeptCode" column="RECTIFICATION_DEPT_CODE" jdbcType="VARCHAR" />
+	<result property="rectificationDeptName" column="RECTIFICATION_DEPT_NAME" jdbcType="VARCHAR" />
+	<result property="responsibleStaffId" column="RESPONSIBLE_STAFF_ID" jdbcType="VARCHAR" />
+	<result property="responsibleStaffCode" column="RESPONSIBLE_STAFF_CODE" jdbcType="VARCHAR" />
+	<result property="responsibleStaffName" column="RESPONSIBLE_STAFF_NAME" jdbcType="VARCHAR" />
+	<result property="rectificationDeadline" column="RECTIFICATION_DEADLINE" jdbcType="TIMESTAMP" />
+	<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+	<result property="createdDept" column="CREATED_DEPT" jdbcType="VARCHAR" />
+	<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+	<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+	<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+	<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+	<result property="version" column="VERSION" jdbcType="DECIMAL" />
+	<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+	<result property="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR" />
+	<result property="ynDeleted" column="YN_DELETED" jdbcType="VARCHAR" />
+	<result property="remark" column="REMARK" jdbcType="VARCHAR" />
+	<result property="orderBy" column="ORDER_BY" jdbcType="DECIMAL" />
+	<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+	<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+	<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+	<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+	<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+	<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+	<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+	<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+	<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+	<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+</resultMap>
+<sql id="commonColums">
+	<trim suffixOverrides=",">
+		t1.ID,
+		t1.CHECK_PROBLEM_ID,
+		t1.RECTIFICATION_CODE,
+		t1.FOR_YEAR,
+		t1.CORRECTION_TYPE,
+		t1.CORRECTION_CONTENT,
+		t1.CAUSE_ANALYSIS,
+		t1.CORRECTIVE_ACTION_TYPE,
+		t1.CORRECTIVE_ACTION,
+		t1.HORIZONTAL_CHECK,
+		t1.RECTIFICATION_RESULT,
+		t1.STATUS,
+		t1.PROCESS_INSTANCE_ID,
+		t1.PROCESS_STATUS,
+		t1.COMPLETE_TIME,
+		t1.SUBMIT_TIME,
+		t1.SOURCE_TYPE,
+		t1.SOURCE_ID,
+		t1.SOURCE_CODE,
+		t1.SOURCE_NAME,
+		t1.PROBLEM_DESC,
+		t1.PROBLEM_CATEGORY,
+		t1.RECTIFICATION_REQUIREMENT,
+		t1.FOUND_TIME,
+		t1.RECTIFICATION_DEPT_ID,
+		t1.RECTIFICATION_DEPT_CODE,
+		t1.RECTIFICATION_DEPT_NAME,
+		t1.RESPONSIBLE_STAFF_ID,
+		t1.RESPONSIBLE_STAFF_CODE,
+		t1.RESPONSIBLE_STAFF_NAME,
+		t1.RECTIFICATION_DEADLINE,
+		t1.CREATED_BY,
+		t1.CREATED_DEPT,
+		t1.CREATION_DATE,
+		t1.LAST_UPDATED_BY,
+		t1.LAST_UPDATE_DATE,
+		t1.LAST_UPDATE_IP,
+		t1.VERSION,
+		t1.ORG_IDENTITY,
+		t1.SECRET_LEVEL,
+		t1.YN_DELETED,
+		t1.REMARK,
+		t1.ORDER_BY,
+		t1.ATTRIBUTE_01,
+		t1.ATTRIBUTE_02,
+		t1.ATTRIBUTE_03,
+		t1.ATTRIBUTE_04,
+		t1.ATTRIBUTE_05,
+		t1.ATTRIBUTE_06,
+		t1.ATTRIBUTE_07,
+		t1.ATTRIBUTE_08,
+		t1.ATTRIBUTE_09,
+		t1.ATTRIBUTE_10,
+	</trim>
+</sql>
+<!-- 默认查询条件 -->
+<sql id="defaultWhereAnd">
+	<if test="wordSecret != null and wordSecret.size()>0">
+		and t1.secret_level in
+		<foreach collection="wordSecret" item="item" index="key" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</if>
+</sql>
+<sql id="commonWhereAnd">
+	<if test="bean.id != null and bean.id != ''">
+		and t1.ID = #{bean.id}
+	</if>
+	<if test="bean.checkProblemId != null and bean.checkProblemId != ''">
+		and t1.CHECK_PROBLEM_ID = #{bean.checkProblemId}
+	</if>
+	<if test="bean.rectificationCode != null and bean.rectificationCode != ''">
+		and t1.RECTIFICATION_CODE like concat(concat('%',#{bean.rectificationCode}),'%')
+	</if>
+	<if test="bean.forYear != null and bean.forYear != ''">
+		and t1.FOR_YEAR like concat(concat('%',#{bean.forYear}),'%')
+	</if>
+	<if test="bean.correctionType != null and bean.correctionType != ''">
+		and t1.CORRECTION_TYPE like concat(concat('%',#{bean.correctionType}),'%')
+	</if>
+	<if test="bean.correctionContent != null and bean.correctionContent != ''">
+		and t1.CORRECTION_CONTENT like concat(concat('%',#{bean.correctionContent}),'%')
+	</if>
+	<if test="bean.causeAnalysis != null and bean.causeAnalysis != ''">
+		and t1.CAUSE_ANALYSIS like concat(concat('%',#{bean.causeAnalysis}),'%')
+	</if>
+	<if test="bean.correctiveActionType != null and bean.correctiveActionType != ''">
+		and t1.CORRECTIVE_ACTION_TYPE like concat(concat('%',#{bean.correctiveActionType}),'%')
+	</if>
+	<if test="bean.correctiveAction != null and bean.correctiveAction != ''">
+		and t1.CORRECTIVE_ACTION like concat(concat('%',#{bean.correctiveAction}),'%')
+	</if>
+	<if test="bean.horizontalCheck != null and bean.horizontalCheck != ''">
+		and t1.HORIZONTAL_CHECK like concat(concat('%',#{bean.horizontalCheck}),'%')
+	</if>
+	<if test="bean.rectificationResult != null and bean.rectificationResult != ''">
+		and t1.RECTIFICATION_RESULT like concat(concat('%',#{bean.rectificationResult}),'%')
+	</if>
+	<if test="bean.status != null and bean.status != ''">
+		and t1.STATUS like concat(concat('%',#{bean.status}),'%')
+	</if>
+	<if test="bean.processInstanceId != null and bean.processInstanceId != ''">
+		and t1.PROCESS_INSTANCE_ID like concat(concat('%',#{bean.processInstanceId}),'%')
+	</if>
+	<if test="bean.processStatus != null and bean.processStatus != ''">
+		and t1.PROCESS_STATUS like concat(concat('%',#{bean.processStatus}),'%')
+	</if>
+	<if test="bean.completeTimeBegin != null">
+		and t1.COMPLETE_TIME &gt;= #{bean.completeTimeBegin}
+	</if>
+	<if test="bean.completeTimeEnd != null">
+		and t1.COMPLETE_TIME &lt;= #{bean.completeTimeEnd}
+	</if>
+	<if test="bean.submitTimeBegin != null">
+		and t1.SUBMIT_TIME &gt;= #{bean.submitTimeBegin}
+	</if>
+	<if test="bean.submitTimeEnd != null">
+		and t1.SUBMIT_TIME &lt;= #{bean.submitTimeEnd}
+	</if>
+	<if test="bean.sourceType != null and bean.sourceType != ''">
+		and t1.SOURCE_TYPE like concat(concat('%',#{bean.sourceType}),'%')
+	</if>
+	<if test="bean.sourceId != null and bean.sourceId != ''">
+		and t1.SOURCE_ID like concat(concat('%',#{bean.sourceId}),'%')
+	</if>
+	<if test="bean.sourceCode != null and bean.sourceCode != ''">
+		and t1.SOURCE_CODE like concat(concat('%',#{bean.sourceCode}),'%')
+	</if>
+	<if test="bean.sourceName != null and bean.sourceName != ''">
+		and t1.SOURCE_NAME like concat(concat('%',#{bean.sourceName}),'%')
+	</if>
+	<if test="bean.problemDesc != null and bean.problemDesc != ''">
+		and t1.PROBLEM_DESC like concat(concat('%',#{bean.problemDesc}),'%')
+	</if>
+	<if test="bean.problemCategory != null and bean.problemCategory != ''">
+		and t1.PROBLEM_CATEGORY like concat(concat('%',#{bean.problemCategory}),'%')
+	</if>
+	<if test="bean.rectificationRequirement != null and bean.rectificationRequirement != ''">
+		and t1.RECTIFICATION_REQUIREMENT like concat(concat('%',#{bean.rectificationRequirement}),'%')
+	</if>
+	<if test="bean.foundTimeBegin != null">
+		and t1.FOUND_TIME &gt;= #{bean.foundTimeBegin}
+	</if>
+	<if test="bean.foundTimeEnd != null">
+		and t1.FOUND_TIME &lt;= #{bean.foundTimeEnd}
+	</if>
+	<if test="bean.rectificationDeptId != null and bean.rectificationDeptId != ''">
+		and t1.RECTIFICATION_DEPT_ID like concat(concat('%',#{bean.rectificationDeptId}),'%')
+	</if>
+	<if test="bean.rectificationDeptCode != null and bean.rectificationDeptCode != ''">
+		and t1.RECTIFICATION_DEPT_CODE like concat(concat('%',#{bean.rectificationDeptCode}),'%')
+	</if>
+	<if test="bean.rectificationDeptName != null and bean.rectificationDeptName != ''">
+		and t1.RECTIFICATION_DEPT_NAME like concat(concat('%',#{bean.rectificationDeptName}),'%')
+	</if>
+	<if test="bean.responsibleStaffId != null and bean.responsibleStaffId != ''">
+		and t1.RESPONSIBLE_STAFF_ID like concat(concat('%',#{bean.responsibleStaffId}),'%')
+	</if>
+	<if test="bean.responsibleStaffCode != null and bean.responsibleStaffCode != ''">
+		and t1.RESPONSIBLE_STAFF_CODE like concat(concat('%',#{bean.responsibleStaffCode}),'%')
+	</if>
+	<if test="bean.responsibleStaffName != null and bean.responsibleStaffName != ''">
+		and t1.RESPONSIBLE_STAFF_NAME like concat(concat('%',#{bean.responsibleStaffName}),'%')
+	</if>
+	<if test="bean.rectificationDeadlineBegin != null">
+		and t1.RECTIFICATION_DEADLINE &gt;= #{bean.rectificationDeadlineBegin}
+	</if>
+	<if test="bean.rectificationDeadlineEnd != null">
+		and t1.RECTIFICATION_DEADLINE &lt;= #{bean.rectificationDeadlineEnd}
+	</if>
+	<if test="bean.createdBy != null and bean.createdBy != ''">
+		and t1.CREATED_BY = #{bean.createdBy}
+	</if>
+	<if test="bean.createdDept != null and bean.createdDept != ''">
+		and t1.CREATED_DEPT = #{bean.createdDept}
+	</if>
+	<if test="bean.creationDateBegin != null">
+		and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+	</if>
+	<if test="bean.creationDateEnd != null">
+		and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+	</if>
+	<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+		and t1.LAST_UPDATED_BY = #{bean.lastUpdatedBy}
+	</if>
+	<if test="bean.lastUpdateDateBegin != null">
+		and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+	</if>
+	<if test="bean.lastUpdateDateEnd != null">
+		and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+	</if>
+	<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+		and t1.LAST_UPDATE_IP = #{bean.lastUpdateIp}
+	</if>
+	<if test="bean.version != null">
+		and t1.VERSION = #{bean.version}
+	</if>
+	<if test="bean.ynDeleted != null and bean.ynDeleted != ''">
+		and t1.YN_DELETED like concat(concat('%',#{bean.ynDeleted}),'%')
+	</if>
+	<if test="bean.remark != null and bean.remark != ''">
+		and t1.REMARK like concat(concat('%',#{bean.remark}),'%')
+	</if>
+	<if test="bean.orderBy != null">
+		and t1.ORDER_BY = #{bean.orderBy}
+	</if>
+	<if test="bean.attribute01 != null and bean.attribute01 != ''">
+		and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+	</if>
+	<if test="bean.attribute02 != null and bean.attribute02 != ''">
+		and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+	</if>
+	<if test="bean.attribute03 != null and bean.attribute03 != ''">
+		and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+	</if>
+	<if test="bean.attribute04 != null and bean.attribute04 != ''">
+		and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+	</if>
+	<if test="bean.attribute05 != null and bean.attribute05 != ''">
+		and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+	</if>
+	<if test="bean.attribute06 != null and bean.attribute06 != ''">
+		and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+	</if>
+	<if test="bean.attribute07 != null and bean.attribute07 != ''">
+		and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+	</if>
+	<if test="bean.attribute08 != null and bean.attribute08 != ''">
+		and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+	</if>
+	<if test="bean.attribute09 != null and bean.attribute09 != ''">
+		and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')
+	</if>
+	<if test="bean.attribute10 != null and bean.attribute10 != ''">
+		and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')
+	</if>
+</sql>
+<sql id="commonWhereOr">
+	<trim prefix="(" suffix=")" prefixOverrides="or">
+		<if test="bean.id != null and bean.id != ''">
+			or t1.ID = #{bean.id}
+		</if>
+		<if test="bean.rectificationCode != null and bean.rectificationCode != ''">
+			or t1.RECTIFICATION_CODE like concat(concat('%',#{bean.rectificationCode}),'%')
+		</if>
+		<if test="bean.forYear != null and bean.forYear != ''">
+			or t1.FOR_YEAR like concat(concat('%',#{bean.forYear}),'%')
+		</if>
+		<if test="bean.correctionType != null and bean.correctionType != ''">
+			or t1.CORRECTION_TYPE like concat(concat('%',#{bean.correctionType}),'%')
+		</if>
+		<if test="bean.correctionContent != null and bean.correctionContent != ''">
+			or t1.CORRECTION_CONTENT like concat(concat('%',#{bean.correctionContent}),'%')
+		</if>
+		<if test="bean.causeAnalysis != null and bean.causeAnalysis != ''">
+			or t1.CAUSE_ANALYSIS like concat(concat('%',#{bean.causeAnalysis}),'%')
+		</if>
+		<if test="bean.correctiveActionType != null and bean.correctiveActionType != ''">
+			or t1.CORRECTIVE_ACTION_TYPE like concat(concat('%',#{bean.correctiveActionType}),'%')
+		</if>
+		<if test="bean.correctiveAction != null and bean.correctiveAction != ''">
+			or t1.CORRECTIVE_ACTION like concat(concat('%',#{bean.correctiveAction}),'%')
+		</if>
+		<if test="bean.horizontalCheck != null and bean.horizontalCheck != ''">
+			or t1.HORIZONTAL_CHECK like concat(concat('%',#{bean.horizontalCheck}),'%')
+		</if>
+		<if test="bean.rectificationResult != null and bean.rectificationResult != ''">
+			or t1.RECTIFICATION_RESULT like concat(concat('%',#{bean.rectificationResult}),'%')
+		</if>
+		<if test="bean.status != null and bean.status != ''">
+			or t1.STATUS like concat(concat('%',#{bean.status}),'%')
+		</if>
+		<if test="bean.processInstanceId != null and bean.processInstanceId != ''">
+			or t1.PROCESS_INSTANCE_ID like concat(concat('%',#{bean.processInstanceId}),'%')
+		</if>
+		<if test="bean.processStatus != null and bean.processStatus != ''">
+			or t1.PROCESS_STATUS like concat(concat('%',#{bean.processStatus}),'%')
+		</if>
+		<if test="bean.completeTimeBegin != null">
+			or t1.COMPLETE_TIME &gt;= #{bean.completeTimeBegin}
+		</if>
+		<if test="bean.completeTimeEnd != null">
+			or t1.COMPLETE_TIME &lt;= #{bean.completeTimeEnd}
+		</if>
+		<if test="bean.submitTimeBegin != null">
+			or t1.SUBMIT_TIME &gt;= #{bean.submitTimeBegin}
+		</if>
+		<if test="bean.submitTimeEnd != null">
+			or t1.SUBMIT_TIME &lt;= #{bean.submitTimeEnd}
+		</if>
+		<if test="bean.sourceType != null and bean.sourceType != ''">
+			or t1.SOURCE_TYPE like concat(concat('%',#{bean.sourceType}),'%')
+		</if>
+		<if test="bean.sourceId != null and bean.sourceId != ''">
+			or t1.SOURCE_ID like concat(concat('%',#{bean.sourceId}),'%')
+		</if>
+		<if test="bean.sourceCode != null and bean.sourceCode != ''">
+			or t1.SOURCE_CODE like concat(concat('%',#{bean.sourceCode}),'%')
+		</if>
+		<if test="bean.sourceName != null and bean.sourceName != ''">
+			or t1.SOURCE_NAME like concat(concat('%',#{bean.sourceName}),'%')
+		</if>
+		<if test="bean.problemDesc != null and bean.problemDesc != ''">
+			or t1.PROBLEM_DESC like concat(concat('%',#{bean.problemDesc}),'%')
+		</if>
+		<if test="bean.problemCategory != null and bean.problemCategory != ''">
+			or t1.PROBLEM_CATEGORY like concat(concat('%',#{bean.problemCategory}),'%')
+		</if>
+		<if test="bean.rectificationRequirement != null and bean.rectificationRequirement != ''">
+			or t1.RECTIFICATION_REQUIREMENT like concat(concat('%',#{bean.rectificationRequirement}),'%')
+		</if>
+		<if test="bean.foundTimeBegin != null">
+			or t1.FOUND_TIME &gt;= #{bean.foundTimeBegin}
+		</if>
+		<if test="bean.foundTimeEnd != null">
+			or t1.FOUND_TIME &lt;= #{bean.foundTimeEnd}
+		</if>
+		<if test="bean.rectificationDeptId != null and bean.rectificationDeptId != ''">
+			or t1.RECTIFICATION_DEPT_ID like concat(concat('%',#{bean.rectificationDeptId}),'%')
+		</if>
+		<if test="bean.rectificationDeptCode != null and bean.rectificationDeptCode != ''">
+			or t1.RECTIFICATION_DEPT_CODE like concat(concat('%',#{bean.rectificationDeptCode}),'%')
+		</if>
+		<if test="bean.rectificationDeptName != null and bean.rectificationDeptName != ''">
+			or t1.RECTIFICATION_DEPT_NAME like concat(concat('%',#{bean.rectificationDeptName}),'%')
+		</if>
+		<if test="bean.responsibleStaffId != null and bean.responsibleStaffId != ''">
+			or t1.RESPONSIBLE_STAFF_ID like concat(concat('%',#{bean.responsibleStaffId}),'%')
+		</if>
+		<if test="bean.responsibleStaffCode != null and bean.responsibleStaffCode != ''">
+			or t1.RESPONSIBLE_STAFF_CODE like concat(concat('%',#{bean.responsibleStaffCode}),'%')
+		</if>
+		<if test="bean.responsibleStaffName != null and bean.responsibleStaffName != ''">
+			or t1.RESPONSIBLE_STAFF_NAME like concat(concat('%',#{bean.responsibleStaffName}),'%')
+		</if>
+		<if test="bean.rectificationDeadlineBegin != null">
+			or t1.RECTIFICATION_DEADLINE &gt;= #{bean.rectificationDeadlineBegin}
+		</if>
+		<if test="bean.rectificationDeadlineEnd != null">
+			or t1.RECTIFICATION_DEADLINE &lt;= #{bean.rectificationDeadlineEnd}
+		</if>
+		<if test="bean.createdBy != null and bean.createdBy != ''">
+			or t1.CREATED_BY = #{bean.createdBy}
+		</if>
+		<if test="bean.createdDept != null and bean.createdDept != ''">
+			or t1.CREATED_DEPT = #{bean.createdDept}
+		</if>
+		<if test="bean.creationDateBegin != null">
+			or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+		</if>
+		<if test="bean.creationDateEnd != null">
+			or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+		</if>
+		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+			or t1.LAST_UPDATED_BY = #{bean.lastUpdatedBy}
+		</if>
+		<if test="bean.lastUpdateDateBegin != null">
+			or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+		</if>
+		<if test="bean.lastUpdateDateEnd != null">
+			or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+		</if>
+		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+			or t1.LAST_UPDATE_IP = #{bean.lastUpdateIp}
+		</if>
+		<if test="bean.version != null">
+			or t1.VERSION = #{bean.version}
+		</if>
+		<if test="bean.secretLevel != null and bean.secretLevel != ''">
+			or t1.SECRET_LEVEL = #{bean.secretLevel}
+		</if>
+		<if test="bean.ynDeleted != null and bean.ynDeleted != ''">
+			or t1.YN_DELETED like concat(concat('%',#{bean.ynDeleted}),'%')
+		</if>
+		<if test="bean.remark != null and bean.remark != ''">
+			or t1.REMARK like concat(concat('%',#{bean.remark}),'%')
+		</if>
+		<if test="bean.orderBy != null">
+			or t1.ORDER_BY = #{bean.orderBy}
+		</if>
+		<if test="bean.attribute01 != null and bean.attribute01 != ''">
+			or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+		</if>
+		<if test="bean.attribute02 != null and bean.attribute02 != ''">
+			or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+		</if>
+		<if test="bean.attribute03 != null and bean.attribute03 != ''">
+			or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+		</if>
+		<if test="bean.attribute04 != null and bean.attribute04 != ''">
+			or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+		</if>
+		<if test="bean.attribute05 != null and bean.attribute05 != ''">
+			or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+		</if>
+		<if test="bean.attribute06 != null and bean.attribute06 != ''">
+			or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+		</if>
+		<if test="bean.attribute07 != null and bean.attribute07 != ''">
+			or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+		</if>
+		<if test="bean.attribute08 != null and bean.attribute08 != ''">
+			or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+		</if>
+		<if test="bean.attribute09 != null and bean.attribute09 != ''">
+			or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')
+		</if>
+		<if test="bean.attribute10 != null and bean.attribute10 != ''">
+			or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')
+		</if>
+	</trim>
+</sql>
+<sql id="commonOrderBy">
+	<choose>
+		<when test="orderBy != null and orderBy != ''">
+			order by ${orderBy}
+		</when>
+		<otherwise>
+			order by t1.creation_date desc
+		</otherwise>
+	</choose>
+</sql>
+
+<!-- 分页查询 QMS_PROBLEM_RECTIFICATION -->
+<select id="searchQmsProblemRectificationByPage" parameterType="java.util.Map" resultMap="QmsProblemRectificationDTOMap">
+	select
+	<include refid="commonColums"/>
+	<choose>
+		<when test="keyWords != null and keyWords != '' ">
+			from (select * from QMS_PROBLEM_RECTIFICATION t where t.CHECK_PROBLEM_ID=#{bean.checkProblemId}) t1
+		</when>
+		<otherwise>
+			from QMS_PROBLEM_RECTIFICATION t1
+		</otherwise>
+	</choose>
+	<where>
+		<if test="bean != null">
+			<choose>
+				<when test="keyWords != null and keyWords != '' ">
+					<include refid="commonWhereOr"/>
+				</when>
+				<otherwise>
+				    <include refid="commonWhereAnd"/>
+				</otherwise>
+			</choose>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+	<include refid="commonOrderBy"></include>
+</select>
+<!-- 查询列表 QMS_PROBLEM_RECTIFICATION -->
+<select id="searchQmsProblemRectification" parameterType="java.util.Map" resultMap="QmsProblemRectificationDTOMap">
+	select
+	<include refid="commonColums"/>
+	<choose>
+		<when test="keyWords != null and keyWords != '' ">
+			from (select * from QMS_PROBLEM_RECTIFICATION t where t.CHECK_PROBLEM_ID=#{bean.checkProblemId}) t1
+		</when>
+		<otherwise>
+			from QMS_PROBLEM_RECTIFICATION t1
+		</otherwise>
+	</choose>
+	<where>
+		<if test="bean != null">
+			<include refid="commonWhereAnd"/>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+	<include refid="commonOrderBy"></include>
+</select>
+<!-- 按条件导出查询列表 QMS_PROBLEM_RECTIFICATION -->
+<select id="searchQmsProblemRectificationForExportExcel" parameterType="java.util.Map" resultMap="QmsProblemRectificationDTOMap">
+	select
+	<include refid="commonColums"/>
+	<choose>
+		<when test="keyWords != null and keyWords != '' ">
+			from (select * from QMS_PROBLEM_RECTIFICATION t where t.CHECK_PROBLEM_ID=#{bean.checkProblemId}) t1
+		</when>
+		<otherwise>
+			from QMS_PROBLEM_RECTIFICATION t1
+		</otherwise>
+	</choose>
+	<where>
+		<if test="bean != null">
+			<choose>
+				<when test="keyWords != null and keyWords != ''">
+					<include refid="commonWhereOr"/>
+				</when>
+				<otherwise>
+					<include refid="commonWhereAnd"/>
+				</otherwise>
+			</choose>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+	<include refid="commonOrderBy"/>
+</select>
+<!-- 主键查询对象 QMS_PROBLEM_RECTIFICATION -->
+<select id="findQmsProblemRectificationById" parameterType="java.util.Map" resultMap="QmsProblemRectificationDTOMap">
+	select
+	<include refid="commonColums"/>
+	from QMS_PROBLEM_RECTIFICATION t1
+	where t1.id = #{id}
+</select>
+<!-- 根据pid查询对象 QMS_PROBLEM_RECTIFICATION -->
+<select id="findQmsProblemRectificationByPid" parameterType="java.util.Map" resultMap="QmsProblemRectificationDTOMap">
+	select
+	<include refid="commonColums"></include>
+	from QMS_PROBLEM_RECTIFICATION 	t1
+	where t1.CHECK_PROBLEM_ID = #{pid}
+</select>
+<!-- 新增对象 QMS_PROBLEM_RECTIFICATION -->
+<insert id="insertQmsProblemRectification" parameterType="avicit.myportal.qms.qmsproblemrectification.dto.QmsProblemRectificationDTO">
+	insert into QMS_PROBLEM_RECTIFICATION
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			ID,
+		</if>
+		<if test="checkProblemId != null">
+			CHECK_PROBLEM_ID,
+		</if>
+		<if test="rectificationCode != null">
+			RECTIFICATION_CODE,
+		</if>
+		<if test="forYear != null">
+			FOR_YEAR,
+		</if>
+		<if test="correctionType != null">
+			CORRECTION_TYPE,
+		</if>
+		<if test="correctionContent != null">
+			CORRECTION_CONTENT,
+		</if>
+		<if test="causeAnalysis != null">
+			CAUSE_ANALYSIS,
+		</if>
+		<if test="correctiveActionType != null">
+			CORRECTIVE_ACTION_TYPE,
+		</if>
+		<if test="correctiveAction != null">
+			CORRECTIVE_ACTION,
+		</if>
+		<if test="horizontalCheck != null">
+			HORIZONTAL_CHECK,
+		</if>
+		<if test="rectificationResult != null">
+			RECTIFICATION_RESULT,
+		</if>
+		<if test="status != null">
+			STATUS,
+		</if>
+		<if test="processInstanceId != null">
+			PROCESS_INSTANCE_ID,
+		</if>
+		<if test="processStatus != null">
+			PROCESS_STATUS,
+		</if>
+		<if test="completeTime != null">
+			COMPLETE_TIME,
+		</if>
+		<if test="submitTime != null">
+			SUBMIT_TIME,
+		</if>
+		<if test="sourceType != null">
+			SOURCE_TYPE,
+		</if>
+		<if test="sourceId != null">
+			SOURCE_ID,
+		</if>
+		<if test="sourceCode != null">
+			SOURCE_CODE,
+		</if>
+		<if test="sourceName != null">
+			SOURCE_NAME,
+		</if>
+		<if test="problemDesc != null">
+			PROBLEM_DESC,
+		</if>
+		<if test="problemCategory != null">
+			PROBLEM_CATEGORY,
+		</if>
+		<if test="rectificationRequirement != null">
+			RECTIFICATION_REQUIREMENT,
+		</if>
+		<if test="foundTime != null">
+			FOUND_TIME,
+		</if>
+		<if test="rectificationDeptId != null">
+			RECTIFICATION_DEPT_ID,
+		</if>
+		<if test="rectificationDeptCode != null">
+			RECTIFICATION_DEPT_CODE,
+		</if>
+		<if test="rectificationDeptName != null">
+			RECTIFICATION_DEPT_NAME,
+		</if>
+		<if test="responsibleStaffId != null">
+			RESPONSIBLE_STAFF_ID,
+		</if>
+		<if test="responsibleStaffCode != null">
+			RESPONSIBLE_STAFF_CODE,
+		</if>
+		<if test="responsibleStaffName != null">
+			RESPONSIBLE_STAFF_NAME,
+		</if>
+		<if test="rectificationDeadline != null">
+			RECTIFICATION_DEADLINE,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP,
+		</if>
+		<if test="version != null">
+			VERSION,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY,
+		</if>
+		<if test="secretLevel != null">
+			SECRET_LEVEL,
+		</if>
+		<if test="ynDeleted != null">
+			YN_DELETED,
+		</if>
+		<if test="remark != null">
+			REMARK,
+		</if>
+		<if test="orderBy != null">
+			ORDER_BY,
+		</if>
+		<if test="attribute01 != null">
+			ATTRIBUTE_01,
+		</if>
+		<if test="attribute02 != null">
+			ATTRIBUTE_02,
+		</if>
+		<if test="attribute03 != null">
+			ATTRIBUTE_03,
+		</if>
+		<if test="attribute04 != null">
+			ATTRIBUTE_04,
+		</if>
+		<if test="attribute05 != null">
+			ATTRIBUTE_05,
+		</if>
+		<if test="attribute06 != null">
+			ATTRIBUTE_06,
+		</if>
+		<if test="attribute07 != null">
+			ATTRIBUTE_07,
+		</if>
+		<if test="attribute08 != null">
+			ATTRIBUTE_08,
+		</if>
+		<if test="attribute09 != null">
+			ATTRIBUTE_09,
+		</if>
+		<if test="attribute10 != null">
+			ATTRIBUTE_10,
+		</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			#{id,jdbcType = VARCHAR},
+		</if>
+		<if test="checkProblemId != null">
+			#{checkProblemId,jdbcType = VARCHAR},
+		</if>
+		<if test="rectificationCode != null">
+			#{rectificationCode,jdbcType = VARCHAR},
+		</if>
+		<if test="forYear != null">
+			#{forYear,jdbcType = VARCHAR},
+		</if>
+		<if test="correctionType != null">
+			#{correctionType,jdbcType = VARCHAR},
+		</if>
+		<if test="correctionContent != null">
+			#{correctionContent,jdbcType = VARCHAR},
+		</if>
+		<if test="causeAnalysis != null">
+			#{causeAnalysis,jdbcType = VARCHAR},
+		</if>
+		<if test="correctiveActionType != null">
+			#{correctiveActionType,jdbcType = VARCHAR},
+		</if>
+		<if test="correctiveAction != null">
+			#{correctiveAction,jdbcType = VARCHAR},
+		</if>
+		<if test="horizontalCheck != null">
+			#{horizontalCheck,jdbcType = VARCHAR},
+		</if>
+		<if test="rectificationResult != null">
+			#{rectificationResult,jdbcType = VARCHAR},
+		</if>
+		<if test="status != null">
+			#{status,jdbcType = VARCHAR},
+		</if>
+		<if test="processInstanceId != null">
+			#{processInstanceId,jdbcType = VARCHAR},
+		</if>
+		<if test="processStatus != null">
+			#{processStatus,jdbcType = VARCHAR},
+		</if>
+		<if test="completeTime != null">
+			#{completeTime,jdbcType = TIMESTAMP},
+		</if>
+		<if test="submitTime != null">
+			#{submitTime,jdbcType = TIMESTAMP},
+		</if>
+		<if test="sourceType != null">
+			#{sourceType,jdbcType = VARCHAR},
+		</if>
+		<if test="sourceId != null">
+			#{sourceId,jdbcType = VARCHAR},
+		</if>
+		<if test="sourceCode != null">
+			#{sourceCode,jdbcType = VARCHAR},
+		</if>
+		<if test="sourceName != null">
+			#{sourceName,jdbcType = VARCHAR},
+		</if>
+		<if test="problemDesc != null">
+			#{problemDesc,jdbcType = VARCHAR},
+		</if>
+		<if test="problemCategory != null">
+			#{problemCategory,jdbcType = VARCHAR},
+		</if>
+		<if test="rectificationRequirement != null">
+			#{rectificationRequirement,jdbcType = VARCHAR},
+		</if>
+		<if test="foundTime != null">
+			#{foundTime,jdbcType = TIMESTAMP},
+		</if>
+		<if test="rectificationDeptId != null">
+			#{rectificationDeptId,jdbcType = VARCHAR},
+		</if>
+		<if test="rectificationDeptCode != null">
+			#{rectificationDeptCode,jdbcType = VARCHAR},
+		</if>
+		<if test="rectificationDeptName != null">
+			#{rectificationDeptName,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleStaffId != null">
+			#{responsibleStaffId,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleStaffCode != null">
+			#{responsibleStaffCode,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleStaffName != null">
+			#{responsibleStaffName,jdbcType = VARCHAR},
+		</if>
+		<if test="rectificationDeadline != null">
+			#{rectificationDeadline,jdbcType = TIMESTAMP},
+		</if>
+		<if test="createdBy != null">
+			#{createdBy,jdbcType = VARCHAR},
+		</if>
+		<if test="createdDept != null">
+			#{createdDept,jdbcType = VARCHAR},
+		</if>
+		<if test="creationDate != null">
+			#{creationDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="lastUpdatedBy != null">
+			#{lastUpdatedBy,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateDate != null">
+			#{lastUpdateDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="lastUpdateIp != null">
+			#{lastUpdateIp,jdbcType = VARCHAR},
+		</if>
+		<if test="version != null">
+			#{version,jdbcType = DECIMAL},
+		</if>
+		<if test="orgIdentity != null">
+			#{orgIdentity,jdbcType = VARCHAR},
+		</if>
+		<if test="secretLevel != null">
+			#{secretLevel,jdbcType = VARCHAR},
+		</if>
+		<if test="ynDeleted != null">
+			#{ynDeleted,jdbcType = VARCHAR},
+		</if>
+		<if test="remark != null">
+			#{remark,jdbcType = VARCHAR},
+		</if>
+		<if test="orderBy != null">
+			#{orderBy,jdbcType = DECIMAL},
+		</if>
+		<if test="attribute01 != null">
+			#{attribute01,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute02 != null">
+			#{attribute02,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute03 != null">
+			#{attribute03,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute04 != null">
+			#{attribute04,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute05 != null">
+			#{attribute05,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute06 != null">
+			#{attribute06,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute07 != null">
+			#{attribute07,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute08 != null">
+			#{attribute08,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute09 != null">
+			#{attribute09,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute10 != null">
+			#{attribute10,jdbcType = VARCHAR},
+		</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 QMS_PROBLEM_RECTIFICATION -->
+<insert id="insertQmsProblemRectificationList" parameterType="java.util.List" >
+	insert into QMS_PROBLEM_RECTIFICATION(
+		ID ,
+		CHECK_PROBLEM_ID ,
+		RECTIFICATION_CODE ,
+		FOR_YEAR ,
+		CORRECTION_TYPE ,
+		CORRECTION_CONTENT ,
+		CAUSE_ANALYSIS ,
+		CORRECTIVE_ACTION_TYPE ,
+		CORRECTIVE_ACTION ,
+		HORIZONTAL_CHECK ,
+		RECTIFICATION_RESULT ,
+		STATUS ,
+		PROCESS_INSTANCE_ID ,
+		PROCESS_STATUS ,
+		COMPLETE_TIME ,
+		SUBMIT_TIME ,
+		SOURCE_TYPE ,
+		SOURCE_ID ,
+		SOURCE_CODE ,
+		SOURCE_NAME ,
+		PROBLEM_DESC ,
+		PROBLEM_CATEGORY ,
+		RECTIFICATION_REQUIREMENT ,
+		FOUND_TIME ,
+		RECTIFICATION_DEPT_ID ,
+		RECTIFICATION_DEPT_CODE ,
+		RECTIFICATION_DEPT_NAME ,
+		RESPONSIBLE_STAFF_ID ,
+		RESPONSIBLE_STAFF_CODE ,
+		RESPONSIBLE_STAFF_NAME ,
+		RECTIFICATION_DEADLINE ,
+		CREATED_BY ,
+		CREATED_DEPT ,
+		CREATION_DATE ,
+		LAST_UPDATED_BY ,
+		LAST_UPDATE_DATE ,
+		LAST_UPDATE_IP ,
+		VERSION ,
+		ORG_IDENTITY ,
+		SECRET_LEVEL ,
+		YN_DELETED ,
+		REMARK ,
+		ORDER_BY ,
+		ATTRIBUTE_01 ,
+		ATTRIBUTE_02 ,
+		ATTRIBUTE_03 ,
+		ATTRIBUTE_04 ,
+		ATTRIBUTE_05 ,
+		ATTRIBUTE_06 ,
+		ATTRIBUTE_07 ,
+		ATTRIBUTE_08 ,
+		ATTRIBUTE_09 ,
+		ATTRIBUTE_10 
+	)
+	<foreach collection="dtoList" item="item" index="index"  separator="union all" >
+		select
+			#{item.id,jdbcType = VARCHAR} ,
+			#{item.checkProblemId,jdbcType = VARCHAR} ,
+			#{item.rectificationCode,jdbcType = VARCHAR} ,
+			#{item.forYear,jdbcType = VARCHAR} ,
+			#{item.correctionType,jdbcType = VARCHAR} ,
+			#{item.correctionContent,jdbcType = VARCHAR} ,
+			#{item.causeAnalysis,jdbcType = VARCHAR} ,
+			#{item.correctiveActionType,jdbcType = VARCHAR} ,
+			#{item.correctiveAction,jdbcType = VARCHAR} ,
+			#{item.horizontalCheck,jdbcType = VARCHAR} ,
+			#{item.rectificationResult,jdbcType = VARCHAR} ,
+			#{item.status,jdbcType = VARCHAR} ,
+			#{item.processInstanceId,jdbcType = VARCHAR} ,
+			#{item.processStatus,jdbcType = VARCHAR} ,
+			#{item.completeTime,jdbcType = TIMESTAMP} ,
+			#{item.submitTime,jdbcType = TIMESTAMP} ,
+			#{item.sourceType,jdbcType = VARCHAR} ,
+			#{item.sourceId,jdbcType = VARCHAR} ,
+			#{item.sourceCode,jdbcType = VARCHAR} ,
+			#{item.sourceName,jdbcType = VARCHAR} ,
+			#{item.problemDesc,jdbcType = VARCHAR} ,
+			#{item.problemCategory,jdbcType = VARCHAR} ,
+			#{item.rectificationRequirement,jdbcType = VARCHAR} ,
+			#{item.foundTime,jdbcType = TIMESTAMP} ,
+			#{item.rectificationDeptId,jdbcType = VARCHAR} ,
+			#{item.rectificationDeptCode,jdbcType = VARCHAR} ,
+			#{item.rectificationDeptName,jdbcType = VARCHAR} ,
+			#{item.responsibleStaffId,jdbcType = VARCHAR} ,
+			#{item.responsibleStaffCode,jdbcType = VARCHAR} ,
+			#{item.responsibleStaffName,jdbcType = VARCHAR} ,
+			#{item.rectificationDeadline,jdbcType = TIMESTAMP} ,
+			#{item.createdBy,jdbcType = VARCHAR} ,
+			#{item.createdDept,jdbcType = VARCHAR} ,
+			#{item.creationDate,jdbcType = TIMESTAMP} ,
+			#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+			#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+			#{item.lastUpdateIp,jdbcType = VARCHAR} ,
+			#{item.version,jdbcType = DECIMAL} ,
+			#{item.orgIdentity,jdbcType = VARCHAR} ,
+			#{item.secretLevel,jdbcType = VARCHAR} ,
+			#{item.ynDeleted,jdbcType = VARCHAR} ,
+			#{item.remark,jdbcType = VARCHAR} ,
+			#{item.orderBy,jdbcType = DECIMAL} ,
+			#{item.attribute01,jdbcType = VARCHAR} ,
+			#{item.attribute02,jdbcType = VARCHAR} ,
+			#{item.attribute03,jdbcType = VARCHAR} ,
+			#{item.attribute04,jdbcType = VARCHAR} ,
+			#{item.attribute05,jdbcType = VARCHAR} ,
+			#{item.attribute06,jdbcType = VARCHAR} ,
+			#{item.attribute07,jdbcType = VARCHAR} ,
+			#{item.attribute08,jdbcType = VARCHAR} ,
+			#{item.attribute09,jdbcType = VARCHAR} ,
+			#{item.attribute10,jdbcType = VARCHAR} 
+		from dual
+	</foreach>
+</insert>
+<!-- 更新对象 QMS_PROBLEM_RECTIFICATION -->
+<update id="updateQmsProblemRectificationSensitive" parameterType="avicit.myportal.qms.qmsproblemrectification.dto.QmsProblemRectificationDTO">
+	update QMS_PROBLEM_RECTIFICATION
+	<set>
+		<if test="id != null">
+			ID = #{id,jdbcType = VARCHAR} ,
+		</if>
+		<if test="checkProblemId != null">
+			CHECK_PROBLEM_ID = #{checkProblemId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="rectificationCode != null">
+			RECTIFICATION_CODE = #{rectificationCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="forYear != null">
+			FOR_YEAR = #{forYear,jdbcType = VARCHAR} ,
+		</if>
+		<if test="correctionType != null">
+			CORRECTION_TYPE = #{correctionType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="correctionContent != null">
+			CORRECTION_CONTENT = #{correctionContent,jdbcType = VARCHAR} ,
+		</if>
+		<if test="causeAnalysis != null">
+			CAUSE_ANALYSIS = #{causeAnalysis,jdbcType = VARCHAR} ,
+		</if>
+		<if test="correctiveActionType != null">
+			CORRECTIVE_ACTION_TYPE = #{correctiveActionType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="correctiveAction != null">
+			CORRECTIVE_ACTION = #{correctiveAction,jdbcType = VARCHAR} ,
+		</if>
+		<if test="horizontalCheck != null">
+			HORIZONTAL_CHECK = #{horizontalCheck,jdbcType = VARCHAR} ,
+		</if>
+		<if test="rectificationResult != null">
+			RECTIFICATION_RESULT = #{rectificationResult,jdbcType = VARCHAR} ,
+		</if>
+		<if test="status != null">
+			STATUS = #{status,jdbcType = VARCHAR} ,
+		</if>
+		<if test="processInstanceId != null">
+			PROCESS_INSTANCE_ID = #{processInstanceId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="processStatus != null">
+			PROCESS_STATUS = #{processStatus,jdbcType = VARCHAR} ,
+		</if>
+		<if test="completeTime != null">
+			COMPLETE_TIME = #{completeTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="submitTime != null">
+			SUBMIT_TIME = #{submitTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="sourceType != null">
+			SOURCE_TYPE = #{sourceType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="sourceId != null">
+			SOURCE_ID = #{sourceId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="sourceCode != null">
+			SOURCE_CODE = #{sourceCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="sourceName != null">
+			SOURCE_NAME = #{sourceName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="problemDesc != null">
+			PROBLEM_DESC = #{problemDesc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="problemCategory != null">
+			PROBLEM_CATEGORY = #{problemCategory,jdbcType = VARCHAR} ,
+		</if>
+		<if test="rectificationRequirement != null">
+			RECTIFICATION_REQUIREMENT = #{rectificationRequirement,jdbcType = VARCHAR} ,
+		</if>
+		<if test="foundTime != null">
+			FOUND_TIME = #{foundTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="rectificationDeptId != null">
+			RECTIFICATION_DEPT_ID = #{rectificationDeptId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="rectificationDeptCode != null">
+			RECTIFICATION_DEPT_CODE = #{rectificationDeptCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="rectificationDeptName != null">
+			RECTIFICATION_DEPT_NAME = #{rectificationDeptName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleStaffId != null">
+			RESPONSIBLE_STAFF_ID = #{responsibleStaffId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleStaffCode != null">
+			RESPONSIBLE_STAFF_CODE = #{responsibleStaffCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleStaffName != null">
+			RESPONSIBLE_STAFF_NAME = #{responsibleStaffName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="rectificationDeadline != null">
+			RECTIFICATION_DEADLINE = #{rectificationDeadline,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT = #{createdDept,jdbcType = VARCHAR} ,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		</if>
+		<if test="version != null">
+			VERSION = version+1 ,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+		</if>
+		<if test="secretLevel != null">
+			SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynDeleted != null">
+			YN_DELETED = #{ynDeleted,jdbcType = VARCHAR} ,
+		</if>
+		<if test="remark != null">
+			REMARK = #{remark,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orderBy != null">
+			ORDER_BY = #{orderBy,jdbcType = DECIMAL} ,
+		</if>
+		<if test="attribute01 != null">
+			ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute02 != null">
+			ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute03 != null">
+			ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute04 != null">
+			ATTRIBUTE_04 = #{attribute04,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute05 != null">
+			ATTRIBUTE_05 = #{attribute05,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute06 != null">
+			ATTRIBUTE_06 = #{attribute06,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute07 != null">
+			ATTRIBUTE_07 = #{attribute07,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute08 != null">
+			ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute09 != null">
+			ATTRIBUTE_09 = #{attribute09,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute10 != null">
+			ATTRIBUTE_10 = #{attribute10,jdbcType = VARCHAR} 
+		</if>
+	</set>
+	where id = #{id} 
+	and version = #{version}
+</update>
+<!-- 更新对象 QMS_PROBLEM_RECTIFICATION -->
+<update id="updateQmsProblemRectificationAll" parameterType="avicit.myportal.qms.qmsproblemrectification.dto.QmsProblemRectificationDTO">
+	update QMS_PROBLEM_RECTIFICATION
+	<trim prefix="set" suffixOverrides=",">
+		ID = #{id,jdbcType = VARCHAR} ,
+		RECTIFICATION_CODE = #{rectificationCode,jdbcType = VARCHAR} ,
+		FOR_YEAR = #{forYear,jdbcType = VARCHAR} ,
+		CORRECTION_TYPE = #{correctionType,jdbcType = VARCHAR} ,
+		CORRECTION_CONTENT = #{correctionContent,jdbcType = VARCHAR} ,
+		CAUSE_ANALYSIS = #{causeAnalysis,jdbcType = VARCHAR} ,
+		CORRECTIVE_ACTION_TYPE = #{correctiveActionType,jdbcType = VARCHAR} ,
+		CORRECTIVE_ACTION = #{correctiveAction,jdbcType = VARCHAR} ,
+		HORIZONTAL_CHECK = #{horizontalCheck,jdbcType = VARCHAR} ,
+		RECTIFICATION_RESULT = #{rectificationResult,jdbcType = VARCHAR} ,
+		STATUS = #{status,jdbcType = VARCHAR} ,
+		PROCESS_INSTANCE_ID = #{processInstanceId,jdbcType = VARCHAR} ,
+		PROCESS_STATUS = #{processStatus,jdbcType = VARCHAR} ,
+		COMPLETE_TIME = #{completeTime,jdbcType = TIMESTAMP} ,
+		SUBMIT_TIME = #{submitTime,jdbcType = TIMESTAMP} ,
+		SOURCE_TYPE = #{sourceType,jdbcType = VARCHAR} ,
+		SOURCE_ID = #{sourceId,jdbcType = VARCHAR} ,
+		SOURCE_CODE = #{sourceCode,jdbcType = VARCHAR} ,
+		SOURCE_NAME = #{sourceName,jdbcType = VARCHAR} ,
+		PROBLEM_DESC = #{problemDesc,jdbcType = VARCHAR} ,
+		PROBLEM_CATEGORY = #{problemCategory,jdbcType = VARCHAR} ,
+		RECTIFICATION_REQUIREMENT = #{rectificationRequirement,jdbcType = VARCHAR} ,
+		FOUND_TIME = #{foundTime,jdbcType = TIMESTAMP} ,
+		RECTIFICATION_DEPT_ID = #{rectificationDeptId,jdbcType = VARCHAR} ,
+		RECTIFICATION_DEPT_CODE = #{rectificationDeptCode,jdbcType = VARCHAR} ,
+		RECTIFICATION_DEPT_NAME = #{rectificationDeptName,jdbcType = VARCHAR} ,
+		RESPONSIBLE_STAFF_ID = #{responsibleStaffId,jdbcType = VARCHAR} ,
+		RESPONSIBLE_STAFF_CODE = #{responsibleStaffCode,jdbcType = VARCHAR} ,
+		RESPONSIBLE_STAFF_NAME = #{responsibleStaffName,jdbcType = VARCHAR} ,
+		RECTIFICATION_DEADLINE = #{rectificationDeadline,jdbcType = TIMESTAMP} ,
+		LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		VERSION = version+1 ,
+		SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+		YN_DELETED = #{ynDeleted,jdbcType = VARCHAR} ,
+		REMARK = #{remark,jdbcType = VARCHAR} ,
+		ORDER_BY = #{orderBy,jdbcType = DECIMAL} ,
+		ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
+		ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
+		ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
+		ATTRIBUTE_04 = #{attribute04,jdbcType = VARCHAR} ,
+		ATTRIBUTE_05 = #{attribute05,jdbcType = VARCHAR} ,
+		ATTRIBUTE_06 = #{attribute06,jdbcType = VARCHAR} ,
+		ATTRIBUTE_07 = #{attribute07,jdbcType = VARCHAR} ,
+		ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
+		ATTRIBUTE_09 = #{attribute09,jdbcType = VARCHAR} ,
+		ATTRIBUTE_10 = #{attribute10,jdbcType = VARCHAR} 
+	</trim>
+	where id = #{id}
+	and version = #{version}
+</update>
+<!-- 批量更新对象   QMS_PROBLEM_RECTIFICATION -->
+<update id="updateQmsProblemRectificationList" parameterType="java.util.List" >
+	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">begin</if>
+	<foreach collection="dtoList" item="item" index="index"  separator="" >
+		update QMS_PROBLEM_RECTIFICATION
+		<set>
+			ID = #{item.id,jdbcType = VARCHAR} ,
+			CHECK_PROBLEM_ID = #{item.checkProblemId,jdbcType = VARCHAR} ,
+			RECTIFICATION_CODE = #{item.rectificationCode,jdbcType = VARCHAR} ,
+			FOR_YEAR = #{item.forYear,jdbcType = VARCHAR} ,
+			CORRECTION_TYPE = #{item.correctionType,jdbcType = VARCHAR} ,
+			CORRECTION_CONTENT = #{item.correctionContent,jdbcType = VARCHAR} ,
+			CAUSE_ANALYSIS = #{item.causeAnalysis,jdbcType = VARCHAR} ,
+			CORRECTIVE_ACTION_TYPE = #{item.correctiveActionType,jdbcType = VARCHAR} ,
+			CORRECTIVE_ACTION = #{item.correctiveAction,jdbcType = VARCHAR} ,
+			HORIZONTAL_CHECK = #{item.horizontalCheck,jdbcType = VARCHAR} ,
+			RECTIFICATION_RESULT = #{item.rectificationResult,jdbcType = VARCHAR} ,
+			STATUS = #{item.status,jdbcType = VARCHAR} ,
+			PROCESS_INSTANCE_ID = #{item.processInstanceId,jdbcType = VARCHAR} ,
+			PROCESS_STATUS = #{item.processStatus,jdbcType = VARCHAR} ,
+			COMPLETE_TIME = #{item.completeTime,jdbcType = TIMESTAMP} ,
+			SUBMIT_TIME = #{item.submitTime,jdbcType = TIMESTAMP} ,
+			SOURCE_TYPE = #{item.sourceType,jdbcType = VARCHAR} ,
+			SOURCE_ID = #{item.sourceId,jdbcType = VARCHAR} ,
+			SOURCE_CODE = #{item.sourceCode,jdbcType = VARCHAR} ,
+			SOURCE_NAME = #{item.sourceName,jdbcType = VARCHAR} ,
+			PROBLEM_DESC = #{item.problemDesc,jdbcType = VARCHAR} ,
+			PROBLEM_CATEGORY = #{item.problemCategory,jdbcType = VARCHAR} ,
+			RECTIFICATION_REQUIREMENT = #{item.rectificationRequirement,jdbcType = VARCHAR} ,
+			FOUND_TIME = #{item.foundTime,jdbcType = TIMESTAMP} ,
+			RECTIFICATION_DEPT_ID = #{item.rectificationDeptId,jdbcType = VARCHAR} ,
+			RECTIFICATION_DEPT_CODE = #{item.rectificationDeptCode,jdbcType = VARCHAR} ,
+			RECTIFICATION_DEPT_NAME = #{item.rectificationDeptName,jdbcType = VARCHAR} ,
+			RESPONSIBLE_STAFF_ID = #{item.responsibleStaffId,jdbcType = VARCHAR} ,
+			RESPONSIBLE_STAFF_CODE = #{item.responsibleStaffCode,jdbcType = VARCHAR} ,
+			RESPONSIBLE_STAFF_NAME = #{item.responsibleStaffName,jdbcType = VARCHAR} ,
+			RECTIFICATION_DEADLINE = #{item.rectificationDeadline,jdbcType = TIMESTAMP} ,
+			CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+			CREATED_DEPT = #{item.createdDept,jdbcType = VARCHAR} ,
+			CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+			LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+			LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+			LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+			VERSION = version+1  ,
+			ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} ,
+			SECRET_LEVEL = #{item.secretLevel,jdbcType = VARCHAR} ,
+			YN_DELETED = #{item.ynDeleted,jdbcType = VARCHAR} ,
+			REMARK = #{item.remark,jdbcType = VARCHAR} ,
+			ORDER_BY = #{item.orderBy,jdbcType = DECIMAL} ,
+			ATTRIBUTE_01 = #{item.attribute01,jdbcType = VARCHAR} ,
+			ATTRIBUTE_02 = #{item.attribute02,jdbcType = VARCHAR} ,
+			ATTRIBUTE_03 = #{item.attribute03,jdbcType = VARCHAR} ,
+			ATTRIBUTE_04 = #{item.attribute04,jdbcType = VARCHAR} ,
+			ATTRIBUTE_05 = #{item.attribute05,jdbcType = VARCHAR} ,
+			ATTRIBUTE_06 = #{item.attribute06,jdbcType = VARCHAR} ,
+			ATTRIBUTE_07 = #{item.attribute07,jdbcType = VARCHAR} ,
+			ATTRIBUTE_08 = #{item.attribute08,jdbcType = VARCHAR} ,
+			ATTRIBUTE_09 = #{item.attribute09,jdbcType = VARCHAR} ,
+			ATTRIBUTE_10 = #{item.attribute10,jdbcType = VARCHAR} 
+		</set>
+		where id = #{item.id}
+		and version = #{item.version};
+	</foreach>
+	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">end;</if>
+</update>
+<!-- 主键删除 QMS_PROBLEM_RECTIFICATION -->
+<delete id="deleteQmsProblemRectificationById" parameterType="java.lang.String">
+	delete from QMS_PROBLEM_RECTIFICATION  where id = #{id}
+</delete>
+</mapper>

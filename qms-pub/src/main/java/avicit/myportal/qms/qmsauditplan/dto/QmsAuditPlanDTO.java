@@ -4,30 +4,32 @@ import avicit.platform6.core.annotation.log.FieldRemark;
 import avicit.platform6.core.annotation.log.PojoRemark;
 import avicit.platform6.core.annotation.log.Id;
 import avicit.platform6.core.annotation.log.LogField;
-import avicit.platform6.core.domain.BaseTreeDTO;
+import avicit.platform6.core.domain.BeanDTO;
 import avicit.platform6.core.properties.PlatformConstant;
 import avicit.platform6.commons.utils.StringUtils;
+import com.alibaba.excel.annotation.ExcelIgnoreUnannotated;
+import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.annotation.format.*;
+import com.alibaba.excel.annotation.write.style.ColumnWidth;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import javax.validation.constraints.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
 * @金航数码科技有限责任公司
 * @作者：于小耘
 * @邮箱：18040011631@163.com
-* @创建时间： 2026-08-03 19:28
-* @类说明：年度内审计划及执行主表Dto
+* @创建时间： 2026-08-06 18:41
+* @类说明：年度内审计划及执行主表DTO
 * @修改记录：
 */
 @ApiModel(value = "QmsAuditPlanDTO", description = "年度内审计划及执行主表")
 @PojoRemark(table="QMS_AUDIT_PLAN", object="QmsAuditPlanDTO", name="年度内审计划及执行主表")
-public class QmsAuditPlanDTO extends BaseTreeDTO {
+@ExcelIgnoreUnannotated
+public class QmsAuditPlanDTO extends BeanDTO{
     private static final long serialVersionUID = 1L;
 
-    private List<QmsAuditPlanDTO> children;
 
     /**
     * ID
@@ -41,6 +43,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 审核计划计划编号
     */
+    @ExcelProperty("审核计划计划编号")
     @Size(max = 50, message = "审核计划计划编号长度不能超过50个字符")
     @ApiModelProperty(value = "审核计划计划编号", name = "planCode")
     @FieldRemark(column="PLAN_CODE", field="planCode", name="审核计划计划编号")
@@ -49,7 +52,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 审核活动名称
     */
-    @NotBlank(message = "审核活动名称不能为空")
+    @ExcelProperty("审核活动名称")
     @Size(max = 128, message = "审核活动名称长度不能超过128个字符")
     @ApiModelProperty(value = "审核活动名称", name = "planName")
     @FieldRemark(column="PLAN_NAME", field="planName", name="审核活动名称")
@@ -58,6 +61,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 年度
     */
+    @ExcelProperty("年度")
     @Size(max = 10, message = "年度长度不能超过10个字符")
     @ApiModelProperty(value = "年度", name = "forYear")
     @FieldRemark(column="FOR_YEAR", field="forYear", name="年度")
@@ -66,6 +70,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 责任部门ID
     */
+    @ExcelProperty("责任部门ID")
     @Size(max = 2000, message = "责任部门ID长度不能超过2000个字符")
     @ApiModelProperty(value = "责任部门ID", name = "auditType")
     @FieldRemark(column="AUDIT_TYPE", field="auditType", name="责任部门ID")
@@ -74,6 +79,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 责任部门编号
     */
+    @ExcelProperty("责任部门编号")
     @Size(max = 512, message = "责任部门编号长度不能超过512个字符")
     @ApiModelProperty(value = "责任部门编号", name = "auditName")
     @FieldRemark(column="AUDIT_NAME", field="auditName", name="责任部门编号")
@@ -82,6 +88,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 责任部门
     */
+    @ExcelProperty("责任部门")
     @Size(max = 2000, message = "责任部门长度不能超过2000个字符")
     @ApiModelProperty(value = "责任部门", name = "auditMonth")
     @FieldRemark(column="AUDIT_MONTH", field="auditMonth", name="责任部门")
@@ -90,6 +97,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 受审部门ID
     */
+    @ExcelProperty("受审部门ID")
     @Size(max = 64, message = "受审部门ID长度不能超过64个字符")
     @ApiModelProperty(value = "受审部门ID", name = "auditeeDeptId")
     @FieldRemark(column="AUDITEE_DEPT_ID", field="auditeeDeptId", name="受审部门ID")
@@ -98,6 +106,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 受审部门CODE
     */
+    @ExcelProperty("受审部门CODE")
     @Size(max = 10, message = "受审部门CODE长度不能超过10个字符")
     @ApiModelProperty(value = "受审部门CODE", name = "auditeeDeptCode")
     @FieldRemark(column="AUDITEE_DEPT_CODE", field="auditeeDeptCode", name="受审部门CODE")
@@ -106,6 +115,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 受审部门
     */
+    @ExcelProperty("受审部门")
     @Size(max = 50, message = "受审部门长度不能超过50个字符")
     @ApiModelProperty(value = "受审部门", name = "auditeeDeptName")
     @FieldRemark(column="AUDITEE_DEPT_NAME", field="auditeeDeptName", name="受审部门")
@@ -114,6 +124,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 审核依据
     */
+    @ExcelProperty("审核依据")
     @Size(max = 512, message = "审核依据长度不能超过512个字符")
     @ApiModelProperty(value = "审核依据", name = "auditBasis")
     @FieldRemark(column="AUDIT_BASIS", field="auditBasis", name="审核依据")
@@ -122,6 +133,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 审核条款
     */
+    @ExcelProperty("审核条款")
     @Size(max = 512, message = "审核条款长度不能超过512个字符")
     @ApiModelProperty(value = "审核条款", name = "auditClause")
     @FieldRemark(column="AUDIT_CLAUSE", field="auditClause", name="审核条款")
@@ -130,6 +142,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 型号/项目
     */
+    @ExcelProperty("型号/项目")
     @Size(max = 512, message = "型号/项目长度不能超过512个字符")
     @ApiModelProperty(value = "型号/项目", name = "modelProject")
     @FieldRemark(column="MODEL_PROJECT", field="modelProject", name="型号/项目")
@@ -138,6 +151,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 审核范围
     */
+    @ExcelProperty("审核范围")
     @Size(max = 512, message = "审核范围长度不能超过512个字符")
     @ApiModelProperty(value = "审核范围", name = "auditScope")
     @FieldRemark(column="AUDIT_SCOPE", field="auditScope", name="审核范围")
@@ -146,6 +160,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 审核员ID
     */
+    @ExcelProperty("审核员ID")
     @Size(max = 512, message = "审核员ID长度不能超过512个字符")
     @ApiModelProperty(value = "审核员ID", name = "auditorId")
     @FieldRemark(column="AUDITOR_ID", field="auditorId", name="审核员ID")
@@ -154,6 +169,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 审核员CODE
     */
+    @ExcelProperty("审核员CODE")
     @Size(max = 200, message = "审核员CODE长度不能超过200个字符")
     @ApiModelProperty(value = "审核员CODE", name = "auditorCode")
     @FieldRemark(column="AUDITOR_CODE", field="auditorCode", name="审核员CODE")
@@ -162,6 +178,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 审核员
     */
+    @ExcelProperty("审核员")
     @Size(max = 200, message = "审核员长度不能超过200个字符")
     @ApiModelProperty(value = "审核员", name = "auditorName")
     @FieldRemark(column="AUDITOR_NAME", field="auditorName", name="审核员")
@@ -170,6 +187,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 计划状态
     */
+    @ExcelProperty("计划状态")
     @Size(max = 10, message = "计划状态长度不能超过10个字符")
     @ApiModelProperty(value = "计划状态", name = "planStatus")
     @FieldRemark(column="PLAN_STATUS", field="planStatus", name="计划状态")
@@ -178,6 +196,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 计划来源
     */
+    @ExcelProperty("计划来源")
     @Size(max = 128, message = "计划来源长度不能超过128个字符")
     @ApiModelProperty(value = "计划来源", name = "planSource")
     @FieldRemark(column="PLAN_SOURCE", field="planSource", name="计划来源")
@@ -210,16 +229,15 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 密级
     */
-    @NotBlank(message = "密级不能为空")
-    @ApiModelProperty(value = "密级", name = "secretLevel")
     @FieldRemark(column="SECRET_LEVEL", field="secretLevel", name="密级", dataType="lookup", lookupType="PLATFORM_FILE_SECRET_LEVEL")
     private java.lang.String secretLevel;
+    @ExcelProperty("密级")
     private java.lang.String secretLevelName;
-
 
     /**
     * 是否已删除
     */
+    @ExcelProperty("是否已删除")
     @Size(max = 2, message = "是否已删除长度不能超过2个字符")
     @ApiModelProperty(value = "是否已删除", name = "ynDeleted")
     @FieldRemark(column="YN_DELETED", field="ynDeleted", name="是否已删除")
@@ -228,13 +246,17 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     /**
     * 备注
     */
+    @ExcelProperty("备注")
     @Size(max = 2000, message = "备注长度不能超过2000个字符")
     @ApiModelProperty(value = "备注", name = "remark")
     @FieldRemark(column="REMARK", field="remark", name="备注")
     private java.lang.String remark;
-/**
-* 排序
-*/
+    /**
+    * 排序
+    */
+    @ExcelProperty("排序")
+    @ColumnWidth(15)
+    @NumberFormat("0.00")
     @Digits(integer = 16, fraction = 0, message = "排序格式不正确")
     @ApiModelProperty(value = "排序", name = "orderBy")
     @FieldRemark(column="ORDER_BY", field="orderBy", name="排序")
@@ -319,19 +341,28 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     @ApiModelProperty(value = "扩展字段_10", name = "attribute10")
     @FieldRemark(column="ATTRIBUTE_10", field="attribute10", name="扩展字段_10")
     private java.lang.String attribute10;
+    /**
+    * 审核时间
+    */
+    @ExcelProperty("审核时间")
+    @DateTimeFormat("yyyy/MM/dd")
+    @ColumnWidth(20)
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
+    @ApiModelProperty(value = "审核时间", name = "auditTime")
+    @FieldRemark(column="AUDIT_TIME", field="auditTime", name="审核时间")
+    private java.util.Date auditTime;
 
     /**
-    * 父节点ID
+    * 审核时间起
     */
-    @LogField
-    @ApiModelProperty(value = "父节点ID", name = "parentId")
-    @FieldRemark(column="PARENT_ID", field="parentId", name="父节点ID")
-    private java.lang.String parentId;
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
+    private java.util.Date auditTimeBegin;
 
     /**
-    * 父节点ID显示字段
+    * 审核时间止
     */
-    private java.lang.String parentPlanName;
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone="GMT+8")
+    private java.util.Date auditTimeEnd;
 
     public java.lang.String getId(){
         return id;
@@ -490,7 +521,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     }
 
     public void setCreationDateBegin(java.util.Date creationDateBegin){
-         this.creationDateBegin = creationDateBegin;
+        this.creationDateBegin = creationDateBegin;
     }
 
     public java.util.Date getCreationDateEnd(){
@@ -506,7 +537,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     }
 
     public void setLastUpdateDateBegin(java.util.Date lastUpdateDateBegin){
-         this.lastUpdateDateBegin = lastUpdateDateBegin;
+        this.lastUpdateDateBegin = lastUpdateDateBegin;
     }
 
     public java.util.Date getLastUpdateDateEnd(){
@@ -516,7 +547,6 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
     public void setLastUpdateDateEnd(java.util.Date lastUpdateDateEnd){
         this.lastUpdateDateEnd = lastUpdateDateEnd;
     }
-
     public java.lang.String getSecretLevel(){
         return secretLevel;
     }
@@ -638,37 +668,35 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
         this.attribute10 = attribute10;
     }
 
-    public java.lang.String getParentId(){
-        return parentId;
+    public java.util.Date getAuditTime(){
+        return auditTime;
     }
 
-    public void setParentId(java.lang.String parentId){
-        this.parentId = parentId;
+    public void setAuditTime(java.util.Date auditTime){
+        this.auditTime = auditTime;
+        super.handleNullValue();
     }
 
-    public java.lang.String getParentPlanName(){
-        return parentPlanName;
+    public java.util.Date getAuditTimeBegin(){
+        return auditTimeBegin;
     }
 
-    public void setParentPlanName(java.lang.String parentPlanName){
-        this.parentPlanName = parentPlanName;
+    public void setAuditTimeBegin(java.util.Date auditTimeBegin){
+        this.auditTimeBegin = auditTimeBegin;
     }
 
-    public List<QmsAuditPlanDTO> getChildren() {
-        if(children == null && "N".equals(this.treeLeaf)){
-          return new ArrayList<>();
-        }
-        return children;
+    public java.util.Date getAuditTimeEnd(){
+        return auditTimeEnd;
     }
 
-    public void setChildren(List<QmsAuditPlanDTO> children) {
-        this.children = children;
+    public void setAuditTimeEnd(java.util.Date auditTimeEnd){
+        this.auditTimeEnd = auditTimeEnd;
     }
 
     @Override
     public String getLogFormName() {
         if (StringUtils.isEmpty(super.logFormName)) {
-             return "年度内审计划及执行主表";
+            return "年度内审计划及执行主表";
         } else {
             return super.logFormName;
         }
@@ -688,7 +716,7 @@ public class QmsAuditPlanDTO extends BaseTreeDTO {
         if (super.logType == null) {
             return PlatformConstant.LogType.module_operate;
         } else {
-             return super.logType;
+            return super.logType;
         }
     }
 }

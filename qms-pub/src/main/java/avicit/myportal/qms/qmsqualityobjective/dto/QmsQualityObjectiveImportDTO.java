@@ -73,6 +73,9 @@ public class QmsQualityObjectiveImportDTO{
     @ExcelProperty("目标层级\n所级、部门级")
     private String objectiveLevelName;
 
+    @ExcelProperty("目标来源")
+    private String objectiveSource;
+
 
     /**
     * 统计部门

@@ -3,6 +3,7 @@
 <mapper namespace="avicit.myportal.qms.qmsqualityobjective.dao.QmsQualityObjectiveDAO">
     <resultMap id="QmsQualityObjectiveDTOMap" type="avicit.myportal.qms.qmsqualityobjective.dto.QmsQualityObjectiveDTO">
         <result property="id" column="ID" jdbcType="VARCHAR"/>
+        <result property="objectiveSource" column="OBJECTIVE_SOURCE" jdbcType="VARCHAR" />
         <result property="objectiveCode" column="OBJECTIVE_CODE" jdbcType="VARCHAR"/>
         <result property="objectiveName" column="OBJECTIVE_NAME" jdbcType="VARCHAR"/>
         <result property="objectiveContent" column="OBJECTIVE_CONTENT" jdbcType="VARCHAR"/>
@@ -80,6 +81,7 @@
     <sql id="commonColums">
         <trim suffixOverrides=",">
             t1.ID,
+            t1.OBJECTIVE_SOURCE,
             t1.OBJECTIVE_CODE,
             t1.OBJECTIVE_NAME,
             t1.OBJECTIVE_CONTENT,
@@ -164,6 +166,9 @@
     <sql id="commonWhereAnd">
         <if test="bean.id != null and bean.id != ''">
             and t1.ID = #{bean.id}
+        </if>
+        <if test="bean.objectiveSource  != null and bean.objectiveSource  != ''">
+            and t1.OBJECTIVE_SOURCE like concat(concat('%',#{bean.objectiveSource}),'%')
         </if>
         <if test="bean.objectiveCode != null and bean.objectiveCode != ''">
             and t1.OBJECTIVE_CODE like concat(concat('%',#{bean.objectiveCode}),'%')
@@ -407,6 +412,9 @@
         <trim prefix="(" suffix=")" prefixOverrides="or">
             <if test="bean.id != null and bean.id != ''">
                 or t1.ID = #{bean.id}
+            </if>
+            <if test="bean.objectiveSource  != null and bean.objectiveSource  != ''">
+                or t1.OBJECTIVE_SOURCE = bean.objectiveSource
             </if>
             <if test="bean.objectiveCode != null and bean.objectiveCode != ''">
                 or t1.OBJECTIVE_CODE like concat(concat('%',#{bean.objectiveCode}),'%')
@@ -739,6 +747,9 @@
             <if test="id != null">
                 ID,
             </if>
+            <if test="objectiveSource  != null">
+                OBJECTIVE_SOURCE,
+            </if>
             <if test="objectiveCode != null">
                 OBJECTIVE_CODE,
             </if>
@@ -962,6 +973,9 @@
         <trim prefix="values (" suffix=")" suffixOverrides=",">
             <if test="id != null">
                 #{id,jdbcType = VARCHAR},
+            </if>
+            <if test="objectiveSource  != null">
+                #{objectiveSource ,jdbcType = VARCHAR},
             </if>
             <if test="objectiveCode != null">
                 #{objectiveCode,jdbcType = VARCHAR},
@@ -1188,6 +1202,7 @@
     <insert id="insertQmsQualityObjectiveList" parameterType="java.util.List" >
         insert into QMS_QUALITY_OBJECTIVE(
         ID ,
+        OBJECTIVE_SOURCE,
         OBJECTIVE_CODE ,
         OBJECTIVE_NAME ,
         OBJECTIVE_CONTENT ,
@@ -1265,6 +1280,7 @@
         <foreach collection="dtoList" item="item" index="index"  separator="union all" >
             select
             #{item.id,jdbcType = VARCHAR} ,
+            #{item.objectiveSource ,jdbcType = VARCHAR} ,
             #{item.objectiveCode,jdbcType = VARCHAR} ,
             #{item.objectiveName,jdbcType = VARCHAR} ,
             #{item.objectiveContent,jdbcType = VARCHAR} ,
@@ -1348,6 +1364,9 @@
         <set>
             <if test="id != null">
                 ID = #{id,jdbcType = VARCHAR} ,
+            </if>
+            <if test="objectiveSource  != null">
+                OBJECTIVE_SOURCE = #{objectiveSource ,jdbcType = VARCHAR},
             </if>
             <if test="objectiveCode != null">
                 OBJECTIVE_CODE = #{objectiveCode,jdbcType = VARCHAR} ,
@@ -1578,6 +1597,7 @@
         update QMS_QUALITY_OBJECTIVE
         <trim prefix="set" suffixOverrides=",">
             ID = #{id,jdbcType = VARCHAR} ,
+            OBJECTIVE_SOURCE = #{objectiveSource ,jdbcType = VARCHAR},
             OBJECTIVE_CODE = #{objectiveCode,jdbcType = VARCHAR} ,
             OBJECTIVE_NAME = #{objectiveName,jdbcType = VARCHAR} ,
             OBJECTIVE_CONTENT = #{objectiveContent,jdbcType = VARCHAR} ,
@@ -1658,6 +1678,7 @@
             update QMS_QUALITY_OBJECTIVE
             set
             ID = #{item.id,jdbcType = VARCHAR} ,
+            OBJECTIVE_SOURCE = #{item.objectiveSource ,jdbcType = VARCHAR},
             OBJECTIVE_CODE = #{item.objectiveCode,jdbcType = VARCHAR} ,
             OBJECTIVE_NAME = #{item.objectiveName,jdbcType = VARCHAR} ,
             OBJECTIVE_CONTENT = #{item.objectiveContent,jdbcType = VARCHAR} ,

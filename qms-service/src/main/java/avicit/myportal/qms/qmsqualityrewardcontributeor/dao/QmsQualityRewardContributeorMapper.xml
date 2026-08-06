@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="avicit.myportal.qms.qmsqualityrewardcontributeor.dao.QmsQualityRewardContributeorDAO">
+<resultMap id="QmsQualityRewardContributeorDTOMap" type="avicit.myportal.qms.qmsqualityrewardcontributeor.dto.QmsQualityRewardContributeorDTO">
+	<result property="id" column="ID" jdbcType="VARCHAR" />
+	<result property="rewardId" column="REWARD_ID" jdbcType="VARCHAR" />
+	<result property="deptId" column="DEPT_ID" jdbcType="VARCHAR" />
+	<result property="deptCode" column="DEPT_CODE" jdbcType="VARCHAR" />
+	<result property="deptName" column="DEPT_NAME" jdbcType="VARCHAR" />
+	<result property="staffId" column="STAFF_ID" jdbcType="VARCHAR" />
+	<result property="staffCode" column="STAFF_CODE" jdbcType="VARCHAR" />
+	<result property="staffName" column="STAFF_NAME" jdbcType="VARCHAR" />
+	<result property="contributionRate" column="CONTRIBUTION_RATE" jdbcType="DECIMAL" />
+	<result property="keyContributionDesc" column="KEY_CONTRIBUTION_DESC" jdbcType="VARCHAR" />
+	<result property="rewardAmount" column="REWARD_AMOUNT" jdbcType="DECIMAL" />
+	<result property="bonusType" column="BONUS_TYPE" jdbcType="VARCHAR" />
+	<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
+	<result property="createdDept" column="CREATED_DEPT" jdbcType="VARCHAR" />
+	<result property="creationDate" column="CREATION_DATE" jdbcType="TIMESTAMP" />
+	<result property="lastUpdatedBy" column="LAST_UPDATED_BY" jdbcType="VARCHAR" />
+	<result property="lastUpdateDate" column="LAST_UPDATE_DATE" jdbcType="TIMESTAMP" />
+	<result property="lastUpdateIp" column="LAST_UPDATE_IP" jdbcType="VARCHAR" />
+	<result property="version" column="VERSION" jdbcType="DECIMAL" />
+	<result property="orgIdentity" column="ORG_IDENTITY" jdbcType="VARCHAR" />
+	<result property="secretLevel" column="SECRET_LEVEL" jdbcType="VARCHAR" />
+	<result property="ynDeleted" column="YN_DELETED" jdbcType="VARCHAR" />
+	<result property="remark" column="REMARK" jdbcType="VARCHAR" />
+	<result property="orderBy" column="ORDER_BY" jdbcType="DECIMAL" />
+	<result property="attribute01" column="ATTRIBUTE_01" jdbcType="VARCHAR" />
+	<result property="attribute02" column="ATTRIBUTE_02" jdbcType="VARCHAR" />
+	<result property="attribute03" column="ATTRIBUTE_03" jdbcType="VARCHAR" />
+	<result property="attribute04" column="ATTRIBUTE_04" jdbcType="VARCHAR" />
+	<result property="attribute05" column="ATTRIBUTE_05" jdbcType="VARCHAR" />
+	<result property="attribute06" column="ATTRIBUTE_06" jdbcType="VARCHAR" />
+	<result property="attribute07" column="ATTRIBUTE_07" jdbcType="VARCHAR" />
+	<result property="attribute08" column="ATTRIBUTE_08" jdbcType="VARCHAR" />
+	<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
+	<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
+</resultMap>
+<sql id="commonColums">
+	<trim suffixOverrides=",">
+		t1.ID,
+		t1.REWARD_ID,
+		t1.DEPT_ID,
+		t1.DEPT_CODE,
+		t1.DEPT_NAME,
+		t1.STAFF_ID,
+		t1.STAFF_CODE,
+		t1.STAFF_NAME,
+		t1.CONTRIBUTION_RATE,
+		t1.KEY_CONTRIBUTION_DESC,
+		t1.REWARD_AMOUNT,
+		t1.BONUS_TYPE,
+		t1.CREATED_BY,
+		t1.CREATED_DEPT,
+		t1.CREATION_DATE,
+		t1.LAST_UPDATED_BY,
+		t1.LAST_UPDATE_DATE,
+		t1.LAST_UPDATE_IP,
+		t1.VERSION,
+		t1.ORG_IDENTITY,
+		t1.SECRET_LEVEL,
+		t1.YN_DELETED,
+		t1.REMARK,
+		t1.ORDER_BY,
+		t1.ATTRIBUTE_01,
+		t1.ATTRIBUTE_02,
+		t1.ATTRIBUTE_03,
+		t1.ATTRIBUTE_04,
+		t1.ATTRIBUTE_05,
+		t1.ATTRIBUTE_06,
+		t1.ATTRIBUTE_07,
+		t1.ATTRIBUTE_08,
+		t1.ATTRIBUTE_09,
+		t1.ATTRIBUTE_10,
+	</trim>
+</sql>
+<!-- 默认查询条件 -->
+<sql id="defaultWhereAnd">
+	<if test="wordSecret != null and wordSecret.size()>0">
+		and t1.secret_level in
+		<foreach collection="wordSecret" item="item" index="key" open="(" close=")" separator=",">
+			#{item}
+		</foreach>
+	</if>
+</sql>
+<sql id="commonWhereAnd">
+	<if test="bean.id != null and bean.id != ''">
+		and t1.ID = #{bean.id}
+	</if>
+	<if test="bean.rewardId != null and bean.rewardId != ''">
+		and t1.REWARD_ID = #{bean.rewardId}
+	</if>
+	<if test="bean.deptId != null and bean.deptId != ''">
+		and t1.DEPT_ID like concat(concat('%',#{bean.deptId}),'%')
+	</if>
+	<if test="bean.deptCode != null and bean.deptCode != ''">
+		and t1.DEPT_CODE like concat(concat('%',#{bean.deptCode}),'%')
+	</if>
+	<if test="bean.deptName != null and bean.deptName != ''">
+		and t1.DEPT_NAME like concat(concat('%',#{bean.deptName}),'%')
+	</if>
+	<if test="bean.staffId != null and bean.staffId != ''">
+		and t1.STAFF_ID like concat(concat('%',#{bean.staffId}),'%')
+	</if>
+	<if test="bean.staffCode != null and bean.staffCode != ''">
+		and t1.STAFF_CODE like concat(concat('%',#{bean.staffCode}),'%')
+	</if>
+	<if test="bean.staffName != null and bean.staffName != ''">
+		and t1.STAFF_NAME like concat(concat('%',#{bean.staffName}),'%')
+	</if>
+	<if test="bean.contributionRate != null">
+		and t1.CONTRIBUTION_RATE = #{bean.contributionRate}
+	</if>
+	<if test="bean.keyContributionDesc != null and bean.keyContributionDesc != ''">
+		and t1.KEY_CONTRIBUTION_DESC like concat(concat('%',#{bean.keyContributionDesc}),'%')
+	</if>
+	<if test="bean.rewardAmount != null">
+		and t1.REWARD_AMOUNT = #{bean.rewardAmount}
+	</if>
+	<if test="bean.bonusType != null and bean.bonusType != ''">
+		and t1.BONUS_TYPE like concat(concat('%',#{bean.bonusType}),'%')
+	</if>
+	<if test="bean.createdBy != null and bean.createdBy != ''">
+		and t1.CREATED_BY = #{bean.createdBy}
+	</if>
+	<if test="bean.createdDept != null and bean.createdDept != ''">
+		and t1.CREATED_DEPT = #{bean.createdDept}
+	</if>
+	<if test="bean.creationDateBegin != null">
+		and t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+	</if>
+	<if test="bean.creationDateEnd != null">
+		and t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+	</if>
+	<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+		and t1.LAST_UPDATED_BY = #{bean.lastUpdatedBy}
+	</if>
+	<if test="bean.lastUpdateDateBegin != null">
+		and t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+	</if>
+	<if test="bean.lastUpdateDateEnd != null">
+		and t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+	</if>
+	<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+		and t1.LAST_UPDATE_IP = #{bean.lastUpdateIp}
+	</if>
+	<if test="bean.version != null">
+		and t1.VERSION = #{bean.version}
+	</if>
+	<if test="bean.ynDeleted != null and bean.ynDeleted != ''">
+		and t1.YN_DELETED like concat(concat('%',#{bean.ynDeleted}),'%')
+	</if>
+	<if test="bean.remark != null and bean.remark != ''">
+		and t1.REMARK like concat(concat('%',#{bean.remark}),'%')
+	</if>
+	<if test="bean.orderBy != null">
+		and t1.ORDER_BY = #{bean.orderBy}
+	</if>
+	<if test="bean.attribute01 != null and bean.attribute01 != ''">
+		and t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+	</if>
+	<if test="bean.attribute02 != null and bean.attribute02 != ''">
+		and t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+	</if>
+	<if test="bean.attribute03 != null and bean.attribute03 != ''">
+		and t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+	</if>
+	<if test="bean.attribute04 != null and bean.attribute04 != ''">
+		and t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+	</if>
+	<if test="bean.attribute05 != null and bean.attribute05 != ''">
+		and t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+	</if>
+	<if test="bean.attribute06 != null and bean.attribute06 != ''">
+		and t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+	</if>
+	<if test="bean.attribute07 != null and bean.attribute07 != ''">
+		and t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+	</if>
+	<if test="bean.attribute08 != null and bean.attribute08 != ''">
+		and t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+	</if>
+	<if test="bean.attribute09 != null and bean.attribute09 != ''">
+		and t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')
+	</if>
+	<if test="bean.attribute10 != null and bean.attribute10 != ''">
+		and t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')
+	</if>
+</sql>
+<sql id="commonWhereOr">
+	<trim prefix="(" suffix=")" prefixOverrides="or">
+		<if test="bean.id != null and bean.id != ''">
+			or t1.ID = #{bean.id}
+		</if>
+		<if test="bean.deptId != null and bean.deptId != ''">
+			or t1.DEPT_ID like concat(concat('%',#{bean.deptId}),'%')
+		</if>
+		<if test="bean.deptCode != null and bean.deptCode != ''">
+			or t1.DEPT_CODE like concat(concat('%',#{bean.deptCode}),'%')
+		</if>
+		<if test="bean.deptName != null and bean.deptName != ''">
+			or t1.DEPT_NAME like concat(concat('%',#{bean.deptName}),'%')
+		</if>
+		<if test="bean.staffId != null and bean.staffId != ''">
+			or t1.STAFF_ID like concat(concat('%',#{bean.staffId}),'%')
+		</if>
+		<if test="bean.staffCode != null and bean.staffCode != ''">
+			or t1.STAFF_CODE like concat(concat('%',#{bean.staffCode}),'%')
+		</if>
+		<if test="bean.staffName != null and bean.staffName != ''">
+			or t1.STAFF_NAME like concat(concat('%',#{bean.staffName}),'%')
+		</if>
+		<if test="bean.contributionRate != null">
+			or t1.CONTRIBUTION_RATE = #{bean.contributionRate}
+		</if>
+		<if test="bean.keyContributionDesc != null and bean.keyContributionDesc != ''">
+			or t1.KEY_CONTRIBUTION_DESC like concat(concat('%',#{bean.keyContributionDesc}),'%')
+		</if>
+		<if test="bean.rewardAmount != null">
+			or t1.REWARD_AMOUNT = #{bean.rewardAmount}
+		</if>
+		<if test="bean.bonusType != null and bean.bonusType != ''">
+			or t1.BONUS_TYPE like concat(concat('%',#{bean.bonusType}),'%')
+		</if>
+		<if test="bean.createdBy != null and bean.createdBy != ''">
+			or t1.CREATED_BY = #{bean.createdBy}
+		</if>
+		<if test="bean.createdDept != null and bean.createdDept != ''">
+			or t1.CREATED_DEPT = #{bean.createdDept}
+		</if>
+		<if test="bean.creationDateBegin != null">
+			or t1.CREATION_DATE &gt;= #{bean.creationDateBegin}
+		</if>
+		<if test="bean.creationDateEnd != null">
+			or t1.CREATION_DATE &lt;= #{bean.creationDateEnd}
+		</if>
+		<if test="bean.lastUpdatedBy != null and bean.lastUpdatedBy != ''">
+			or t1.LAST_UPDATED_BY = #{bean.lastUpdatedBy}
+		</if>
+		<if test="bean.lastUpdateDateBegin != null">
+			or t1.LAST_UPDATE_DATE &gt;= #{bean.lastUpdateDateBegin}
+		</if>
+		<if test="bean.lastUpdateDateEnd != null">
+			or t1.LAST_UPDATE_DATE &lt;= #{bean.lastUpdateDateEnd}
+		</if>
+		<if test="bean.lastUpdateIp != null and bean.lastUpdateIp != ''">
+			or t1.LAST_UPDATE_IP = #{bean.lastUpdateIp}
+		</if>
+		<if test="bean.version != null">
+			or t1.VERSION = #{bean.version}
+		</if>
+		<if test="bean.secretLevel != null and bean.secretLevel != ''">
+			or t1.SECRET_LEVEL = #{bean.secretLevel}
+		</if>
+		<if test="bean.ynDeleted != null and bean.ynDeleted != ''">
+			or t1.YN_DELETED like concat(concat('%',#{bean.ynDeleted}),'%')
+		</if>
+		<if test="bean.remark != null and bean.remark != ''">
+			or t1.REMARK like concat(concat('%',#{bean.remark}),'%')
+		</if>
+		<if test="bean.orderBy != null">
+			or t1.ORDER_BY = #{bean.orderBy}
+		</if>
+		<if test="bean.attribute01 != null and bean.attribute01 != ''">
+			or t1.ATTRIBUTE_01 like concat(concat('%',#{bean.attribute01}),'%')
+		</if>
+		<if test="bean.attribute02 != null and bean.attribute02 != ''">
+			or t1.ATTRIBUTE_02 like concat(concat('%',#{bean.attribute02}),'%')
+		</if>
+		<if test="bean.attribute03 != null and bean.attribute03 != ''">
+			or t1.ATTRIBUTE_03 like concat(concat('%',#{bean.attribute03}),'%')
+		</if>
+		<if test="bean.attribute04 != null and bean.attribute04 != ''">
+			or t1.ATTRIBUTE_04 like concat(concat('%',#{bean.attribute04}),'%')
+		</if>
+		<if test="bean.attribute05 != null and bean.attribute05 != ''">
+			or t1.ATTRIBUTE_05 like concat(concat('%',#{bean.attribute05}),'%')
+		</if>
+		<if test="bean.attribute06 != null and bean.attribute06 != ''">
+			or t1.ATTRIBUTE_06 like concat(concat('%',#{bean.attribute06}),'%')
+		</if>
+		<if test="bean.attribute07 != null and bean.attribute07 != ''">
+			or t1.ATTRIBUTE_07 like concat(concat('%',#{bean.attribute07}),'%')
+		</if>
+		<if test="bean.attribute08 != null and bean.attribute08 != ''">
+			or t1.ATTRIBUTE_08 like concat(concat('%',#{bean.attribute08}),'%')
+		</if>
+		<if test="bean.attribute09 != null and bean.attribute09 != ''">
+			or t1.ATTRIBUTE_09 like concat(concat('%',#{bean.attribute09}),'%')
+		</if>
+		<if test="bean.attribute10 != null and bean.attribute10 != ''">
+			or t1.ATTRIBUTE_10 like concat(concat('%',#{bean.attribute10}),'%')
+		</if>
+	</trim>
+</sql>
+<sql id="commonOrderBy">
+	<choose>
+		<when test="orderBy != null and orderBy != ''">
+			order by ${orderBy}
+		</when>
+		<otherwise>
+			order by t1.creation_date desc
+		</otherwise>
+	</choose>
+</sql>
+
+<!-- 分页查询 QMS_QUALITY_REWARD_CONTRIBUTEOR -->
+<select id="searchQmsQualityRewardContributeorByPage" parameterType="java.util.Map" resultMap="QmsQualityRewardContributeorDTOMap">
+	select
+	<include refid="commonColums"/>
+	<choose>
+		<when test="keyWords != null and keyWords != '' ">
+			from (select * from QMS_QUALITY_REWARD_CONTRIBUTEOR t where t.REWARD_ID=#{bean.rewardId}) t1
+		</when>
+		<otherwise>
+			from QMS_QUALITY_REWARD_CONTRIBUTEOR t1
+		</otherwise>
+	</choose>
+	<where>
+		<if test="bean != null">
+			<choose>
+				<when test="keyWords != null and keyWords != '' ">
+					<include refid="commonWhereOr"/>
+				</when>
+				<otherwise>
+				    <include refid="commonWhereAnd"/>
+				</otherwise>
+			</choose>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+	<include refid="commonOrderBy"></include>
+</select>
+<!-- 查询列表 QMS_QUALITY_REWARD_CONTRIBUTEOR -->
+<select id="searchQmsQualityRewardContributeor" parameterType="java.util.Map" resultMap="QmsQualityRewardContributeorDTOMap">
+	select
+	<include refid="commonColums"/>
+	<choose>
+		<when test="keyWords != null and keyWords != '' ">
+			from (select * from QMS_QUALITY_REWARD_CONTRIBUTEOR t where t.REWARD_ID=#{bean.rewardId}) t1
+		</when>
+		<otherwise>
+			from QMS_QUALITY_REWARD_CONTRIBUTEOR t1
+		</otherwise>
+	</choose>
+	<where>
+		<if test="bean != null">
+			<include refid="commonWhereAnd"/>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+	<include refid="commonOrderBy"></include>
+</select>
+<!-- 按条件导出查询列表 QMS_QUALITY_REWARD_CONTRIBUTEOR -->
+<select id="searchQmsQualityRewardContributeorForExportExcel" parameterType="java.util.Map" resultMap="QmsQualityRewardContributeorDTOMap">
+	select
+	<include refid="commonColums"/>
+	<choose>
+		<when test="keyWords != null and keyWords != '' ">
+			from (select * from QMS_QUALITY_REWARD_CONTRIBUTEOR t where t.REWARD_ID=#{bean.rewardId}) t1
+		</when>
+		<otherwise>
+			from QMS_QUALITY_REWARD_CONTRIBUTEOR t1
+		</otherwise>
+	</choose>
+	<where>
+		<if test="bean != null">
+			<choose>
+				<when test="keyWords != null and keyWords != ''">
+					<include refid="commonWhereOr"/>
+				</when>
+				<otherwise>
+					<include refid="commonWhereAnd"/>
+				</otherwise>
+			</choose>
+		</if>
+		<include refid="defaultWhereAnd"/>
+	</where>
+	<include refid="commonOrderBy"/>
+</select>
+<!-- 主键查询对象 QMS_QUALITY_REWARD_CONTRIBUTEOR -->
+<select id="findQmsQualityRewardContributeorById" parameterType="java.util.Map" resultMap="QmsQualityRewardContributeorDTOMap">
+	select
+	<include refid="commonColums"/>
+	from QMS_QUALITY_REWARD_CONTRIBUTEOR t1
+	where t1.id = #{id}
+</select>
+<!-- 根据pid查询对象 QMS_QUALITY_REWARD_CONTRIBUTEOR -->
+<select id="findQmsQualityRewardContributeorByPid" parameterType="java.util.Map" resultMap="QmsQualityRewardContributeorDTOMap">
+	select
+	<include refid="commonColums"></include>
+	from QMS_QUALITY_REWARD_CONTRIBUTEOR 	t1
+	where t1.REWARD_ID = #{pid}
+</select>
+<!-- 新增对象 QMS_QUALITY_REWARD_CONTRIBUTEOR -->
+<insert id="insertQmsQualityRewardContributeor" parameterType="avicit.myportal.qms.qmsqualityrewardcontributeor.dto.QmsQualityRewardContributeorDTO">
+	insert into QMS_QUALITY_REWARD_CONTRIBUTEOR
+	<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			ID,
+		</if>
+		<if test="rewardId != null">
+			REWARD_ID,
+		</if>
+		<if test="deptId != null">
+			DEPT_ID,
+		</if>
+		<if test="deptCode != null">
+			DEPT_CODE,
+		</if>
+		<if test="deptName != null">
+			DEPT_NAME,
+		</if>
+		<if test="staffId != null">
+			STAFF_ID,
+		</if>
+		<if test="staffCode != null">
+			STAFF_CODE,
+		</if>
+		<if test="staffName != null">
+			STAFF_NAME,
+		</if>
+		<if test="contributionRate != null">
+			CONTRIBUTION_RATE,
+		</if>
+		<if test="keyContributionDesc != null">
+			KEY_CONTRIBUTION_DESC,
+		</if>
+		<if test="rewardAmount != null">
+			REWARD_AMOUNT,
+		</if>
+		<if test="bonusType != null">
+			BONUS_TYPE,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP,
+		</if>
+		<if test="version != null">
+			VERSION,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY,
+		</if>
+		<if test="secretLevel != null">
+			SECRET_LEVEL,
+		</if>
+		<if test="ynDeleted != null">
+			YN_DELETED,
+		</if>
+		<if test="remark != null">
+			REMARK,
+		</if>
+		<if test="orderBy != null">
+			ORDER_BY,
+		</if>
+		<if test="attribute01 != null">
+			ATTRIBUTE_01,
+		</if>
+		<if test="attribute02 != null">
+			ATTRIBUTE_02,
+		</if>
+		<if test="attribute03 != null">
+			ATTRIBUTE_03,
+		</if>
+		<if test="attribute04 != null">
+			ATTRIBUTE_04,
+		</if>
+		<if test="attribute05 != null">
+			ATTRIBUTE_05,
+		</if>
+		<if test="attribute06 != null">
+			ATTRIBUTE_06,
+		</if>
+		<if test="attribute07 != null">
+			ATTRIBUTE_07,
+		</if>
+		<if test="attribute08 != null">
+			ATTRIBUTE_08,
+		</if>
+		<if test="attribute09 != null">
+			ATTRIBUTE_09,
+		</if>
+		<if test="attribute10 != null">
+			ATTRIBUTE_10,
+		</if>
+	</trim>
+	<trim prefix="values (" suffix=")" suffixOverrides=",">
+		<if test="id != null">
+			#{id,jdbcType = VARCHAR},
+		</if>
+		<if test="rewardId != null">
+			#{rewardId,jdbcType = VARCHAR},
+		</if>
+		<if test="deptId != null">
+			#{deptId,jdbcType = VARCHAR},
+		</if>
+		<if test="deptCode != null">
+			#{deptCode,jdbcType = VARCHAR},
+		</if>
+		<if test="deptName != null">
+			#{deptName,jdbcType = VARCHAR},
+		</if>
+		<if test="staffId != null">
+			#{staffId,jdbcType = VARCHAR},
+		</if>
+		<if test="staffCode != null">
+			#{staffCode,jdbcType = VARCHAR},
+		</if>
+		<if test="staffName != null">
+			#{staffName,jdbcType = VARCHAR},
+		</if>
+		<if test="contributionRate != null">
+			#{contributionRate,jdbcType = DECIMAL},
+		</if>
+		<if test="keyContributionDesc != null">
+			#{keyContributionDesc,jdbcType = VARCHAR},
+		</if>
+		<if test="rewardAmount != null">
+			#{rewardAmount,jdbcType = DECIMAL},
+		</if>
+		<if test="bonusType != null">
+			#{bonusType,jdbcType = VARCHAR},
+		</if>
+		<if test="createdBy != null">
+			#{createdBy,jdbcType = VARCHAR},
+		</if>
+		<if test="createdDept != null">
+			#{createdDept,jdbcType = VARCHAR},
+		</if>
+		<if test="creationDate != null">
+			#{creationDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="lastUpdatedBy != null">
+			#{lastUpdatedBy,jdbcType = VARCHAR},
+		</if>
+		<if test="lastUpdateDate != null">
+			#{lastUpdateDate,jdbcType = TIMESTAMP},
+		</if>
+		<if test="lastUpdateIp != null">
+			#{lastUpdateIp,jdbcType = VARCHAR},
+		</if>
+		<if test="version != null">
+			#{version,jdbcType = DECIMAL},
+		</if>
+		<if test="orgIdentity != null">
+			#{orgIdentity,jdbcType = VARCHAR},
+		</if>
+		<if test="secretLevel != null">
+			#{secretLevel,jdbcType = VARCHAR},
+		</if>
+		<if test="ynDeleted != null">
+			#{ynDeleted,jdbcType = VARCHAR},
+		</if>
+		<if test="remark != null">
+			#{remark,jdbcType = VARCHAR},
+		</if>
+		<if test="orderBy != null">
+			#{orderBy,jdbcType = DECIMAL},
+		</if>
+		<if test="attribute01 != null">
+			#{attribute01,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute02 != null">
+			#{attribute02,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute03 != null">
+			#{attribute03,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute04 != null">
+			#{attribute04,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute05 != null">
+			#{attribute05,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute06 != null">
+			#{attribute06,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute07 != null">
+			#{attribute07,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute08 != null">
+			#{attribute08,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute09 != null">
+			#{attribute09,jdbcType = VARCHAR},
+		</if>
+		<if test="attribute10 != null">
+			#{attribute10,jdbcType = VARCHAR},
+		</if>
+	</trim>
+</insert>
+<!-- 批量新增对象 QMS_QUALITY_REWARD_CONTRIBUTEOR -->
+<insert id="insertQmsQualityRewardContributeorList" parameterType="java.util.List" >
+	insert into QMS_QUALITY_REWARD_CONTRIBUTEOR(
+		ID ,
+		REWARD_ID ,
+		DEPT_ID ,
+		DEPT_CODE ,
+		DEPT_NAME ,
+		STAFF_ID ,
+		STAFF_CODE ,
+		STAFF_NAME ,
+		CONTRIBUTION_RATE ,
+		KEY_CONTRIBUTION_DESC ,
+		REWARD_AMOUNT ,
+		BONUS_TYPE ,
+		CREATED_BY ,
+		CREATED_DEPT ,
+		CREATION_DATE ,
+		LAST_UPDATED_BY ,
+		LAST_UPDATE_DATE ,
+		LAST_UPDATE_IP ,
+		VERSION ,
+		ORG_IDENTITY ,
+		SECRET_LEVEL ,
+		YN_DELETED ,
+		REMARK ,
+		ORDER_BY ,
+		ATTRIBUTE_01 ,
+		ATTRIBUTE_02 ,
+		ATTRIBUTE_03 ,
+		ATTRIBUTE_04 ,
+		ATTRIBUTE_05 ,
+		ATTRIBUTE_06 ,
+		ATTRIBUTE_07 ,
+		ATTRIBUTE_08 ,
+		ATTRIBUTE_09 ,
+		ATTRIBUTE_10 
+	)
+	<foreach collection="dtoList" item="item" index="index"  separator="union all" >
+		select
+			#{item.id,jdbcType = VARCHAR} ,
+			#{item.rewardId,jdbcType = VARCHAR} ,
+			#{item.deptId,jdbcType = VARCHAR} ,
+			#{item.deptCode,jdbcType = VARCHAR} ,
+			#{item.deptName,jdbcType = VARCHAR} ,
+			#{item.staffId,jdbcType = VARCHAR} ,
+			#{item.staffCode,jdbcType = VARCHAR} ,
+			#{item.staffName,jdbcType = VARCHAR} ,
+			#{item.contributionRate,jdbcType = DECIMAL} ,
+			#{item.keyContributionDesc,jdbcType = VARCHAR} ,
+			#{item.rewardAmount,jdbcType = DECIMAL} ,
+			#{item.bonusType,jdbcType = VARCHAR} ,
+			#{item.createdBy,jdbcType = VARCHAR} ,
+			#{item.createdDept,jdbcType = VARCHAR} ,
+			#{item.creationDate,jdbcType = TIMESTAMP} ,
+			#{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+			#{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+			#{item.lastUpdateIp,jdbcType = VARCHAR} ,
+			#{item.version,jdbcType = DECIMAL} ,
+			#{item.orgIdentity,jdbcType = VARCHAR} ,
+			#{item.secretLevel,jdbcType = VARCHAR} ,
+			#{item.ynDeleted,jdbcType = VARCHAR} ,
+			#{item.remark,jdbcType = VARCHAR} ,
+			#{item.orderBy,jdbcType = DECIMAL} ,
+			#{item.attribute01,jdbcType = VARCHAR} ,
+			#{item.attribute02,jdbcType = VARCHAR} ,
+			#{item.attribute03,jdbcType = VARCHAR} ,
+			#{item.attribute04,jdbcType = VARCHAR} ,
+			#{item.attribute05,jdbcType = VARCHAR} ,
+			#{item.attribute06,jdbcType = VARCHAR} ,
+			#{item.attribute07,jdbcType = VARCHAR} ,
+			#{item.attribute08,jdbcType = VARCHAR} ,
+			#{item.attribute09,jdbcType = VARCHAR} ,
+			#{item.attribute10,jdbcType = VARCHAR} 
+		from dual
+	</foreach>
+</insert>
+<!-- 更新对象 QMS_QUALITY_REWARD_CONTRIBUTEOR -->
+<update id="updateQmsQualityRewardContributeorSensitive" parameterType="avicit.myportal.qms.qmsqualityrewardcontributeor.dto.QmsQualityRewardContributeorDTO">
+	update QMS_QUALITY_REWARD_CONTRIBUTEOR
+	<set>
+		<if test="id != null">
+			ID = #{id,jdbcType = VARCHAR} ,
+		</if>
+		<if test="rewardId != null">
+			REWARD_ID = #{rewardId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="deptId != null">
+			DEPT_ID = #{deptId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="deptCode != null">
+			DEPT_CODE = #{deptCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="deptName != null">
+			DEPT_NAME = #{deptName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="staffId != null">
+			STAFF_ID = #{staffId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="staffCode != null">
+			STAFF_CODE = #{staffCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="staffName != null">
+			STAFF_NAME = #{staffName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="contributionRate != null">
+			CONTRIBUTION_RATE = #{contributionRate,jdbcType = DECIMAL} ,
+		</if>
+		<if test="keyContributionDesc != null">
+			KEY_CONTRIBUTION_DESC = #{keyContributionDesc,jdbcType = VARCHAR} ,
+		</if>
+		<if test="rewardAmount != null">
+			REWARD_AMOUNT = #{rewardAmount,jdbcType = DECIMAL} ,
+		</if>
+		<if test="bonusType != null">
+			BONUS_TYPE = #{bonusType,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdBy != null">
+			CREATED_BY = #{createdBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="createdDept != null">
+			CREATED_DEPT = #{createdDept,jdbcType = VARCHAR} ,
+		</if>
+		<if test="creationDate != null">
+			CREATION_DATE = #{creationDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdatedBy != null">
+			LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		</if>
+		<if test="lastUpdateDate != null">
+			LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="lastUpdateIp != null">
+			LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		</if>
+		<if test="version != null">
+			VERSION = version+1 ,
+		</if>
+		<if test="orgIdentity != null">
+			ORG_IDENTITY = #{orgIdentity,jdbcType = VARCHAR} ,
+		</if>
+		<if test="secretLevel != null">
+			SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynDeleted != null">
+			YN_DELETED = #{ynDeleted,jdbcType = VARCHAR} ,
+		</if>
+		<if test="remark != null">
+			REMARK = #{remark,jdbcType = VARCHAR} ,
+		</if>
+		<if test="orderBy != null">
+			ORDER_BY = #{orderBy,jdbcType = DECIMAL} ,
+		</if>
+		<if test="attribute01 != null">
+			ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute02 != null">
+			ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute03 != null">
+			ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute04 != null">
+			ATTRIBUTE_04 = #{attribute04,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute05 != null">
+			ATTRIBUTE_05 = #{attribute05,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute06 != null">
+			ATTRIBUTE_06 = #{attribute06,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute07 != null">
+			ATTRIBUTE_07 = #{attribute07,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute08 != null">
+			ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute09 != null">
+			ATTRIBUTE_09 = #{attribute09,jdbcType = VARCHAR} ,
+		</if>
+		<if test="attribute10 != null">
+			ATTRIBUTE_10 = #{attribute10,jdbcType = VARCHAR} 
+		</if>
+	</set>
+	where id = #{id} 
+	and version = #{version}
+</update>
+<!-- 更新对象 QMS_QUALITY_REWARD_CONTRIBUTEOR -->
+<update id="updateQmsQualityRewardContributeorAll" parameterType="avicit.myportal.qms.qmsqualityrewardcontributeor.dto.QmsQualityRewardContributeorDTO">
+	update QMS_QUALITY_REWARD_CONTRIBUTEOR
+	<trim prefix="set" suffixOverrides=",">
+		ID = #{id,jdbcType = VARCHAR} ,
+		DEPT_ID = #{deptId,jdbcType = VARCHAR} ,
+		DEPT_CODE = #{deptCode,jdbcType = VARCHAR} ,
+		DEPT_NAME = #{deptName,jdbcType = VARCHAR} ,
+		STAFF_ID = #{staffId,jdbcType = VARCHAR} ,
+		STAFF_CODE = #{staffCode,jdbcType = VARCHAR} ,
+		STAFF_NAME = #{staffName,jdbcType = VARCHAR} ,
+		CONTRIBUTION_RATE = #{contributionRate,jdbcType = DECIMAL} ,
+		KEY_CONTRIBUTION_DESC = #{keyContributionDesc,jdbcType = VARCHAR} ,
+		REWARD_AMOUNT = #{rewardAmount,jdbcType = DECIMAL} ,
+		BONUS_TYPE = #{bonusType,jdbcType = VARCHAR} ,
+		LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
+		LAST_UPDATE_DATE = #{lastUpdateDate,jdbcType = TIMESTAMP} ,
+		LAST_UPDATE_IP = #{lastUpdateIp,jdbcType = VARCHAR} ,
+		VERSION = version+1 ,
+		SECRET_LEVEL = #{secretLevel,jdbcType = VARCHAR} ,
+		YN_DELETED = #{ynDeleted,jdbcType = VARCHAR} ,
+		REMARK = #{remark,jdbcType = VARCHAR} ,
+		ORDER_BY = #{orderBy,jdbcType = DECIMAL} ,
+		ATTRIBUTE_01 = #{attribute01,jdbcType = VARCHAR} ,
+		ATTRIBUTE_02 = #{attribute02,jdbcType = VARCHAR} ,
+		ATTRIBUTE_03 = #{attribute03,jdbcType = VARCHAR} ,
+		ATTRIBUTE_04 = #{attribute04,jdbcType = VARCHAR} ,
+		ATTRIBUTE_05 = #{attribute05,jdbcType = VARCHAR} ,
+		ATTRIBUTE_06 = #{attribute06,jdbcType = VARCHAR} ,
+		ATTRIBUTE_07 = #{attribute07,jdbcType = VARCHAR} ,
+		ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
+		ATTRIBUTE_09 = #{attribute09,jdbcType = VARCHAR} ,
+		ATTRIBUTE_10 = #{attribute10,jdbcType = VARCHAR} 
+	</trim>
+	where id = #{id}
+	and version = #{version}
+</update>
+<!-- 批量更新对象   QMS_QUALITY_REWARD_CONTRIBUTEOR -->
+<update id="updateQmsQualityRewardContributeorList" parameterType="java.util.List" >
+	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">begin</if>
+	<foreach collection="dtoList" item="item" index="index"  separator="" >
+		update QMS_QUALITY_REWARD_CONTRIBUTEOR
+		<set>
+			ID = #{item.id,jdbcType = VARCHAR} ,
+			REWARD_ID = #{item.rewardId,jdbcType = VARCHAR} ,
+			DEPT_ID = #{item.deptId,jdbcType = VARCHAR} ,
+			DEPT_CODE = #{item.deptCode,jdbcType = VARCHAR} ,
+			DEPT_NAME = #{item.deptName,jdbcType = VARCHAR} ,
+			STAFF_ID = #{item.staffId,jdbcType = VARCHAR} ,
+			STAFF_CODE = #{item.staffCode,jdbcType = VARCHAR} ,
+			STAFF_NAME = #{item.staffName,jdbcType = VARCHAR} ,
+			CONTRIBUTION_RATE = #{item.contributionRate,jdbcType = DECIMAL} ,
+			KEY_CONTRIBUTION_DESC = #{item.keyContributionDesc,jdbcType = VARCHAR} ,
+			REWARD_AMOUNT = #{item.rewardAmount,jdbcType = DECIMAL} ,
+			BONUS_TYPE = #{item.bonusType,jdbcType = VARCHAR} ,
+			CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,
+			CREATED_DEPT = #{item.createdDept,jdbcType = VARCHAR} ,
+			CREATION_DATE = #{item.creationDate,jdbcType = TIMESTAMP} ,
+			LAST_UPDATED_BY = #{item.lastUpdatedBy,jdbcType = VARCHAR} ,
+			LAST_UPDATE_DATE = #{item.lastUpdateDate,jdbcType = TIMESTAMP} ,
+			LAST_UPDATE_IP = #{item.lastUpdateIp,jdbcType = VARCHAR} ,
+			VERSION = version+1  ,
+			ORG_IDENTITY = #{item.orgIdentity,jdbcType = VARCHAR} ,
+			SECRET_LEVEL = #{item.secretLevel,jdbcType = VARCHAR} ,
+			YN_DELETED = #{item.ynDeleted,jdbcType = VARCHAR} ,
+			REMARK = #{item.remark,jdbcType = VARCHAR} ,
+			ORDER_BY = #{item.orderBy,jdbcType = DECIMAL} ,
+			ATTRIBUTE_01 = #{item.attribute01,jdbcType = VARCHAR} ,
+			ATTRIBUTE_02 = #{item.attribute02,jdbcType = VARCHAR} ,
+			ATTRIBUTE_03 = #{item.attribute03,jdbcType = VARCHAR} ,
+			ATTRIBUTE_04 = #{item.attribute04,jdbcType = VARCHAR} ,
+			ATTRIBUTE_05 = #{item.attribute05,jdbcType = VARCHAR} ,
+			ATTRIBUTE_06 = #{item.attribute06,jdbcType = VARCHAR} ,
+			ATTRIBUTE_07 = #{item.attribute07,jdbcType = VARCHAR} ,
+			ATTRIBUTE_08 = #{item.attribute08,jdbcType = VARCHAR} ,
+			ATTRIBUTE_09 = #{item.attribute09,jdbcType = VARCHAR} ,
+			ATTRIBUTE_10 = #{item.attribute10,jdbcType = VARCHAR} 
+		</set>
+		where id = #{item.id}
+		and version = #{item.version};
+	</foreach>
+	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">end;</if>
+</update>
+<!-- 主键删除 QMS_QUALITY_REWARD_CONTRIBUTEOR -->
+<delete id="deleteQmsQualityRewardContributeorById" parameterType="java.lang.String">
+	delete from QMS_QUALITY_REWARD_CONTRIBUTEOR  where id = #{id}
+</delete>
+</mapper>

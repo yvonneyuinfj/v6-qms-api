@@ -1,14 +1,15 @@
 package avicit.myportal.qms.qmsauditplan.api;
 
-import avicit.platform6.core.domain.VueNode;
 import avicit.platform6.core.restclient.RestClient;
 import avicit.platform6.core.restclient.RestClientUtils;
 import avicit.platform6.core.rest.msg.QueryReqBean;
+import avicit.platform6.core.rest.msg.QueryRespBean;
 import avicit.platform6.core.rest.msg.ResponseMsg;
+import avicit.myportal.qms.qmsauditplan.dto.QmsAuditPlanDTO;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import avicit.myportal.qms.qmsauditplan.dto.QmsAuditPlanDTO;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ import java.util.List;
  * @金航数码科技有限责任公司
  * @作者：于小耘
  * @邮箱：18040011631@163.com
- * @创建时间： 2026-08-03 19:28
+ * @创建时间： 2026-08-06 18:41
  * @类说明：年度内审计划及执行主表Api
  * @修改记录：
  */
@@ -33,105 +34,106 @@ public class QmsAuditPlanApi {
 	private RestClient restClient;
 
 	/**
-     * 加载TreeGrid
-     *
-     * @param level 树的等级
-     * @param id 父节点ID
-     * @return List<QmsAuditPlanDTO>
-     */
-	public List<QmsAuditPlanDTO> getTreeGrid(int level, String id){
-		String url = BASE_PATH+"/get-treegrid/" + level + "/" + id + "/v1";
-        ResponseMsg<List<QmsAuditPlanDTO>> responseMsg = restClient.doGet(SERVICE_CODE, url, new ParameterizedTypeReference<ResponseMsg<List<QmsAuditPlanDTO>>>() {
-        });
-        return RestClientUtils.getResponseBody(responseMsg);
+	 * 按条件分页查询
+	 *
+	 * @param queryReqBean 查询条件
+	 * @return QueryRespBean<QmsAuditPlanDTO>
+	 */
+	public QueryRespBean<QmsAuditPlanDTO> searchByPage(QueryReqBean<QmsAuditPlanDTO> queryReqBean) {
+		String url = BASE_PATH + "/search-by-page/v1";
+		ResponseMsg<QueryRespBean<QmsAuditPlanDTO>> responseMsg = restClient.doPost(SERVICE_CODE, url, queryReqBean, new ParameterizedTypeReference<ResponseMsg<QueryRespBean<QmsAuditPlanDTO>>>() {
+		});
+		return RestClientUtils.getResponseBody(responseMsg);
 	}
 
 	/**
-     * 展开至指定节点
-     *
-     * @param id 主键id
-     * @return List<QmsAuditPlanDTO>
-     */
-	public List<QmsAuditPlanDTO> expandTree(int level, String id){
-		String url = BASE_PATH+"/expandTree/" + id + "/v1";
-        ResponseMsg<List<QmsAuditPlanDTO>> responseMsg = restClient.doGet(SERVICE_CODE, url, new ParameterizedTypeReference<ResponseMsg<List<QmsAuditPlanDTO>>>() {
-        });
-        return RestClientUtils.getResponseBody(responseMsg);
-	}
-	/**
-     * 加载树
-     *
-     * @param level 树的等级
-     * @param id 父节点ID
-     * @return List<VueNode>
-     */
-	public List<VueNode> getTree(int level, String id){
-		String url = BASE_PATH+"/get-tree/" + level + "/" + id + "/v1";
-		ResponseMsg<List<VueNode>> responseMsg = restClient.doGet(SERVICE_CODE, url, new ParameterizedTypeReference<ResponseMsg<List<VueNode>>>() {
-        });
-        return RestClientUtils.getResponseBody(responseMsg);
+	 * 按条件不分页查询
+	 *
+	 * @param queryReqBean 查询条件
+	 * @return List<QmsAuditPlanDTO>
+	 */
+	public List<QmsAuditPlanDTO> search(QueryReqBean<QmsAuditPlanDTO> queryReqBean) {
+		String url = BASE_PATH + "/search/v1";
+		ResponseMsg<List<QmsAuditPlanDTO>> responseMsg = restClient.doPost(SERVICE_CODE, url, queryReqBean, new ParameterizedTypeReference<ResponseMsg<List<QmsAuditPlanDTO>>>() {
+		});
+		return RestClientUtils.getResponseBody(responseMsg);
 	}
 
 	/**
-	 * 查询树节点
-     *
-     * @param queryReqBean 查询条件
-     * @return List<VueNode>
-     */
-	public List<VueNode> searchQmsAuditPlan(QueryReqBean<QmsAuditPlanDTO> queryReqBean){
-		String url = BASE_PATH+"/search/v1";
-		ResponseMsg<List<VueNode>> responseMsg = restClient.doPost(SERVICE_CODE, url, queryReqBean, new ParameterizedTypeReference<ResponseMsg<List<VueNode>>>() {
-        });
-        return RestClientUtils.getResponseBody(responseMsg);
-	}
-	
-	/**
-     * 初始化根节点 如果需要修改根节点数据通过前台页面设置
-     *
-     * @return String
-     */
-    public String insertRoot() {
-        String url = BASE_PATH+"/insert-root/v1";
-        ResponseMsg<String> responseMsg = restClient.doPost(SERVICE_CODE, url, "", new ParameterizedTypeReference<ResponseMsg<String>>() {
-        });
-        return RestClientUtils.getResponseBody(responseMsg);
-    }
-	
-	/**
-	 * 通过ID获取单条记录
-     *
+	 * 通过主键查询单条记录
+	 *
 	 * @param id 主键id
 	 * @return QmsAuditPlanDTO
 	 */
-	public QmsAuditPlanDTO getQmsAuditPlanDtoById(String id){
-		String url = BASE_PATH+"/get/"+ id + "/v1" ;
-		 ResponseMsg<QmsAuditPlanDTO> responseMsg = restClient.doGet(SERVICE_CODE, url, new ParameterizedTypeReference<ResponseMsg<QmsAuditPlanDTO>>() {
-        });
-        return RestClientUtils.getResponseBody(responseMsg);
-    }
+	public QmsAuditPlanDTO get(String id) {
+		String url = BASE_PATH + "/get/" + id + "/v1";
+		ResponseMsg<QmsAuditPlanDTO> responseMsg = restClient.doGet(SERVICE_CODE, url, new ParameterizedTypeReference<ResponseMsg<QmsAuditPlanDTO>>() {
+		});
+		return RestClientUtils.getResponseBody(responseMsg);
+	}
+
+    /**
+	 * 修改部分对象字段
+	 *
+	 * @param qmsAuditPlan 修改对象
+	 * @return Integer
+	 */
+	public Integer updateSensitive(QmsAuditPlanDTO qmsAuditPlan) {
+		String url = BASE_PATH + "/update-sensitive/v1";
+		ResponseMsg<Integer> responseMsg = restClient.doPut(SERVICE_CODE, url, qmsAuditPlan, new ParameterizedTypeReference<ResponseMsg<Integer>>() {
+		});
+		return RestClientUtils.getResponseBody(responseMsg);
+	}
 
 	/**
-     * 新增对象
-     *
-     * @return String
-     */
-	public String save(QmsAuditPlanDTO dto) {
-		String url = BASE_PATH+"/save/v1";
-		ResponseMsg<String> responseMsg = restClient.doPost(SERVICE_CODE, url, dto, new ParameterizedTypeReference<ResponseMsg<String>>() {
-        });
-        return RestClientUtils.getResponseBody(responseMsg);
-    }
-	
+	 * 修改全部对象字段
+	 *
+	 * @param qmsAuditPlan 修改对象
+	 * @return Integer
+	 */
+	public Integer updateAll(QmsAuditPlanDTO qmsAuditPlan) {
+		String url = BASE_PATH + "/update-all/v1";
+		ResponseMsg<Integer> responseMsg = restClient.doPut(SERVICE_CODE, url, qmsAuditPlan, new ParameterizedTypeReference<ResponseMsg<Integer>>() {
+		});
+		return RestClientUtils.getResponseBody(responseMsg);
+	}
+
 	/**
-     * 按主键单条删除
-     *
-     * @param id 主键id
-     * @return Integer
-     */
-    public Integer deleteById(String id) {
-        String url = BASE_PATH+"/delete-by-id/" + id + "/v1";
-        ResponseMsg<Integer> responseMsg = restClient.doDelete(SERVICE_CODE, url, new ParameterizedTypeReference<ResponseMsg<Integer>>() {
-        });
-        return RestClientUtils.getResponseBody(responseMsg);
-    }
+	 * 新增对象
+	 *
+	 * @param qmsAuditPlan 保存对象
+	 * @return String
+	 */
+	public String save(QmsAuditPlanDTO qmsAuditPlan) {
+		String url = BASE_PATH + "/save/v1";
+		ResponseMsg<String> responseMsg = restClient.doPost(SERVICE_CODE, url, qmsAuditPlan, new ParameterizedTypeReference<ResponseMsg<String>>() {
+		});
+		return RestClientUtils.getResponseBody(responseMsg);
+	}
+
+	/**
+	 * 按主键单条删除
+	 *
+	 * @param id 主键id
+	 * @return Integer
+	 */
+	public Integer deleteById(String id) {
+		String url = BASE_PATH + "/delete-by-id/" + id + "/v1";
+		ResponseMsg<Integer> responseMsg = restClient.doDelete(SERVICE_CODE, url, new ParameterizedTypeReference<ResponseMsg<Integer>>() {
+		});
+		return RestClientUtils.getResponseBody(responseMsg);
+	}
+
+	/**
+	 * 批量删除
+	 *
+	 * @param ids 逗号分隔的id串
+	 * @return Integer
+	 */
+	public Integer deleteByIds(String[] ids) {
+		String url = BASE_PATH + "/delete-by-ids/v1";
+		ResponseMsg<Integer> responseMsg = restClient.doDelete(SERVICE_CODE, url, ids, new ParameterizedTypeReference<ResponseMsg<Integer>>() {
+		});
+		return RestClientUtils.getResponseBody(responseMsg);
+	}
 }

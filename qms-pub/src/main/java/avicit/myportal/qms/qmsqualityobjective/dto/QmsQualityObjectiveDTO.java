@@ -38,6 +38,10 @@ public class QmsQualityObjectiveDTO extends BaseTreeDTO {
     @FieldRemark(column="ID", field="id", name="目标ID")
     private java.lang.String id;
 
+    @ApiModelProperty(value = "目标来源", name = "objectiveSource")
+    @FieldRemark(column="OBJECTIVE_SOURCE", field="objectiveSource", name="目标来源")
+    private java.lang.String objectiveSource;
+
     /**
     * 目标编码
     */
@@ -54,6 +58,7 @@ public class QmsQualityObjectiveDTO extends BaseTreeDTO {
     @ApiModelProperty(value = "目标名称", name = "objectiveName")
     @FieldRemark(column="OBJECTIVE_NAME", field="objectiveName", name="目标名称")
     private java.lang.String objectiveName;
+
 
     /**
     * 目标内容
@@ -615,6 +620,14 @@ public class QmsQualityObjectiveDTO extends BaseTreeDTO {
 
     public void setId(java.lang.String id){
         this.id = id;
+    }
+
+    public java.lang.String getObjectiveSource() {
+        return objectiveSource;
+    }
+
+    public void setObjectiveSource(java.lang.String objectiveSource) {
+        this.objectiveSource = objectiveSource;
     }
 
     public java.lang.String getObjectiveCode(){

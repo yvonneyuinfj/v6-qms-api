@@ -99,7 +99,7 @@ private static final long serialVersionUID = 1L;
     */
     @ExcelProperty("是否存在风险")
     @Size(max = 2, message = "是否存在风险长度不能超过2个字符")
-    private String ynResk;
+    private String ynRisk;
     /**
     * 风险说明
     */

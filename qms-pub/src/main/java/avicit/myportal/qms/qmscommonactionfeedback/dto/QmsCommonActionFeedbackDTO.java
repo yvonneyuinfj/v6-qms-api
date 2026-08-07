@@ -179,9 +179,9 @@ public class QmsCommonActionFeedbackDTO extends BeanDTO{
     */
     @ExcelProperty("是否存在风险")
     @Size(max = 2, message = "是否存在风险长度不能超过2个字符")
-    @ApiModelProperty(value = "是否存在风险", name = "ynResk")
-    @FieldRemark(column="YN_RESK", field="ynResk", name="是否存在风险")
-    private java.lang.String ynResk;
+    @ApiModelProperty(value = "是否存在风险", name = "ynRisk")
+    @FieldRemark(column="YN_RESK", field="ynRisk", name="是否存在风险")
+    private java.lang.String ynRisk;
 
     /**
     * 风险说明
@@ -528,12 +528,12 @@ public class QmsCommonActionFeedbackDTO extends BeanDTO{
         this.nextMeasure = nextMeasure;
     }
 
-    public java.lang.String getYnResk(){
-        return ynResk;
+    public java.lang.String getYnRisk(){
+        return ynRisk;
     }
 
-    public void setYnResk(java.lang.String ynResk){
-        this.ynResk = ynResk;
+    public void setYnRisk(java.lang.String ynRisk){
+        this.ynRisk = ynRisk;
     }
 
     public java.lang.String getRiskDesc(){

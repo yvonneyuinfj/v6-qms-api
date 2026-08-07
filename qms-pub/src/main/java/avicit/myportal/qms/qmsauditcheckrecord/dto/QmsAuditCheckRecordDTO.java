@@ -22,7 +22,7 @@ import javax.validation.constraints.*;
 * @金航数码科技有限责任公司
 * @作者：于小耘
 * @邮箱：18040011631@163.com
-* @创建时间： 2026-08-03 19:32
+* @创建时间： 2026-08-07 13:24
 * @类说明：审核记录表DTO
 * @修改记录：
 */
@@ -40,7 +40,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 64, message = "审核记录ID长度不能超过64个字符")
     @ApiModelProperty(value = "审核记录ID", name = "id")
     @FieldRemark(column="ID", field="id", name="审核记录ID")
-    private java.lang.String id;
+    private String id;
 
     /**
     * 审核计划ID;关联年度计划
@@ -49,7 +49,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 64, message = "审核计划ID;关联年度计划长度不能超过64个字符")
     @ApiModelProperty(value = "审核计划ID;关联年度计划", name = "planId")
     @FieldRemark(column="PLAN_ID", field="planId", name="审核计划ID;关联年度计划")
-    private java.lang.String planId;
+    private String planId;
 
     /**
     * 审核通知单ID;关联已批准通知单
@@ -58,7 +58,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 64, message = "审核通知单ID;关联已批准通知单长度不能超过64个字符")
     @ApiModelProperty(value = "审核通知单ID;关联已批准通知单", name = "noticeId")
     @FieldRemark(column="NOTICE_ID", field="noticeId", name="审核通知单ID;关联已批准通知单")
-    private java.lang.String noticeId;
+    private String noticeId;
 
     /**
     * 审核记录编号;系统生成
@@ -67,7 +67,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 50, message = "审核记录编号;系统生成长度不能超过50个字符")
     @ApiModelProperty(value = "审核记录编号;系统生成", name = "recordCode")
     @FieldRemark(column="RECORD_CODE", field="recordCode", name="审核记录编号;系统生成")
-    private java.lang.String recordCode;
+    private String recordCode;
 
     /**
     * 受审部门ID;通知单带入
@@ -76,7 +76,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 64, message = "受审部门ID;通知单带入长度不能超过64个字符")
     @ApiModelProperty(value = "受审部门ID;通知单带入", name = "auditeeDeptId")
     @FieldRemark(column="AUDITEE_DEPT_ID", field="auditeeDeptId", name="受审部门ID;通知单带入")
-    private java.lang.String auditeeDeptId;
+    private String auditeeDeptId;
 
     /**
     * 受审部门CODE;通知单带入
@@ -85,7 +85,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 10, message = "受审部门CODE;通知单带入长度不能超过10个字符")
     @ApiModelProperty(value = "受审部门CODE;通知单带入", name = "auditeeDeptCode")
     @FieldRemark(column="AUDITEE_DEPT_CODE", field="auditeeDeptCode", name="受审部门CODE;通知单带入")
-    private java.lang.String auditeeDeptCode;
+    private String auditeeDeptCode;
 
     /**
     * 受审部门;通知单带入
@@ -94,7 +94,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 50, message = "受审部门;通知单带入长度不能超过50个字符")
     @ApiModelProperty(value = "受审部门;通知单带入", name = "auditeeDeptName")
     @FieldRemark(column="AUDITEE_DEPT_NAME", field="auditeeDeptName", name="受审部门;通知单带入")
-    private java.lang.String auditeeDeptName;
+    private String auditeeDeptName;
     /**
     * 审核时间;通知单带入
     */
@@ -125,7 +125,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 512, message = "审核员ID长度不能超过512个字符")
     @ApiModelProperty(value = "审核员ID", name = "auditorId")
     @FieldRemark(column="AUDITOR_ID", field="auditorId", name="审核员ID")
-    private java.lang.String auditorId;
+    private String auditorId;
 
     /**
     * 审核员CODE
@@ -134,7 +134,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 200, message = "审核员CODE长度不能超过200个字符")
     @ApiModelProperty(value = "审核员CODE", name = "auditorCode")
     @FieldRemark(column="AUDITOR_CODE", field="auditorCode", name="审核员CODE")
-    private java.lang.String auditorCode;
+    private String auditorCode;
 
     /**
     * 审核员
@@ -143,7 +143,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 200, message = "审核员长度不能超过200个字符")
     @ApiModelProperty(value = "审核员", name = "auditorName")
     @FieldRemark(column="AUDITOR_NAME", field="auditorName", name="审核员")
-    private java.lang.String auditorName;
+    private String auditorName;
 
     /**
     * 主审ID
@@ -152,7 +152,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 64, message = "主审ID长度不能超过64个字符")
     @ApiModelProperty(value = "主审ID", name = "chiefAuditorId")
     @FieldRemark(column="CHIEF_AUDITOR_ID", field="chiefAuditorId", name="主审ID")
-    private java.lang.String chiefAuditorId;
+    private String chiefAuditorId;
 
     /**
     * 主审CODE
@@ -161,7 +161,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 10, message = "主审CODE长度不能超过10个字符")
     @ApiModelProperty(value = "主审CODE", name = "chiefAuditorCode")
     @FieldRemark(column="CHIEF_AUDITOR_CODE", field="chiefAuditorCode", name="主审CODE")
-    private java.lang.String chiefAuditorCode;
+    private String chiefAuditorCode;
 
     /**
     * 主审
@@ -170,7 +170,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 50, message = "主审长度不能超过50个字符")
     @ApiModelProperty(value = "主审", name = "chiefAuditorName")
     @FieldRemark(column="CHIEF_AUDITOR_NAME", field="chiefAuditorName", name="主审")
-    private java.lang.String chiefAuditorName;
+    private String chiefAuditorName;
 
     /**
     * 审核评价主管ID
@@ -179,7 +179,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 64, message = "审核评价主管ID长度不能超过64个字符")
     @ApiModelProperty(value = "审核评价主管ID", name = "evaluationSupervisorId")
     @FieldRemark(column="EVALUATION_SUPERVISOR_ID", field="evaluationSupervisorId", name="审核评价主管ID")
-    private java.lang.String evaluationSupervisorId;
+    private String evaluationSupervisorId;
 
     /**
     * 审核评价主管CODE
@@ -188,7 +188,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 10, message = "审核评价主管CODE长度不能超过10个字符")
     @ApiModelProperty(value = "审核评价主管CODE", name = "evaluationSupervisorCode")
     @FieldRemark(column="EVALUATION_SUPERVISOR_CODE", field="evaluationSupervisorCode", name="审核评价主管CODE")
-    private java.lang.String evaluationSupervisorCode;
+    private String evaluationSupervisorCode;
 
     /**
     * 审核评价主管NAME
@@ -197,7 +197,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 50, message = "审核评价主管NAME长度不能超过50个字符")
     @ApiModelProperty(value = "审核评价主管NAME", name = "evaluationSupervisorName")
     @FieldRemark(column="EVALUATION_SUPERVISOR_NAME", field="evaluationSupervisorName", name="审核评价主管NAME")
-    private java.lang.String evaluationSupervisorName;
+    private String evaluationSupervisorName;
 
     /**
     * 审核组长ID
@@ -206,7 +206,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 64, message = "审核组长ID长度不能超过64个字符")
     @ApiModelProperty(value = "审核组长ID", name = "auditLeaderId")
     @FieldRemark(column="AUDIT_LEADER_ID", field="auditLeaderId", name="审核组长ID")
-    private java.lang.String auditLeaderId;
+    private String auditLeaderId;
 
     /**
     * 审核组长CODE
@@ -215,7 +215,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 10, message = "审核组长CODE长度不能超过10个字符")
     @ApiModelProperty(value = "审核组长CODE", name = "auditLeaderCode")
     @FieldRemark(column="AUDIT_LEADER_CODE", field="auditLeaderCode", name="审核组长CODE")
-    private java.lang.String auditLeaderCode;
+    private String auditLeaderCode;
 
     /**
     * 审核组长
@@ -224,7 +224,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 50, message = "审核组长长度不能超过50个字符")
     @ApiModelProperty(value = "审核组长", name = "auditLeaderName")
     @FieldRemark(column="AUDIT_LEADER_NAME", field="auditLeaderName", name="审核组长")
-    private java.lang.String auditLeaderName;
+    private String auditLeaderName;
     /**
     * 审核持续天数
     */
@@ -243,7 +243,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 512, message = "受审方人员ID;通知单带入长度不能超过512个字符")
     @ApiModelProperty(value = "受审方人员ID;通知单带入", name = "auditeeUserId")
     @FieldRemark(column="AUDITEE_USER_ID", field="auditeeUserId", name="受审方人员ID;通知单带入")
-    private java.lang.String auditeeUserId;
+    private String auditeeUserId;
 
     /**
     * 受审方人员CODE;通知单带入
@@ -252,7 +252,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 200, message = "受审方人员CODE;通知单带入长度不能超过200个字符")
     @ApiModelProperty(value = "受审方人员CODE;通知单带入", name = "auditeeUserCode")
     @FieldRemark(column="AUDITEE_USER_CODE", field="auditeeUserCode", name="受审方人员CODE;通知单带入")
-    private java.lang.String auditeeUserCode;
+    private String auditeeUserCode;
 
     /**
     * 受审方人员;通知单带入
@@ -261,7 +261,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 200, message = "受审方人员;通知单带入长度不能超过200个字符")
     @ApiModelProperty(value = "受审方人员;通知单带入", name = "auditeeUserName")
     @FieldRemark(column="AUDITEE_USER_NAME", field="auditeeUserName", name="受审方人员;通知单带入")
-    private java.lang.String auditeeUserName;
+    private String auditeeUserName;
     /**
     * 检查明细数量;自动统计
     */
@@ -300,7 +300,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 10, message = "业务状态;草稿，审批中，已批准，已退回，作废长度不能超过10个字符")
     @ApiModelProperty(value = "业务状态;草稿，审批中，已批准，已退回，作废", name = "status")
     @FieldRemark(column="STATUS", field="status", name="业务状态;草稿，审批中，已批准，已退回，作废")
-    private java.lang.String status;
+    private String status;
 
     /**
     * 流程实例ID
@@ -309,7 +309,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 64, message = "流程实例ID长度不能超过64个字符")
     @ApiModelProperty(value = "流程实例ID", name = "processInstanceId")
     @FieldRemark(column="PROCESS_INSTANCE_ID", field="processInstanceId", name="流程实例ID")
-    private java.lang.String processInstanceId;
+    private String processInstanceId;
 
     /**
     * 流程状态
@@ -318,7 +318,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 10, message = "流程状态长度不能超过10个字符")
     @ApiModelProperty(value = "流程状态", name = "processStatus")
     @FieldRemark(column="PROCESS_STATUS", field="processStatus", name="流程状态")
-    private java.lang.String processStatus;
+    private String processStatus;
 
     /**
     * 创建时间起
@@ -348,9 +348,9 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     * 密级
     */
     @FieldRemark(column="SECRET_LEVEL", field="secretLevel", name="密级", dataType="lookup", lookupType="PLATFORM_FILE_SECRET_LEVEL")
-    private java.lang.String secretLevel;
+    private String secretLevel;
     @ExcelProperty("密级")
-    private java.lang.String secretLevelName;
+    private String secretLevelName;
 
     /**
     * 是否已删除
@@ -359,7 +359,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 2, message = "是否已删除长度不能超过2个字符")
     @ApiModelProperty(value = "是否已删除", name = "ynDeleted")
     @FieldRemark(column="YN_DELETED", field="ynDeleted", name="是否已删除")
-    private java.lang.String ynDeleted;
+    private String ynDeleted;
 
     /**
     * 备注
@@ -368,7 +368,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 2000, message = "备注长度不能超过2000个字符")
     @ApiModelProperty(value = "备注", name = "remark")
     @FieldRemark(column="REMARK", field="remark", name="备注")
-    private java.lang.String remark;
+    private String remark;
     /**
     * 排序
     */
@@ -386,7 +386,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_01长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_01", name = "attribute01")
     @FieldRemark(column="ATTRIBUTE_01", field="attribute01", name="扩展字段_01")
-    private java.lang.String attribute01;
+    private String attribute01;
 
     /**
     * 扩展字段_02
@@ -394,7 +394,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_02长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_02", name = "attribute02")
     @FieldRemark(column="ATTRIBUTE_02", field="attribute02", name="扩展字段_02")
-    private java.lang.String attribute02;
+    private String attribute02;
 
     /**
     * 扩展字段_03
@@ -402,7 +402,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_03长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_03", name = "attribute03")
     @FieldRemark(column="ATTRIBUTE_03", field="attribute03", name="扩展字段_03")
-    private java.lang.String attribute03;
+    private String attribute03;
 
     /**
     * 扩展字段_04
@@ -410,7 +410,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_04长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_04", name = "attribute04")
     @FieldRemark(column="ATTRIBUTE_04", field="attribute04", name="扩展字段_04")
-    private java.lang.String attribute04;
+    private String attribute04;
 
     /**
     * 扩展字段_05
@@ -418,7 +418,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_05长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_05", name = "attribute05")
     @FieldRemark(column="ATTRIBUTE_05", field="attribute05", name="扩展字段_05")
-    private java.lang.String attribute05;
+    private String attribute05;
 
     /**
     * 扩展字段_06
@@ -426,7 +426,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_06长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_06", name = "attribute06")
     @FieldRemark(column="ATTRIBUTE_06", field="attribute06", name="扩展字段_06")
-    private java.lang.String attribute06;
+    private String attribute06;
 
     /**
     * 扩展字段_07
@@ -434,7 +434,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_07长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_07", name = "attribute07")
     @FieldRemark(column="ATTRIBUTE_07", field="attribute07", name="扩展字段_07")
-    private java.lang.String attribute07;
+    private String attribute07;
 
     /**
     * 扩展字段_08
@@ -442,7 +442,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_08长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_08", name = "attribute08")
     @FieldRemark(column="ATTRIBUTE_08", field="attribute08", name="扩展字段_08")
-    private java.lang.String attribute08;
+    private String attribute08;
 
     /**
     * 扩展字段_09
@@ -450,7 +450,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_09长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_09", name = "attribute09")
     @FieldRemark(column="ATTRIBUTE_09", field="attribute09", name="扩展字段_09")
-    private java.lang.String attribute09;
+    private String attribute09;
 
     /**
     * 扩展字段_10
@@ -458,7 +458,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_10长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_10", name = "attribute10")
     @FieldRemark(column="ATTRIBUTE_10", field="attribute10", name="扩展字段_10")
-    private java.lang.String attribute10;
+    private String attribute10;
 
     /**
     * 父节点ID
@@ -467,7 +467,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 64, message = "父节点ID长度不能超过64个字符")
     @ApiModelProperty(value = "父节点ID", name = "parentId")
     @FieldRemark(column="PARENT_ID", field="parentId", name="父节点ID")
-    private java.lang.String parentId;
+    private String parentId;
 
     /**
     * 全路径
@@ -475,7 +475,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 1000, message = "全路径长度不能超过1000个字符")
     @ApiModelProperty(value = "全路径", name = "treePath")
     @FieldRemark(column="TREE_PATH", field="treePath", name="全路径")
-    private java.lang.String treePath;
+    private String treePath;
     /**
     * 节点层级
     */
@@ -498,7 +498,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 1000, message = "全级排序长度不能超过1000个字符")
     @ApiModelProperty(value = "全级排序", name = "treeSorts")
     @FieldRemark(column="TREE_SORTS", field="treeSorts", name="全级排序")
-    private java.lang.String treeSorts;
+    private String treeSorts;
 
     /**
     * 是否叶子节点
@@ -506,7 +506,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @Size(max = 2, message = "是否叶子节点长度不能超过2个字符")
     @ApiModelProperty(value = "是否叶子节点", name = "treeLeaf")
     @FieldRemark(column="TREE_LEAF", field="treeLeaf", name="是否叶子节点")
-    private java.lang.String treeLeaf;
+    private String treeLeaf;
     /**
      * 子表对象集合
      */
@@ -523,59 +523,59 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @ExcelProperty("当前处理人")
     private String assigneenames_;
 
-    public java.lang.String getId(){
+    public String getId(){
         return id;
     }
 
-    public void setId(java.lang.String id){
+    public void setId(String id){
         this.id = id;
     }
 
-    public java.lang.String getPlanId(){
+    public String getPlanId(){
         return planId;
     }
 
-    public void setPlanId(java.lang.String planId){
+    public void setPlanId(String planId){
         this.planId = planId;
     }
 
-    public java.lang.String getNoticeId(){
+    public String getNoticeId(){
         return noticeId;
     }
 
-    public void setNoticeId(java.lang.String noticeId){
+    public void setNoticeId(String noticeId){
         this.noticeId = noticeId;
     }
 
-    public java.lang.String getRecordCode(){
+    public String getRecordCode(){
         return recordCode;
     }
 
-    public void setRecordCode(java.lang.String recordCode){
+    public void setRecordCode(String recordCode){
         this.recordCode = recordCode;
     }
 
-    public java.lang.String getAuditeeDeptId(){
+    public String getAuditeeDeptId(){
         return auditeeDeptId;
     }
 
-    public void setAuditeeDeptId(java.lang.String auditeeDeptId){
+    public void setAuditeeDeptId(String auditeeDeptId){
         this.auditeeDeptId = auditeeDeptId;
     }
 
-    public java.lang.String getAuditeeDeptCode(){
+    public String getAuditeeDeptCode(){
         return auditeeDeptCode;
     }
 
-    public void setAuditeeDeptCode(java.lang.String auditeeDeptCode){
+    public void setAuditeeDeptCode(String auditeeDeptCode){
         this.auditeeDeptCode = auditeeDeptCode;
     }
 
-    public java.lang.String getAuditeeDeptName(){
+    public String getAuditeeDeptName(){
         return auditeeDeptName;
     }
 
-    public void setAuditeeDeptName(java.lang.String auditeeDeptName){
+    public void setAuditeeDeptName(String auditeeDeptName){
         this.auditeeDeptName = auditeeDeptName;
     }
 
@@ -604,99 +604,99 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
         this.auditTimeEnd = auditTimeEnd;
     }
 
-    public java.lang.String getAuditorId(){
+    public String getAuditorId(){
         return auditorId;
     }
 
-    public void setAuditorId(java.lang.String auditorId){
+    public void setAuditorId(String auditorId){
         this.auditorId = auditorId;
     }
 
-    public java.lang.String getAuditorCode(){
+    public String getAuditorCode(){
         return auditorCode;
     }
 
-    public void setAuditorCode(java.lang.String auditorCode){
+    public void setAuditorCode(String auditorCode){
         this.auditorCode = auditorCode;
     }
 
-    public java.lang.String getAuditorName(){
+    public String getAuditorName(){
         return auditorName;
     }
 
-    public void setAuditorName(java.lang.String auditorName){
+    public void setAuditorName(String auditorName){
         this.auditorName = auditorName;
     }
 
-    public java.lang.String getChiefAuditorId(){
+    public String getChiefAuditorId(){
         return chiefAuditorId;
     }
 
-    public void setChiefAuditorId(java.lang.String chiefAuditorId){
+    public void setChiefAuditorId(String chiefAuditorId){
         this.chiefAuditorId = chiefAuditorId;
     }
 
-    public java.lang.String getChiefAuditorCode(){
+    public String getChiefAuditorCode(){
         return chiefAuditorCode;
     }
 
-    public void setChiefAuditorCode(java.lang.String chiefAuditorCode){
+    public void setChiefAuditorCode(String chiefAuditorCode){
         this.chiefAuditorCode = chiefAuditorCode;
     }
 
-    public java.lang.String getChiefAuditorName(){
+    public String getChiefAuditorName(){
         return chiefAuditorName;
     }
 
-    public void setChiefAuditorName(java.lang.String chiefAuditorName){
+    public void setChiefAuditorName(String chiefAuditorName){
         this.chiefAuditorName = chiefAuditorName;
     }
 
-    public java.lang.String getEvaluationSupervisorId(){
+    public String getEvaluationSupervisorId(){
         return evaluationSupervisorId;
     }
 
-    public void setEvaluationSupervisorId(java.lang.String evaluationSupervisorId){
+    public void setEvaluationSupervisorId(String evaluationSupervisorId){
         this.evaluationSupervisorId = evaluationSupervisorId;
     }
 
-    public java.lang.String getEvaluationSupervisorCode(){
+    public String getEvaluationSupervisorCode(){
         return evaluationSupervisorCode;
     }
 
-    public void setEvaluationSupervisorCode(java.lang.String evaluationSupervisorCode){
+    public void setEvaluationSupervisorCode(String evaluationSupervisorCode){
         this.evaluationSupervisorCode = evaluationSupervisorCode;
     }
 
-    public java.lang.String getEvaluationSupervisorName(){
+    public String getEvaluationSupervisorName(){
         return evaluationSupervisorName;
     }
 
-    public void setEvaluationSupervisorName(java.lang.String evaluationSupervisorName){
+    public void setEvaluationSupervisorName(String evaluationSupervisorName){
         this.evaluationSupervisorName = evaluationSupervisorName;
     }
 
-    public java.lang.String getAuditLeaderId(){
+    public String getAuditLeaderId(){
         return auditLeaderId;
     }
 
-    public void setAuditLeaderId(java.lang.String auditLeaderId){
+    public void setAuditLeaderId(String auditLeaderId){
         this.auditLeaderId = auditLeaderId;
     }
 
-    public java.lang.String getAuditLeaderCode(){
+    public String getAuditLeaderCode(){
         return auditLeaderCode;
     }
 
-    public void setAuditLeaderCode(java.lang.String auditLeaderCode){
+    public void setAuditLeaderCode(String auditLeaderCode){
         this.auditLeaderCode = auditLeaderCode;
     }
 
-    public java.lang.String getAuditLeaderName(){
+    public String getAuditLeaderName(){
         return auditLeaderName;
     }
 
-    public void setAuditLeaderName(java.lang.String auditLeaderName){
+    public void setAuditLeaderName(String auditLeaderName){
         this.auditLeaderName = auditLeaderName;
     }
 
@@ -709,27 +709,27 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
         super.handleNullValue();
     }
 
-    public java.lang.String getAuditeeUserId(){
+    public String getAuditeeUserId(){
         return auditeeUserId;
     }
 
-    public void setAuditeeUserId(java.lang.String auditeeUserId){
+    public void setAuditeeUserId(String auditeeUserId){
         this.auditeeUserId = auditeeUserId;
     }
 
-    public java.lang.String getAuditeeUserCode(){
+    public String getAuditeeUserCode(){
         return auditeeUserCode;
     }
 
-    public void setAuditeeUserCode(java.lang.String auditeeUserCode){
+    public void setAuditeeUserCode(String auditeeUserCode){
         this.auditeeUserCode = auditeeUserCode;
     }
 
-    public java.lang.String getAuditeeUserName(){
+    public String getAuditeeUserName(){
         return auditeeUserName;
     }
 
-    public void setAuditeeUserName(java.lang.String auditeeUserName){
+    public void setAuditeeUserName(String auditeeUserName){
         this.auditeeUserName = auditeeUserName;
     }
 
@@ -760,27 +760,27 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
         super.handleNullValue();
     }
 
-    public java.lang.String getStatus(){
+    public String getStatus(){
         return status;
     }
 
-    public void setStatus(java.lang.String status){
+    public void setStatus(String status){
         this.status = status;
     }
 
-    public java.lang.String getProcessInstanceId(){
+    public String getProcessInstanceId(){
         return processInstanceId;
     }
 
-    public void setProcessInstanceId(java.lang.String processInstanceId){
+    public void setProcessInstanceId(String processInstanceId){
         this.processInstanceId = processInstanceId;
     }
 
-    public java.lang.String getProcessStatus(){
+    public String getProcessStatus(){
         return processStatus;
     }
 
-    public void setProcessStatus(java.lang.String processStatus){
+    public void setProcessStatus(String processStatus){
         this.processStatus = processStatus;
     }
 
@@ -815,35 +815,35 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     public void setLastUpdateDateEnd(java.util.Date lastUpdateDateEnd){
         this.lastUpdateDateEnd = lastUpdateDateEnd;
     }
-    public java.lang.String getSecretLevel(){
+    public String getSecretLevel(){
         return secretLevel;
     }
 
-    public void setSecretLevel(java.lang.String secretLevel){
+    public void setSecretLevel(String secretLevel){
         this.secretLevel = secretLevel;
     }
 
-    public java.lang.String getSecretLevelName(){
+    public String getSecretLevelName(){
         return secretLevelName;
     }
 
-    public void setSecretLevelName(java.lang.String secretLevelName){
+    public void setSecretLevelName(String secretLevelName){
         this.secretLevelName = secretLevelName;
     }
 
-    public java.lang.String getYnDeleted(){
+    public String getYnDeleted(){
         return ynDeleted;
     }
 
-    public void setYnDeleted(java.lang.String ynDeleted){
+    public void setYnDeleted(String ynDeleted){
         this.ynDeleted = ynDeleted;
     }
 
-    public java.lang.String getRemark(){
+    public String getRemark(){
         return remark;
     }
 
-    public void setRemark(java.lang.String remark){
+    public void setRemark(String remark){
         this.remark = remark;
     }
 
@@ -856,99 +856,99 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
         super.handleNullValue();
     }
 
-    public java.lang.String getAttribute01(){
+    public String getAttribute01(){
         return attribute01;
     }
 
-    public void setAttribute01(java.lang.String attribute01){
+    public void setAttribute01(String attribute01){
         this.attribute01 = attribute01;
     }
 
-    public java.lang.String getAttribute02(){
+    public String getAttribute02(){
         return attribute02;
     }
 
-    public void setAttribute02(java.lang.String attribute02){
+    public void setAttribute02(String attribute02){
         this.attribute02 = attribute02;
     }
 
-    public java.lang.String getAttribute03(){
+    public String getAttribute03(){
         return attribute03;
     }
 
-    public void setAttribute03(java.lang.String attribute03){
+    public void setAttribute03(String attribute03){
         this.attribute03 = attribute03;
     }
 
-    public java.lang.String getAttribute04(){
+    public String getAttribute04(){
         return attribute04;
     }
 
-    public void setAttribute04(java.lang.String attribute04){
+    public void setAttribute04(String attribute04){
         this.attribute04 = attribute04;
     }
 
-    public java.lang.String getAttribute05(){
+    public String getAttribute05(){
         return attribute05;
     }
 
-    public void setAttribute05(java.lang.String attribute05){
+    public void setAttribute05(String attribute05){
         this.attribute05 = attribute05;
     }
 
-    public java.lang.String getAttribute06(){
+    public String getAttribute06(){
         return attribute06;
     }
 
-    public void setAttribute06(java.lang.String attribute06){
+    public void setAttribute06(String attribute06){
         this.attribute06 = attribute06;
     }
 
-    public java.lang.String getAttribute07(){
+    public String getAttribute07(){
         return attribute07;
     }
 
-    public void setAttribute07(java.lang.String attribute07){
+    public void setAttribute07(String attribute07){
         this.attribute07 = attribute07;
     }
 
-    public java.lang.String getAttribute08(){
+    public String getAttribute08(){
         return attribute08;
     }
 
-    public void setAttribute08(java.lang.String attribute08){
+    public void setAttribute08(String attribute08){
         this.attribute08 = attribute08;
     }
 
-    public java.lang.String getAttribute09(){
+    public String getAttribute09(){
         return attribute09;
     }
 
-    public void setAttribute09(java.lang.String attribute09){
+    public void setAttribute09(String attribute09){
         this.attribute09 = attribute09;
     }
 
-    public java.lang.String getAttribute10(){
+    public String getAttribute10(){
         return attribute10;
     }
 
-    public void setAttribute10(java.lang.String attribute10){
+    public void setAttribute10(String attribute10){
         this.attribute10 = attribute10;
     }
 
-    public java.lang.String getParentId(){
+    public String getParentId(){
         return parentId;
     }
 
-    public void setParentId(java.lang.String parentId){
+    public void setParentId(String parentId){
         this.parentId = parentId;
     }
 
-    public java.lang.String getTreePath(){
+    public String getTreePath(){
         return treePath;
     }
 
-    public void setTreePath(java.lang.String treePath){
+    public void setTreePath(String treePath){
         this.treePath = treePath;
     }
 
@@ -970,19 +970,19 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
         super.handleNullValue();
     }
 
-    public java.lang.String getTreeSorts(){
+    public String getTreeSorts(){
         return treeSorts;
     }
 
-    public void setTreeSorts(java.lang.String treeSorts){
+    public void setTreeSorts(String treeSorts){
         this.treeSorts = treeSorts;
     }
 
-    public java.lang.String getTreeLeaf(){
+    public String getTreeLeaf(){
         return treeLeaf;
     }
 
-    public void setTreeLeaf(java.lang.String treeLeaf){
+    public void setTreeLeaf(String treeLeaf){
         this.treeLeaf = treeLeaf;
     }
 

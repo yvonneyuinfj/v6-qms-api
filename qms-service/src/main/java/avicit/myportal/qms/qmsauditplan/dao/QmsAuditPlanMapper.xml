@@ -44,6 +44,32 @@
 	<result property="attribute09" column="ATTRIBUTE_09" jdbcType="VARCHAR" />
 	<result property="attribute10" column="ATTRIBUTE_10" jdbcType="VARCHAR" />
 	<result property="auditTime" column="AUDIT_TIME" jdbcType="TIMESTAMP" />
+	<result property="ynNotice" column="YN_NOTICE" jdbcType="VARCHAR" />
+	<result property="auditNoticeId" column="AUDIT_NOTICE_ID" jdbcType="VARCHAR" />
+	<result property="noticeStatus" column="NOTICE_STATUS" jdbcType="VARCHAR" />
+	<result property="noticeProcessInstanceId" column="NOTICE_PROCESS_INSTANCE_ID" jdbcType="VARCHAR" />
+	<result property="noticeProcessStatus" column="NOTICE_PROCESS_STATUS" jdbcType="VARCHAR" />
+	<result property="coveredProduct" column="COVERED_PRODUCT" jdbcType="VARCHAR" />
+	<result property="auditeeUserId" column="AUDITEE_USER_ID" jdbcType="VARCHAR" />
+	<result property="auditeeUserCode" column="AUDITEE_USER_CODE" jdbcType="VARCHAR" />
+	<result property="auditeeUserName" column="AUDITEE_USER_NAME" jdbcType="VARCHAR" />
+	<result property="chiefAuditorId" column="CHIEF_AUDITOR_ID" jdbcType="VARCHAR" />
+	<result property="chiefAuditorCode" column="CHIEF_AUDITOR_CODE" jdbcType="VARCHAR" />
+	<result property="chiefAuditorName" column="CHIEF_AUDITOR_NAME" jdbcType="VARCHAR" />
+	<result property="evaluationSupervisorId" column="EVALUATION_SUPERVISOR_ID" jdbcType="VARCHAR" />
+	<result property="evaluationSupervisorCode" column="EVALUATION_SUPERVISOR_CODE" jdbcType="VARCHAR" />
+	<result property="evaluationSupervisorName" column="EVALUATION_SUPERVISOR_NAME" jdbcType="VARCHAR" />
+	<result property="auditLeaderId" column="AUDIT_LEADER_ID" jdbcType="VARCHAR" />
+	<result property="auditLeaderCode" column="AUDIT_LEADER_CODE" jdbcType="VARCHAR" />
+	<result property="auditLeaderName" column="AUDIT_LEADER_NAME" jdbcType="VARCHAR" />
+	<result property="auditeeLeaderId" column="AUDITEE_LEADER_ID" jdbcType="VARCHAR" />
+	<result property="auditeeLeaderCode" column="AUDITEE_LEADER_CODE" jdbcType="VARCHAR" />
+	<result property="auditeeLeaderName" column="AUDITEE_LEADER_NAME" jdbcType="VARCHAR" />
+	<result property="ynCheckRecord" column="YN_CHECK_RECORD" jdbcType="VARCHAR" />
+	<result property="auditCheckRecordId" column="AUDIT_CHECK_RECORD_ID" jdbcType="VARCHAR" />
+	<result property="checkRecordStatus" column="CHECK_RECORD_STATUS" jdbcType="VARCHAR" />
+	<result property="checkRecordProcessInstanceId" column="CHECK_RECORD_PROCESS_INSTANCE_ID" jdbcType="VARCHAR" />
+	<result property="checkRecordProcessStatus" column="CHECK_RECORD_PROCESS_STATUS" jdbcType="VARCHAR" />
 </resultMap>
 <sql id="commonColums">
 	<trim suffixOverrides=",">
@@ -89,6 +115,32 @@
 		t1.ATTRIBUTE_09,
 		t1.ATTRIBUTE_10,
 		t1.AUDIT_TIME,
+		t1.YN_NOTICE,
+		t1.AUDIT_NOTICE_ID,
+		t1.NOTICE_STATUS,
+		t1.NOTICE_PROCESS_INSTANCE_ID,
+		t1.NOTICE_PROCESS_STATUS,
+		t1.COVERED_PRODUCT,
+		t1.AUDITEE_USER_ID,
+		t1.AUDITEE_USER_CODE,
+		t1.AUDITEE_USER_NAME,
+		t1.CHIEF_AUDITOR_ID,
+		t1.CHIEF_AUDITOR_CODE,
+		t1.CHIEF_AUDITOR_NAME,
+		t1.EVALUATION_SUPERVISOR_ID,
+		t1.EVALUATION_SUPERVISOR_CODE,
+		t1.EVALUATION_SUPERVISOR_NAME,
+		t1.AUDIT_LEADER_ID,
+		t1.AUDIT_LEADER_CODE,
+		t1.AUDIT_LEADER_NAME,
+		t1.AUDITEE_LEADER_ID,
+		t1.AUDITEE_LEADER_CODE,
+		t1.AUDITEE_LEADER_NAME,
+		t1.YN_CHECK_RECORD,
+		t1.AUDIT_CHECK_RECORD_ID,
+		t1.CHECK_RECORD_STATUS,
+		t1.CHECK_RECORD_PROCESS_INSTANCE_ID,
+		t1.CHECK_RECORD_PROCESS_STATUS,
 	</trim>
 </sql>
 <!-- 默认查询条件 -->
@@ -236,6 +288,84 @@
 	<if test="bean.auditTimeEnd != null">
 		and t1.AUDIT_TIME &lt;= #{bean.auditTimeEnd}
 	</if>
+	<if test="bean.ynNotice != null and bean.ynNotice != ''">
+		and t1.YN_NOTICE like concat(concat('%',#{bean.ynNotice}),'%')
+	</if>
+	<if test="bean.auditNoticeId != null and bean.auditNoticeId != ''">
+		and t1.AUDIT_NOTICE_ID like concat(concat('%',#{bean.auditNoticeId}),'%')
+	</if>
+	<if test="bean.noticeStatus != null and bean.noticeStatus != ''">
+		and t1.NOTICE_STATUS like concat(concat('%',#{bean.noticeStatus}),'%')
+	</if>
+	<if test="bean.noticeProcessInstanceId != null and bean.noticeProcessInstanceId != ''">
+		and t1.NOTICE_PROCESS_INSTANCE_ID like concat(concat('%',#{bean.noticeProcessInstanceId}),'%')
+	</if>
+	<if test="bean.noticeProcessStatus != null and bean.noticeProcessStatus != ''">
+		and t1.NOTICE_PROCESS_STATUS like concat(concat('%',#{bean.noticeProcessStatus}),'%')
+	</if>
+	<if test="bean.coveredProduct != null and bean.coveredProduct != ''">
+		and t1.COVERED_PRODUCT like concat(concat('%',#{bean.coveredProduct}),'%')
+	</if>
+	<if test="bean.auditeeUserId != null and bean.auditeeUserId != ''">
+		and t1.AUDITEE_USER_ID like concat(concat('%',#{bean.auditeeUserId}),'%')
+	</if>
+	<if test="bean.auditeeUserCode != null and bean.auditeeUserCode != ''">
+		and t1.AUDITEE_USER_CODE like concat(concat('%',#{bean.auditeeUserCode}),'%')
+	</if>
+	<if test="bean.auditeeUserName != null and bean.auditeeUserName != ''">
+		and t1.AUDITEE_USER_NAME like concat(concat('%',#{bean.auditeeUserName}),'%')
+	</if>
+	<if test="bean.chiefAuditorId != null and bean.chiefAuditorId != ''">
+		and t1.CHIEF_AUDITOR_ID like concat(concat('%',#{bean.chiefAuditorId}),'%')
+	</if>
+	<if test="bean.chiefAuditorCode != null and bean.chiefAuditorCode != ''">
+		and t1.CHIEF_AUDITOR_CODE like concat(concat('%',#{bean.chiefAuditorCode}),'%')
+	</if>
+	<if test="bean.chiefAuditorName != null and bean.chiefAuditorName != ''">
+		and t1.CHIEF_AUDITOR_NAME like concat(concat('%',#{bean.chiefAuditorName}),'%')
+	</if>
+	<if test="bean.evaluationSupervisorId != null and bean.evaluationSupervisorId != ''">
+		and t1.EVALUATION_SUPERVISOR_ID like concat(concat('%',#{bean.evaluationSupervisorId}),'%')
+	</if>
+	<if test="bean.evaluationSupervisorCode != null and bean.evaluationSupervisorCode != ''">
+		and t1.EVALUATION_SUPERVISOR_CODE like concat(concat('%',#{bean.evaluationSupervisorCode}),'%')
+	</if>
+	<if test="bean.evaluationSupervisorName != null and bean.evaluationSupervisorName != ''">
+		and t1.EVALUATION_SUPERVISOR_NAME like concat(concat('%',#{bean.evaluationSupervisorName}),'%')
+	</if>
+	<if test="bean.auditLeaderId != null and bean.auditLeaderId != ''">
+		and t1.AUDIT_LEADER_ID like concat(concat('%',#{bean.auditLeaderId}),'%')
+	</if>
+	<if test="bean.auditLeaderCode != null and bean.auditLeaderCode != ''">
+		and t1.AUDIT_LEADER_CODE like concat(concat('%',#{bean.auditLeaderCode}),'%')
+	</if>
+	<if test="bean.auditLeaderName != null and bean.auditLeaderName != ''">
+		and t1.AUDIT_LEADER_NAME like concat(concat('%',#{bean.auditLeaderName}),'%')
+	</if>
+	<if test="bean.auditeeLeaderId != null and bean.auditeeLeaderId != ''">
+		and t1.AUDITEE_LEADER_ID like concat(concat('%',#{bean.auditeeLeaderId}),'%')
+	</if>
+	<if test="bean.auditeeLeaderCode != null and bean.auditeeLeaderCode != ''">
+		and t1.AUDITEE_LEADER_CODE like concat(concat('%',#{bean.auditeeLeaderCode}),'%')
+	</if>
+	<if test="bean.auditeeLeaderName != null and bean.auditeeLeaderName != ''">
+		and t1.AUDITEE_LEADER_NAME like concat(concat('%',#{bean.auditeeLeaderName}),'%')
+	</if>
+	<if test="bean.ynCheckRecord != null and bean.ynCheckRecord != ''">
+		and t1.YN_CHECK_RECORD like concat(concat('%',#{bean.ynCheckRecord}),'%')
+	</if>
+	<if test="bean.auditCheckRecordId != null and bean.auditCheckRecordId != ''">
+		and t1.AUDIT_CHECK_RECORD_ID like concat(concat('%',#{bean.auditCheckRecordId}),'%')
+	</if>
+	<if test="bean.checkRecordStatus != null and bean.checkRecordStatus != ''">
+		and t1.CHECK_RECORD_STATUS like concat(concat('%',#{bean.checkRecordStatus}),'%')
+	</if>
+	<if test="bean.checkRecordProcessInstanceId != null and bean.checkRecordProcessInstanceId != ''">
+		and t1.CHECK_RECORD_PROCESS_INSTANCE_ID like concat(concat('%',#{bean.checkRecordProcessInstanceId}),'%')
+	</if>
+	<if test="bean.checkRecordProcessStatus != null and bean.checkRecordProcessStatus != ''">
+		and t1.CHECK_RECORD_PROCESS_STATUS like concat(concat('%',#{bean.checkRecordProcessStatus}),'%')
+	</if>
 </sql>
 <sql id="commonWhereOr">
 	<trim prefix="(" suffix=")" prefixOverrides="or">
@@ -367,6 +497,84 @@
 		</if>
 		<if test="bean.auditTimeEnd != null">
 			or t1.AUDIT_TIME &lt;= #{bean.auditTimeEnd}
+		</if>
+		<if test="bean.ynNotice != null and bean.ynNotice != ''">
+			or t1.YN_NOTICE like concat(concat('%',#{bean.ynNotice}),'%')
+		</if>
+		<if test="bean.auditNoticeId != null and bean.auditNoticeId != ''">
+			or t1.AUDIT_NOTICE_ID like concat(concat('%',#{bean.auditNoticeId}),'%')
+		</if>
+		<if test="bean.noticeStatus != null and bean.noticeStatus != ''">
+			or t1.NOTICE_STATUS like concat(concat('%',#{bean.noticeStatus}),'%')
+		</if>
+		<if test="bean.noticeProcessInstanceId != null and bean.noticeProcessInstanceId != ''">
+			or t1.NOTICE_PROCESS_INSTANCE_ID like concat(concat('%',#{bean.noticeProcessInstanceId}),'%')
+		</if>
+		<if test="bean.noticeProcessStatus != null and bean.noticeProcessStatus != ''">
+			or t1.NOTICE_PROCESS_STATUS like concat(concat('%',#{bean.noticeProcessStatus}),'%')
+		</if>
+		<if test="bean.coveredProduct != null and bean.coveredProduct != ''">
+			or t1.COVERED_PRODUCT like concat(concat('%',#{bean.coveredProduct}),'%')
+		</if>
+		<if test="bean.auditeeUserId != null and bean.auditeeUserId != ''">
+			or t1.AUDITEE_USER_ID like concat(concat('%',#{bean.auditeeUserId}),'%')
+		</if>
+		<if test="bean.auditeeUserCode != null and bean.auditeeUserCode != ''">
+			or t1.AUDITEE_USER_CODE like concat(concat('%',#{bean.auditeeUserCode}),'%')
+		</if>
+		<if test="bean.auditeeUserName != null and bean.auditeeUserName != ''">
+			or t1.AUDITEE_USER_NAME like concat(concat('%',#{bean.auditeeUserName}),'%')
+		</if>
+		<if test="bean.chiefAuditorId != null and bean.chiefAuditorId != ''">
+			or t1.CHIEF_AUDITOR_ID like concat(concat('%',#{bean.chiefAuditorId}),'%')
+		</if>
+		<if test="bean.chiefAuditorCode != null and bean.chiefAuditorCode != ''">
+			or t1.CHIEF_AUDITOR_CODE like concat(concat('%',#{bean.chiefAuditorCode}),'%')
+		</if>
+		<if test="bean.chiefAuditorName != null and bean.chiefAuditorName != ''">
+			or t1.CHIEF_AUDITOR_NAME like concat(concat('%',#{bean.chiefAuditorName}),'%')
+		</if>
+		<if test="bean.evaluationSupervisorId != null and bean.evaluationSupervisorId != ''">
+			or t1.EVALUATION_SUPERVISOR_ID like concat(concat('%',#{bean.evaluationSupervisorId}),'%')
+		</if>
+		<if test="bean.evaluationSupervisorCode != null and bean.evaluationSupervisorCode != ''">
+			or t1.EVALUATION_SUPERVISOR_CODE like concat(concat('%',#{bean.evaluationSupervisorCode}),'%')
+		</if>
+		<if test="bean.evaluationSupervisorName != null and bean.evaluationSupervisorName != ''">
+			or t1.EVALUATION_SUPERVISOR_NAME like concat(concat('%',#{bean.evaluationSupervisorName}),'%')
+		</if>
+		<if test="bean.auditLeaderId != null and bean.auditLeaderId != ''">
+			or t1.AUDIT_LEADER_ID like concat(concat('%',#{bean.auditLeaderId}),'%')
+		</if>
+		<if test="bean.auditLeaderCode != null and bean.auditLeaderCode != ''">
+			or t1.AUDIT_LEADER_CODE like concat(concat('%',#{bean.auditLeaderCode}),'%')
+		</if>
+		<if test="bean.auditLeaderName != null and bean.auditLeaderName != ''">
+			or t1.AUDIT_LEADER_NAME like concat(concat('%',#{bean.auditLeaderName}),'%')
+		</if>
+		<if test="bean.auditeeLeaderId != null and bean.auditeeLeaderId != ''">
+			or t1.AUDITEE_LEADER_ID like concat(concat('%',#{bean.auditeeLeaderId}),'%')
+		</if>
+		<if test="bean.auditeeLeaderCode != null and bean.auditeeLeaderCode != ''">
+			or t1.AUDITEE_LEADER_CODE like concat(concat('%',#{bean.auditeeLeaderCode}),'%')
+		</if>
+		<if test="bean.auditeeLeaderName != null and bean.auditeeLeaderName != ''">
+			or t1.AUDITEE_LEADER_NAME like concat(concat('%',#{bean.auditeeLeaderName}),'%')
+		</if>
+		<if test="bean.ynCheckRecord != null and bean.ynCheckRecord != ''">
+			or t1.YN_CHECK_RECORD like concat(concat('%',#{bean.ynCheckRecord}),'%')
+		</if>
+		<if test="bean.auditCheckRecordId != null and bean.auditCheckRecordId != ''">
+			or t1.AUDIT_CHECK_RECORD_ID like concat(concat('%',#{bean.auditCheckRecordId}),'%')
+		</if>
+		<if test="bean.checkRecordStatus != null and bean.checkRecordStatus != ''">
+			or t1.CHECK_RECORD_STATUS like concat(concat('%',#{bean.checkRecordStatus}),'%')
+		</if>
+		<if test="bean.checkRecordProcessInstanceId != null and bean.checkRecordProcessInstanceId != ''">
+			or t1.CHECK_RECORD_PROCESS_INSTANCE_ID like concat(concat('%',#{bean.checkRecordProcessInstanceId}),'%')
+		</if>
+		<if test="bean.checkRecordProcessStatus != null and bean.checkRecordProcessStatus != ''">
+			or t1.CHECK_RECORD_PROCESS_STATUS like concat(concat('%',#{bean.checkRecordProcessStatus}),'%')
 		</if>
 	</trim>
 </sql>
@@ -571,6 +779,84 @@
 		<if test="auditTime != null">
 			AUDIT_TIME,
 		</if>
+		<if test="ynNotice != null">
+			YN_NOTICE,
+		</if>
+		<if test="auditNoticeId != null">
+			AUDIT_NOTICE_ID,
+		</if>
+		<if test="noticeStatus != null">
+			NOTICE_STATUS,
+		</if>
+		<if test="noticeProcessInstanceId != null">
+			NOTICE_PROCESS_INSTANCE_ID,
+		</if>
+		<if test="noticeProcessStatus != null">
+			NOTICE_PROCESS_STATUS,
+		</if>
+		<if test="coveredProduct != null">
+			COVERED_PRODUCT,
+		</if>
+		<if test="auditeeUserId != null">
+			AUDITEE_USER_ID,
+		</if>
+		<if test="auditeeUserCode != null">
+			AUDITEE_USER_CODE,
+		</if>
+		<if test="auditeeUserName != null">
+			AUDITEE_USER_NAME,
+		</if>
+		<if test="chiefAuditorId != null">
+			CHIEF_AUDITOR_ID,
+		</if>
+		<if test="chiefAuditorCode != null">
+			CHIEF_AUDITOR_CODE,
+		</if>
+		<if test="chiefAuditorName != null">
+			CHIEF_AUDITOR_NAME,
+		</if>
+		<if test="evaluationSupervisorId != null">
+			EVALUATION_SUPERVISOR_ID,
+		</if>
+		<if test="evaluationSupervisorCode != null">
+			EVALUATION_SUPERVISOR_CODE,
+		</if>
+		<if test="evaluationSupervisorName != null">
+			EVALUATION_SUPERVISOR_NAME,
+		</if>
+		<if test="auditLeaderId != null">
+			AUDIT_LEADER_ID,
+		</if>
+		<if test="auditLeaderCode != null">
+			AUDIT_LEADER_CODE,
+		</if>
+		<if test="auditLeaderName != null">
+			AUDIT_LEADER_NAME,
+		</if>
+		<if test="auditeeLeaderId != null">
+			AUDITEE_LEADER_ID,
+		</if>
+		<if test="auditeeLeaderCode != null">
+			AUDITEE_LEADER_CODE,
+		</if>
+		<if test="auditeeLeaderName != null">
+			AUDITEE_LEADER_NAME,
+		</if>
+		<if test="ynCheckRecord != null">
+			YN_CHECK_RECORD,
+		</if>
+		<if test="auditCheckRecordId != null">
+			AUDIT_CHECK_RECORD_ID,
+		</if>
+		<if test="checkRecordStatus != null">
+			CHECK_RECORD_STATUS,
+		</if>
+		<if test="checkRecordProcessInstanceId != null">
+			CHECK_RECORD_PROCESS_INSTANCE_ID,
+		</if>
+		<if test="checkRecordProcessStatus != null">
+			CHECK_RECORD_PROCESS_STATUS,
+		</if>
 	</trim>
 	<trim prefix="values (" suffix=")" suffixOverrides=",">
 		<if test="id != null">
@@ -699,6 +985,84 @@
 		<if test="auditTime != null">
 			#{auditTime,jdbcType = TIMESTAMP},
 		</if>
+		<if test="ynNotice != null">
+			#{ynNotice,jdbcType = VARCHAR},
+		</if>
+		<if test="auditNoticeId != null">
+			#{auditNoticeId,jdbcType = VARCHAR},
+		</if>
+		<if test="noticeStatus != null">
+			#{noticeStatus,jdbcType = VARCHAR},
+		</if>
+		<if test="noticeProcessInstanceId != null">
+			#{noticeProcessInstanceId,jdbcType = VARCHAR},
+		</if>
+		<if test="noticeProcessStatus != null">
+			#{noticeProcessStatus,jdbcType = VARCHAR},
+		</if>
+		<if test="coveredProduct != null">
+			#{coveredProduct,jdbcType = VARCHAR},
+		</if>
+		<if test="auditeeUserId != null">
+			#{auditeeUserId,jdbcType = VARCHAR},
+		</if>
+		<if test="auditeeUserCode != null">
+			#{auditeeUserCode,jdbcType = VARCHAR},
+		</if>
+		<if test="auditeeUserName != null">
+			#{auditeeUserName,jdbcType = VARCHAR},
+		</if>
+		<if test="chiefAuditorId != null">
+			#{chiefAuditorId,jdbcType = VARCHAR},
+		</if>
+		<if test="chiefAuditorCode != null">
+			#{chiefAuditorCode,jdbcType = VARCHAR},
+		</if>
+		<if test="chiefAuditorName != null">
+			#{chiefAuditorName,jdbcType = VARCHAR},
+		</if>
+		<if test="evaluationSupervisorId != null">
+			#{evaluationSupervisorId,jdbcType = VARCHAR},
+		</if>
+		<if test="evaluationSupervisorCode != null">
+			#{evaluationSupervisorCode,jdbcType = VARCHAR},
+		</if>
+		<if test="evaluationSupervisorName != null">
+			#{evaluationSupervisorName,jdbcType = VARCHAR},
+		</if>
+		<if test="auditLeaderId != null">
+			#{auditLeaderId,jdbcType = VARCHAR},
+		</if>
+		<if test="auditLeaderCode != null">
+			#{auditLeaderCode,jdbcType = VARCHAR},
+		</if>
+		<if test="auditLeaderName != null">
+			#{auditLeaderName,jdbcType = VARCHAR},
+		</if>
+		<if test="auditeeLeaderId != null">
+			#{auditeeLeaderId,jdbcType = VARCHAR},
+		</if>
+		<if test="auditeeLeaderCode != null">
+			#{auditeeLeaderCode,jdbcType = VARCHAR},
+		</if>
+		<if test="auditeeLeaderName != null">
+			#{auditeeLeaderName,jdbcType = VARCHAR},
+		</if>
+		<if test="ynCheckRecord != null">
+			#{ynCheckRecord,jdbcType = VARCHAR},
+		</if>
+		<if test="auditCheckRecordId != null">
+			#{auditCheckRecordId,jdbcType = VARCHAR},
+		</if>
+		<if test="checkRecordStatus != null">
+			#{checkRecordStatus,jdbcType = VARCHAR},
+		</if>
+		<if test="checkRecordProcessInstanceId != null">
+			#{checkRecordProcessInstanceId,jdbcType = VARCHAR},
+		</if>
+		<if test="checkRecordProcessStatus != null">
+			#{checkRecordProcessStatus,jdbcType = VARCHAR},
+		</if>
 	</trim>
 </insert>
 <!-- 批量新增对象 QMS_AUDIT_PLAN -->
@@ -745,7 +1109,33 @@
 		ATTRIBUTE_08 ,
 		ATTRIBUTE_09 ,
 		ATTRIBUTE_10 ,
-		AUDIT_TIME 
+		AUDIT_TIME ,
+		YN_NOTICE ,
+		AUDIT_NOTICE_ID ,
+		NOTICE_STATUS ,
+		NOTICE_PROCESS_INSTANCE_ID ,
+		NOTICE_PROCESS_STATUS ,
+		COVERED_PRODUCT ,
+		AUDITEE_USER_ID ,
+		AUDITEE_USER_CODE ,
+		AUDITEE_USER_NAME ,
+		CHIEF_AUDITOR_ID ,
+		CHIEF_AUDITOR_CODE ,
+		CHIEF_AUDITOR_NAME ,
+		EVALUATION_SUPERVISOR_ID ,
+		EVALUATION_SUPERVISOR_CODE ,
+		EVALUATION_SUPERVISOR_NAME ,
+		AUDIT_LEADER_ID ,
+		AUDIT_LEADER_CODE ,
+		AUDIT_LEADER_NAME ,
+		AUDITEE_LEADER_ID ,
+		AUDITEE_LEADER_CODE ,
+		AUDITEE_LEADER_NAME ,
+		YN_CHECK_RECORD ,
+		AUDIT_CHECK_RECORD_ID ,
+		CHECK_RECORD_STATUS ,
+		CHECK_RECORD_PROCESS_INSTANCE_ID ,
+		CHECK_RECORD_PROCESS_STATUS 
 	)
 	<foreach collection="dtoList" item="item" index="index"  separator="union all" >
 		select
@@ -790,7 +1180,33 @@
 			#{item.attribute08,jdbcType = VARCHAR} ,
 			#{item.attribute09,jdbcType = VARCHAR} ,
 			#{item.attribute10,jdbcType = VARCHAR} ,
-			#{item.auditTime,jdbcType = TIMESTAMP} 
+			#{item.auditTime,jdbcType = TIMESTAMP} ,
+			#{item.ynNotice,jdbcType = VARCHAR} ,
+			#{item.auditNoticeId,jdbcType = VARCHAR} ,
+			#{item.noticeStatus,jdbcType = VARCHAR} ,
+			#{item.noticeProcessInstanceId,jdbcType = VARCHAR} ,
+			#{item.noticeProcessStatus,jdbcType = VARCHAR} ,
+			#{item.coveredProduct,jdbcType = VARCHAR} ,
+			#{item.auditeeUserId,jdbcType = VARCHAR} ,
+			#{item.auditeeUserCode,jdbcType = VARCHAR} ,
+			#{item.auditeeUserName,jdbcType = VARCHAR} ,
+			#{item.chiefAuditorId,jdbcType = VARCHAR} ,
+			#{item.chiefAuditorCode,jdbcType = VARCHAR} ,
+			#{item.chiefAuditorName,jdbcType = VARCHAR} ,
+			#{item.evaluationSupervisorId,jdbcType = VARCHAR} ,
+			#{item.evaluationSupervisorCode,jdbcType = VARCHAR} ,
+			#{item.evaluationSupervisorName,jdbcType = VARCHAR} ,
+			#{item.auditLeaderId,jdbcType = VARCHAR} ,
+			#{item.auditLeaderCode,jdbcType = VARCHAR} ,
+			#{item.auditLeaderName,jdbcType = VARCHAR} ,
+			#{item.auditeeLeaderId,jdbcType = VARCHAR} ,
+			#{item.auditeeLeaderCode,jdbcType = VARCHAR} ,
+			#{item.auditeeLeaderName,jdbcType = VARCHAR} ,
+			#{item.ynCheckRecord,jdbcType = VARCHAR} ,
+			#{item.auditCheckRecordId,jdbcType = VARCHAR} ,
+			#{item.checkRecordStatus,jdbcType = VARCHAR} ,
+			#{item.checkRecordProcessInstanceId,jdbcType = VARCHAR} ,
+			#{item.checkRecordProcessStatus,jdbcType = VARCHAR} 
 		from dual
 	</foreach>
 </insert>
@@ -922,7 +1338,85 @@
 			ATTRIBUTE_10 = #{attribute10,jdbcType = VARCHAR} ,
 		</if>
 		<if test="auditTime != null">
-			AUDIT_TIME = #{auditTime,jdbcType = TIMESTAMP} 
+			AUDIT_TIME = #{auditTime,jdbcType = TIMESTAMP} ,
+		</if>
+		<if test="ynNotice != null">
+			YN_NOTICE = #{ynNotice,jdbcType = VARCHAR} ,
+		</if>
+		<if test="auditNoticeId != null">
+			AUDIT_NOTICE_ID = #{auditNoticeId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="noticeStatus != null">
+			NOTICE_STATUS = #{noticeStatus,jdbcType = VARCHAR} ,
+		</if>
+		<if test="noticeProcessInstanceId != null">
+			NOTICE_PROCESS_INSTANCE_ID = #{noticeProcessInstanceId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="noticeProcessStatus != null">
+			NOTICE_PROCESS_STATUS = #{noticeProcessStatus,jdbcType = VARCHAR} ,
+		</if>
+		<if test="coveredProduct != null">
+			COVERED_PRODUCT = #{coveredProduct,jdbcType = VARCHAR} ,
+		</if>
+		<if test="auditeeUserId != null">
+			AUDITEE_USER_ID = #{auditeeUserId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="auditeeUserCode != null">
+			AUDITEE_USER_CODE = #{auditeeUserCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="auditeeUserName != null">
+			AUDITEE_USER_NAME = #{auditeeUserName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="chiefAuditorId != null">
+			CHIEF_AUDITOR_ID = #{chiefAuditorId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="chiefAuditorCode != null">
+			CHIEF_AUDITOR_CODE = #{chiefAuditorCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="chiefAuditorName != null">
+			CHIEF_AUDITOR_NAME = #{chiefAuditorName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="evaluationSupervisorId != null">
+			EVALUATION_SUPERVISOR_ID = #{evaluationSupervisorId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="evaluationSupervisorCode != null">
+			EVALUATION_SUPERVISOR_CODE = #{evaluationSupervisorCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="evaluationSupervisorName != null">
+			EVALUATION_SUPERVISOR_NAME = #{evaluationSupervisorName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="auditLeaderId != null">
+			AUDIT_LEADER_ID = #{auditLeaderId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="auditLeaderCode != null">
+			AUDIT_LEADER_CODE = #{auditLeaderCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="auditLeaderName != null">
+			AUDIT_LEADER_NAME = #{auditLeaderName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="auditeeLeaderId != null">
+			AUDITEE_LEADER_ID = #{auditeeLeaderId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="auditeeLeaderCode != null">
+			AUDITEE_LEADER_CODE = #{auditeeLeaderCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="auditeeLeaderName != null">
+			AUDITEE_LEADER_NAME = #{auditeeLeaderName,jdbcType = VARCHAR} ,
+		</if>
+		<if test="ynCheckRecord != null">
+			YN_CHECK_RECORD = #{ynCheckRecord,jdbcType = VARCHAR} ,
+		</if>
+		<if test="auditCheckRecordId != null">
+			AUDIT_CHECK_RECORD_ID = #{auditCheckRecordId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="checkRecordStatus != null">
+			CHECK_RECORD_STATUS = #{checkRecordStatus,jdbcType = VARCHAR} ,
+		</if>
+		<if test="checkRecordProcessInstanceId != null">
+			CHECK_RECORD_PROCESS_INSTANCE_ID = #{checkRecordProcessInstanceId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="checkRecordProcessStatus != null">
+			CHECK_RECORD_PROCESS_STATUS = #{checkRecordProcessStatus,jdbcType = VARCHAR} 
 		</if>
 	</set>
 	where id = #{id} 
@@ -969,7 +1463,33 @@
 		ATTRIBUTE_08 = #{attribute08,jdbcType = VARCHAR} ,
 		ATTRIBUTE_09 = #{attribute09,jdbcType = VARCHAR} ,
 		ATTRIBUTE_10 = #{attribute10,jdbcType = VARCHAR} ,
-		AUDIT_TIME = #{auditTime,jdbcType = TIMESTAMP} 
+		AUDIT_TIME = #{auditTime,jdbcType = TIMESTAMP} ,
+		YN_NOTICE = #{ynNotice,jdbcType = VARCHAR} ,
+		AUDIT_NOTICE_ID = #{auditNoticeId,jdbcType = VARCHAR} ,
+		NOTICE_STATUS = #{noticeStatus,jdbcType = VARCHAR} ,
+		NOTICE_PROCESS_INSTANCE_ID = #{noticeProcessInstanceId,jdbcType = VARCHAR} ,
+		NOTICE_PROCESS_STATUS = #{noticeProcessStatus,jdbcType = VARCHAR} ,
+		COVERED_PRODUCT = #{coveredProduct,jdbcType = VARCHAR} ,
+		AUDITEE_USER_ID = #{auditeeUserId,jdbcType = VARCHAR} ,
+		AUDITEE_USER_CODE = #{auditeeUserCode,jdbcType = VARCHAR} ,
+		AUDITEE_USER_NAME = #{auditeeUserName,jdbcType = VARCHAR} ,
+		CHIEF_AUDITOR_ID = #{chiefAuditorId,jdbcType = VARCHAR} ,
+		CHIEF_AUDITOR_CODE = #{chiefAuditorCode,jdbcType = VARCHAR} ,
+		CHIEF_AUDITOR_NAME = #{chiefAuditorName,jdbcType = VARCHAR} ,
+		EVALUATION_SUPERVISOR_ID = #{evaluationSupervisorId,jdbcType = VARCHAR} ,
+		EVALUATION_SUPERVISOR_CODE = #{evaluationSupervisorCode,jdbcType = VARCHAR} ,
+		EVALUATION_SUPERVISOR_NAME = #{evaluationSupervisorName,jdbcType = VARCHAR} ,
+		AUDIT_LEADER_ID = #{auditLeaderId,jdbcType = VARCHAR} ,
+		AUDIT_LEADER_CODE = #{auditLeaderCode,jdbcType = VARCHAR} ,
+		AUDIT_LEADER_NAME = #{auditLeaderName,jdbcType = VARCHAR} ,
+		AUDITEE_LEADER_ID = #{auditeeLeaderId,jdbcType = VARCHAR} ,
+		AUDITEE_LEADER_CODE = #{auditeeLeaderCode,jdbcType = VARCHAR} ,
+		AUDITEE_LEADER_NAME = #{auditeeLeaderName,jdbcType = VARCHAR} ,
+		YN_CHECK_RECORD = #{ynCheckRecord,jdbcType = VARCHAR} ,
+		AUDIT_CHECK_RECORD_ID = #{auditCheckRecordId,jdbcType = VARCHAR} ,
+		CHECK_RECORD_STATUS = #{checkRecordStatus,jdbcType = VARCHAR} ,
+		CHECK_RECORD_PROCESS_INSTANCE_ID = #{checkRecordProcessInstanceId,jdbcType = VARCHAR} ,
+		CHECK_RECORD_PROCESS_STATUS = #{checkRecordProcessStatus,jdbcType = VARCHAR} 
 	</trim>
 	where id = #{id}
 	and version = #{version}
@@ -1021,7 +1541,33 @@
 			ATTRIBUTE_08 = #{item.attribute08,jdbcType = VARCHAR} ,
 			ATTRIBUTE_09 = #{item.attribute09,jdbcType = VARCHAR} ,
 			ATTRIBUTE_10 = #{item.attribute10,jdbcType = VARCHAR} ,
-			AUDIT_TIME = #{item.auditTime,jdbcType = TIMESTAMP} 
+			AUDIT_TIME = #{item.auditTime,jdbcType = TIMESTAMP} ,
+			YN_NOTICE = #{item.ynNotice,jdbcType = VARCHAR} ,
+			AUDIT_NOTICE_ID = #{item.auditNoticeId,jdbcType = VARCHAR} ,
+			NOTICE_STATUS = #{item.noticeStatus,jdbcType = VARCHAR} ,
+			NOTICE_PROCESS_INSTANCE_ID = #{item.noticeProcessInstanceId,jdbcType = VARCHAR} ,
+			NOTICE_PROCESS_STATUS = #{item.noticeProcessStatus,jdbcType = VARCHAR} ,
+			COVERED_PRODUCT = #{item.coveredProduct,jdbcType = VARCHAR} ,
+			AUDITEE_USER_ID = #{item.auditeeUserId,jdbcType = VARCHAR} ,
+			AUDITEE_USER_CODE = #{item.auditeeUserCode,jdbcType = VARCHAR} ,
+			AUDITEE_USER_NAME = #{item.auditeeUserName,jdbcType = VARCHAR} ,
+			CHIEF_AUDITOR_ID = #{item.chiefAuditorId,jdbcType = VARCHAR} ,
+			CHIEF_AUDITOR_CODE = #{item.chiefAuditorCode,jdbcType = VARCHAR} ,
+			CHIEF_AUDITOR_NAME = #{item.chiefAuditorName,jdbcType = VARCHAR} ,
+			EVALUATION_SUPERVISOR_ID = #{item.evaluationSupervisorId,jdbcType = VARCHAR} ,
+			EVALUATION_SUPERVISOR_CODE = #{item.evaluationSupervisorCode,jdbcType = VARCHAR} ,
+			EVALUATION_SUPERVISOR_NAME = #{item.evaluationSupervisorName,jdbcType = VARCHAR} ,
+			AUDIT_LEADER_ID = #{item.auditLeaderId,jdbcType = VARCHAR} ,
+			AUDIT_LEADER_CODE = #{item.auditLeaderCode,jdbcType = VARCHAR} ,
+			AUDIT_LEADER_NAME = #{item.auditLeaderName,jdbcType = VARCHAR} ,
+			AUDITEE_LEADER_ID = #{item.auditeeLeaderId,jdbcType = VARCHAR} ,
+			AUDITEE_LEADER_CODE = #{item.auditeeLeaderCode,jdbcType = VARCHAR} ,
+			AUDITEE_LEADER_NAME = #{item.auditeeLeaderName,jdbcType = VARCHAR} ,
+			YN_CHECK_RECORD = #{item.ynCheckRecord,jdbcType = VARCHAR} ,
+			AUDIT_CHECK_RECORD_ID = #{item.auditCheckRecordId,jdbcType = VARCHAR} ,
+			CHECK_RECORD_STATUS = #{item.checkRecordStatus,jdbcType = VARCHAR} ,
+			CHECK_RECORD_PROCESS_INSTANCE_ID = #{item.checkRecordProcessInstanceId,jdbcType = VARCHAR} ,
+			CHECK_RECORD_PROCESS_STATUS = #{item.checkRecordProcessStatus,jdbcType = VARCHAR} 
 		where id = #{item.id}
 		and version = #{item.version};
 	</foreach>

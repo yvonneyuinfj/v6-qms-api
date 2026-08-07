@@ -15,7 +15,7 @@
 	<result property="ynFinish" column="YN_FINISH" jdbcType="VARCHAR" />
 	<result property="problemDesc" column="PROBLEM_DESC" jdbcType="VARCHAR" />
 	<result property="nextMeasure" column="NEXT_MEASURE" jdbcType="VARCHAR" />
-	<result property="ynResk" column="YN_RESK" jdbcType="VARCHAR" />
+	<result property="ynRisk" column="YN_RESK" jdbcType="VARCHAR" />
 	<result property="riskDesc" column="RISK_DESC" jdbcType="VARCHAR" />
 	<result property="approvalStatus" column="APPROVAL_STATUS" jdbcType="VARCHAR" />
 	<result property="createdBy" column="CREATED_BY" jdbcType="VARCHAR" />
@@ -150,8 +150,8 @@
 	<if test="bean.nextMeasure != null and bean.nextMeasure != ''">
 		and t1.NEXT_MEASURE like concat(concat('%',#{bean.nextMeasure}),'%')
 	</if>
-	<if test="bean.ynResk != null and bean.ynResk != ''">
-		and t1.YN_RESK like concat(concat('%',#{bean.ynResk}),'%')
+	<if test="bean.ynRisk != null and bean.ynRisk != ''">
+		and t1.YN_RESK like concat(concat('%',#{bean.ynRisk}),'%')
 	</if>
 	<if test="bean.riskDesc != null and bean.riskDesc != ''">
 		and t1.RISK_DESC like concat(concat('%',#{bean.riskDesc}),'%')
@@ -288,8 +288,8 @@
 		<if test="bean.nextMeasure != null and bean.nextMeasure != ''">
 			or t1.NEXT_MEASURE like concat(concat('%',#{bean.nextMeasure}),'%')
 		</if>
-		<if test="bean.ynResk != null and bean.ynResk != ''">
-			or t1.YN_RESK like concat(concat('%',#{bean.ynResk}),'%')
+		<if test="bean.ynRisk != null and bean.ynRisk != ''">
+			or t1.YN_RESK like concat(concat('%',#{bean.ynRisk}),'%')
 		</if>
 		<if test="bean.riskDesc != null and bean.riskDesc != ''">
 			or t1.RISK_DESC like concat(concat('%',#{bean.riskDesc}),'%')
@@ -528,7 +528,7 @@
 		<if test="nextMeasure != null">
 			NEXT_MEASURE,
 		</if>
-		<if test="ynResk != null">
+		<if test="ynRisk != null">
 			YN_RESK,
 		</if>
 		<if test="riskDesc != null">
@@ -662,8 +662,8 @@
 		<if test="nextMeasure != null">
 			#{nextMeasure,jdbcType = VARCHAR},
 		</if>
-		<if test="ynResk != null">
-			#{ynResk,jdbcType = VARCHAR},
+		<if test="ynRisk != null">
+			#{ynRisk,jdbcType = VARCHAR},
 		</if>
 		<if test="riskDesc != null">
 			#{riskDesc,jdbcType = VARCHAR},
@@ -820,7 +820,7 @@
 			#{item.ynFinish,jdbcType = VARCHAR} ,
 			#{item.problemDesc,jdbcType = VARCHAR} ,
 			#{item.nextMeasure,jdbcType = VARCHAR} ,
-			#{item.ynResk,jdbcType = VARCHAR} ,
+			#{item.ynRisk,jdbcType = VARCHAR} ,
 			#{item.riskDesc,jdbcType = VARCHAR} ,
 			#{item.approvalStatus,jdbcType = VARCHAR} ,
 			#{item.createdBy,jdbcType = VARCHAR} ,
@@ -897,8 +897,8 @@
 		<if test="nextMeasure != null">
 			NEXT_MEASURE = #{nextMeasure,jdbcType = VARCHAR} ,
 		</if>
-		<if test="ynResk != null">
-			YN_RESK = #{ynResk,jdbcType = VARCHAR} ,
+		<if test="ynRisk != null">
+			YN_RESK = #{ynRisk,jdbcType = VARCHAR} ,
 		</if>
 		<if test="riskDesc != null">
 			RISK_DESC = #{riskDesc,jdbcType = VARCHAR} ,
@@ -1010,7 +1010,7 @@
 		YN_FINISH = #{ynFinish,jdbcType = VARCHAR} ,
 		PROBLEM_DESC = #{problemDesc,jdbcType = VARCHAR} ,
 		NEXT_MEASURE = #{nextMeasure,jdbcType = VARCHAR} ,
-		YN_RESK = #{ynResk,jdbcType = VARCHAR} ,
+		YN_RESK = #{ynRisk,jdbcType = VARCHAR} ,
 		RISK_DESC = #{riskDesc,jdbcType = VARCHAR} ,
 		APPROVAL_STATUS = #{approvalStatus,jdbcType = VARCHAR} ,
 		LAST_UPDATED_BY = #{lastUpdatedBy,jdbcType = VARCHAR} ,
@@ -1060,7 +1060,7 @@
 			YN_FINISH = #{item.ynFinish,jdbcType = VARCHAR} ,
 			PROBLEM_DESC = #{item.problemDesc,jdbcType = VARCHAR} ,
 			NEXT_MEASURE = #{item.nextMeasure,jdbcType = VARCHAR} ,
-			YN_RESK = #{item.ynResk,jdbcType = VARCHAR} ,
+			YN_RESK = #{item.ynRisk,jdbcType = VARCHAR} ,
 			RISK_DESC = #{item.riskDesc,jdbcType = VARCHAR} ,
 			APPROVAL_STATUS = #{item.approvalStatus,jdbcType = VARCHAR} ,
 			CREATED_BY = #{item.createdBy,jdbcType = VARCHAR} ,

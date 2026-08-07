@@ -289,7 +289,7 @@
 </sql>
 <sql id="commonBpmWhereAnd">
     <if test="bean.bpmType !=null and bean.bpmType !='' and bean.bpmType == 'my'">
-        and exists (select 1 from sys_bpm_hist_task os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId})
+		and (exists (select 1 from sys_bpm_hist_task os where os.task_b_id_ = t1.id and os.assignee_ = #{bean.currUserId}) or (v.businessstate_ is null and t1.created_by = #{bean.currUserId}))
     </if>
     <if test="bean.bpmState != null and bean.bpmState !='' and bean.bpmState != 'all'">
         and v.businessstate_ = #{bean.bpmState}

@@ -51,6 +51,8 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @FieldRemark(column="PLAN_ID", field="planId", name="审核计划ID;关联年度计划")
     private String planId;
 
+    private String auditClause;
+
     /**
     * 审核通知单ID;关联已批准通知单
     */
@@ -486,7 +488,6 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     /**
     * 本级排序
     */
-    @NotNull(message = "本级排序不能为空")
     @Digits(integer = 16, fraction = 0, message = "本级排序格式不正确")
     @ApiModelProperty(value = "本级排序", name = "treeSort")
     @FieldRemark(column="TREE_SORT", field="treeSort", name="本级排序")
@@ -1055,6 +1056,14 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
 
     public void setQmsAuditCheckDetailList(ValidationList<QmsAuditCheckDetailDTO> qmsAuditCheckDetailList) {
         this.qmsAuditCheckDetailList = qmsAuditCheckDetailList;
+    }
+
+    public String getAuditClause() {
+        return auditClause;
+    }
+
+    public void setAuditClause(String auditClause) {
+        this.auditClause = auditClause;
     }
 
     @Override

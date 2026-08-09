@@ -5,8 +5,6 @@ import avicit.platform6.core.restclient.RestClientUtils;
 import avicit.platform6.core.rest.msg.QueryReqBean;
 import avicit.platform6.core.rest.msg.QueryRespBean;
 import avicit.platform6.core.rest.msg.ResponseMsg;
-import avicit.platform6.api.bpm.dto.ProcessParameter;
-import avicit.platform6.bpmreform.bpmbusiness.dto.StartResultBean;
 import avicit.myportal.qms.qmsbasicmodelinfo.dto.QmsBasicModelInfoDTO;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
@@ -19,7 +17,7 @@ import java.util.List;
  * @金航数码科技有限责任公司
  * @作者：于小耘
  * @邮箱：18040011631@163.com
- * @创建时间： 2026-08-03 19:25
+ * @创建时间： 2026-08-08 17:12
  * @类说明：QMS_BASIC_MODEL_INFOApi
  * @修改记录：
  */
@@ -70,19 +68,6 @@ public class QmsBasicModelInfoApi {
 	public QmsBasicModelInfoDTO get(String id) {
 		String url = BASE_PATH + "/get/" + id + "/v1";
 		ResponseMsg<QmsBasicModelInfoDTO> responseMsg = restClient.doGet(SERVICE_CODE, url, new ParameterizedTypeReference<ResponseMsg<QmsBasicModelInfoDTO>>() {
-		});
-		return RestClientUtils.getResponseBody(responseMsg);
-	}
-
-	/**
-	 * 新增并启动流程
-	 *
-	 * @param processParam 参数对象
-	 * @return StartResultBean
-	 */
-	public StartResultBean saveAndStartProcess(ProcessParameter<QmsBasicModelInfoDTO> processParam) {
-		String url = BASE_PATH + "/save-and-start-process/v1";
-		ResponseMsg<StartResultBean> responseMsg = restClient.doPost(SERVICE_CODE, url, processParam, new ParameterizedTypeReference<ResponseMsg<StartResultBean>>() {
 		});
 		return RestClientUtils.getResponseBody(responseMsg);
 	}

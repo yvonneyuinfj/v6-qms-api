@@ -20,7 +20,7 @@ import javax.validation.constraints.*;
 * @金航数码科技有限责任公司
 * @作者：于小耘
 * @邮箱：18040011631@163.com
-* @创建时间： 2026-08-03 19:25
+* @创建时间： 2026-08-08 17:12
 * @类说明：QMS_BASIC_MODEL_INFODTO
 * @修改记录：
 */
@@ -32,112 +32,13 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
 
 
     /**
-    * 主键
-    */
-    @Id
-    @Size(max = 50, message = "主键长度不能超过50个字符")
-    @ApiModelProperty(value = "主键", name = "id")
-    @FieldRemark(column="ID", field="id", name="主键")
-    private java.lang.String id;
-
-    /**
     * 型号
     */
     @ExcelProperty("型号")
     @Size(max = 200, message = "型号长度不能超过200个字符")
     @ApiModelProperty(value = "型号", name = "model")
     @FieldRemark(column="MODEL", field="model", name="型号")
-    private java.lang.String model;
-
-    /**
-    * 总师单位
-    */
-    @ExcelProperty("总师单位")
-    @Size(max = 200, message = "总师单位长度不能超过200个字符")
-    @ApiModelProperty(value = "总师单位", name = "managerdept")
-    @FieldRemark(column="MANAGERDEPT", field="managerdept", name="总师单位")
-    private java.lang.String managerdept;
-
-    /**
-    * 总承单位
-    */
-    @ExcelProperty("总承单位")
-    @Size(max = 200, message = "总承单位长度不能超过200个字符")
-    @ApiModelProperty(value = "总承单位", name = "productdept")
-    @FieldRemark(column="PRODUCTDEPT", field="productdept", name="总承单位")
-    private java.lang.String productdept;
-
-    /**
-    * 军代表
-    */
-    @ExcelProperty("军代表")
-    @Size(max = 200, message = "军代表长度不能超过200个字符")
-    @ApiModelProperty(value = "军代表", name = "armyRepresentative")
-    @FieldRemark(column="ARMY_REPRESENTATIVE", field="armyRepresentative", name="军代表")
-    private java.lang.String armyRepresentative;
-
-    /**
-    * 副总师
-    */
-    @ExcelProperty("副总师")
-    @Size(max = 1000, message = "副总师长度不能超过1000个字符")
-    @ApiModelProperty(value = "副总师", name = "zlbFzs")
-    @FieldRemark(column="ZLB_FZS", field="zlbFzs", name="副总师")
-    private java.lang.String zlbFzs;
-
-    /**
-    * 科研部主管ID
-    */
-    @ExcelProperty("科研部主管ID")
-    @Size(max = 2000, message = "科研部主管ID长度不能超过2000个字符")
-    @ApiModelProperty(value = "科研部主管ID", name = "kybMasterId")
-    @FieldRemark(column="KYB_MASTER_ID", field="kybMasterId", name="科研部主管ID")
-    private java.lang.String kybMasterId;
-
-    /**
-    * 科研部主管CODE
-    */
-    @ExcelProperty("科研部主管CODE")
-    @Size(max = 1000, message = "科研部主管CODE长度不能超过1000个字符")
-    @ApiModelProperty(value = "科研部主管CODE", name = "kybMasterCode")
-    @FieldRemark(column="KYB_MASTER_CODE", field="kybMasterCode", name="科研部主管CODE")
-    private java.lang.String kybMasterCode;
-
-    /**
-    * 科研部主管
-    */
-    @ExcelProperty("科研部主管")
-    @Size(max = 2000, message = "科研部主管长度不能超过2000个字符")
-    @ApiModelProperty(value = "科研部主管", name = "kybMasterName")
-    @FieldRemark(column="KYB_MASTER_NAME", field="kybMasterName", name="科研部主管")
-    private java.lang.String kybMasterName;
-
-    /**
-    * 质量部主管ID
-    */
-    @ExcelProperty("质量部主管ID")
-    @Size(max = 500, message = "质量部主管ID长度不能超过500个字符")
-    @ApiModelProperty(value = "质量部主管ID", name = "zlbMasterId")
-    @FieldRemark(column="ZLB_MASTER_ID", field="zlbMasterId", name="质量部主管ID")
-    private java.lang.String zlbMasterId;
-
-    /**
-    * 质量部主管CODE
-    */
-    @ExcelProperty("质量部主管CODE")
-    @Size(max = 200, message = "质量部主管CODE长度不能超过200个字符")
-    @ApiModelProperty(value = "质量部主管CODE", name = "zlbMasterCode")
-    @FieldRemark(column="ZLB_MASTER_CODE", field="zlbMasterCode", name="质量部主管CODE")
-    private java.lang.String zlbMasterCode;
-
-    /**
-    * 质量部主管
-    */
-    @ExcelProperty("质量部主管")
-    @Size(max = 500, message = "质量部主管长度不能超过500个字符")
-    @ApiModelProperty(value = "质量部主管", name = "zlbMasterName")
-    @FieldRemark(column="ZLB_MASTER_NAME", field="zlbMasterName", name="质量部主管")
-    private java.lang.String zlbMasterName;
+    private String model;
 
     /**
     * 创建时间起
@@ -167,9 +68,9 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
     * 密级
     */
     @FieldRemark(column="SECRET_LEVEL", field="secretLevel", name="密级", dataType="lookup", lookupType="PLATFORM_FILE_SECRET_LEVEL")
-    private java.lang.String secretLevel;
+    private String secretLevel;
     @ExcelProperty("密级")
-    private java.lang.String secretLevelName;
+    private String secretLevelName;
 
     /**
     * 是否已删除
@@ -178,7 +79,7 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
     @Size(max = 2, message = "是否已删除长度不能超过2个字符")
     @ApiModelProperty(value = "是否已删除", name = "ynDeleted")
     @FieldRemark(column="YN_DELETED", field="ynDeleted", name="是否已删除")
-    private java.lang.String ynDeleted;
+    private String ynDeleted;
 
     /**
     * 备注
@@ -187,7 +88,7 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
     @Size(max = 2000, message = "备注长度不能超过2000个字符")
     @ApiModelProperty(value = "备注", name = "remark")
     @FieldRemark(column="REMARK", field="remark", name="备注")
-    private java.lang.String remark;
+    private String remark;
     /**
     * 排序
     */
@@ -205,7 +106,7 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_01长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_01", name = "attribute01")
     @FieldRemark(column="ATTRIBUTE_01", field="attribute01", name="扩展字段_01")
-    private java.lang.String attribute01;
+    private String attribute01;
 
     /**
     * 扩展字段_02
@@ -213,7 +114,7 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_02长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_02", name = "attribute02")
     @FieldRemark(column="ATTRIBUTE_02", field="attribute02", name="扩展字段_02")
-    private java.lang.String attribute02;
+    private String attribute02;
 
     /**
     * 扩展字段_03
@@ -221,7 +122,7 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_03长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_03", name = "attribute03")
     @FieldRemark(column="ATTRIBUTE_03", field="attribute03", name="扩展字段_03")
-    private java.lang.String attribute03;
+    private String attribute03;
 
     /**
     * 扩展字段_04
@@ -229,7 +130,7 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_04长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_04", name = "attribute04")
     @FieldRemark(column="ATTRIBUTE_04", field="attribute04", name="扩展字段_04")
-    private java.lang.String attribute04;
+    private String attribute04;
 
     /**
     * 扩展字段_05
@@ -237,7 +138,7 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_05长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_05", name = "attribute05")
     @FieldRemark(column="ATTRIBUTE_05", field="attribute05", name="扩展字段_05")
-    private java.lang.String attribute05;
+    private String attribute05;
 
     /**
     * 扩展字段_06
@@ -245,7 +146,7 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_06长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_06", name = "attribute06")
     @FieldRemark(column="ATTRIBUTE_06", field="attribute06", name="扩展字段_06")
-    private java.lang.String attribute06;
+    private String attribute06;
 
     /**
     * 扩展字段_07
@@ -253,7 +154,7 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_07长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_07", name = "attribute07")
     @FieldRemark(column="ATTRIBUTE_07", field="attribute07", name="扩展字段_07")
-    private java.lang.String attribute07;
+    private String attribute07;
 
     /**
     * 扩展字段_08
@@ -261,7 +162,7 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_08长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_08", name = "attribute08")
     @FieldRemark(column="ATTRIBUTE_08", field="attribute08", name="扩展字段_08")
-    private java.lang.String attribute08;
+    private String attribute08;
 
     /**
     * 扩展字段_09
@@ -269,7 +170,7 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_09长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_09", name = "attribute09")
     @FieldRemark(column="ATTRIBUTE_09", field="attribute09", name="扩展字段_09")
-    private java.lang.String attribute09;
+    private String attribute09;
 
     /**
     * 扩展字段_10
@@ -277,161 +178,149 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
     @Size(max = 512, message = "扩展字段_10长度不能超过512个字符")
     @ApiModelProperty(value = "扩展字段_10", name = "attribute10")
     @FieldRemark(column="ATTRIBUTE_10", field="attribute10", name="扩展字段_10")
-    private java.lang.String attribute10;
+    private String attribute10;
 
     /**
-    * 父节点ID
+    * 主键
     */
-    @ExcelProperty("父节点ID")
-    @Size(max = 64, message = "父节点ID长度不能超过64个字符")
-    @ApiModelProperty(value = "父节点ID", name = "parentId")
-    @FieldRemark(column="PARENT_ID", field="parentId", name="父节点ID")
-    private java.lang.String parentId;
+    @Id
+    @Size(max = 64, message = "主键长度不能超过64个字符")
+    @ApiModelProperty(value = "主键", name = "id")
+    @FieldRemark(column="ID", field="id", name="主键")
+    private String id;
 
     /**
-    * 全路径
+    * 总师单位
     */
-    @Size(max = 1000, message = "全路径长度不能超过1000个字符")
-    @ApiModelProperty(value = "全路径", name = "treePath")
-    @FieldRemark(column="TREE_PATH", field="treePath", name="全路径")
-    private java.lang.String treePath;
-    /**
-    * 节点层级
-    */
-    @Digits(integer = 16, fraction = 0, message = "节点层级格式不正确")
-    @ApiModelProperty(value = "节点层级", name = "treeLevel")
-    @FieldRemark(column="TREE_LEVEL", field="treeLevel", name="节点层级")
-    private java.math.BigDecimal treeLevel;
-    /**
-    * 本级排序
-    */
-    @NotNull(message = "本级排序不能为空")
-    @Digits(integer = 16, fraction = 0, message = "本级排序格式不正确")
-    @ApiModelProperty(value = "本级排序", name = "treeSort")
-    @FieldRemark(column="TREE_SORT", field="treeSort", name="本级排序")
-    private java.math.BigDecimal treeSort;
+    @ExcelProperty("总师单位")
+    @Size(max = 200, message = "总师单位长度不能超过200个字符")
+    @ApiModelProperty(value = "总师单位", name = "managerDept")
+    @FieldRemark(column="MANAGER_DEPT", field="managerDept", name="总师单位")
+    private String managerDept;
 
     /**
-    * 全级排序
+    * 总承单位
     */
-    @Size(max = 1000, message = "全级排序长度不能超过1000个字符")
-    @ApiModelProperty(value = "全级排序", name = "treeSorts")
-    @FieldRemark(column="TREE_SORTS", field="treeSorts", name="全级排序")
-    private java.lang.String treeSorts;
+    @ExcelProperty("总承单位")
+    @Size(max = 200, message = "总承单位长度不能超过200个字符")
+    @ApiModelProperty(value = "总承单位", name = "productDept")
+    @FieldRemark(column="PRODUCT_DEPT", field="productDept", name="总承单位")
+    private String productDept;
 
     /**
-    * 是否叶子节点
+    * 军代表ID
     */
-    @Size(max = 2, message = "是否叶子节点长度不能超过2个字符")
-    @ApiModelProperty(value = "是否叶子节点", name = "treeLeaf")
-    @FieldRemark(column="TREE_LEAF", field="treeLeaf", name="是否叶子节点")
-    private java.lang.String treeLeaf;
-    private String dbid_; // 流程实例ID
-    @ExcelProperty("流程当前步骤")
-    private String activityalias_; // 节点中文名称
-    private String activityname_; // 当前节点id
-    @ExcelProperty("流程状态")
-    private String businessstate_; // 流程当前状态
-    private String currUserId; // 当前登录人ID
-    private String bpmType;
-    private String bpmState;
-    @ExcelProperty("当前处理人")
-    private String assigneenames_;
+    @ExcelProperty("军代表ID")
+    @Size(max = 2000, message = "军代表ID长度不能超过2000个字符")
+    @ApiModelProperty(value = "军代表ID", name = "milRepId")
+    @FieldRemark(column="MIL_REP_ID", field="milRepId", name="军代表ID")
+    private String milRepId;
 
-    public java.lang.String getId(){
-        return id;
-    }
+    /**
+    * 军代表CODE
+    */
+    @ExcelProperty("军代表CODE")
+    @Size(max = 500, message = "军代表CODE长度不能超过500个字符")
+    @ApiModelProperty(value = "军代表CODE", name = "milRepCode")
+    @FieldRemark(column="MIL_REP_CODE", field="milRepCode", name="军代表CODE")
+    private String milRepCode;
 
-    public void setId(java.lang.String id){
-        this.id = id;
-    }
+    /**
+    * 军代表
+    */
+    @ExcelProperty("军代表")
+    @Size(max = 1000, message = "军代表长度不能超过1000个字符")
+    @ApiModelProperty(value = "军代表", name = "milRepName")
+    @FieldRemark(column="MIL_REP_NAME", field="milRepName", name="军代表")
+    private String milRepName;
 
-    public java.lang.String getModel(){
+    /**
+    * 副总师ID
+    */
+    @ExcelProperty("副总师ID")
+    @Size(max = 2000, message = "副总师ID长度不能超过2000个字符")
+    @ApiModelProperty(value = "副总师ID", name = "deputyChiefDesignerId")
+    @FieldRemark(column="DEPUTY_CHIEF_DESIGNER_ID", field="deputyChiefDesignerId", name="副总师ID")
+    private String deputyChiefDesignerId;
+
+    /**
+    * 副总师CODE
+    */
+    @ExcelProperty("副总师CODE")
+    @Size(max = 500, message = "副总师CODE长度不能超过500个字符")
+    @ApiModelProperty(value = "副总师CODE", name = "deputyChiefDesignerCode")
+    @FieldRemark(column="DEPUTY_CHIEF_DESIGNER_CODE", field="deputyChiefDesignerCode", name="副总师CODE")
+    private String deputyChiefDesignerCode;
+
+    /**
+    * 副总师
+    */
+    @ExcelProperty("副总师")
+    @Size(max = 1000, message = "副总师长度不能超过1000个字符")
+    @ApiModelProperty(value = "副总师", name = "deputyChiefDesignerName")
+    @FieldRemark(column="DEPUTY_CHIEF_DESIGNER_NAME", field="deputyChiefDesignerName", name="副总师")
+    private String deputyChiefDesignerName;
+
+    /**
+    * 科研部主管ID
+    */
+    @ExcelProperty("科研部主管ID")
+    @Size(max = 2000, message = "科研部主管ID长度不能超过2000个字符")
+    @ApiModelProperty(value = "科研部主管ID", name = "rdManagerId")
+    @FieldRemark(column="RD_MANAGER_ID", field="rdManagerId", name="科研部主管ID")
+    private String rdManagerId;
+
+    /**
+    * 科研部主管CODE
+    */
+    @ExcelProperty("科研部主管CODE")
+    @Size(max = 500, message = "科研部主管CODE长度不能超过500个字符")
+    @ApiModelProperty(value = "科研部主管CODE", name = "rdManagerCode")
+    @FieldRemark(column="RD_MANAGER_CODE", field="rdManagerCode", name="科研部主管CODE")
+    private String rdManagerCode;
+
+    /**
+    * 科研部主管
+    */
+    @ExcelProperty("科研部主管")
+    @Size(max = 1000, message = "科研部主管长度不能超过1000个字符")
+    @ApiModelProperty(value = "科研部主管", name = "rdManagerName")
+    @FieldRemark(column="RD_MANAGER_NAME", field="rdManagerName", name="科研部主管")
+    private String rdManagerName;
+
+    /**
+    * 质量部主管ID
+    */
+    @ExcelProperty("质量部主管ID")
+    @Size(max = 2000, message = "质量部主管ID长度不能超过2000个字符")
+    @ApiModelProperty(value = "质量部主管ID", name = "qaManagerId")
+    @FieldRemark(column="QA_MANAGER_ID", field="qaManagerId", name="质量部主管ID")
+    private String qaManagerId;
+
+    /**
+    * 质量部主管CODE
+    */
+    @ExcelProperty("质量部主管CODE")
+    @Size(max = 500, message = "质量部主管CODE长度不能超过500个字符")
+    @ApiModelProperty(value = "质量部主管CODE", name = "qaManagerCode")
+    @FieldRemark(column="QA_MANAGER_CODE", field="qaManagerCode", name="质量部主管CODE")
+    private String qaManagerCode;
+
+    /**
+    * 质量部主管
+    */
+    @ExcelProperty("质量部主管")
+    @Size(max = 1000, message = "质量部主管长度不能超过1000个字符")
+    @ApiModelProperty(value = "质量部主管", name = "qaManagerName")
+    @FieldRemark(column="QA_MANAGER_NAME", field="qaManagerName", name="质量部主管")
+    private String qaManagerName;
+
+    public String getModel(){
         return model;
     }
 
-    public void setModel(java.lang.String model){
+    public void setModel(String model){
         this.model = model;
-    }
-
-    public java.lang.String getManagerdept(){
-        return managerdept;
-    }
-
-    public void setManagerdept(java.lang.String managerdept){
-        this.managerdept = managerdept;
-    }
-
-    public java.lang.String getProductdept(){
-        return productdept;
-    }
-
-    public void setProductdept(java.lang.String productdept){
-        this.productdept = productdept;
-    }
-
-    public java.lang.String getArmyRepresentative(){
-        return armyRepresentative;
-    }
-
-    public void setArmyRepresentative(java.lang.String armyRepresentative){
-        this.armyRepresentative = armyRepresentative;
-    }
-
-    public java.lang.String getZlbFzs(){
-        return zlbFzs;
-    }
-
-    public void setZlbFzs(java.lang.String zlbFzs){
-        this.zlbFzs = zlbFzs;
-    }
-
-    public java.lang.String getKybMasterId(){
-        return kybMasterId;
-    }
-
-    public void setKybMasterId(java.lang.String kybMasterId){
-        this.kybMasterId = kybMasterId;
-    }
-
-    public java.lang.String getKybMasterCode(){
-        return kybMasterCode;
-    }
-
-    public void setKybMasterCode(java.lang.String kybMasterCode){
-        this.kybMasterCode = kybMasterCode;
-    }
-
-    public java.lang.String getKybMasterName(){
-        return kybMasterName;
-    }
-
-    public void setKybMasterName(java.lang.String kybMasterName){
-        this.kybMasterName = kybMasterName;
-    }
-
-    public java.lang.String getZlbMasterId(){
-        return zlbMasterId;
-    }
-
-    public void setZlbMasterId(java.lang.String zlbMasterId){
-        this.zlbMasterId = zlbMasterId;
-    }
-
-    public java.lang.String getZlbMasterCode(){
-        return zlbMasterCode;
-    }
-
-    public void setZlbMasterCode(java.lang.String zlbMasterCode){
-        this.zlbMasterCode = zlbMasterCode;
-    }
-
-    public java.lang.String getZlbMasterName(){
-        return zlbMasterName;
-    }
-
-    public void setZlbMasterName(java.lang.String zlbMasterName){
-        this.zlbMasterName = zlbMasterName;
     }
 
     public java.util.Date getCreationDateBegin(){
@@ -465,35 +354,35 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
     public void setLastUpdateDateEnd(java.util.Date lastUpdateDateEnd){
         this.lastUpdateDateEnd = lastUpdateDateEnd;
     }
-    public java.lang.String getSecretLevel(){
+    public String getSecretLevel(){
         return secretLevel;
     }
 
-    public void setSecretLevel(java.lang.String secretLevel){
+    public void setSecretLevel(String secretLevel){
         this.secretLevel = secretLevel;
     }
 
-    public java.lang.String getSecretLevelName(){
+    public String getSecretLevelName(){
         return secretLevelName;
     }
 
-    public void setSecretLevelName(java.lang.String secretLevelName){
+    public void setSecretLevelName(String secretLevelName){
         this.secretLevelName = secretLevelName;
     }
 
-    public java.lang.String getYnDeleted(){
+    public String getYnDeleted(){
         return ynDeleted;
     }
 
-    public void setYnDeleted(java.lang.String ynDeleted){
+    public void setYnDeleted(String ynDeleted){
         this.ynDeleted = ynDeleted;
     }
 
-    public java.lang.String getRemark(){
+    public String getRemark(){
         return remark;
     }
 
-    public void setRemark(java.lang.String remark){
+    public void setRemark(String remark){
         this.remark = remark;
     }
 
@@ -506,197 +395,204 @@ public class QmsBasicModelInfoDTO extends BeanDTO{
         super.handleNullValue();
     }
 
-    public java.lang.String getAttribute01(){
+    public String getAttribute01(){
         return attribute01;
     }
 
-    public void setAttribute01(java.lang.String attribute01){
+    public void setAttribute01(String attribute01){
         this.attribute01 = attribute01;
     }
 
-    public java.lang.String getAttribute02(){
+    public String getAttribute02(){
         return attribute02;
     }
 
-    public void setAttribute02(java.lang.String attribute02){
+    public void setAttribute02(String attribute02){
         this.attribute02 = attribute02;
     }
 
-    public java.lang.String getAttribute03(){
+    public String getAttribute03(){
         return attribute03;
     }
 
-    public void setAttribute03(java.lang.String attribute03){
+    public void setAttribute03(String attribute03){
         this.attribute03 = attribute03;
     }
 
-    public java.lang.String getAttribute04(){
+    public String getAttribute04(){
         return attribute04;
     }
 
-    public void setAttribute04(java.lang.String attribute04){
+    public void setAttribute04(String attribute04){
         this.attribute04 = attribute04;
     }
 
-    public java.lang.String getAttribute05(){
+    public String getAttribute05(){
         return attribute05;
     }
 
-    public void setAttribute05(java.lang.String attribute05){
+    public void setAttribute05(String attribute05){
         this.attribute05 = attribute05;
     }
 
-    public java.lang.String getAttribute06(){
+    public String getAttribute06(){
         return attribute06;
     }
 
-    public void setAttribute06(java.lang.String attribute06){
+    public void setAttribute06(String attribute06){
         this.attribute06 = attribute06;
     }
 
-    public java.lang.String getAttribute07(){
+    public String getAttribute07(){
         return attribute07;
     }
 
-    public void setAttribute07(java.lang.String attribute07){
+    public void setAttribute07(String attribute07){
         this.attribute07 = attribute07;
     }
 
-    public java.lang.String getAttribute08(){
+    public String getAttribute08(){
         return attribute08;
     }
 
-    public void setAttribute08(java.lang.String attribute08){
+    public void setAttribute08(String attribute08){
         this.attribute08 = attribute08;
     }
 
-    public java.lang.String getAttribute09(){
+    public String getAttribute09(){
         return attribute09;
     }
 
-    public void setAttribute09(java.lang.String attribute09){
+    public void setAttribute09(String attribute09){
         this.attribute09 = attribute09;
     }
 
-    public java.lang.String getAttribute10(){
+    public String getAttribute10(){
         return attribute10;
     }
 
-    public void setAttribute10(java.lang.String attribute10){
+    public void setAttribute10(String attribute10){
         this.attribute10 = attribute10;
     }
 
-    public java.lang.String getParentId(){
-        return parentId;
+    public String getId(){
+        return id;
     }
 
-    public void setParentId(java.lang.String parentId){
-        this.parentId = parentId;
+    public void setId(String id){
+        this.id = id;
     }
 
-    public java.lang.String getTreePath(){
-        return treePath;
+    public String getManagerDept(){
+        return managerDept;
     }
 
-    public void setTreePath(java.lang.String treePath){
-        this.treePath = treePath;
+    public void setManagerDept(String managerDept){
+        this.managerDept = managerDept;
     }
 
-    public java.math.BigDecimal getTreeLevel(){
-        return treeLevel;
+    public String getProductDept(){
+        return productDept;
     }
 
-    public void setTreeLevel(java.math.BigDecimal treeLevel){
-        this.treeLevel = treeLevel;
-        super.handleNullValue();
+    public void setProductDept(String productDept){
+        this.productDept = productDept;
     }
 
-    public java.math.BigDecimal getTreeSort(){
-        return treeSort;
+    public String getMilRepId(){
+        return milRepId;
     }
 
-    public void setTreeSort(java.math.BigDecimal treeSort){
-        this.treeSort = treeSort;
-        super.handleNullValue();
+    public void setMilRepId(String milRepId){
+        this.milRepId = milRepId;
     }
 
-    public java.lang.String getTreeSorts(){
-        return treeSorts;
+    public String getMilRepCode(){
+        return milRepCode;
     }
 
-    public void setTreeSorts(java.lang.String treeSorts){
-        this.treeSorts = treeSorts;
+    public void setMilRepCode(String milRepCode){
+        this.milRepCode = milRepCode;
     }
 
-    public java.lang.String getTreeLeaf(){
-        return treeLeaf;
+    public String getMilRepName(){
+        return milRepName;
     }
 
-    public void setTreeLeaf(java.lang.String treeLeaf){
-        this.treeLeaf = treeLeaf;
+    public void setMilRepName(String milRepName){
+        this.milRepName = milRepName;
     }
 
-    public String getDbid_() {
-        return dbid_;
+    public String getDeputyChiefDesignerId(){
+        return deputyChiefDesignerId;
     }
 
-    public void setDbid_(String dbid_) {
-        this.dbid_ = dbid_;
+    public void setDeputyChiefDesignerId(String deputyChiefDesignerId){
+        this.deputyChiefDesignerId = deputyChiefDesignerId;
     }
 
-    public String getActivityalias_() {
-        return activityalias_;
+    public String getDeputyChiefDesignerCode(){
+        return deputyChiefDesignerCode;
     }
 
-    public void setActivityalias_(String activityalias_) {
-        this.activityalias_ = activityalias_;
+    public void setDeputyChiefDesignerCode(String deputyChiefDesignerCode){
+        this.deputyChiefDesignerCode = deputyChiefDesignerCode;
     }
 
-    public String getActivityname_() {
-        return activityname_;
+    public String getDeputyChiefDesignerName(){
+        return deputyChiefDesignerName;
     }
 
-    public void setActivityname_(String activityname_) {
-        this.activityname_ = activityname_;
+    public void setDeputyChiefDesignerName(String deputyChiefDesignerName){
+        this.deputyChiefDesignerName = deputyChiefDesignerName;
     }
 
-    public String getBusinessstate_() {
-        return businessstate_;
+    public String getRdManagerId(){
+        return rdManagerId;
     }
 
-    public void setBusinessstate_(String businessstate_) {
-        this.businessstate_ = businessstate_;
+    public void setRdManagerId(String rdManagerId){
+        this.rdManagerId = rdManagerId;
     }
 
-    public String getCurrUserId() {
-        return currUserId;
+    public String getRdManagerCode(){
+        return rdManagerCode;
     }
 
-    public void setCurrUserId(String currUserId) {
-        this.currUserId = currUserId;
+    public void setRdManagerCode(String rdManagerCode){
+        this.rdManagerCode = rdManagerCode;
     }
 
-    public String getBpmType() {
-        return bpmType;
+    public String getRdManagerName(){
+        return rdManagerName;
     }
 
-    public void setBpmType(String bpmType) {
-        this.bpmType = bpmType;
+    public void setRdManagerName(String rdManagerName){
+        this.rdManagerName = rdManagerName;
     }
 
-    public String getBpmState() {
-        return bpmState;
+    public String getQaManagerId(){
+        return qaManagerId;
     }
 
-    public void setBpmState(String bpmState) {
-        this.bpmState = bpmState;
-    }
-    public String getAssigneenames_() {
-        return assigneenames_;
+    public void setQaManagerId(String qaManagerId){
+        this.qaManagerId = qaManagerId;
     }
 
-    public void setAssigneenames_(String assigneenames_) {
-        this.assigneenames_ = assigneenames_;
+    public String getQaManagerCode(){
+        return qaManagerCode;
+    }
+
+    public void setQaManagerCode(String qaManagerCode){
+        this.qaManagerCode = qaManagerCode;
+    }
+
+    public String getQaManagerName(){
+        return qaManagerName;
+    }
+
+    public void setQaManagerName(String qaManagerName){
+        this.qaManagerName = qaManagerName;
     }
 
     @Override

@@ -346,6 +346,7 @@ public class QmsAuditCheckDetailService  {
         Map<String, Set<String>> convertFormData = new HashMap<>();
         for (QmsAuditCheckDetailDTO qmsAuditCheckDetail : qmsAuditCheckDetailDTOList) {
             BusinessUtil.createConvertSet(convertFormData, "PLATFORM_FILE_SECRET_LEVEL", qmsAuditCheckDetail.getSecretLevel());
+            BusinessUtil.createConvertSet(convertFormData, "QMS_CHECK_CONFORMITY_RESULT", qmsAuditCheckDetail.getConformityResult());
         }
         if (convertFormData.size() > 0) {
             //获取请求结果
@@ -353,7 +354,9 @@ public class QmsAuditCheckDetailService  {
             //循环设置Alias或Name的值
             for (QmsAuditCheckDetailDTO qmsAuditCheckDetail : qmsAuditCheckDetailDTOList) {
                 qmsAuditCheckDetail.setSecretLevelName(BusinessUtil.convertFormat(convertResultData, "PLATFORM_FILE_SECRET_LEVEL", qmsAuditCheckDetail.getSecretLevel()));
+                qmsAuditCheckDetail.setConformityResultName(BusinessUtil.convertFormat(convertResultData, "QMS_CHECK_CONFORMITY_RESULT", qmsAuditCheckDetail.getConformityResult()));
             }
+
         }
     }
 }

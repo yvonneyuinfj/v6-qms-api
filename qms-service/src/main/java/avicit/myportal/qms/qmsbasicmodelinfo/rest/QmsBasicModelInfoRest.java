@@ -7,11 +7,11 @@ import avicit.platform6.core.rest.msg.QueryRespBean;
 import avicit.platform6.core.rest.msg.ResponseMsg;
 import avicit.platform6.core.annotation.RequiresPermissions;
 import avicit.platform6.commons.utils.StringUtils;
-import avicit.platform6.api.bpm.dto.ProcessParameter;
-import avicit.platform6.api.system.SysUserDeptPositionClient;
-import avicit.platform6.bpmreform.bpmbusiness.dto.StartResultBean;
-import avicit.platform6.api.bpm.eventInterface.CommonRestInstanceDeleteEventListener;
 import avicit.myportal.qms.qmsbasicmodelinfo.dto.QmsBasicModelInfoDTO;
+import avicit.myportal.qms.qmsbasicmodelinfo.dto.QmsBasicModelInfoImportDTO;
+import avicit.platform6.core.excel.imp.entity.ExcelImportResult;
+import org.springframework.http.MediaType;
+import org.springframework.web.multipart.MultipartFile;
 import avicit.myportal.qms.qmsbasicmodelinfo.service.QmsBasicModelInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -31,22 +31,20 @@ import java.util.*;
  * @金航数码科技有限责任公司
  * @作者：于小耘
  * @邮箱：18040011631@163.com
- * @创建时间： 2026-08-03 19:25
+ * @创建时间： 2026-08-08 17:12
  * @类说明：QMS_BASIC_MODEL_INFORest
  * @修改记录：
  */
 @RestController
 @Api(tags = "qmsBasicModelInfo", description = "QMS_BASIC_MODEL_INFO")
 @RequestMapping("/api/myportal/qms/qmsbasicmodelinfos")
-	public class QmsBasicModelInfoRest implements CommonRestInstanceDeleteEventListener{
+	public class QmsBasicModelInfoRest {
 
 	private static final Logger logger = LoggerFactory.getLogger(QmsBasicModelInfoRest.class);
 
 	@Autowired
 	private QmsBasicModelInfoService qmsBasicModelInfoService;
 
-	@Autowired
-	private SysUserDeptPositionClient sysUserDeptPositionClient;
 
 	/**
 	 * 按条件分页查询
@@ -106,41 +104,12 @@ import java.util.*;
 	@RequiresPermissions(value={"qmsBasicModelInfo:edit","qmsBasicModelInfo:add"},logical= Logical.OR)
 	public ResponseMsg<String> save(@ApiParam(value = "保存对象", name = "qmsBasicModelInfo") @Validated @RequestBody QmsBasicModelInfoDTO qmsBasicModelInfo) {
 		ResponseMsg<String> responseMsg = new ResponseMsg<>();
-		if (StringUtils.isNotEmpty(qmsBasicModelInfo.getId())&&qmsBasicModelInfoService.queryQmsBasicModelInfoByPrimaryKey(qmsBasicModelInfo.getId())!= null) {
-			responseMsg.setResponseBody(String.valueOf(qmsBasicModelInfoService.updateQmsBasicModelInfo(qmsBasicModelInfo)));
-		}else{
+		if (StringUtils.isEmpty(qmsBasicModelInfo.getId())) {
 			qmsBasicModelInfo.setOrgIdentity(ThreadContextHelper.getOrgId());
 			responseMsg.setResponseBody(qmsBasicModelInfoService.insertQmsBasicModelInfo(qmsBasicModelInfo));
+		}else{
+			responseMsg.setResponseBody(String.valueOf(qmsBasicModelInfoService.updateQmsBasicModelInfo(qmsBasicModelInfo)));
 		}
-		return responseMsg;
-	}
-
-	/**
-	 * 新增并启动流程
-	 *
-	 * @param processParam 参数对象
-	 * @return ResponseMsg<StartResultBean>
-	 */
-	@PostMapping("/save-and-start-process/v1")
-	@ApiOperation(value = "新增并启动流程")
-	@RequiresPermissions(value={"qmsBasicModelInfo:edit","qmsBasicModelInfo:add"},logical= Logical.OR)
-	public ResponseMsg<StartResultBean> saveAndStartProcess(@ApiParam(value = "参数对象", name = "processParam") @RequestBody ProcessParameter<QmsBasicModelInfoDTO> processParam) {
-		ResponseMsg<StartResultBean> responseMsg = new ResponseMsg<>();
-		String userId = ThreadContextHelper.getUserId();
-		String deptId = ThreadContextHelper.getDeptId();
-		if (StringUtils.isEmpty(deptId)) {
-			deptId = sysUserDeptPositionClient.getChiefDeptIdBySysUserId(ThreadContextHelper.getUserId());
-		}
-		/* 设置启动流程所需要的参数 */
-		Map<String, String> parameter = new HashMap<>();
-		parameter.put("processDefId", processParam.getProcessDefId());
-		parameter.put("formCode", processParam.getFormCode());
-		parameter.put("jsonString", processParam.getJsonString());
-		parameter.put("userId", userId);
-		parameter.put("deptId", deptId);
-		processParam.getBean().setOrgIdentity(ThreadContextHelper.getOrgId());
-		StartResultBean result = qmsBasicModelInfoService.insertQmsBasicModelInfoAndStartProcess(processParam.getBean(), parameter);
-		responseMsg.setResponseBody(result);
 		return responseMsg;
 	}
 
@@ -201,21 +170,28 @@ import java.util.*;
 		return responseMsg;
 	}
 
-    /**
-     * 流程实例删除回调方法（按主键单条删除业务数据）
-     *
-     * @param arg 流程变量集合
-     * @return ResponseMsg<Void>
-     */
-    @Override
-    @PostMapping("/notify/v1")
-    @ApiOperation(value = "流程实例删除回调方法（按主键单条删除业务数据）")
-    public ResponseMsg<Void> notify(@ApiParam(value = "流程变量集合", name = "arg") @RequestBody Map<String, String> arg) {
-        ResponseMsg<Void> responseMsg = new ResponseMsg();
-        String formId = arg.get("formId");
-        qmsBasicModelInfoService.deleteDataQmsBasicModelInfoById(formId);
-        return responseMsg;
-    }
+    @GetMapping("/downloadTemplate/v1")
+	@ApiOperation(value = "模板下载")
+	public void downloadTemplate(HttpServletResponse response) throws IOException {
+		// 输出
+		ExcelUtil.downloadTemplate(response, QmsBasicModelInfoImportDTO.class,"导入模板");
+	}
+
+	/**
+	 * 导入数据
+	 * @param multipartFile 导入文件
+	 * @return
+	 */
+	@PostMapping(value = "/importData/v1", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	@ApiOperation(value = "导入文件")
+	@RequiresPermissions("qmsBasicModelInfo:import")
+	public ResponseMsg<Object> importDataV2(@ApiParam(value = "Excel 文件", name = "impExcelFile") @RequestPart("impExcelFile") MultipartFile multipartFile,@RequestParam("formData") String formData) throws Exception {
+		ResponseMsg<Object> responseMsg = new ResponseMsg<>();
+		List<Map<String, String>> excelList = ExcelUtil.importExcel(multipartFile.getInputStream(), QmsBasicModelInfoImportDTO.class);
+		ExcelImportResult excelImportResult = qmsBasicModelInfoService.importData(excelList,formData);
+		responseMsg.setResponseBody(excelImportResult);
+		return responseMsg;
+	}
 
 	/**
 	 * 按条件导出所有

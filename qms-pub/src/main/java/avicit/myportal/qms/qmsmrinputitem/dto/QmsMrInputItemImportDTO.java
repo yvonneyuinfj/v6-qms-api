@@ -246,7 +246,6 @@ private static final long serialVersionUID = 1L;
     * 本级排序
     */
 
-    @NotNull(message = "本级排序不能为空")
     @Digits(integer = 16, fraction = 0, message = "本级排序格式不正确")
     private String treeSort;
     /**

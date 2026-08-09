@@ -430,7 +430,6 @@ public class QmsMrInputItemDTO extends BeanDTO{
     /**
     * 本级排序
     */
-    @NotNull(message = "本级排序不能为空")
     @Digits(integer = 16, fraction = 0, message = "本级排序格式不正确")
     @ApiModelProperty(value = "本级排序", name = "treeSort")
     @FieldRemark(column="TREE_SORT", field="treeSort", name="本级排序")

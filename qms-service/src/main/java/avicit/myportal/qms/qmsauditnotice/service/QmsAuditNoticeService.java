@@ -381,7 +381,12 @@ public class QmsAuditNoticeService {
 		String deptId = parameter.get("deptId");
 		Assert.hasText(processDefId, "启动流程失败，请传递流程启动参数！");
 		//业务操作
-		this.insertQmsAuditNotice(qmsAuditNoticeDTO);
+		String id = qmsAuditNoticeDTO.getId();
+		if(StringUtils.isEmpty(id)){
+			this.insertQmsAuditNotice(qmsAuditNoticeDTO);
+		}else{
+			this.updateQmsAuditNotice(qmsAuditNoticeDTO);
+		}
 		//变量集合
 		Map<String, Object> variables = new HashMap<>();
 		//web表单传递过来(除表单对象外)的变量，可以为空
@@ -484,5 +489,9 @@ public class QmsAuditNoticeService {
             }
         }
     }
+
+	public QmsAuditNoticeDTO getByPlanId(String planId) {
+		return qmsAuditNoticeDAO.findQmsAuditNoticeByPlanId(planId);
+	}
 }
 

@@ -643,9 +643,18 @@
 <!-- 主键查询对象 QMS_AUDIT_NOTICE -->
 <select id="findQmsAuditNoticeById" parameterType="java.util.Map" resultMap="QmsAuditNoticeDTOMap">
 	select
+	<include refid="commonBpmColums"/>
 	<include refid="commonColums"/>
-	from QMS_AUDIT_NOTICE t1
+	from QMS_AUDIT_NOTICE t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
 	where t1.id = #{id}
+</select>
+<!-- 通过planId查询对象	-->
+<select id="findQmsAuditNoticeByPlanId" parameterType="java.util.Map" resultMap="QmsAuditNoticeDTOMap">
+	select
+	<include refid="commonBpmColums"/>
+	<include refid="commonColums"/>
+	from QMS_AUDIT_NOTICE t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
+	where t1.plan_id = #{planId}
 </select>
 <!-- 新增对象 QMS_AUDIT_NOTICE -->
 <insert id="insertQmsAuditNotice" parameterType="avicit.myportal.qms.qmsauditnotice.dto.QmsAuditNoticeDTO">
@@ -1519,8 +1528,12 @@
 	</foreach>
 	<if test="_databaseId != 'mysql' and _databaseId != 'sqlserver'">end;</if>
 </update>
+<delete id="deleteQmsAuditNoticeByPlanId" parameterType="java.lang.String">
+	delete from QMS_AUDIT_NOTICE  where plan_id = #{planId}
+</delete>
 <!-- 主键删除 QMS_AUDIT_NOTICE -->
 <delete id="deleteQmsAuditNoticeById" parameterType="java.lang.String">
 	delete from QMS_AUDIT_NOTICE  where id = #{id}
 </delete>
+
 </mapper>

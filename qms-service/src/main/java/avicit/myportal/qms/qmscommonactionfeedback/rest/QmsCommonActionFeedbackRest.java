@@ -1,13 +1,10 @@
 package avicit.myportal.qms.qmscommonactionfeedback.rest;
 
+import avicit.platform6.api.bpm.dto.ProcessParameter;
+import avicit.platform6.api.bpm.eventInterface.CommonRestInstanceDeleteEventListener;
+import avicit.platform6.api.system.SysUserDeptPositionClient;
+import avicit.platform6.bpmreform.bpmbusiness.dto.StartResultBean;
 import avicit.platform6.core.context.ThreadContextHelper;
-import avicit.myportal.qms.qmscommonactionfeedback.dto.QmsCommonActionFeedbackImportDTO;
-import avicit.platform6.core.excel.ExcelUtil;
-import avicit.platform6.core.excel.imp.entity.ExcelImportResult;
-import org.springframework.http.MediaType;
-import org.springframework.web.multipart.MultipartFile;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import avicit.platform6.core.domain.ValidationList;
 import avicit.platform6.core.rest.msg.QueryReqBean;
 import avicit.platform6.core.rest.msg.QueryRespBean;
@@ -32,19 +29,22 @@ import java.util.*;
  * @金航数码科技有限责任公司
  * @作者：于小耘
  * @邮箱：18040011631@163.com
- * @创建时间： 2026-08-04 15:12
+ * @创建时间： 2026-08-20 14:10
  * @类说明：通用执行反馈表Rest
  * @修改记录：
  */
 @RestController
 @Api(tags = "qmsCommonActionFeedback", description = "通用执行反馈表")
 @RequestMapping("/api/myportal/qms/qmscommonactionfeedbacks")
-public class QmsCommonActionFeedbackRest {
+public class QmsCommonActionFeedbackRest implements CommonRestInstanceDeleteEventListener {
 
     private static final Logger logger = LoggerFactory.getLogger(QmsCommonActionFeedbackRest.class);
 
     @Autowired
     private QmsCommonActionFeedbackService qmsCommonActionFeedbackService;
+
+    @Autowired
+    private SysUserDeptPositionClient sysUserDeptPositionClient;
 
     /**
      * 按条件分页查询子表数据
@@ -96,20 +96,66 @@ public class QmsCommonActionFeedbackRest {
     /**
      * 新增/编辑子表对象
      *
-     * @param qmsCommonActionFeedbackDTO 保存对象
+     * @param qmsCommonActionFeedbackDTOList 保存对象
      * @return ResponseMsg<String>
      */
     @PostMapping("/save/v1")
     @ApiOperation(value = "新增/编辑子表对象")
-    @RequiresPermissions(value={"qmsCommonActionFeedback:edit","qmsCommonActionFeedback:add"},logical= Logical.OR)
-    public ResponseMsg<String> save(@ApiParam(value = "保存对象", name = "qmsCommonActionFeedbackDTO") @Validated @RequestBody QmsCommonActionFeedbackDTO qmsCommonActionFeedbackDTO) {
+    public ResponseMsg<String> save(@ApiParam(value = "保存对象", name = "qmsCommonActionFeedbackDTO") @Validated @RequestBody ValidationList<QmsCommonActionFeedbackDTO> qmsCommonActionFeedbackDTOList) {
         ResponseMsg<String> responseMsg = new ResponseMsg<>();
-        if (StringUtils.isEmpty(qmsCommonActionFeedbackDTO.getId())) {
-            qmsCommonActionFeedbackDTO.setOrgIdentity(ThreadContextHelper.getOrgId());
-            responseMsg.setResponseBody(qmsCommonActionFeedbackService.insertQmsCommonActionFeedback(qmsCommonActionFeedbackDTO));
-        } else {
-            responseMsg.setResponseBody(String.valueOf(qmsCommonActionFeedbackService.updateQmsCommonActionFeedback(qmsCommonActionFeedbackDTO)));
+        for(QmsCommonActionFeedbackDTO qmsCommonActionFeedbackDTODTO : qmsCommonActionFeedbackDTOList){
+            if (StringUtils.isEmpty(qmsCommonActionFeedbackDTODTO.getId())) {
+                qmsCommonActionFeedbackDTODTO.setOrgIdentity(ThreadContextHelper.getOrgId());
+                responseMsg.setResponseBody(qmsCommonActionFeedbackService.insertQmsCommonActionFeedback(qmsCommonActionFeedbackDTODTO));
+            } else {
+                responseMsg.setResponseBody(String.valueOf(qmsCommonActionFeedbackService.updateQmsCommonActionFeedback(qmsCommonActionFeedbackDTODTO)));
+            }
         }
+        return responseMsg;
+    }
+
+    /**
+     * 新增并启动流程
+     *
+     * @param processParam 参数对象
+     * @return ResponseMsg<StartResultBean>
+     */
+    @PostMapping("/save-and-start-process/v1")
+    @ApiOperation(value = "新增并启动流程")
+    @RequiresPermissions(value={"qmsCommonActionFeedback:edit","qmsCommonActionFeedback:add"},logical= Logical.OR)
+    public ResponseMsg<StartResultBean> saveAndStartProcess(@ApiParam(value = "参数对象", name = "processParam") @RequestBody ProcessParameter<QmsCommonActionFeedbackDTO> processParam) {
+        ResponseMsg<StartResultBean> responseMsg = new ResponseMsg<>();
+        String userId = ThreadContextHelper.getUserId();
+        String deptId = ThreadContextHelper.getDeptId();
+        if (StringUtils.isEmpty(deptId)) {
+            deptId = sysUserDeptPositionClient.getChiefDeptIdBySysUserId(ThreadContextHelper.getUserId());
+        }
+        /* 设置启动流程所需要的参数 */
+        Map<String, String> parameter = new HashMap<>();
+        parameter.put("processDefId", processParam.getProcessDefId());
+        parameter.put("formCode", processParam.getFormCode());
+        parameter.put("jsonString", processParam.getJsonString());
+        parameter.put("userId", userId);
+        parameter.put("deptId", deptId);
+        processParam.getBean().setOrgIdentity(ThreadContextHelper.getOrgId());
+        StartResultBean result = qmsCommonActionFeedbackService.insertQmsCommonActionFeedbackAndStartProcess(processParam.getBean(), parameter);
+        responseMsg.setResponseBody(result);
+        return responseMsg;
+    }
+
+    /**
+     * 流程实例删除回调方法（按主键单条删除业务数据）
+     *
+     * @param arg 流程变量集合
+     * @return ResponseMsg<Void>
+     */
+    @Override
+    @PostMapping("/notify/v1")
+    @ApiOperation(value = "流程实例删除回调方法（按主键单条删除业务数据）")
+    public ResponseMsg<Void> notify(@ApiParam(value = "流程变量集合", name = "arg") @RequestBody Map<String, String> arg) {
+        ResponseMsg<Void> responseMsg = new ResponseMsg();
+        String formId = arg.get("formId");
+        qmsCommonActionFeedbackService.deleteDataQmsCommonActionFeedbackById(formId);
         return responseMsg;
     }
 
@@ -168,41 +214,5 @@ public class QmsCommonActionFeedbackRest {
         ResponseMsg<Integer> responseMsg = new ResponseMsg<>();
         responseMsg.setResponseBody(qmsCommonActionFeedbackService.deleteQmsCommonActionFeedbackByIds(ids));
         return responseMsg;
-    }
-    @GetMapping("/downloadTemplate/v1")
-    @ApiOperation(value = "模板下载")
-    public void downloadTemplate(HttpServletResponse response) throws IOException {
-        // 输出
-        ExcelUtil.downloadTemplate(response, QmsCommonActionFeedbackImportDTO.class,"导入模板");
-    }
-
-    /**
-     * 导入数据
-     * @param multipartFile 导入文件
-     * @return
-     */
-    @PostMapping(value = "/importData/v1", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    @ApiOperation(value = "导入文件")
-    @RequiresPermissions("qmsCommonActionFeedback:import")
-    public ResponseMsg<Object> importDataV2(@ApiParam(value = "Excel 文件", name = "impExcelFile") @RequestPart("impExcelFile") MultipartFile multipartFile,@RequestParam("formData") String formData) throws Exception {
-        ResponseMsg<Object> responseMsg = new ResponseMsg<>();
-        List<Map<String, String>> excelList = ExcelUtil.importExcel(multipartFile.getInputStream(), QmsCommonActionFeedbackImportDTO.class);
-        ExcelImportResult excelImportResult = qmsCommonActionFeedbackService.importData(excelList,formData);
-        responseMsg.setResponseBody(excelImportResult);
-        return responseMsg;
-    }
-
-    /**
-     * 按条件导出所有
-     * @param queryReqBean 查询条件
-     * @return
-     */
-    @PostMapping("/exportData/v1")
-    @ApiOperation(value = "按条件导出所有")
-    @RequiresPermissions("qmsCommonActionFeedback:export")
-    public void exportData(@ApiParam(value = "查询条件", name = "queryReqBean") @RequestBody QueryReqBean<QmsCommonActionFeedbackDTO> queryReqBean, HttpServletResponse response) throws IOException {
-        List<QmsCommonActionFeedbackDTO> list = qmsCommonActionFeedbackService.searchQmsCommonActionFeedbackForExportExcel(queryReqBean);
-        // 输出
-        ExcelUtil.exportExcel(response, list, QmsCommonActionFeedbackDTO.class,"导出数据", "sheet1" );
     }
 }

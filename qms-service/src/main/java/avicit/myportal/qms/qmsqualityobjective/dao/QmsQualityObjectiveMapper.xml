@@ -7,7 +7,6 @@
 	<result property="objectiveName" column="OBJECTIVE_NAME" jdbcType="VARCHAR" />
 	<result property="objectiveContent" column="OBJECTIVE_CONTENT" jdbcType="VARCHAR" />
 	<result property="objectiveLevel" column="OBJECTIVE_LEVEL" jdbcType="VARCHAR" />
-	<result property="objectiveSource" column="OBJECTIVE_SOURCE" jdbcType="VARCHAR" />
 	<result property="forYear" column="FOR_YEAR" jdbcType="VARCHAR" />
 	<result property="responsibleDeptId" column="RESPONSIBLE_DEPT_ID" jdbcType="VARCHAR" />
 	<result property="responsibleDeptCode" column="RESPONSIBLE_DEPT_CODE" jdbcType="VARCHAR" />
@@ -77,6 +76,10 @@
 	<result property="treeSorts" column="TREE_SORTS" jdbcType="VARCHAR" />
 	<result property="treeLeaf" column="TREE_LEAF" jdbcType="VARCHAR" />
 	<result property="expectedDeliverable" column="EXPECTED_DELIVERABLE" jdbcType="VARCHAR" />
+	<result property="objectiveSource" column="OBJECTIVE_SOURCE" jdbcType="VARCHAR" />
+	<result property="responsibleStaffId" column="RESPONSIBLE_STAFF_ID" jdbcType="VARCHAR" />
+	<result property="responsibleStaffCode" column="RESPONSIBLE_STAFF_CODE" jdbcType="VARCHAR" />
+	<result property="responsibleStaffName" column="RESPONSIBLE_STAFF_NAME" jdbcType="VARCHAR" />
 </resultMap>
 <sql id="commonColums">
 	<trim suffixOverrides=",">
@@ -155,6 +158,9 @@
 		t1.TREE_LEAF,
 		t1.EXPECTED_DELIVERABLE,
 		t1.OBJECTIVE_SOURCE,
+		t1.RESPONSIBLE_STAFF_ID,
+		t1.RESPONSIBLE_STAFF_CODE,
+		t1.RESPONSIBLE_STAFF_NAME,
 	</trim>
 </sql>
 <!-- 默认查询条件 -->
@@ -168,15 +174,10 @@
 			#{item}
 		</foreach>
 	</if>
-	and t1.parent_id != '-1'
-
 </sql>
 <sql id="commonWhereAnd">
 	<if test="bean.id != null and bean.id != ''">
 		and t1.ID = #{bean.id}
-	</if>
-	<if test="bean.objectiveSource != null and bean.objectiveSource != ''">
-		and t1.OBJECTIVE_SOURCE like concat(concat('%',#{bean.objectiveSource}),'%')
 	</if>
 	<if test="bean.objectiveCode != null and bean.objectiveCode != ''">
 		and t1.OBJECTIVE_CODE like concat(concat('%',#{bean.objectiveCode}),'%')
@@ -414,6 +415,18 @@
 	</if>
 	<if test="bean.expectedDeliverable != null and bean.expectedDeliverable != ''">
 		and t1.EXPECTED_DELIVERABLE like concat(concat('%',#{bean.expectedDeliverable}),'%')
+	</if>
+	<if test="bean.objectiveSource != null and bean.objectiveSource != ''">
+		and t1.OBJECTIVE_SOURCE like concat(concat('%',#{bean.objectiveSource}),'%')
+	</if>
+	<if test="bean.responsibleStaffId != null and bean.responsibleStaffId != ''">
+		and t1.RESPONSIBLE_STAFF_ID like concat(concat('%',#{bean.responsibleStaffId}),'%')
+	</if>
+	<if test="bean.responsibleStaffCode != null and bean.responsibleStaffCode != ''">
+		and t1.RESPONSIBLE_STAFF_CODE like concat(concat('%',#{bean.responsibleStaffCode}),'%')
+	</if>
+	<if test="bean.responsibleStaffName != null and bean.responsibleStaffName != ''">
+		and t1.RESPONSIBLE_STAFF_NAME like concat(concat('%',#{bean.responsibleStaffName}),'%')
 	</if>
 </sql>
 <sql id="commonWhereOr">
@@ -654,6 +667,18 @@
 		</if>
 		<if test="bean.expectedDeliverable != null and bean.expectedDeliverable != ''">
 			or t1.EXPECTED_DELIVERABLE like concat(concat('%',#{bean.expectedDeliverable}),'%')
+		</if>
+		<if test="bean.objectiveSource != null and bean.objectiveSource != ''">
+			or t1.OBJECTIVE_SOURCE like concat(concat('%',#{bean.objectiveSource}),'%')
+		</if>
+		<if test="bean.responsibleStaffId != null and bean.responsibleStaffId != ''">
+			or t1.RESPONSIBLE_STAFF_ID like concat(concat('%',#{bean.responsibleStaffId}),'%')
+		</if>
+		<if test="bean.responsibleStaffCode != null and bean.responsibleStaffCode != ''">
+			or t1.RESPONSIBLE_STAFF_CODE like concat(concat('%',#{bean.responsibleStaffCode}),'%')
+		</if>
+		<if test="bean.responsibleStaffName != null and bean.responsibleStaffName != ''">
+			or t1.RESPONSIBLE_STAFF_NAME like concat(concat('%',#{bean.responsibleStaffName}),'%')
 		</if>
 	</trim>
 </sql>
@@ -954,6 +979,18 @@
 		<if test="expectedDeliverable != null">
 			EXPECTED_DELIVERABLE,
 		</if>
+		<if test="objectiveSource != null">
+			OBJECTIVE_SOURCE,
+		</if>
+		<if test="responsibleStaffId != null">
+			RESPONSIBLE_STAFF_ID,
+		</if>
+		<if test="responsibleStaffCode != null">
+			RESPONSIBLE_STAFF_CODE,
+		</if>
+		<if test="responsibleStaffName != null">
+			RESPONSIBLE_STAFF_NAME,
+		</if>
 	</trim>
 	<trim prefix="values (" suffix=")" suffixOverrides=",">
 		<if test="id != null">
@@ -1178,6 +1215,18 @@
 		<if test="expectedDeliverable != null">
 			#{expectedDeliverable,jdbcType = VARCHAR},
 		</if>
+		<if test="objectiveSource != null">
+			#{objectiveSource,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleStaffId != null">
+			#{responsibleStaffId,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleStaffCode != null">
+			#{responsibleStaffCode,jdbcType = VARCHAR},
+		</if>
+		<if test="responsibleStaffName != null">
+			#{responsibleStaffName,jdbcType = VARCHAR},
+		</if>
 	</trim>
 </insert>
 <!-- 批量新增对象 QMS_QUALITY_OBJECTIVE -->
@@ -1256,7 +1305,11 @@
 		TREE_SORT ,
 		TREE_SORTS ,
 		TREE_LEAF ,
-		EXPECTED_DELIVERABLE 
+		EXPECTED_DELIVERABLE ,
+		OBJECTIVE_SOURCE ,
+		RESPONSIBLE_STAFF_ID ,
+		RESPONSIBLE_STAFF_CODE ,
+		RESPONSIBLE_STAFF_NAME 
 	)
 	<foreach collection="dtoList" item="item" index="index"  separator="union all" >
 		select
@@ -1333,7 +1386,11 @@
 			#{item.treeSort,jdbcType = DECIMAL} ,
 			#{item.treeSorts,jdbcType = VARCHAR} ,
 			#{item.treeLeaf,jdbcType = VARCHAR} ,
-			#{item.expectedDeliverable,jdbcType = VARCHAR} 
+			#{item.expectedDeliverable,jdbcType = VARCHAR} ,
+			#{item.objectiveSource,jdbcType = VARCHAR} ,
+			#{item.responsibleStaffId,jdbcType = VARCHAR} ,
+			#{item.responsibleStaffCode,jdbcType = VARCHAR} ,
+			#{item.responsibleStaffName,jdbcType = VARCHAR} 
 		from dual
 	</foreach>
 </insert>
@@ -1561,7 +1618,19 @@
 			TREE_LEAF = #{treeLeaf,jdbcType = VARCHAR} ,
 		</if>
 		<if test="expectedDeliverable != null">
-			EXPECTED_DELIVERABLE = #{expectedDeliverable,jdbcType = VARCHAR} 
+			EXPECTED_DELIVERABLE = #{expectedDeliverable,jdbcType = VARCHAR} ,
+		</if>
+		<if test="objectiveSource != null">
+			OBJECTIVE_SOURCE = #{objectiveSource,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleStaffId != null">
+			RESPONSIBLE_STAFF_ID = #{responsibleStaffId,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleStaffCode != null">
+			RESPONSIBLE_STAFF_CODE = #{responsibleStaffCode,jdbcType = VARCHAR} ,
+		</if>
+		<if test="responsibleStaffName != null">
+			RESPONSIBLE_STAFF_NAME = #{responsibleStaffName,jdbcType = VARCHAR} 
 		</if>
 	</set>
 	where id = #{id} 
@@ -1640,7 +1709,11 @@
 		TREE_SORT = #{treeSort,jdbcType = DECIMAL} ,
 		TREE_SORTS = #{treeSorts,jdbcType = VARCHAR} ,
 		TREE_LEAF = #{treeLeaf,jdbcType = VARCHAR} ,
-		EXPECTED_DELIVERABLE = #{expectedDeliverable,jdbcType = VARCHAR} 
+		EXPECTED_DELIVERABLE = #{expectedDeliverable,jdbcType = VARCHAR} ,
+		OBJECTIVE_SOURCE = #{objectiveSource,jdbcType = VARCHAR} ,
+		RESPONSIBLE_STAFF_ID = #{responsibleStaffId,jdbcType = VARCHAR} ,
+		RESPONSIBLE_STAFF_CODE = #{responsibleStaffCode,jdbcType = VARCHAR} ,
+		RESPONSIBLE_STAFF_NAME = #{responsibleStaffName,jdbcType = VARCHAR} 
 	</trim>
 	where id = #{id}
 	and version = #{version}
@@ -1724,7 +1797,11 @@
 			TREE_SORT = #{item.treeSort,jdbcType = DECIMAL} ,
 			TREE_SORTS = #{item.treeSorts,jdbcType = VARCHAR} ,
 			TREE_LEAF = #{item.treeLeaf,jdbcType = VARCHAR} ,
-			EXPECTED_DELIVERABLE = #{item.expectedDeliverable,jdbcType = VARCHAR} 
+			EXPECTED_DELIVERABLE = #{item.expectedDeliverable,jdbcType = VARCHAR} ,
+			OBJECTIVE_SOURCE = #{item.objectiveSource,jdbcType = VARCHAR} ,
+			RESPONSIBLE_STAFF_ID = #{item.responsibleStaffId,jdbcType = VARCHAR} ,
+			RESPONSIBLE_STAFF_CODE = #{item.responsibleStaffCode,jdbcType = VARCHAR} ,
+			RESPONSIBLE_STAFF_NAME = #{item.responsibleStaffName,jdbcType = VARCHAR} 
 		where id = #{item.id}
 		and version = #{item.version};
 	</foreach>

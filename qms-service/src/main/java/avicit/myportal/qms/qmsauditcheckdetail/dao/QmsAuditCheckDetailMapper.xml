@@ -396,7 +396,7 @@
 			order by ${orderBy}
 		</when>
 		<otherwise>
-			order by t1.creation_date desc
+			order by t1.sequence_code asc
 		</otherwise>
 	</choose>
 </sql>
@@ -481,6 +481,24 @@
 	<include refid="commonColums"/>
 	from QMS_AUDIT_CHECK_DETAIL t1
 	where t1.id = #{id}
+</select>
+<select id="getDetailCountByRecordId" parameterType="java.util.Map" resultType="java.lang.Integer">
+	select
+	count(0)
+	from QMS_AUDIT_CHECK_DETAIL t1
+	where t1.record_id = #{recordId}
+</select>
+<select id="getNcCountByRecordId" parameterType="java.util.Map" resultType="java.lang.Integer">
+	select
+		count(0)
+	from QMS_AUDIT_CHECK_DETAIL t1
+	where t1.record_id = #{recordId} and t1.CONFORMITY_RESULT='10'
+</select>
+<select id="getAdviceCountByRecordId" parameterType="java.util.Map" resultType="java.lang.Integer">
+	select
+		count(0)
+	from QMS_AUDIT_CHECK_DETAIL t1
+	where t1.record_id = #{recordId} and t1.CONFORMITY_RESULT='5'
 </select>
 <!-- 根据pid查询对象 QMS_AUDIT_CHECK_DETAIL -->
 <select id="findQmsAuditCheckDetailByPid" parameterType="java.util.Map" resultMap="QmsAuditCheckDetailDTOMap">

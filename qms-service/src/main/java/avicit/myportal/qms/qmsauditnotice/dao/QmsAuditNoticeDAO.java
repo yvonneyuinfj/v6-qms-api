@@ -95,4 +95,9 @@ public interface QmsAuditNoticeDAO {
 	 * @return int
 	 */
 	public int deleteQmsAuditNoticeById(String id);
+
+
+	public int deleteQmsAuditNoticeByPlanId(String planId);
+
+	public QmsAuditNoticeDTO findQmsAuditNoticeByPlanId(String planId);
 }

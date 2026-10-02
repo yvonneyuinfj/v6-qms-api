@@ -1,6 +1,7 @@
 package avicit.myportal.qms.qmsauditcheckrecord.dao;
 
 import avicit.myportal.qms.qmsauditcheckrecord.dto.QmsAuditCheckRecordDTO;
+import avicit.myportal.qms.qmsauditnotice.dto.QmsAuditNoticeDTO;
 import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Param;
 
@@ -95,4 +96,8 @@ public interface QmsAuditCheckRecordDAO {
 	 * @return int
 	 */
 	public int deleteQmsAuditCheckRecordById(String id);
+
+	public QmsAuditCheckRecordDTO findQmsAuditCheckRecordByPlanId(String planId);
+
+	public int deleteQmsAuditCheckRecordByPlanId(String planId);
 }

@@ -279,7 +279,7 @@ public class QmsActionPlanService {
 		SysLogUtil.log4Delete(qmsActionPlanDTO);
 		//删除子表
 		for (QmsCommonActionFeedbackDTO qmsCommonActionFeedbackDTO : qmsCommonActionFeedbackService.queryQmsCommonActionFeedbackByPid(qmsActionPlanDTO.getId())) {
-			qmsCommonActionFeedbackService.deleteQmsCommonActionFeedback(qmsCommonActionFeedbackDTO);
+			qmsCommonActionFeedbackService.deleteQmsCommonActionFeedbackById(qmsCommonActionFeedbackDTO.getId());
 		}
 		//删除业务数据
 		int count = qmsActionPlanDAO.deleteQmsActionPlanById(id);

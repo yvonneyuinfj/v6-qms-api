@@ -1,6 +1,11 @@
 package avicit.myportal.qms.qmsauditcheckdetail.service;
 
 
+import avicit.myportal.qms.qmsauditcheckrecord.dao.QmsAuditCheckRecordDAO;
+import avicit.myportal.qms.qmsauditcheckrecord.dto.QmsAuditCheckRecordDTO;
+import avicit.myportal.qms.qmsauditcheckrecord.service.QmsAuditCheckRecordService;
+import avicit.myportal.qms.qmsauditnc.dto.QmsAuditNcDTO;
+import avicit.myportal.qms.qmsauditnc.service.QmsAuditNcService;
 import avicit.platform6.core.exception.BusinessException;
 import avicit.platform6.core.context.ThreadContextHelper;
 import avicit.platform6.modules.system.syslog.service.SysLogUtil;
@@ -27,6 +32,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import org.apache.commons.collections4.ListUtils;
 import com.fasterxml.jackson.core.type.TypeReference;
+
+import java.math.BigDecimal;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
@@ -42,18 +49,28 @@ import java.util.stream.Collectors;
  * @修改记录：
  */
 @Service
-public class QmsAuditCheckDetailService  {
+public class QmsAuditCheckDetailService {
 
-	 private static final Logger logger = LoggerFactory.getLogger(QmsAuditCheckDetailService.class);
+    private static final Logger logger = LoggerFactory.getLogger(QmsAuditCheckDetailService.class);
 
     @Autowired
     private QmsAuditCheckDetailDAO qmsAuditCheckDetailDAO;
+
     @Autowired
     private OssClient ossClient;
 
+    @Autowired
+    private QmsAuditNcService qmsAuditNcService;
+
+    @Autowired
+    private QmsAuditCheckRecordService qmsAuditCheckRecordService;
+
+    @Autowired
+    private QmsAuditCheckRecordDAO qmsAuditCheckRecordDAO;
 
     @Autowired
     private ConvertColumnClient convertColumnClient;
+
     /**
      * 按条件分页查询
      *
@@ -80,10 +97,10 @@ public class QmsAuditCheckDetailService  {
             queryReqBean.getSearchParams().setRecordId("-1");
         }
         PageHelper.startPage(queryReqBean.getPageParameter());
-        //文档密级
+        // 文档密级
         List<String> wordSecret = ThreadContextHelper.getWordSecretList();
 
-        Page<QmsAuditCheckDetailDTO> result = qmsAuditCheckDetailDAO.searchQmsAuditCheckDetailByPage(queryReqBean.getSearchParams(),  wordSecret, queryReqBean.getSortExp(), queryReqBean.getKeyWord());
+        Page<QmsAuditCheckDetailDTO> result = qmsAuditCheckDetailDAO.searchQmsAuditCheckDetailByPage(queryReqBean.getSearchParams(), wordSecret, queryReqBean.getSortExp(), queryReqBean.getKeyWord());
         valueConvert(result.getResult());
         queryRespBean.setResult(result);
         return queryRespBean;
@@ -111,7 +128,7 @@ public class QmsAuditCheckDetailService  {
     @Transactional(readOnly = true)
     public QmsAuditCheckDetailDTO queryQmsAuditCheckDetailByPrimaryKey(String id) {
         QmsAuditCheckDetailDTO qmsAuditCheckDetailDTO = qmsAuditCheckDetailDAO.findQmsAuditCheckDetailById(id);
-        //记录日志
+        // 记录日志
         if (qmsAuditCheckDetailDTO != null) {
             valueConvert(Arrays.asList(qmsAuditCheckDetailDTO));
             SysLogUtil.log4Query(qmsAuditCheckDetailDTO);
@@ -130,6 +147,7 @@ public class QmsAuditCheckDetailService  {
         List<QmsAuditCheckDetailDTO> dtoList = qmsAuditCheckDetailDAO.findQmsAuditCheckDetailByPid(pid);
         return dtoList;
     }
+
     /**
      * 新增对象
      *
@@ -140,10 +158,55 @@ public class QmsAuditCheckDetailService  {
     public String insertQmsAuditCheckDetail(QmsAuditCheckDetailDTO qmsAuditCheckDetailDTO) {
         qmsAuditCheckDetailDTO.setId(ComUtil.getId());
         PojoUtil.setSysProperties(qmsAuditCheckDetailDTO, OpType.insert);
+
+        if (qmsAuditCheckDetailDTO.getConformityResult().equals("10")) {
+            qmsAuditCheckDetailDTO.setYnNc("Y");
+            // TODO 关联新增一条不合格项
+            insertRelatedAuditNc(qmsAuditCheckDetailDTO);
+        }
         qmsAuditCheckDetailDAO.insertQmsAuditCheckDetail(qmsAuditCheckDetailDTO);
-        //记录日志
+        // TODO 重新计算数量
+        calculateCount(qmsAuditCheckDetailDTO.getRecordId());
+
+        // 记录日志
         SysLogUtil.log4Insert(qmsAuditCheckDetailDTO);
         return qmsAuditCheckDetailDTO.getId();
+    }
+
+    /**
+     * 重新计算checkRecord统计数量
+     * @param recordId
+     */
+    private void calculateCount(String recordId) {
+        if(StringUtils.isEmpty(recordId)) return;
+        QmsAuditCheckRecordDTO recordDto = qmsAuditCheckRecordDAO.findQmsAuditCheckRecordById(recordId);
+        if(recordDto!=null){
+            // 重新计算
+            int detailCount = qmsAuditCheckDetailDAO.getDetailCountByRecordId(recordId);
+            int ncCount = qmsAuditCheckDetailDAO.getNcCountByRecordId(recordId);
+            int adviceCount = qmsAuditCheckDetailDAO.getAdviceCountByRecordId(recordId);
+            recordDto.setDetailCount(BigDecimal.valueOf(detailCount));
+            recordDto.setNcDetailCount(BigDecimal.valueOf(ncCount));
+            recordDto.setAdviceDetailCount(BigDecimal.valueOf(adviceCount));
+            qmsAuditCheckRecordService.updateQmsAuditCheckRecord(recordDto);
+        }
+        
+    }
+
+    public void insertRelatedAuditNc(QmsAuditCheckDetailDTO qmsAuditCheckDetailDTO) {
+        QmsAuditNcDTO dto = new QmsAuditNcDTO();
+        dto.setDetailId(qmsAuditCheckDetailDTO.getId()); // 检查项ID
+        dto.setRecordId(qmsAuditCheckDetailDTO.getRecordId());
+        dto.setPlanId(qmsAuditCheckDetailDTO.getPlanId());
+        dto.setNoticeId(qmsAuditCheckDetailDTO.getNoticeId());
+        dto.setSecretLevel(qmsAuditCheckDetailDTO.getSecretLevel());
+        if (StringUtils.isNotEmpty(qmsAuditCheckDetailDTO.getRecordId())) {
+            QmsAuditCheckRecordDTO recordDto = qmsAuditCheckRecordService.queryQmsAuditCheckRecordByPrimaryKey(qmsAuditCheckDetailDTO.getRecordId());
+            dto.setAuditeeDeptId(recordDto.getAuditeeDeptId());
+            dto.setAuditeeDeptCode(recordDto.getAuditeeDeptCode());
+            dto.setAuditeeDeptName(recordDto.getAuditeeDeptName());
+        }
+        qmsAuditNcService.insertQmsAuditNc(dto);
     }
 
     /**
@@ -203,7 +266,7 @@ public class QmsAuditCheckDetailService  {
             if (old == null) {
                 throw new BusinessException("修改对象不存在!");
             }
-            QmsAuditCheckDetailDTO updateDto = (QmsAuditCheckDetailDTO)old.clone();
+            QmsAuditCheckDetailDTO updateDto = (QmsAuditCheckDetailDTO) old.clone();
             PojoUtil.setSysProperties(dto, OpType.update);
             PojoUtil.copyProperties(updateDto, dto, false);
             updateList.add(updateDto);
@@ -229,7 +292,7 @@ public class QmsAuditCheckDetailService  {
             throw new BusinessException("数据不存在");
         }
         String cid = oldDTO.getRecordId();
-        //记录日志
+        // 记录日志
         SysLogUtil.log4Update(qmsAuditCheckDetailDTO, oldDTO);
         PojoUtil.setSysProperties(qmsAuditCheckDetailDTO, OpType.update);
         PojoUtil.copyProperties(oldDTO, qmsAuditCheckDetailDTO, false);
@@ -248,15 +311,15 @@ public class QmsAuditCheckDetailService  {
         if (StringUtils.isEmpty(id)) {
             throw new BusinessException("删除失败！传入的参数主键为null");
         }
-        //记录日志
+        // 记录日志
         QmsAuditCheckDetailDTO qmsAuditCheckDetailDTO = findById(id);
         if (qmsAuditCheckDetailDTO == null) {
             throw new BusinessException("删除失败！对象不存在");
         }
         SysLogUtil.log4Delete(qmsAuditCheckDetailDTO);
-        //删除业务数据
+        // 删除业务数据
         int count = qmsAuditCheckDetailDAO.deleteQmsAuditCheckDetailById(id);
-        //删除附件
+        // 删除附件
         ossClient.deleteAttachByFormId(qmsAuditCheckDetailDTO.getId());
         return count;
     }
@@ -268,12 +331,15 @@ public class QmsAuditCheckDetailService  {
      * @return int
      */
     public int deleteQmsAuditCheckDetail(QmsAuditCheckDetailDTO qmsAuditCheckDetailDTO) {
-        //记录日志
+        // 记录日志
         if (qmsAuditCheckDetailDTO == null) {
             throw new BusinessException("删除失败！对象不存在");
         }
         SysLogUtil.log4Delete(qmsAuditCheckDetailDTO);
-        return qmsAuditCheckDetailDAO.deleteQmsAuditCheckDetailById(qmsAuditCheckDetailDTO.getId());
+        int i = qmsAuditCheckDetailDAO.deleteQmsAuditCheckDetailById(qmsAuditCheckDetailDTO.getId());
+        // TODO 重新计算数量
+        this.calculateCount(qmsAuditCheckDetailDTO.getId());
+        return i;
     }
 
     /**
@@ -301,10 +367,11 @@ public class QmsAuditCheckDetailService  {
     private QmsAuditCheckDetailDTO findById(String id) {
         return qmsAuditCheckDetailDAO.findQmsAuditCheckDetailById(id);
     }
+
     /**
      * 内部方法，
      *
-     * @param dto 修改对象
+     * @param dto             修改对象
      * @param isUpdateAllProp 更新全部字段是为true，更新部分字段为false
      * @return
      */
@@ -319,7 +386,7 @@ public class QmsAuditCheckDetailService  {
         if (old == null) {
             throw new BusinessException("修改对象不存在！");
         }
-        QmsAuditCheckDetailDTO updateDto = (QmsAuditCheckDetailDTO)old.clone();
+        QmsAuditCheckDetailDTO updateDto = (QmsAuditCheckDetailDTO) old.clone();
         PojoUtil.setSysProperties(dto, OpType.update);
         int ret = 0;
         if (isUpdateAllProp) {
@@ -332,6 +399,8 @@ public class QmsAuditCheckDetailService  {
         if (ret == 0) {
             throw new BusinessException("数据失效，请重新更新");
         }
+        // TODO 重新计算数量
+        this.calculateCount(dto.getRecordId());
         SysLogUtil.log4Update(updateDto, old);
         return ret;
     }
@@ -342,16 +411,16 @@ public class QmsAuditCheckDetailService  {
      * @param qmsAuditCheckDetailDTOList
      */
     private void valueConvert(List<QmsAuditCheckDetailDTO> qmsAuditCheckDetailDTOList) {
-        //循环组装请求数据
+        // 循环组装请求数据
         Map<String, Set<String>> convertFormData = new HashMap<>();
         for (QmsAuditCheckDetailDTO qmsAuditCheckDetail : qmsAuditCheckDetailDTOList) {
             BusinessUtil.createConvertSet(convertFormData, "PLATFORM_FILE_SECRET_LEVEL", qmsAuditCheckDetail.getSecretLevel());
             BusinessUtil.createConvertSet(convertFormData, "QMS_CHECK_CONFORMITY_RESULT", qmsAuditCheckDetail.getConformityResult());
         }
         if (convertFormData.size() > 0) {
-            //获取请求结果
+            // 获取请求结果
             Map<String, Map<String, String>> convertResultData = convertColumnClient.replace(convertFormData);
-            //循环设置Alias或Name的值
+            // 循环设置Alias或Name的值
             for (QmsAuditCheckDetailDTO qmsAuditCheckDetail : qmsAuditCheckDetailDTOList) {
                 qmsAuditCheckDetail.setSecretLevelName(BusinessUtil.convertFormat(convertResultData, "PLATFORM_FILE_SECRET_LEVEL", qmsAuditCheckDetail.getSecretLevel()));
                 qmsAuditCheckDetail.setConformityResultName(BusinessUtil.convertFormat(convertResultData, "QMS_CHECK_CONFORMITY_RESULT", qmsAuditCheckDetail.getConformityResult()));

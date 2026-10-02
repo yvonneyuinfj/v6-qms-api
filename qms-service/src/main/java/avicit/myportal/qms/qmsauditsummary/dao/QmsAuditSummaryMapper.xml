@@ -541,9 +541,18 @@
 <!-- 主键查询对象 QMS_AUDIT_SUMMARY -->
 <select id="findQmsAuditSummaryById" parameterType="java.util.Map" resultMap="QmsAuditSummaryDTOMap">
 	select
+	<include refid="commonBpmColums"/>
 	<include refid="commonColums"/>
-	from QMS_AUDIT_SUMMARY t1
+	from QMS_AUDIT_SUMMARY t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
 	where t1.id = #{id}
+</select>
+<!-- 通过planId查询对象	-->
+<select id="findQmsAuditSummaryByPlanId" parameterType="java.util.Map" resultMap="QmsAuditSummaryDTOMap">
+	select
+	<include refid="commonBpmColums"/>
+	<include refid="commonColums"/>
+	from QMS_AUDIT_SUMMARY t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
+	where t1.plan_id = #{planId}
 </select>
 <!-- 新增对象 QMS_AUDIT_SUMMARY -->
 <insert id="insertQmsAuditSummary" parameterType="avicit.myportal.qms.qmsauditsummary.dto.QmsAuditSummaryDTO">
@@ -1264,5 +1273,9 @@
 <!-- 主键删除 QMS_AUDIT_SUMMARY -->
 <delete id="deleteQmsAuditSummaryById" parameterType="java.lang.String">
 	delete from QMS_AUDIT_SUMMARY  where id = #{id}
+</delete>
+
+<delete id="deleteQmsAuditSummaryByPlanId" parameterType="java.lang.String">
+	delete from QMS_AUDIT_SUMMARY  where plan_id = #{planId}
 </delete>
 </mapper>

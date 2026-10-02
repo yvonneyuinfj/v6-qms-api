@@ -98,4 +98,10 @@ public interface QmsAuditCheckDetailDAO {
 	 * @return int
 	 */
 	public int deleteQmsAuditCheckDetailById(String id);
+
+	public int getDetailCountByRecordId(String recordId);
+
+	public int getNcCountByRecordId(String recordId);
+
+	public int getAdviceCountByRecordId(String recordId);
 }

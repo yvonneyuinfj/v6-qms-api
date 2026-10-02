@@ -95,4 +95,8 @@ public interface QmsAuditSummaryDAO {
 	 * @return int
 	 */
 	public int deleteQmsAuditSummaryById(String id);
+
+	public QmsAuditSummaryDTO findQmsAuditSummaryByPlanId(String planId);
+
+	public int deleteQmsAuditSummaryByPlanId(String planId);
 }

@@ -142,7 +142,12 @@ public class QmsAuditCheckRecordService {
         List<String> wordSecret = ThreadContextHelper.getWordSecretList();
         List<QmsAuditCheckRecordDTO> dataList = qmsAuditCheckRecordDAO.searchQmsAuditCheckRecord(queryReqBean.getSearchParams(), queryReqBean.getOrgIdentity(), wordSecret);
         valueConvert(dataList);
+		handleDataList(dataList);
         return dataList;
+	}
+
+	private void handleDataList(List<QmsAuditCheckRecordDTO> dataList) {
+		return;
 	}
 
 	/**
@@ -212,7 +217,12 @@ public class QmsAuditCheckRecordService {
 		String deptId = parameter.get("deptId");
 		Assert.hasText(processDefId, "启动流程失败，请传递流程启动参数！");
 		//业务操作
-		this.insertQmsAuditCheckRecord(qmsAuditCheckRecordDTO);
+		String id = qmsAuditCheckRecordDTO.getId();
+		if(StringUtils.isEmpty(id)){
+			this.insertQmsAuditCheckRecord(qmsAuditCheckRecordDTO);
+		}else{
+			this.updateQmsAuditCheckRecord(qmsAuditCheckRecordDTO);
+		}
 		//变量集合
 		Map<String, Object> variables = new HashMap<>();
 		//web表单传递过来(除表单对象外)的变量，可以为空
@@ -500,6 +510,10 @@ public class QmsAuditCheckRecordService {
 			    qmsAuditCheckRecord.setBusinessstate_(BusinessUtil.processStateCode2StateName(qmsAuditCheckRecord.getBusinessstate_()));
             }
         }
+    }
+
+    public QmsAuditCheckRecordDTO getByPlanId(String planId) {
+		return qmsAuditCheckRecordDAO.findQmsAuditCheckRecordByPlanId(planId);
     }
 }
 

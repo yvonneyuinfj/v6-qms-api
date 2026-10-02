@@ -51,7 +51,23 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @FieldRemark(column="PLAN_ID", field="planId", name="审核计划ID;关联年度计划")
     private String planId;
 
-    private String auditClause;
+    /**
+     * 审核条款
+     */
+    @ExcelProperty("审核条款")
+    @Size(max = 512, message = "审核条款长度不能超过512个字符")
+    @ApiModelProperty(value = "审核条款", name = "auditClause")
+    @FieldRemark(column="AUDIT_CLAUSE", field="auditClause", name="审核条款")
+    private java.lang.String auditClause;
+
+    /**
+     * 型号/项目
+     */
+    @ExcelProperty("型号/项目")
+    @Size(max = 512, message = "型号/项目长度不能超过512个字符")
+    @ApiModelProperty(value = "型号/项目", name = "modelProject")
+    @FieldRemark(column="MODEL_PROJECT", field="modelProject", name="型号/项目")
+    private java.lang.String modelProject;
 
     /**
     * 审核通知单ID;关联已批准通知单
@@ -107,6 +123,7 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
     @ApiModelProperty(value = "审核时间;通知单带入", name = "auditTime")
     @FieldRemark(column="AUDIT_TIME", field="auditTime", name="审核时间;通知单带入")
     private java.util.Date auditTime;
+
 
     /**
     * 审核时间;通知单带入起
@@ -1064,6 +1081,14 @@ public class QmsAuditCheckRecordDTO extends BeanDTO{
 
     public void setAuditClause(String auditClause) {
         this.auditClause = auditClause;
+    }
+
+    public String getModelProject() {
+        return modelProject;
+    }
+
+    public void setModelProject(String modelProject) {
+        this.modelProject = modelProject;
     }
 
     @Override

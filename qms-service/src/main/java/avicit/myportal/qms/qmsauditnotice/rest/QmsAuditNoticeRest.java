@@ -79,6 +79,15 @@ import java.util.*;
 		return responseMsg;
 	}
 
+	@GetMapping("/getByPlanId/{planId}/v1")
+	@ApiOperation(value = "通过PlanId查询单条记录")
+	public ResponseMsg<QmsAuditNoticeDTO> getByPlanId(@ApiParam(value = "planId", name = "planId") @PathVariable("planId") String planId) {
+		ResponseMsg<QmsAuditNoticeDTO> responseMsg = new ResponseMsg<>();
+		QmsAuditNoticeDTO qmsAuditPlan = qmsAuditNoticeService.getByPlanId(planId);
+		responseMsg.setResponseBody(qmsAuditPlan);
+		return responseMsg;
+	}
+
 	/**
 	 * 通过主键查询单条记录
 	 *

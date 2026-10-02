@@ -65,7 +65,7 @@
 	<result property="activityalias_" column="activityalias_" jdbcType="VARCHAR" />
 	<result property="businessstate_" column="businessstate_" jdbcType="VARCHAR" />
 	<result property="assigneenames_" column="assigneenames_" jdbcType="VARCHAR" />
-
+	<result property="modelProject" column="MODEL_PROJECT" jdbcType="VARCHAR" />
 </resultMap>
 <sql id="commonColums">
 	<trim suffixOverrides=",">
@@ -128,6 +128,7 @@
 		t1.TREE_SORT,
 		t1.TREE_SORTS,
 		t1.TREE_LEAF,
+		t1.MODEL_PROJECT,
 	</trim>
 </sql>
 <!-- 默认查询条件 -->
@@ -145,6 +146,9 @@
 <sql id="commonWhereAnd">
 	<if test="bean.id != null and bean.id != ''">
 		and t1.ID = #{bean.id}
+	</if>
+	<if test="bean.modelProject  != null and bean.modelProject  != ''">
+		and t1.MODEL_PROJECT like concat(concat('%',#{bean.modelProject}),'%')
 	</if>
 	<if test="bean.auditClause  != null and bean.auditClause  != ''">
 		and t1.AUDIT_CLAUSE like concat(concat('%',#{bean.auditClause}),'%')
@@ -331,6 +335,9 @@
 	<trim prefix="(" suffix=")" prefixOverrides="or">
 		<if test="bean.id != null and bean.id != ''">
 			or t1.ID = #{bean.id}
+		</if>
+		<if test="bean.modelProject  != null and bean.modelProject  != ''">
+			or t1.MODEL_PROJECT = bean.modelProject
 		</if>
 		<if test="bean.auditClause  != null and bean.auditClause  != ''">
 			or t1.AUDIT_CLAUSE = bean.auditClause
@@ -603,8 +610,9 @@
 <!-- 主键查询对象 QMS_AUDIT_CHECK_RECORD -->
 <select id="findQmsAuditCheckRecordById" parameterType="java.util.Map" resultMap="QmsAuditCheckRecordDTOMap">
 	select
+	<include refid="commonBpmColums"/>
 	<include refid="commonColums"/>
-	from QMS_AUDIT_CHECK_RECORD t1
+	from QMS_AUDIT_CHECK_RECORD t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
 	where t1.id = #{id}
 </select>
 <!-- 新增对象 QMS_AUDIT_CHECK_RECORD -->
@@ -613,6 +621,9 @@
 	<trim prefix="(" suffix=")" suffixOverrides=",">
 		<if test="id != null">
 			ID,
+		</if>
+		<if test="modelProject  != null">
+			MODEL_PROJECT,
 		</if>
 		<if test="auditClause  != null">
 			AUDIT_CLAUSE,
@@ -792,6 +803,9 @@
 	<trim prefix="values (" suffix=")" suffixOverrides=",">
 		<if test="id != null">
 			#{id,jdbcType = VARCHAR},
+		</if>
+		<if test="modelProject  != null">
+			#{modelProject ,jdbcType = VARCHAR},
 		</if>
 		<if test="auditClause  != null">
 			#{auditClause ,jdbcType = VARCHAR},
@@ -973,6 +987,7 @@
 <insert id="insertQmsAuditCheckRecordList" parameterType="java.util.List" >
 	insert into QMS_AUDIT_CHECK_RECORD(
 		ID ,
+		MODEL_PROJECT,
 		AUDIT_CLAUSE,
 		PLAN_ID ,
 		NOTICE_ID ,
@@ -1035,6 +1050,7 @@
 	<foreach collection="dtoList" item="item" index="index"  separator="union all" >
 		select
 			#{item.id,jdbcType = VARCHAR} ,
+			#{item.modelProject ,jdbcType = VARCHAR} ,
 			#{item.auditClause ,jdbcType = VARCHAR} ,
 			#{item.planId,jdbcType = VARCHAR} ,
 			#{item.noticeId,jdbcType = VARCHAR} ,
@@ -1102,6 +1118,9 @@
 	<set>
 		<if test="id != null">
 			ID = #{id,jdbcType = VARCHAR} ,
+		</if>
+		<if test="modelProject  != null">
+			MODEL_PROJECT = #{modelProject ,jdbcType = VARCHAR},
 		</if>
 		<if test="auditClause  != null">
 			AUDIT_CLAUSE = #{auditClause ,jdbcType = VARCHAR},
@@ -1286,6 +1305,7 @@
 	update QMS_AUDIT_CHECK_RECORD
 	<trim prefix="set" suffixOverrides=",">
 		ID = #{id,jdbcType = VARCHAR} ,
+		MODEL_PROJECT = #{modelProject ,jdbcType = VARCHAR},
 		AUDIT_CLAUSE = #{auditClause ,jdbcType = VARCHAR},
 		PLAN_ID = #{planId,jdbcType = VARCHAR} ,
 		NOTICE_ID = #{noticeId,jdbcType = VARCHAR} ,
@@ -1351,6 +1371,7 @@
 		update QMS_AUDIT_CHECK_RECORD
 		set
 			ID = #{item.id,jdbcType = VARCHAR} ,
+			MODEL_PROJECT = #{item.modelProject ,jdbcType = VARCHAR},
 			AUDIT_CLAUSE = #{item.auditClause ,jdbcType = VARCHAR},
 			PLAN_ID = #{item.planId,jdbcType = VARCHAR} ,
 			NOTICE_ID = #{item.noticeId,jdbcType = VARCHAR} ,
@@ -1417,5 +1438,16 @@
 <!-- 主键删除 QMS_AUDIT_CHECK_RECORD -->
 <delete id="deleteQmsAuditCheckRecordById" parameterType="java.lang.String">
 	delete from QMS_AUDIT_CHECK_RECORD  where id = #{id}
+</delete>
+<!-- 通过planId查询对象	-->
+<select id="findQmsAuditCheckRecordByPlanId" parameterType="java.util.Map" resultMap="QmsAuditCheckRecordDTOMap">
+	select
+	<include refid="commonBpmColums"/>
+	<include refid="commonColums"/>
+	from QMS_AUDIT_CHECK_RECORD t1 left join sys_bpm_hist_procinst v on t1.id = v.formid_
+	where t1.plan_id = #{planId}
+</select>
+<delete id="deleteQmsAuditCheckRecordByPlanId" parameterType="java.lang.String">
+	delete from QMS_AUDIT_CHECK_RECORD  where plan_id = #{planId}
 </delete>
 </mapper>

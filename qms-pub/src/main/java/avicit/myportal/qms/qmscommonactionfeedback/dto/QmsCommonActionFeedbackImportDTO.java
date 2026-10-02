@@ -24,13 +24,13 @@ private static final long serialVersionUID = 1L;
     * 实施计划ID
     */
     @Size(max = 64, message = "实施计划ID长度不能超过64个字符")
-    private String planId;
+    private String sourceId;
     /**
     * 实施计划名称
     */
     @ExcelProperty("实施计划名称")
     @Size(max = 256, message = "实施计划名称长度不能超过256个字符")
-    private String planName;
+    private String sourceName;
     /**
     * 实际完成时间
     */

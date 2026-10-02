@@ -95,6 +95,16 @@ import java.util.*;
 		return responseMsg;
 	}
 
+	@GetMapping("/getByPlanId/{planId}/v1")
+	@ApiOperation(value = "通过主键查询单条记录")
+	@RequiresPermissions("qmsAuditSummary:edit")
+	public ResponseMsg<QmsAuditSummaryDTO> getByPlanId(@ApiParam(value = "planId", name = "planId") @PathVariable("planId") String planId) {
+		ResponseMsg<QmsAuditSummaryDTO> responseMsg = new ResponseMsg<>();
+		QmsAuditSummaryDTO qmsAuditSummary = qmsAuditSummaryService.getByPlanId(planId);
+		responseMsg.setResponseBody(qmsAuditSummary);
+		return responseMsg;
+	}
+
 	/**
 	 * 保存对象
 	 *

@@ -92,6 +92,16 @@ import java.util.*;
         return responseMsg;
     }
 
+    @GetMapping("/getByPlanId/{planId}/v1")
+    @ApiOperation(value = "通过主键查询主表单条记录")
+    @RequiresPermissions("qmsAuditCheckRecord:edit")
+    public ResponseMsg<QmsAuditCheckRecordDTO> getByPlanId(@ApiParam(value = "planId", name = "planId") @PathVariable("planId") String planId) {
+        ResponseMsg<QmsAuditCheckRecordDTO> responseMsg = new ResponseMsg<>();
+        QmsAuditCheckRecordDTO qmsAuditCheckRecord = qmsAuditCheckRecordService.getByPlanId(planId);
+        responseMsg.setResponseBody(qmsAuditCheckRecord);
+        return responseMsg;
+    }
+
 
     /**
      * 新增主表对象
